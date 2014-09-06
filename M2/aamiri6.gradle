@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+defaultTasks 'jar'
+
+// links the resources jar for dependencies
+dependencies{
+  compile files('./lib/resources.jar')
+}
+
+// Declaring some variables here
+version = '1.0'
+
+// declares the manifest location
+jar{
+  manifest{
+    attributes 'Implementation-Title': 'M2', 'Implementation-Version': version , 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+    'Class-Path': '../../lib/resources.jar'
+  }
+}
