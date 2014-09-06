@@ -31,7 +31,7 @@ public class Person4 {
      */
     private String calc(String input) {
       String out = "";
-      for(int i = 0; i <= input.lenght(); i++) {
+      for(int i = 0; i <= input.length(); i++) {
         out = out + (input.charAt(i) + 1);
       }
       return out;
