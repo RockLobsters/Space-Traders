@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author xiao
+ * @author addison
  */
 public class NewGameWindowController implements Initializable {
     

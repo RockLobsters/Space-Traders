@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author xiao
+ * @author addison
  */
 public class RootWindowController implements Initializable {
     

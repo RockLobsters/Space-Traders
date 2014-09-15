@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author xiao
+ * @author addison
  */
 public class SpaceTrader extends Application {
     @Override
