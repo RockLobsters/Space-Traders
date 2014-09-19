@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 xiao
+ * Copyright (C) 2014 Addison
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ import java.lang.Math;
  *
  * @author addison
  */
-public class Mercenary
+public class Mercenary implements Comparable
 {
     // Name of the mercenary
     private String name;
@@ -151,5 +151,12 @@ public class Mercenary
     public void setInvestor(int investor)
     {
         this.investor = investor;
+    }
+
+    @Override
+    public int compareTo(Object t)
+    {
+        Mercenary that = (Mercenary) t;
+        return this.name.compareTo(that.name);
     }
 }
