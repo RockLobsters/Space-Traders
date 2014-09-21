@@ -5,10 +5,30 @@
  */
 package spacetrader;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author addison
  */
-public class Universe {
-    
+public class Universe extends ArrayList<SolarSystem>
+{
+    @Override
+    public String toString()
+    {
+        if(!this.isEmpty())
+        {
+            String out = "[ ( " + this.get(0).toString();
+            for(int i = 1; i < this.size(); i++)
+            {
+                out = out + " ) , ( " + this.get(i).toString();
+            }
+            out = out + " ) ]";
+            return out;
+        }
+        else
+        {
+            return "";
+        }
+    }
 }
