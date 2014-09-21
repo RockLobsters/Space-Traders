@@ -16,8 +16,6 @@
  */
 package spacetrader;
 
-import java.lang.Math;
-
 /**
  *
  * @author addison
@@ -47,7 +45,7 @@ public class Mercenary implements Comparable
         int[] tmp = new int[4];
         for(int i = 5; i > 1; i--)
         {
-            tmp[5-i] = (int) Math.random() * totalAttributePoints / i;
+            tmp[5-i] = (int) (Math.random() * (totalAttributePoints + 1) / i);
             totalAttributePoints -= tmp[5-i];
         }
         pilot = tmp[0];
@@ -153,10 +151,21 @@ public class Mercenary implements Comparable
         this.investor = investor;
     }
 
+    /**
+     * Compares two mercenaries based on their names.
+     * 
+     * @param that the mercenary to compare against
+     * @return 
+     */
     @Override
-    public int compareTo(Object t)
+    public int compareTo(Object that)
     {
-        Mercenary that = (Mercenary) t;
-        return this.name.compareTo(that.name);
+        return this.name.compareTo(((Mercenary) that).name);
+    }
+    
+    @Override
+    public String toString()
+    {
+        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ")";
     }
 }
