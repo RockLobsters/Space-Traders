@@ -25,14 +25,14 @@ class SolarSystem
 {
     private String name;
     private ArrayList<Planet> planets;
-    private PoliticalSystem government;
+    private PoliticalSystem politicalSystem;
     private int techLevel;
     
-    public SolarSystem(String name, PoliticalSystem government, int techLevel)
+    public SolarSystem(String name, PoliticalSystem politicalSystem, int techLevel)
     {
         this.name = name;
         planets = new ArrayList();
-        this.government = government;
+        this.politicalSystem = politicalSystem;
         this.techLevel = techLevel;
     }
 
@@ -97,7 +97,7 @@ class SolarSystem
     @Override
     public String toString()
     {
-        String out = name + " ( " + government + " " + techLevel + " ) [ ";
+        String out = name + " ( " + getPoliticalSystem() + " " + techLevel + " ) [ ";
         if(!planets.isEmpty())
         {
             out = out + "( " + planets.get(0);
@@ -110,5 +110,21 @@ class SolarSystem
         out = out + "]";
         return out;
         
+    }
+
+    /**
+     * @return the politicalSystem
+     */
+    public PoliticalSystem getPoliticalSystem()
+    {
+        return politicalSystem;
+    }
+
+    /**
+     * @param politicalSystem the politicalSystem to set
+     */
+    public void setPoliticalSystem(PoliticalSystem politicalSystem)
+    {
+        this.politicalSystem = politicalSystem;
     }
 }
