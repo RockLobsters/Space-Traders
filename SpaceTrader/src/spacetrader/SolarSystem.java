@@ -25,10 +25,10 @@ class SolarSystem
 {
     private String name;
     private ArrayList<Planet> planets;
-    private Government government;
+    private PoliticalSystem government;
     private int techLevel;
     
-    public SolarSystem(String name, Government government, int techLevel)
+    public SolarSystem(String name, PoliticalSystem government, int techLevel)
     {
         this.name = name;
         planets = new ArrayList();
