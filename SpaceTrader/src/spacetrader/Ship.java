@@ -41,6 +41,4 @@ public class Ship
         this.CREW_QUARTERS = CREW_QUARTERS;
         this.FUEL_CAPACITY = FUEL_CAPACITY;
     }
-
-    
 }
