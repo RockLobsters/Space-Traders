@@ -1,6 +1,3 @@
-import java.util.Random;
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,6 +5,8 @@ import java.util.Random;
  */
 
 package spacetrader;
+
+import java.util.Random;
 
 /**
  *
@@ -18,10 +17,11 @@ public class Police {
 	
 	public PoliticalSystem gov;
 	public Player player;
-	public int wanted; 
+	public int wanted;
+    public Planet planet;
 
 	public Police(Planet plan, Player player) {
-		this.gov = plan.getGov();
+		this.gov = plan.getPoliticalSystem();
 		this.planet = plan;
 		this.player = player;
 		this.wanted = player.getWanted();
@@ -64,7 +64,7 @@ public class Police {
 	public Player bribe() {
 		// will change based on transatction class later
 		int money = player.getMoney();
-		int amount = gov.bribeRate() * 1000;
+		int amount = (int) (gov.bribeRate() * 1000);
 		player.setMoney(money - amount);
 
 		return player;
