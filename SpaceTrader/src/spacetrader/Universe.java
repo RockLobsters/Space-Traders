@@ -31,4 +31,9 @@ public class Universe extends ArrayList<SolarSystem>
             return "";
         }
     }
+    
+    public void bigBang()
+    {
+        // ...:::  Put the instantiation code here  :::...
+    }
 }
