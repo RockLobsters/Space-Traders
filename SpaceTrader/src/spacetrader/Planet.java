@@ -39,7 +39,7 @@ import java.util.ArrayList;
  * @author Addison Amiri
  */
 public class Planet implements Comparable
-{
+{   
     private String name;
     private int coordinateX;
     private int coordinateY;
@@ -50,7 +50,7 @@ public class Planet implements Comparable
     
     public Planet(String name)
     {
-        this(name, (int) (Math.random() * 150), (int) (Math.random() * 150));
+        this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.random() * SolarSystem.SIZE_Y));
     }
     
     public Planet(String name, int minCoordinateX, int maxCoordinateX, int minCoordinateY, int maxCoordinateY, SolarSystem solarSystem)

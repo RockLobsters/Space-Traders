@@ -28,6 +28,9 @@ class SolarSystem
     private PoliticalSystem politicalSystem;
     private int techLevel;
     
+    public static final int SIZE_X = 50;
+    public static final int SIZE_Y = 50;
+    
     public SolarSystem(String name, PoliticalSystem politicalSystem, int techLevel)
     {
         this.name = name;
