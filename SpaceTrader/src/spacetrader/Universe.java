@@ -21,7 +21,7 @@ public class Universe extends ArrayList<SolarSystem>
             String out = "[ ( " + this.get(0).toString();
             for(int i = 1; i < this.size(); i++)
             {
-                out = out + " ) , ( " + this.get(i).toString();
+                out = out + " ) ,\n  ( " + this.get(i).toString();
             }
             out = out + " ) ]";
             return out;
@@ -161,5 +161,15 @@ public class Universe extends ArrayList<SolarSystem>
         iSystem.addPlanet(iPlanet3);
         iSystem.addPlanet(iPlanet4);
         iSystem.addPlanet(iPlanet5);
+        
+        this.add(aSystem);
+        this.add(bSystem);
+        this.add(cSystem);
+        this.add(dSystem);
+        this.add(eSystem);
+        this.add(fSystem);
+        this.add(gSystem);
+        this.add(hSystem);
+        this.add(iSystem);
     }
 }

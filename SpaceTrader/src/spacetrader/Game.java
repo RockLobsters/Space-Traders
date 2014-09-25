@@ -23,12 +23,35 @@ package spacetrader;
  */
 public class Game {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        
+    private Player player;
+    private Universe universe;
+    
+    public Game(Player player, Universe universe)
+    {
+        this.player = player;
+        this.universe = universe;
+        universe.bigBang();
     }
     
+    public Game(String name, int pilot, int fighter, int trader, int engineer, int investor)
+    {
+        player = new Player(name);
+        player.setPilot(pilot);
+        player.setFighter(fighter);
+        player.setTrader(trader);
+        player.setEngineer(engineer);
+        player.setInvestor(investor);
+        universe = new Universe();
+        universe.bigBang();
+    }
+    
+    @Override
+    public String toString()
+    {
+        return    "Player:\n"
+                + player.toString() + "\n"
+                + "\n"
+                + "Universe:\n"
+                + universe.toString();
+    }
 }

@@ -176,4 +176,10 @@ public class Player {
     {
         this.investor = investor;
     }
+    
+    @Override
+    public String toString()
+    {
+        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ")";
+    }
 }

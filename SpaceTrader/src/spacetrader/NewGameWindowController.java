@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +20,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBoxBuilder;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -66,15 +71,12 @@ public class NewGameWindowController implements Initializable {
         int skillPoints = fighterValue + traderValue + engineerValue + investorValue + pilotValue;
 
         String name = Name.getText();
-        if (skillPoints == 30 && !name.isEmpty()) {
+        if (skillPoints == 10 && !name.isEmpty()) {
             // Dialogs.create().owner(stage).title("Confirm Dialog").masthead("Look, a Confirm Dialog").message("Do you want to continue?").showConfirm();
-            Player player = new Player(name);
-            player.setEngineer(engineerValue);
-            player.setFighter(fighterValue);
-            player.setInvestor(investorValue);
-            player.setPilot(pilotValue);
-            player.setTrader(traderValue);
-
+            Game game = new Game(name,pilotValue,fighterValue,traderValue,engineerValue,investorValue);
+            
+            System.out.println(game.toString());
+            
             Parent root = FXMLLoader.load(getClass().getResource("UniverseScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -84,10 +86,22 @@ public class NewGameWindowController implements Initializable {
             ((Node) (event.getSource())).getScene().getWindow().hide();
 
         } else if(name.isEmpty()) {
-            System.out.print("invlaid name");
-            
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                children(new Text("Please Enter a Valid Name")).
+                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+            System.out.println("invlaid name");
         } else {
-            System.out.print("wrong number of skill points");
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                children(new Text("You can only allocate 10 stat points to your player.\nPlease do that to continue.")).
+                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+            System.out.println("wrong number of skill points");
         }
 
     }

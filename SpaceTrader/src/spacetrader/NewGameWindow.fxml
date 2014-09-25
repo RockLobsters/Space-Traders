@@ -39,7 +39,7 @@
                         <Font size="32.0" />
                      </font>
                   </Text>
-                  <Slider fx:id="pilotSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Slider fx:id="pilotSlider" blockIncrement="2.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Slider>
@@ -63,10 +63,10 @@
                         <Font size="32.0" />
                      </font>
                   </Text>
-                  <Slider fx:id="fighterSlider" blockIncrement="1.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Slider fx:id="traderSlider" blockIncrement="1.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Slider fx:id="engineerSlider" blockIncrement="1.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Slider fx:id="investorSlider" blockIncrement="1.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Slider fx:id="fighterSlider" blockIncrement="2.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Slider fx:id="traderSlider" blockIncrement="2.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Slider fx:id="engineerSlider" blockIncrement="2.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Slider fx:id="investorSlider" blockIncrement="2.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Button fx:id="startGameButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleStartGameAction" prefWidth="300.0" text="Start Game" textAlignment="CENTER" GridPane.rowIndex="7" />
                   <Button fx:id="cancelButton" alignment="CENTER" cancelButton="true" layoutX="105.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleCancelAction" prefWidth="300.0" text="Cancel" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <Text layoutX="321.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: ">
