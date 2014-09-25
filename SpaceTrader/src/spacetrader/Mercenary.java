@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 xiao
+ * Copyright (C) 2014 Addison
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +16,11 @@
  */
 package spacetrader;
 
-import java.lang.Math;
-
 /**
  *
  * @author addison
  */
-public class Mercenary
+public class Mercenary implements Comparable
 {
     // Name of the mercenary
     private String name;
@@ -47,7 +45,7 @@ public class Mercenary
         int[] tmp = new int[4];
         for(int i = 5; i > 1; i--)
         {
-            tmp[5-i] = (int) Math.random() * totalAttributePoints / i;
+            tmp[5-i] = (int) (Math.random() * (totalAttributePoints + 1) / i);
             totalAttributePoints -= tmp[5-i];
         }
         pilot = tmp[0];
@@ -151,5 +149,23 @@ public class Mercenary
     public void setInvestor(int investor)
     {
         this.investor = investor;
+    }
+
+    /**
+     * Compares two mercenaries based on their names.
+     * 
+     * @param that the mercenary to compare against
+     * @return 
+     */
+    @Override
+    public int compareTo(Object that)
+    {
+        return this.name.compareTo(((Mercenary) that).name);
+    }
+    
+    @Override
+    public String toString()
+    {
+        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ")";
     }
 }
