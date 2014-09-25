@@ -44,7 +44,7 @@ public class Planet implements Comparable
     private int coordinateX;
     private int coordinateY;
     private int resources;
-    private Market market;
+    //private Market market;
     private ArrayList<Mercenary> personnelRoster;
     private SolarSystem solarSystem;
     
@@ -69,7 +69,7 @@ public class Planet implements Comparable
         {
             resources = 0;
         }
-        market = new Market();
+        //market = new Market();
         personnelRoster = new ArrayList();
     }
 
@@ -214,7 +214,7 @@ public class Planet implements Comparable
     @Override
     public String toString()
     {
-        String out = name + " (" + coordinateX + "," + coordinateY + ") " + resources + " ( " + market + " , [ " ;
+        String out = name + " (" + coordinateX + "," + coordinateY + ") " + resources + " ( " + /*market +*/ " , [ " ;
         if(!personnelRoster.isEmpty())
         {
             out = out + "( " + personnelRoster.get(0);
