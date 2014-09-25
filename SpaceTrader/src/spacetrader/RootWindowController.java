@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -25,6 +26,12 @@ public class RootWindowController implements Initializable {
     
     @FXML
     private Label label;
+    @FXML
+    private Button newGameButton;
+    @FXML
+    private Button loadGameButton;
+    @FXML
+    private Button exitButton;
     
     @FXML
     private void handleNewGameAction(ActionEvent event) throws Exception {
@@ -41,7 +48,7 @@ public class RootWindowController implements Initializable {
     private void handleLoadGameAction(ActionEvent event) {
         System.out.println("Needs to be implemented...");
     }
-    
+  
     @FXML
     private void handleExitAction(ActionEvent event) {
         System.exit(0);
