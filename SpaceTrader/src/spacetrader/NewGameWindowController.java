@@ -14,6 +14,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -22,7 +26,24 @@ import javafx.stage.Stage;
  * @author addison
  */
 public class NewGameWindowController implements Initializable {
-    
+
+    @FXML
+    private Button startGameButton;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private TextField Name;
+    @FXML
+    private Slider fighterSlider;
+    @FXML
+    private Slider traderSlider;
+    @FXML
+    private Slider engineerSlider;
+    @FXML
+    private Slider investorSlider;
+    @FXML
+    private Slider pilotSlider;
+
     @FXML
     private void handleCancelAction(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
@@ -31,21 +52,57 @@ public class NewGameWindowController implements Initializable {
         stage.show();
 
         //hide this current window (if this is whant you want
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-    
+
     @FXML
-    private void handleStartGameAction(ActionEvent event) {
-        System.out.println("Needs to be implemented...");
+    private void handleStartGameAction(ActionEvent event) throws Exception{
+        int fighterValue = (int) fighterSlider.getValue();
+        int traderValue = (int) traderSlider.getValue();
+        int engineerValue = (int) engineerSlider.getValue();
+        int investorValue = (int) investorSlider.getValue();
+        int pilotValue = (int) pilotSlider.getValue();
+
+        int skillPoints = fighterValue + traderValue + engineerValue + investorValue + pilotValue;
+
+        String name = Name.getText();
+        if (skillPoints == 30 && !name.isEmpty()) {
+            // Dialogs.create().owner(stage).title("Confirm Dialog").masthead("Look, a Confirm Dialog").message("Do you want to continue?").showConfirm();
+            Player player = new Player(name);
+            player.setEngineer(engineerValue);
+            player.setFighter(fighterValue);
+            player.setInvestor(investorValue);
+            player.setPilot(pilotValue);
+            player.setTrader(traderValue);
+
+            Parent root = FXMLLoader.load(getClass().getResource("UniverseScreen.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            //hide this current window (if this is whant you want
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+
+        } else if(name.isEmpty()) {
+            System.out.print("invlaid name");
+            
+        } else {
+            System.out.print("wrong number of skill points");
+        }
+
     }
-    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+
+    }
+
+    @FXML
+    private void slider(MouseEvent event) {
+        //to do add lable to tell current values
+    }
+
 }
