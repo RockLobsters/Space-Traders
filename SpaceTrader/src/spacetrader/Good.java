@@ -38,6 +38,13 @@ public class Good {
         this.type = gType;
         setValues();
     }
+<<<<<<< HEAD
+=======
+
+    public GoodType getGoodType() {
+        return gtype;
+    }
+>>>>>>> MarketGUI
     
     protected void setValues() {
         switch (type) {
@@ -173,4 +180,8 @@ public class Good {
     protected int MTH() {
         return MTH;
     }   
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> MarketGUI
