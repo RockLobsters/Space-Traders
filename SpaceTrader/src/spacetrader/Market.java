@@ -157,31 +157,60 @@ public class Market
     }
     return false;
   }
-
+  
   /**
-   * @param good      The good in question
-   * @param quantity  The amount of the good to be bought
+   * Get the price of a good in this market
    * 
-   * @return          True if the good is available at this Market
+   * @param good  The good to query the price for
+   * 
+   * @return      The price of the good or -1 if the good is not found
    */
-  public boolean canBuy(Good good, int quantity)
+  public int getPrice(Good good)
   {
-    //TODO
-    return true;
+    for(int i = 0; i < goods.size(); i++)
+    {
+      if(good.type == goods.get(i).type)
+      {
+        return prices.get(i);
+      }
+    }
+    return -1;
   }
   
   /**
-   * A call for canBuy that matches the calls of the others for convenience
+   * Gets the index of a good in the goods ArrayList
    * 
+   * @param good  The good to search for
+   * 
+   * @return      The index of the good or -1 if the good is not found
+   */
+  private int getIndex(Good good)
+  {
+    for(int i = 0; i < goods.size(); i++)
+    {
+      if(good.type == goods.get(i).type)
+      {
+        return i;
+      }
+    }
+    return -1;
+  }
+  
+  /**
    * @param good      The good in question
    * @param quantity  The amount of the good to be bought
-   * @param player    Don't matter
+   * @param player    The player buying the good
    * 
    * @return          True if the good is available at this Market
    */
   public boolean canBuy(Good good, int quantity, Player player)
   {
     //TODO
+    int index = getIndex(good);
+    if(index == -1)
+    {
+      return false;
+    }
     return true;
   }
   
@@ -203,7 +232,7 @@ public class Market
   /**
    * @param good      The good in question
    * @param quantity  The amount of the good to be sold
-   * @param player    The plater selling the good
+   * @param player    The player selling the good
    * 
    * @return          True if the player can sell the good
    */
