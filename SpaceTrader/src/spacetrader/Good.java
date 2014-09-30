@@ -38,6 +38,10 @@ public class Good {
         this.type = gType;
         setValues();
     }
+
+    public GoodType getGoodType() {
+        return gtype;
+    }
     
     protected void setValues() {
         switch (type) {

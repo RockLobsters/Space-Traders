@@ -36,7 +36,7 @@ public class Market
         this.goods = planet.getGoods();
         this.planet = planet;
         this.gov = planet.getSolarSystem().getPoliticalSystem();
-        this.prices = priceList(goods);
+        priceList(goods);
     }
 
     /**
@@ -44,15 +44,13 @@ public class Market
      *
      * @reutrn	a list of the prices of the goods
      */
-    public ArrayList<Integer> priceList(ArrayList<Good> goods)
+    public void priceList(ArrayList<Good> goods)
     {
         ArrayList<Integer> out = new ArrayList();
         for (int i = 0; i < goods.size(); i++)
         {
-            out.add(calcPrice(goods.get(i)));
             goods.get(i).setPrice(calcPrice(goods.get(i)));
         }
-        return out;
     }
 
     /**
@@ -134,13 +132,13 @@ public class Market
     }
 
     /**
-     * completes a trade transaction
+     * completes a sell transaction
      *
      * @param good - good to trade
      *
      * @return	whether or not the good was traded
      */
-    public boolean trade(Good good)
+    public boolean sell(Good good)
     {
         int tl = planet.getSolarSystem().getTechLevel();
 
@@ -160,11 +158,11 @@ public class Market
         }
     }
 
-    public boolean containsGood(Good[] list, Good good)
+    public boolean containsGood(ArrayList<Good> list, GoodType gtype)
     {
         for (int i = 0; i < list.length; i++)
         {
-            if (list(i).getName().equals(good.getName()))
+            if (list.get(i).getGoodType().equals(gtype))
             {
                 return true;
             }
