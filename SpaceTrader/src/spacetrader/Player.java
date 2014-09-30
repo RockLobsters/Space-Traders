@@ -37,6 +37,8 @@ public class Player {
     private int engineer;
     private int investor;
     
+    private Ship ship;
+    
     /**
      * Initializes Player Class
      * @param name 
@@ -175,5 +177,21 @@ public class Player {
     public void setInvestor(int investor)
     {
         this.investor = investor;
+    }
+    
+    /**
+     * @return the ship
+     */
+    public Ship getShip()
+    {
+      return ship;
+    }
+    
+    /**
+     * @param ship the ship to set
+     */
+    public void setShip(Ship ship)
+    {
+      this.ship = ship;
     }
 }
