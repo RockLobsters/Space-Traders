@@ -194,4 +194,10 @@ public class Player {
     {
       this.ship = ship;
     }
+
+    @Override
+    public String toString()
+    {
+        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ") (" + ship + ")";
+    }
 }

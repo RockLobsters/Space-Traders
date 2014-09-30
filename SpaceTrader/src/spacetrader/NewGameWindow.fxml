@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -10,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.NewGameWindowController">
    <children>
-      <VBox alignment="CENTER" layoutX="333.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Game">
                <font>
@@ -20,13 +21,14 @@
             <GridPane alignment="CENTER" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" vgap="10.0">
               <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -37,7 +39,10 @@
                         <Font size="32.0" />
                      </font>
                   </Text>
-                  <Slider blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Slider fx:id="pilotSlider" blockIncrement="2.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Slider>
                   <Text layoutX="10.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fighter: " GridPane.rowIndex="2">
                      <font>
                         <Font size="32.0" />
@@ -58,24 +63,30 @@
                         <Font size="32.0" />
                      </font>
                   </Text>
-                  <Slider blockIncrement="1.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Slider blockIncrement="1.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Slider blockIncrement="1.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Slider blockIncrement="1.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Button fx:id="startGameButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleStartGameAction" prefWidth="300.0" text="Start Game" textAlignment="CENTER" GridPane.rowIndex="6" />
-                  <Button fx:id="cancelButton" alignment="CENTER" cancelButton="true" layoutX="105.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleCancelAction" prefWidth="300.0" text="Cancel" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Slider fx:id="fighterSlider" blockIncrement="2.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Slider fx:id="traderSlider" blockIncrement="2.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Slider fx:id="engineerSlider" blockIncrement="2.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Slider fx:id="investorSlider" blockIncrement="2.0" layoutX="410.0" layoutY="17.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" onMouseReleased="#slider" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button fx:id="startGameButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleStartGameAction" prefWidth="300.0" text="Start Game" textAlignment="CENTER" GridPane.rowIndex="7" />
+                  <Button fx:id="cancelButton" alignment="CENTER" cancelButton="true" layoutX="105.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleCancelAction" prefWidth="300.0" text="Cancel" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <Text layoutX="321.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: ">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </Text>
-                  <TextField GridPane.columnIndex="1" />
+                  <TextField fx:id="Name" GridPane.columnIndex="1">
+                     <effect>
+                        <Glow />
+                     </effect></TextField>
                </children>
                <padding>
                   <Insets left="70.0" right="70.0" />
                </padding>
             </GridPane>
          </children>
+         <effect>
+            <Blend />
+         </effect>
       </VBox>
    </children>
 </AnchorPane>
