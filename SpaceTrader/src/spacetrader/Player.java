@@ -29,6 +29,8 @@ public class Player {
     private final double INITIAL_MONEY = 100;
     //Wanted Level of player
     private int wantedLevel;
+    //Ship
+    private Ship ship;
     
     // The attribute stats of the mercenary
     private int pilot;
@@ -46,6 +48,7 @@ public class Player {
         this.name = name;
         money = INITIAL_MONEY;
         wantedLevel = 0;
+        ship = new Gnat();
     }
     
     /**
@@ -181,5 +184,9 @@ public class Player {
     public String toString()
     {
         return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ")";
+    }
+    
+    public void setShip(Ship ship){
+        this.ship = ship;
     }
 }

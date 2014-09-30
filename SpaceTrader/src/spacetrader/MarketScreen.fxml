@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="spacetrader.MarketScreenController">
+   <children>
+      <FlowPane prefHeight="402.0" prefWidth="600.0">
+         <children>
+            <Accordion>
+              <panes>
+                <TitledPane fx:id="waterTab" animated="false" onMouseClicked="#waterTabOpen" text="Water">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane fx:id="furTab" animated="false" onMouseClicked="#furTabOpen" text="Furs">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane fx:id="foodTab" animated="false" onMouseClicked="#foodTabOpen" text="Food">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#openTab" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                  <TitledPane fx:id="oreTab" animated="false" layoutX="10.0" layoutY="36.0" onMouseClicked="#oreTabOpen" text="Ore">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="gamesTab" animated="false" layoutX="10.0" layoutY="88.0" onMouseClicked="#gamesTabOpen" text="Games">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="firearmsTab" animated="false" layoutX="10.0" layoutY="114.0" onMouseClicked="#fireamrsTabOpen" text="Firearms">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="medicineTab" animated="false" layoutX="10.0" layoutY="140.0" onMouseClicked="#medicineTabOpen" text="Medicine">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="machinesTab" animated="false" layoutX="10.0" layoutY="166.0" onMouseClicked="#machinesTabOpen" text="Machines">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="NarcoticsTab" animated="false" layoutX="10.0" layoutY="192.0" onMouseClicked="#narcoticsTabOpen" text="Narcotics">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="robotsTab" animated="false" layoutX="10.0" layoutY="218.0" onMouseClicked="#robotsTabOpen" text="Robots">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>

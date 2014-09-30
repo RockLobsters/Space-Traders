@@ -25,6 +25,7 @@ public class Game {
 
     private Player player;
     private Universe universe;
+    private Planet curPlanet;
     
     public Game(Player player, Universe universe)
     {
