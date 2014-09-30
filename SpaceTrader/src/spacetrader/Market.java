@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package spacetrader;
 
 import java.util.ArrayList;
@@ -13,125 +12,219 @@ import java.util.Random;
  *
  * @author Jacqueline Foreman
  */
+public class Market
+{
 
+  public ArrayList<Good> goods;
+  public Planet planet;
+  public ArrayList<Integer> prices;
+  public PoliticalSystem gov;
 
-public class Market{
+  /**
+   * @param goods  - an array list of goods that the market has
+   * @param planet - on which the market is located
+   */
+  public Market(ArrayList<Good> goods, Planet planet)
+  {
+    this.goods = goods;
+    this.planet = planet;
+    this.gov = planet.getSolarSystem().getPoliticalSystem();
+    this.prices = priceList(goods);
+  }
 
-	public ArrayList<Good> goods;
-	public Planet planet;
-	public ArrayList<Integer> prices;
-	public PoliticalSystem gov;
+  /**
+   * @param goods - list of goods the market has
+   *
+   * @reutrn	a list of the prices of the goods
+   */
+  public ArrayList<Integer> priceList(ArrayList<Good> goods)
+  {
+    int siz = goods.size();
+    ArrayList<Integer> listP = new ArrayList<Integer>();
+    boolean added = true;
 
-	/**
-	 * @param goods -  an array list of goods that the market has
-	 * @param planet - on which the market is located
-	 */
-	public Market(ArrayList<Good> goods, Planet planet) {
-		this.goods = goods;
-		this.planet = planet;
-		this.gov = planet.getSolarSystem().getPoliticalSystem();
-		this.prices = priceList(goods);
-	}
+    for(int i = 0; i < siz; i++)
+    {
+      added = listP.add(new Integer(calcPrice(goods.get(i))));
+      goods.get(i).setPrice(calcPrice(goods.get(i)));
+    }
 
-	/**
-	 * @param goods - list of goods the market has
-	 * @reutrn		  a list of the prices of the goods
-	 */
-	public ArrayList<Integer> priceList(ArrayList<Good> goods){
-		int siz = goods.size();
-		ArrayList<Integer> listP = new ArrayList<Integer>();
-		boolean added = true;
+    return listP;
+  }
 
-		for(int i = 0; i < siz; i++) {
-			added = listP.add(new Integer(calcPrice(goods.get(i))));
-			goods.get(i).setPrice(calcPrice(goods.get(i)));
-		}
+  /**
+   * @param good - the particular good for which the price is being calculated
+   *
+   * @return	the price of the good
+   */
+  public int calcPrice(Good good)
+  {
+    Random rand = new Random();
+    boolean value = randomno.nextBoolean();
+    int var = rand.nextInt() % good.getVar();
+    var = var / 10;
+    int tl = planet.getSolarSystem().getTechLevel();
+    int price = good.getBasePrice()
+                        + (good.getIPL() * (tl - good.getMTLP()));
 
-		return listP;
-	}
+    if(value)
+    {
+      price = price + (good.getBasePrice() * var);
+    }
+    else
+    {
+      price = price - (good.getBasePrice() * var);
+    }
 
-	/**
-	 * @param good - the particular good for which the price is being calculated
-	 * @return	     the price of the good
-	 */
-	public int calcPrice(Good good) {
-		Random rand = new Random();
-		boolean value = randomno.nextBoolean();
-		int var = rand.nextInt() % good.getVar();
-		var = var/10;
-		int tl = planet.getSolarSystem().getTechLevel();
-		int price = good.getBasePrice() + (good.getIPL() *(tl - good.getMTLP()));
+    if(good.cr())
+    {
+      price = price / 2;
+    }
+    if(good.er())
+    {
+      price = price * 2;
+    }
+    if(good.ie())
+    {
+      price = price * price;
+    }
 
-		if (value) {
-			price = price + (good.getBasePrice() * var);
-		} else {
-			price = price - (good.getBasePrice() * var);
-		}
+    if(containsGood(gov.highSupply(), good))
+    {
+      price = price * .75;
+    }
+    if(containsGood(gov.lowSupply(), good))
+    {
+      price = price * 1.25;
+    }
+    if(containsGood(gov.highDemand(), good))
+    {
+      price = price * 1.5;
+    }
+    if(containsGood(gov.lowDemand(), good))
+    {
+      price = price * .5;
+    }
 
-		if (good.cr()) {
-			price = price / 2;
-		}
-		if (good.er()) {
-			price = price * 2;
-		}
-		if (good.ie()) {
-			price = price * price;
-		}
+    return price;
+  }
 
-		if (containsGood(gov.highSupply(), good)) {
-			price = price * .75;
-		}
-		if (containsGood(gov.lowSupply(), good)) {
-			price = price * 1.25;
-		}
-		if (containsGood(gov.highDemand(), good)) {
-			price = price * 1.5;
-		}
-		if (containsGood(gov.lowDemand(), good)) {
-			price = price * .5;
-		}
+  /**
+   * completes a buy transaction
+   *
+   */
+  public void buy()
+  {
+    Transaction trans = new Transaction();
+    trans.buy();
+  }
 
+  /**
+   * completes a trade transaction
+   *
+   * @param good - good to trade
+   *
+   * @return	whether or not the good was traded
+   */
+  public boolean trade(Good good)
+  {
+    int tl = planet.getSolarSystem().getTechLevel();
 
-		return price;
-	}
+    if(good.getMTLU() > tl)
+    {
+      return false;
+    }
+    else
+    {
+      good.setPrice(calcPrice(good));
+      goods.add(good);
+      prices.add(new Integer(good.getPrice()));
 
-	/**
-	 * completes a buy transaction
-	 * 
-	 */
-	public void buy() {
-		Transaction trans = new Transaction();
-		trans.buy();
-	}
+      Tranaction trans = new Transaction();
+      trans.sell();
+      return true;
+    }
+  }
 
+  public boolean containsGood(Good[] list, Good good)
+  {
+    for(int i < 0; i< list.length; i++)
+    {
+			if(list(i).getName().equals(good.getName()))
+      {
+        return true;
+      }
+    }
+    return false;
+  }
 
-	/**
-	 * completes a trade transaction
-	 * @param good - good to trade
-	 * @return	     whether or not the good was traded
-	 */
-	public boolean trade(Good good) {
-		int tl = planet.getSolarSystem().getTechLevel();
-
-		if (good.getMTLU() > tl) {
-			return false;
-		} else {
-			good.setPrice(calcPrice(good));
-			goods.add(good);
-			prices.add(new Integer(good.getPrice()));
-
-			Tranaction trans = new Transaction();
-			trans.sell();
-			return true;
-		}
-	}
-
-	public boolean containsGood(Good[] list, Good good) {
-		for (int i < 0; i < list.length; i ++) {
-			if (list(i).getName().equals(good.getName())) {
-				return true;
-			}
-		}
-		return false;
-	}
+  /**
+   * @param good      The good in question
+   * @param quantity  The amount of the good to be bought
+   * 
+   * @return          True if the good is available at this Market
+   */
+  public boolean canBuy(Good good, int quantity)
+  {
+    //TODO
+    return true;
+  }
+  
+  /**
+   * A call for canBuy that matches the calls of the others for convenience
+   * 
+   * @param good      The good in question
+   * @param quantity  The amount of the good to be bought
+   * @param player    Don't matter
+   * 
+   * @return          True if the good is available at this Market
+   */
+  public boolean canBuy(Good good, int quantity, Player player)
+  {
+    //TODO
+    return true;
+  }
+  
+  /**
+   * Buys a good
+   * 
+   * @param good      The good to buy
+   * @param quantity  The amount of the good to buy
+   * @param player    The player buying the good
+   * 
+   * @return          True if the buy was successful
+   */
+  public boolean Buy(Good good, int quantity, Player player)
+  {
+    //TODO
+    return true;
+  }
+  
+  /**
+   * @param good      The good in question
+   * @param quantity  The amount of the good to be sold
+   * @param player    The plater selling the good
+   * 
+   * @return          True if the player can sell the good
+   */
+  public boolean canSell(Good good, int quantity, Player player)
+  {
+    //TODO
+    return true;
+  }
+  
+  /**
+   * Sells a good
+   * 
+   * @param good      The good to sell
+   * @param quantity  The amount of the good to sell
+   * @param player    The player selling the good
+   * 
+   * @return          True if the sell was successful
+   */
+  public boolean Sell(Good good, int quantity, Player player)
+  {
+    //TODO
+    return true;
+  }
 }
