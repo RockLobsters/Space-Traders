@@ -26,16 +26,16 @@ public class Democracy extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0.35;
     }
-    public int[] highSupply(){
-        return new int[0];
+    public Object[] highSupply(){
+        return new Object[]{"a","b","c"};
     }
-    public int[] lowSupply(){
-        return new int[0];
+    public Object[] lowSupply(){
+        return new Object[]{"a","b","c"};
     }
-    public int[] highDemand(){
-        return new int[]{4};
+    public Object[] highDemand(){
+        return new Object[]{"games","food","ore","machines","water","robots","furs","narcotics","medicine","firearms"};
     }
-    public int[] lowDemand(){
-        return new int[0];
+    public Object[] lowDemand(){
+        return null;
     }
 }

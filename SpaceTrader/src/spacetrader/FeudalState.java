@@ -26,16 +26,16 @@ public class FeudalState extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0.3;
     }
-    public int[] highSupply(){
-        return new int[0];
+    public Object[] highSupply(){
+        return null;
     }
-    public int[] lowSupply(){
-        return new int[]{7,9};
+    public Object[] lowSupply(){
+        return new Object[]{"machines", "robots"};
     }
-    public int[] highDemand(){
-        return new int[]{8,5};
+    public Object[] highDemand(){
+        return new Object[]{"narcotics","firearms"};
     }
-    public int[] lowDemand(){
-        return new int[0];
+    public Object[] lowDemand(){
+        return null;
     }
 }

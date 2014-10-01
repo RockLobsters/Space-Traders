@@ -26,16 +26,16 @@ public class PacifistState extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0.25;
     }
-    public int[] highSupply(){
-        return new int[]{0,1,2,3};
+    public Object[] highSupply(){
+        return new Object[]{"ore","food","water", "furs"};
     }
-    public int[] lowSupply(){
-        return new int[]{7,9};
+    public Object[] lowSupply(){
+        return new Object[]{"machines","robots"};
     }
-    public int[] highDemand(){
-        return new int[]{0,1,2,3};
+    public Object[] highDemand(){
+        return new Object[]{"ore","food","water", "furs"};
     }
-    public int[] lowDemand(){
-        return new int[]{5,8};
+    public Object[] lowDemand(){
+        return new Object[]{"firearms","narcotics"};
     }
 }

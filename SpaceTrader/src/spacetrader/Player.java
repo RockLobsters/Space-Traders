@@ -23,14 +23,12 @@ package spacetrader;
  */
 public class Player {
     //Name of Player
-    private final String name;
+    private String name;
     //Money of Player
-    private int money;
-    private final int INITIAL_MONEY = 100;
+    private double money;
+    private final double INITIAL_MONEY = 100;
     //Wanted Level of player
     private int wantedLevel;
-    //Ship
-    private Ship ship;
     
     // The attribute stats of the mercenary
     private int pilot;
@@ -38,13 +36,6 @@ public class Player {
     private int trader;
     private int engineer;
     private int investor;
-    
-<<<<<<< HEAD
-=======
-    private Ship ship;
-    
-    private Planet currentLocation;
->>>>>>> master
     
     /**
      * Initializes Player Class
@@ -55,7 +46,6 @@ public class Player {
         this.name = name;
         money = INITIAL_MONEY;
         wantedLevel = 0;
-        ship = new Gnat();
     }
     
     /**
@@ -71,7 +61,7 @@ public class Player {
      * adds money to current money amount
      * @param mon 
      */
-    public void addMoney(int mon){
+    public void addMoney(double mon){
         money += mon;   
     }
     
@@ -79,7 +69,7 @@ public class Player {
      * subtracts money from current money amount
      * @param mon 
      */
-    public void subtractMoney(int mon){
+    public void subtractsMoney(double mon){
         money -= mon;   
     }
     
@@ -87,7 +77,7 @@ public class Player {
      * returns total money player has
      * @return money
      */
-    public int getMoney(){
+    public double getMoney(){
         return money;
     }
     
@@ -187,39 +177,9 @@ public class Player {
         this.investor = investor;
     }
     
-    /**
-     * @return the ship
-     */
-    public Ship getShip()
-    {
-      return ship;
-    }
-    
-    /**
-     * @param ship the ship to set
-     */
-    public void setShip(Ship ship)
-    {
-      this.ship = ship;
-    }
-
-<<<<<<< HEAD
-=======
-    public Planet getCurrentLocation()
-    {
-      return currentLocation;
-    }
-    
-    public void setCurrentLocation(Planet currentLocation)
-    {
-      this.currentLocation = currentLocation;
-    }
-    
->>>>>>> master
     @Override
     public String toString()
     {
-        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ") (" + ship + ")";
+        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ")";
     }
-   
 }

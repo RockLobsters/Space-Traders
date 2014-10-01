@@ -2,24 +2,27 @@
 
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.UniverseScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.UniverseScreenController">
+    <!--
+    <stylesheets>
+        <URL value="@universescreen.css" />
+    </stylesheets>
+    -->
    <children>
-      <BorderPane layoutX="216.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0">
+      <BorderPane fx:id="MenuButton" onMouseReleased="#ReturnMainMenu" prefHeight="400.0" prefWidth="600.0">
          <center>
-            <Button fx:id="Button" mnemonicParsing="false" onMouseClicked="#goToMarket" text="Button" BorderPane.alignment="CENTER" />
-         </center>
-         <top>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Universe" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="46.0" />
+                  <Font size="64.0" />
                </font>
             </Text>
-         </top>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

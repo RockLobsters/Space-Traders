@@ -26,16 +26,16 @@ public class Anarchy extends PoliticalSystem {
     public double illegalTradeRate(){
         return 0.5;
     }
-    public int[] highSupply(){
-        return new int[0];
+    public Object[] highSupply(){
+        return null;
     }
-    public int[] lowSupply(){
-        return new int[]{1};
+    public Object[] lowSupply(){
+        return new Object[]{"food"};
     }
-    public int[] highDemand(){
-        return new int[]{0,1,2,3,5,6,8};
+    public Object[] highDemand(){
+        return new Object[]{"food","water","ore","furs","medicine","firearms","narcotics"};
     }
-    public int[] lowDemand(){
-        return new int[0];
+    public Object[] lowDemand(){
+        return null;
     }
 }

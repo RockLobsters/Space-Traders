@@ -16,8 +16,6 @@
  */
 package spacetrader;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Addison Amiri
@@ -31,7 +29,6 @@ public class Ship
     private final int GADGET_SLOTS;
     private final int CREW_QUARTERS;
     private final int FUEL_CAPACITY;
-    ArrayList<Good> cargo;
 
     public Ship(String NAME, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
                 int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY)
@@ -43,8 +40,5 @@ public class Ship
         this.GADGET_SLOTS = GADGET_SLOTS;
         this.CREW_QUARTERS = CREW_QUARTERS;
         this.FUEL_CAPACITY = FUEL_CAPACITY;
-        cargo = new ArrayList(CARGO_BAYS);
     }
-    
-    
 }

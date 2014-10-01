@@ -26,16 +26,16 @@ public class Cybernetic extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0;
     }
-    public int[] highSupply(){
-        return new int[]{7,9};
+    public Object[] highSupply(){
+        return new Object[]{"machines","robots"};
     }
-    public int[] lowSupply(){
-        return new int[0];
+    public Object[] lowSupply(){
+        return null;
     }
-    public int[] highDemand(){
-        return new int[]{3};
+    public Object[] highDemand(){
+        return new Object[]{"ore"};
     }
-    public int[] lowDemand(){
-        return new int[]{5,8};
+    public Object[] lowDemand(){
+        return new Object[]{"narcotics","firearms"};
     }
 }

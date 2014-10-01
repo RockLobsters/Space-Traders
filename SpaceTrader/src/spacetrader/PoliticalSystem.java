@@ -6,8 +6,6 @@
 
 package spacetrader;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Kristen Lawrence
@@ -18,8 +16,8 @@ public abstract class PoliticalSystem {
     public abstract double bribeRate();
     public abstract double traderRate();
     public abstract double illegalTradeRate();
-    public abstract int[] highSupply();
-    public abstract int[] lowSupply();
-    public abstract int[] highDemand();
-    public abstract int[] lowDemand();
+    public abstract Object[] highSupply();
+    public abstract Object[] lowSupply();
+    public abstract Object[] highDemand();
+    public abstract Object[] lowDemand();
 }

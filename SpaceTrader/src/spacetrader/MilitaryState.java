@@ -26,16 +26,16 @@ public class MilitaryState extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0.05;
     }
-    public int[] highSupply(){
+    public Object[] highSupply(){
         return null;
     }
-    public int[] lowSupply(){
-        return new int[]{8};
+    public Object[] lowSupply(){
+        return new Object[]{"narcotics"};
     }
-    public int[] highDemand(){
-        return new int[]{9};
+    public Object[] highDemand(){
+        return new Object[]{"robots"};
     }
-    public int[] lowDemand(){
-        return new int[]{8};
+    public Object[] lowDemand(){
+        return new Object[]{"narcotics"};
     }
 }

@@ -26,16 +26,16 @@ public class Theocracy extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0.5;
     }
-    public int[] highSupply(){
-        return new int[0];
+    public Object[] highSupply(){
+        return null;
     }
-    public int[] lowSupply(){
-        return new int[0];
+    public Object[] lowSupply(){
+        return null;
     }
-    public int[] highDemand(){
-        return new int[]{8};
+    public Object[] highDemand(){
+        return new Object[]{"narcotics"};
     }
-    public int[] lowDemand(){
-        return new int[0];
+    public Object[] lowDemand(){
+        return null;
     }
 }

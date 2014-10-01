@@ -26,16 +26,16 @@ public class Monarchy extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0.25;
     }
-    public int[] highSupply(){
-        return new int[0];
+    public Object[] highSupply(){
+        return null;
     }
-    public int[] lowSupply(){
-        return new int[0];
+    public Object[] lowSupply(){
+        return null;
     }
-    public int[] highDemand(){
-        return new int[]{6};
+    public Object[] highDemand(){
+        return new Object[]{"medicine"};
     }
-    public int[] lowDemand(){
-        return new int[0];
+    public Object[] lowDemand(){
+        return null;
     }
 }
