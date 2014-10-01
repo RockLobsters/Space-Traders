@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 sydnipeterson
+ * Copyright (C) 2014 Addison Amiri
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,45 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package spacetrader;
 
 /**
  *
- * @author sydnipeterson
+ * @author Addison Amiri
  */
-public class Game {
+public class GameInstance
+{
+  private static final Game instance = new Game();
 
-    private Player player;
-    private Universe universe;
-    
-    public void setPlayer(Player player)
-    {
-      this.player = player;
-    }
-    
-    public Player getPlayer()
-    {
-      return player;
-    }
-    
-    public void setUniverse(Universe universe)
-    {
-      this.universe = universe;
-    }
-    
-    public Universe getUniverse()
-    {
-      return universe;
-    }
-
-    @Override
-    public String toString()
-    {
-        return    "Player:\n"
-                + player.toString() + "\n"
-                + "\n"
-                + "Universe:\n"
-                + universe.toString();
-    }
+  public Game getInstance()
+  {
+    return instance;
+  }
 }

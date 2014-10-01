@@ -23,7 +23,7 @@ package spacetrader;
  */
 public class Player {
     //Name of Player
-    private String name;
+    private final String name;
     //Money of Player
     private int money;
     private final int INITIAL_MONEY = 100;
@@ -39,6 +39,8 @@ public class Player {
     
     private Ship ship;
     
+    private Planet currentLocation;
+    
     /**
      * Initializes Player Class
      * @param name 
@@ -48,6 +50,7 @@ public class Player {
         this.name = name;
         money = INITIAL_MONEY;
         wantedLevel = 0;
+        ship = new Gnat();
     }
     
     /**
@@ -195,6 +198,16 @@ public class Player {
       this.ship = ship;
     }
 
+    public Planet getCurrentLocation()
+    {
+      return currentLocation;
+    }
+    
+    public void setCurrentLocation(Planet currentLocation)
+    {
+      this.currentLocation = currentLocation;
+    }
+    
     @Override
     public String toString()
     {
