@@ -35,6 +35,7 @@ public class Good {
     int ER; //condiiton in which good is more expensive
     int MTL; //min price offered in space trade with random trader
     int MTH; //max price offered in space trade with random trader
+    double price; //final price
     
     public Good(GoodType gType, int q) {
         this.type = gType;
@@ -199,4 +200,10 @@ public class Good {
     protected int MTH() {
         return MTH;
     }   
+    protected double getPrice() {
+        return price;
+    }
+    protected void setPrice(double p){
+        this.price = p;
+    }
 }

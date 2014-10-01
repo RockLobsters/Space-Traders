@@ -95,7 +95,7 @@ public class Market
     if(techLevel == good.getTTP()) {
         price = price / 2; //if planet is techlevel that produces most of this good same result as high supply
     }
-    
+    good.setPrice(price);
     return price;
   }
 
@@ -118,7 +118,7 @@ public class Market
    *
    * @return The price of the good or -1 if the good is not found
    */
-  public int getPrice(Good good)
+  public double getPrice(Good good)
   {
     int index = getIndex(good);
     if(index != -1)
@@ -173,6 +173,11 @@ public class Market
     if(prices.get(index) * quantity > player.getMoney())
     {
       return false;
+    }
+    
+    //tech level solar system must be equal or greater to good mtlp to buy
+    if(planet.getSolarSystem().getTechLevel() < toBuy.getMTLP()) {
+        return false;
     }
     return true;
   }
@@ -240,6 +245,11 @@ public class Market
     if(toSell.quantity < quantity)
     {
       return false;
+    }
+    
+    //tech level solar system must be equal or greater to good mtlu to sell
+    if(planet.getSolarSystem().getTechLevel() < toSell.getMTLU()) {
+        return false;
     }
     return true;
   }
