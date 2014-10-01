@@ -23,8 +23,9 @@ package spacetrader;
  */
 public class Game {
 
-    Player player;
-    Universe universe;
+    private Player player;
+    private Universe universe;
+    
 
     public Game(Player player, Universe universe)
     {
