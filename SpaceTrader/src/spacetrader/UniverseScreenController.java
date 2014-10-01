@@ -36,8 +36,6 @@ import javafx.stage.Stage;
  * @author sydnipeterson
  */
 public class UniverseScreenController implements Initializable {
-    @FXML
-    private BorderPane MenuButton;
 
     /**
      * Initializes the controller class.
@@ -47,7 +45,6 @@ public class UniverseScreenController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void ReturnMainMenu(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
         Stage stage = new Stage();
