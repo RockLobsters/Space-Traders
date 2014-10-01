@@ -26,16 +26,16 @@ public class FacistState extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0;
     }
-    public Object[] highSupply(){
-        return null;
+    public int[] highSupply(){
+        return new int[0];
     }
-    public Object[] lowSupply(){
-        return null;
+    public int[] lowSupply(){
+        return new int[0];
     }
-    public Object[] highDemand(){
-        return new Object[]{"machines"};
+    public int[] highDemand(){
+        return new int[]{7};
     }
-    public Object[] lowDemand(){
-        return new Object[]{"narcotics", "firearms"};
+    public int[] lowDemand(){
+        return new int[]{5,8};
     }
 }

@@ -23,6 +23,8 @@ package spacetrader;
  */
 public class Good {
     GoodType type; //the type of good
+    int quantity;
+    
     int basePrice; //what it sounds like
     int MTLP; //minimum tech level needed to produce the good
     int MTLU; //minimum tech level needed to use the good
@@ -34,8 +36,9 @@ public class Good {
     int MTL; //min price offered in space trade with random trader
     int MTH; //max price offered in space trade with random trader
     
-    public Good(GoodType gType) {
+    public Good(GoodType gType, int q) {
         this.type = gType;
+        this.quantity = q;
         setValues();
     }
     
@@ -139,10 +142,23 @@ public class Good {
                 this.var = 100;
                 this.CR = -1;
                 this.ER = -1;
-                break;     
+                break; 
+            
         }
     }
         
+    protected GoodType getType() {
+        return type;
+    }
+    
+    protected int getQuantity() {
+        return quantity;
+    }
+    
+    protected void setQuantity(int newQ) {
+        this.quantity = newQ;
+    }
+    
     protected int getBasePrice() {
         return basePrice;
     }

@@ -27,6 +27,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -36,6 +37,8 @@ import javafx.stage.Stage;
  * @author sydnipeterson
  */
 public class UniverseScreenController implements Initializable {
+    @FXML
+    private Button Button;
 
     /**
      * Initializes the controller class.
@@ -57,8 +60,8 @@ public class UniverseScreenController implements Initializable {
 
    
     @FXML
-    private void goToMarket(MouseEvent event) throws Exception {
-         Parent root = FXMLLoader.load(getClass().getResource("MarketScreen.fxml"));
+    public void goToMarket(MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("MarketScreen.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -66,4 +69,6 @@ public class UniverseScreenController implements Initializable {
         //hide this current window (if this is whant you want
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
+
+  
 }

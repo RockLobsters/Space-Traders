@@ -61,28 +61,17 @@ public class MarketScreenController implements Initializable {
         // TODO
     }    
 
-    @FXML
+   /* @FXML
     private void waterTabOpen(MouseEvent event) {
-        String water = waterTab.getText();
         int price = getPrice(Enum.WATER);
         int quantity = getQuantity(Enum.WATER);
 
-        // GridPane grid = new GridPane();
-        // grid.setVgap(4);
-        // grid.setPadding(new Insets(5,5,5));
-        // grid.add(new Label("Price: ($" + price + ")"), 0, 0);
-        // grid.add(new TextField(), 1,0);
-        // grid.add(new Label("Quantity: (" + quantity + ")"), 0, 1);
-        // grid.add(new TextField(), 1, 1);
-        // grid.add(new Button("BUY"), 0, 2);
-        // grid.add(new Button("SELL"), 1, 2);
         
     }
 
 
     @FXML
     private void furTabOpen(MouseEvent event) {
-        String fur = furTab.getText();
         int price = getPrice(Enum.FUR);
         int quantity = getQuantity(Enum.FUR);
     }
@@ -164,6 +153,6 @@ public class MarketScreenController implements Initializable {
         } else {
             return 0;
         }
-    }
+    }*/
     
 }

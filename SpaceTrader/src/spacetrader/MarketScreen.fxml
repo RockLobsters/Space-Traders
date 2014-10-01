@@ -8,11 +8,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.MarketScreenController">
    <children>
-      <Accordion layoutX="10.0" layoutY="10.0">
+      <Accordion>
          <panes>
             <TitledPane fx:id="waterTab" animated="false" onMouseClicked="#waterTabOpen" text="Water">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="20.0" layoutY="113.0" mnemonicParsing="false" text="Button" />
+                     </children></AnchorPane>
                </content>
             </TitledPane>
             <TitledPane fx:id="furTab" animated="false" onMouseClicked="#furTabOpen" text="Furs">

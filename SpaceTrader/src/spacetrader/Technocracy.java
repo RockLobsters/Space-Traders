@@ -26,16 +26,16 @@ public class Technocracy extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0.25;
     }
-    public Object[] highSupply(){
-        return new Object[]{"machines","robots"};
+    public int[] highSupply(){
+        return new int[]{7,9};
     }
-    public Object[] lowSupply(){
-        return null;
+    public int[] lowSupply(){
+        return new int[0];
     }
-    public Object[] highDemand(){
-        return new Object[]{"water"};
+    public int[] highDemand(){
+        return new int[]{0};
     }
-    public Object[] lowDemand(){
-        return null;
+    public int[] lowDemand(){
+        return new int[0];
     }
 }

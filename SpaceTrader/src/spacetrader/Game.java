@@ -42,6 +42,7 @@ public class Game {
         player.setTrader(trader);
         player.setEngineer(engineer);
         player.setInvestor(investor);
+        player.setShip(new Gnat());
         universe = new Universe();
         universe.bigBang();
     }
