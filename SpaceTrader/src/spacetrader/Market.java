@@ -160,7 +160,7 @@ public class Market
 
     public boolean containsGood(ArrayList<Good> list, GoodType gtype)
     {
-        for (int i = 0; i < list.length; i++)
+        for (int i = 0; i < list.size(); i++)
         {
             if (list.get(i).getGoodType().equals(gtype))
             {
