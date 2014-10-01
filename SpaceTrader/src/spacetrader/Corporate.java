@@ -26,16 +26,16 @@ public class Corporate extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0;
     }
-    public Object[] highSupply(){
+    public int[] highSupply(){
         return null;
     }
-    public Object[] lowSupply(){
+    public int[] lowSupply(){
         return null;
     }
-    public Object[] highDemand(){
-        return new Object[]{"robots"};
+    public int[] highDemand(){
+        return new int[]{9};
     }
-    public Object[] lowDemand(){
+    public int[] lowDemand(){
         return null;
     }
 }
