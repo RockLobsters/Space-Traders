@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 /**
  * The Planet object class.
- * 
+ *
  * For convenience this is what each of the resource levels indicate:
  * 0 - NOSPECIALRESOURCES (the most common)
  * 1 - MINERALRICH
@@ -35,30 +35,30 @@ import java.util.ArrayList;
  * 10 - LOTSOFHERBS
  * 11 - ARTISTIC
  * 12 - WARLIKE
- * 
+ *
  * @author Addison Amiri
  */
 public class Planet implements Comparable
-{   
+{
     private String name;
     private int coordinateX;
     private int coordinateY;
     private int resources;
-    //private Market market;
+    private Market market;
     private ArrayList<Mercenary> personnelRoster;
     private SolarSystem solarSystem;
-    
+
     public Planet(String name)
     {
         this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.random() * SolarSystem.SIZE_Y));
     }
-    
+
     public Planet(String name, int minCoordinateX, int maxCoordinateX, int minCoordinateY, int maxCoordinateY, SolarSystem solarSystem)
     {
         this(name, (int) (Math.random() * (maxCoordinateX - minCoordinateX + 1) + minCoordinateX), (int) (Math.random() * (maxCoordinateY - minCoordinateY + 1) + minCoordinateY));
         this.setSolarSystem(solarSystem);
     }
-    
+
     public Planet(String name, int coordinateX, int coordinateY)
     {
         this.name = name;
@@ -69,7 +69,7 @@ public class Planet implements Comparable
         {
             resources = 0;
         }
-        //market = new Market();
+        market = new Market();
         personnelRoster = new ArrayList();
     }
 
@@ -120,22 +120,22 @@ public class Planet implements Comparable
     {
         this.coordinateY = coordinateY;
     }
-        
+
     /**
      * Adds a mercenary to the Personnel roster
-     * 
+     *
      * @param mercenary The mercenary to add
      */
     public void addMercenary(Mercenary mercenary)
     {
         getPersonnelRoster().add(mercenary);
     }
-    
+
     /**
      * Remove a mercenary from the personnel roster
-     * 
+     *
      * @param name The name of the mercenary to remove
-     * @return 
+     * @return
      */
     public Mercenary removeMercenary(String name)
     {
@@ -201,16 +201,16 @@ public class Planet implements Comparable
 
     /**
      * Compares two planets based on their names.
-     * 
+     *
      * @param that the planet to compare against
-     * @return 
+     * @return
      */
     @Override
     public int compareTo(Object that)
     {
         return this.name.compareTo(((Planet) that).getName());
     }
-    
+
     @Override
     public String toString()
     {
