@@ -64,48 +64,106 @@ public class MarketScreenController implements Initializable {
     @FXML
     private void waterTabOpen(MouseEvent event) {
         String water = waterTab.getText();
+        int price = getPrice(Enum.WATER);
+        int quantity = getQuantity(Enum.WATER);
+
+        // GridPane grid = new GridPane();
+        // grid.setVgap(4);
+        // grid.setPadding(new Insets(5,5,5));
+        // grid.add(new Label("Price: ($" + price + ")"), 0, 0);
+        // grid.add(new TextField(), 1,0);
+        // grid.add(new Label("Quantity: (" + quantity + ")"), 0, 1);
+        // grid.add(new TextField(), 1, 1);
+        // grid.add(new Button("BUY"), 0, 2);
+        // grid.add(new Button("SELL"), 1, 2);
         
     }
 
 
     @FXML
     private void furTabOpen(MouseEvent event) {
-         String fur = furTab.getText();
+        String fur = furTab.getText();
+        int price = getPrice(Enum.FUR);
+        int quantity = getQuantity(Enum.FUR);
     }
 
     @FXML
     private void foodTabOpen(MouseEvent event) {
+        int price = getPrice(Enum.FOOD);
+        int quantity = getQuantity(Enum.FOOD);
     }
 
     @FXML
     private void oreTabOpen(MouseEvent event) {
+        int price = getPrice(Enum.ORE);
+        int quantity = getQuantity(Enum.ORE);
     }
 
     @FXML
     private void gamesTabOpen(MouseEvent event) {
+        int price = getPrice(Enum.GAMES);
+        int quantity = getQuantity(Enum.GAMES);
     }
 
     @FXML
     private void fireamrsTabOpen(MouseEvent event) {
+        int price = getPrice(Enum.FIREARMS);
+        int quantity = getQuantity(Enum.FIREARMS);
     }
 
     @FXML
     private void medicineTabOpen(MouseEvent event) {
+        int price = getPrice(Enum.MEDICINE);
+        int quantity = getQuantity(Enum.MEDICINE);
     }
 
     @FXML
     private void machinesTabOpen(MouseEvent event) {
+        int price = getPrice(Enum.MACHINES);
+        int quantity = getQuantity(Enum.MACHINES);
     }
 
     @FXML
     private void narcoticsTabOpen(MouseEvent event) {
+        int price = getPrice(Enum.NARCOTICS);
+        int quantity = getQuantity(Enum.NARCOTICS);
     }
 
     @FXML
     private void robotsTabOpen(MouseEvent event) {
+        int price = getPrice(Enum.ROBOTS);
+        int quantity = getQuantity(Enum.ROBOTS);
     }
     
     
-    //private int getPrice()
+    private int getPrice(GoodType type) {
+        if (market.containsGood(type)) {
+            ArrayList<Good> goods = market.getGoods();
+            Good on = goods.get(0);
+            for( int i = 0; i < goods.size(); i++) {
+                on = goods.get(i);
+                if (on.getType().equals(type)) {
+                    return on.getPrice();
+                }
+            }
+        } else {
+            return 0;
+        }
+    }
+
+    private int getQuantity(GoodType type) {
+        if (market.containsGood(type)) {
+            ArrayList<Good> goods = market.getGoods();
+            Good on = goods.get(0);
+            for( int i = 0; i < goods.size(); i++) {
+                on = goods.get(i);
+                if (on.getType().equals(type)) {
+                    return on.getQuantity();
+                }
+            }
+        } else {
+            return 0;
+        }
+    }
     
 }
