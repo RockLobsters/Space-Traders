@@ -23,17 +23,16 @@ package spacetrader;
  */
 public class Game {
 
-    private Player player;
-    private Universe universe;
-    private Planet curPlanet;
-    
+    Player player;
+    Universe universe;
+
     public Game(Player player, Universe universe)
     {
         this.player = player;
         this.universe = universe;
         universe.bigBang();
     }
-    
+
     public Game(String name, int pilot, int fighter, int trader, int engineer, int investor)
     {
         player = new Player(name);
@@ -46,7 +45,7 @@ public class Game {
         universe = new Universe();
         universe.bigBang();
     }
-    
+
     @Override
     public String toString()
     {
@@ -55,5 +54,10 @@ public class Game {
                 + "\n"
                 + "Universe:\n"
                 + universe.toString();
+    }
+
+    public Game getInstance()
+    {
+      return this;
     }
 }
