@@ -18,23 +18,14 @@ package spacetrader;
  * @author Kristen Lawrence
  */
 public enum GoodType {
-    WATER (0),
-    FOOD (1),
-    FUR (2),
-    ORE (3),
-    GAMES (4),
-    FIREARMS (5),
-    MEDICINE (6),
-    MACHINES (7),
-    NARCOTICS (8),
-    ROBOTS (9);
-    
-    private final int key;
-
-    GoodType(int keyNum) {
-        this.key = keyNum;
-    }
-    private int key() {
-        return key;
-    }   
+    WATER,
+    FOOD,
+    FUR,
+    ORE,
+    GAMES,
+    FIREARMS,
+    MEDICINE,
+    MACHINES,
+    NARCOTICS,
+    ROBOTS;  
 }

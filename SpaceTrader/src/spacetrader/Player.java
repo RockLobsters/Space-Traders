@@ -25,7 +25,7 @@ public class Player {
     //Name of Player
     private String name;
     //Money of Player
-    private int money;
+    private double money;
     private final int INITIAL_MONEY = 100;
     //Wanted Level of player
     private int wantedLevel;
@@ -63,7 +63,7 @@ public class Player {
      * adds money to current money amount
      * @param mon 
      */
-    public void addMoney(int mon){
+    public void addMoney(double mon){
         money += mon;   
     }
     
@@ -71,7 +71,7 @@ public class Player {
      * subtracts money from current money amount
      * @param mon 
      */
-    public void subtractMoney(int mon){
+    public void subtractMoney(double mon){
         money -= mon;   
     }
     
@@ -79,7 +79,7 @@ public class Player {
      * returns total money player has
      * @return money
      */
-    public int getMoney(){
+    public double getMoney(){
         return money;
     }
     

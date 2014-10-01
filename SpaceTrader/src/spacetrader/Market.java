@@ -17,8 +17,9 @@ public class Market
 
   public ArrayList<Good> goods;
   public Planet planet;
-  public ArrayList<Integer> prices;
+  public ArrayList<Double> prices;
   public PoliticalSystem politicalSystem;
+  public int techLevel;
 
   /**
    * @param goods  - an array list of goods that the market has
@@ -29,6 +30,7 @@ public class Market
     this.goods = goods;
     this.planet = planet;
     this.politicalSystem = planet.getSolarSystem().getPoliticalSystem();
+    this.techLevel = planet.getSolarSystem().getTechLevel();
     this.prices = priceList(goods);
   }
 
@@ -37,10 +39,10 @@ public class Market
    *
    * @return	a list of the prices of the goods
    */
-  public ArrayList<Integer> priceList(ArrayList<Good> goods)
+  public ArrayList<Double> priceList(ArrayList<Good> goods)
   {
     int siz = goods.size();
-    ArrayList<Integer> listP = new ArrayList();
+    ArrayList<Double> listP = new ArrayList();
     for(int i = 0; i < siz; i++)
     {
       listP.add(calcPrice(goods.get(i)));
@@ -53,59 +55,48 @@ public class Market
    *
    * @return	the price of the good
    */
-  public int calcPrice(Good good)
+  public double calcPrice(Good good)
   {
-    /*
-    Random rand = new Random();
-    boolean value = rand.nextBoolean();
-    int var = rand.nextInt() % good.getVar();
-    var = var / 10;
-    int tl = planet.getSolarSystem().getTechLevel();
-    int price = good.getBasePrice()
-                        + (good.getIPL() * (tl - good.getMTLP()));
-
-    if(value)
-    {
-      price = price + (good.getBasePrice() * var);
+    Random rand = new Random(); //for variance calculations
+    double price;
+    double variance = rand.nextInt(good.getVar()) / 100; //variance percentage
+    boolean flip = rand.nextBoolean(); 
+    if (flip) {
+        variance = variance * -1; //determine plus or minus for variance
     }
-    else
-    {
-      price = price - (good.getBasePrice() * var);
+    price = good.getBasePrice() + good.getIPL()*(techLevel - good.getMTLP()) + (variance * good.getBasePrice());
+    
+    if(planet.getResources() == good.getCR()) { //if resource condition present on planet cut price
+        price = price / 2;
     }
-
-    if(good.cr())
-    {
-      price = price / 2;
+    
+    if(planet.getResources() == good.getER()) { //if rescource conditino present on planet double price
+        price = price * 2;
     }
-    if(good.er())
-    {
-      price = price * 2;
+    
+    int[] hiSupply = politicalSystem.highSupply();
+    if(hiSupply.length > 0) {
+        for(int i : hiSupply) {
+            if(i==good.getType().ordinal()){
+                price = price / 2; //if political system has high supply of good cut price
+            }
+        }
     }
-    if(good.ie())
-    {
-      price = price * price;
+    
+    int[] hiDemand = politicalSystem.highDemand();
+    if(hiDemand.length > 0) {
+        for(int i : hiDemand) {
+            if(i==good.getType().ordinal()){
+                price = price * 2; //if political system has high demand of good double price
+            }
+        }
     }
-
-    if(containsGood(politicalSystem.highSupply(), good))
-    {
-      price = price * .75;
+    
+    if(techLevel == good.getTTP()) {
+        price = price / 2; //if planet is techlevel that produces most of this good same result as high supply
     }
-    if(containsGood(politicalSystem.lowSupply(), good))
-    {
-      price = price * 1.25;
-    }
-    if(containsGood(politicalSystem.highDemand(), good))
-    {
-      price = price * 1.5;
-    }
-    if(containsGood(politicalSystem.lowDemand(), good))
-    {
-      price = price * .5;
-    }
-
+    
     return price;
-    */
-    return good.basePrice;
   }
 
   public static boolean containsGood(Good[] list, Good good)

@@ -28,11 +28,11 @@ public class Good {
     int basePrice; //what it sounds like
     int MTLP; //minimum tech level needed to produce the good
     int MTLU; //minimum tech level needed to use the good
-    
+    int TTP; //tech level that produces most of this good
     int IPL; //price increase per tech level
     int var; //max deviation from base price
-    int CR; //condition in which good supply is low
-    int ER; //condiiton in which good is expensive
+    int CR; //condition in which good is cheaper
+    int ER; //condiiton in which good is more expensive
     int MTL; //min price offered in space trade with random trader
     int MTH; //max price offered in space trade with random trader
     
@@ -48,6 +48,7 @@ public class Good {
                 this.basePrice = 30;
                 this.MTLP = 0;
                 this.MTLU = 0;
+                this.TTP = 2;
                 this.IPL = 3;
                 this.var = 4;
                 this.CR = 4;
@@ -58,6 +59,7 @@ public class Good {
                 this.basePrice = 250;
                 this.MTLP = 0;
                 this.MTLU = 0;
+                this.TTP = 1;
                 this.IPL = 10;
                 this.var = 10;
                 this.CR = 7;
@@ -68,6 +70,7 @@ public class Good {
                 this.basePrice = 100;
                 this.MTLP = 1;
                 this.MTLU = 0;
+                this.TTP = 0;
                 this.IPL = 5;
                 this.var = 5;
                 this.CR = 5;
@@ -78,6 +81,7 @@ public class Good {
                 this.basePrice = 350;
                 this.MTLP = 2;
                 this.MTLU = 2;
+                this.TTP = 3;
                 this.IPL = 20;
                 this.var = 10;
                 this.CR = 1;
@@ -88,6 +92,7 @@ public class Good {
                 this.basePrice = 250;
                 this.MTLP = 3;
                 this.MTLU = 1;
+                this.TTP = 6;
                 this.IPL = -10;
                 this.var = -10;
                 this.CR = 11;
@@ -98,6 +103,7 @@ public class Good {
                 this.basePrice = 1250;
                 this.MTLP = 3;
                 this.MTLU = 1;
+                this.TTP = 5;
                 this.IPL = -75;
                 this.var = 100;
                 this.CR = 12;
@@ -108,6 +114,7 @@ public class Good {
                 this.basePrice = 650;
                 this.MTLP = 4;
                 this.MTLU = 1;
+                this.TTP = 6;
                 this.IPL = -20;
                 this.var = 10;
                 this.CR = 10;
@@ -118,6 +125,7 @@ public class Good {
                 this.basePrice = 900;
                 this.MTLP = 4;
                 this.MTLU = 3;
+                this.TTP = 5;
                 this.IPL = -30;
                 this.var = 5;
                 this.CR = -1;
@@ -128,6 +136,7 @@ public class Good {
                 this.basePrice = 3500;
                 this.MTLP = 5;
                 this.MTLU = 0;
+                this.TTP = 5;
                 this.IPL = -125;
                 this.var = 150;
                 this.CR = 9;
@@ -138,6 +147,7 @@ public class Good {
                 this.basePrice = 5000;
                 this.MTLP = 6;
                 this.MTLU = 4;
+                this.TTP = 7;
                 this.IPL = -150;
                 this.var = 100;
                 this.CR = -1;
@@ -168,9 +178,9 @@ public class Good {
     protected int getMTLU() {
         return MTLU;
     } 
-    //protected int getTTP {
-      //  return TTP;
-    //} 
+    protected int getTTP() {
+        return TTP;
+    } 
     protected int getIPL() {
         return IPL;
     }
