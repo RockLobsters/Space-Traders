@@ -45,6 +45,12 @@ public class Game {
     {
       return universe;
     }
+    
+    public void createUniverse()
+    {
+      universe = new Universe();
+      universe.bigBang();
+    }
 
     @Override
     public String toString()
