@@ -26,16 +26,16 @@ public class CapitalistState extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0.15;
     }
-    public Object[] highSupply(){
-        return null;
+    public int[] highSupply(){
+        return new int[0];
     }
-    public Object[] lowSupply(){
-        return null;
+    public int[] lowSupply(){
+        return new int[0];
     }
-    public Object[] highDemand(){
-        return new Object[]{"ore"};
+    public int[] highDemand(){
+        return new int[]{3};
     }
-    public Object[] lowDemand(){
-        return null;
+    public int[] lowDemand(){
+        return new int[0];
     }
 }

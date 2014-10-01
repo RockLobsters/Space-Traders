@@ -26,16 +26,16 @@ public class Confederacy extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0;
     }
-    public Object[] highSupply(){
-        return null;
+    public int[] highSupply(){
+        return new int[0];
     }
-    public Object[] lowSupply(){
-        return null;
+    public int[] lowSupply(){
+        return new int[0];
     }
-    public Object[] highDemand(){
-        return new Object[]{"games"};
+    public int[] highDemand(){
+        return new int[]{4};
     }
-    public Object[] lowDemand(){
-        return null;
+    public int[] lowDemand(){
+        return new int[0];
     }
 }

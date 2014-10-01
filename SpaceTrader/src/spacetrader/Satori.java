@@ -26,16 +26,16 @@ public class Satori extends PoliticalSystem{
     public double illegalTradeRate(){
         return 0;
     }
-    public Object[] highSupply(){
-        return null;
+    public int[] highSupply(){
+        return new int[0];
     }
-    public Object[] lowSupply(){
-        return new Object[]{"narcotics", "firearms"};
+    public int[] lowSupply(){
+        return new int[]{5,7};
     }
-    public Object[] highDemand(){
-        return null;
+    public int[] highDemand(){
+        return new int[0];
     }
-    public Object[] lowDemand(){
-        return new Object[]{"narcotics"};
+    public int[] lowDemand(){
+        return new int[]{7};
     }
 }
