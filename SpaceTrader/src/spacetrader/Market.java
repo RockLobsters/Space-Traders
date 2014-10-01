@@ -19,6 +19,14 @@ public class Market
   public Planet planet;
   public ArrayList<Integer> prices;
   public PoliticalSystem politicalSystem;
+<<<<<<< HEAD
+=======
+  
+  public Market(Planet planet)
+  {
+    this(planet.getSolarSystem().getPoliticalSystem().getSupply(), planet);
+  }
+>>>>>>> master
 
   /**
    * @param goods  - an array list of goods that the market has

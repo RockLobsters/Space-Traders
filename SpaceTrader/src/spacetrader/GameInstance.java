@@ -24,7 +24,11 @@ public class GameInstance
 {
   private static final Game instance = new Game();
 
+<<<<<<< HEAD:SpaceTrader/src/spacetrader/GameInstance.java
   public static Game getInstance()
+=======
+  public Game getInstance()
+>>>>>>> master:SpaceTrader/src/spacetrader/GameInstance.java
   {
     return instance;
   }

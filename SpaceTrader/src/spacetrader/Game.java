@@ -26,13 +26,16 @@ public class Game {
     private Player player;
     private Universe universe;
     
+<<<<<<< HEAD
 
     public Game(Player player, Universe universe)
+=======
+    public void setPlayer(Player player)
+>>>>>>> master
     {
-        this.player = player;
-        this.universe = universe;
-        universe.bigBang();
+      this.player = player;
     }
+<<<<<<< HEAD
 
     public Game(String name, int pilot, int fighter, int trader, int engineer, int investor)
     {
@@ -46,6 +49,29 @@ public class Game {
         universe = new Universe();
         universe.bigBang();
     }
+=======
+    
+    public Player getPlayer()
+    {
+      return player;
+    }
+    
+    public void setUniverse(Universe universe)
+    {
+      this.universe = universe;
+    }
+    
+    public Universe getUniverse()
+    {
+      return universe;
+    }
+    
+    public void createUniverse()
+    {
+      universe = new Universe();
+      universe.bigBang();
+    }
+>>>>>>> master
 
     @Override
     public String toString()

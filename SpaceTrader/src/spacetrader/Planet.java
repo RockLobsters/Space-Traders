@@ -69,7 +69,11 @@ public class Planet implements Comparable
         {
             resources = 0;
         }
+<<<<<<< HEAD
         market = new Market();
+=======
+        market = new Market(this);
+>>>>>>> master
         personnelRoster = new ArrayList();
     }
 

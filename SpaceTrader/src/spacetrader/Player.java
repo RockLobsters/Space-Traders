@@ -23,7 +23,7 @@ package spacetrader;
  */
 public class Player {
     //Name of Player
-    private String name;
+    private final String name;
     //Money of Player
     private int money;
     private final int INITIAL_MONEY = 100;
@@ -39,6 +39,12 @@ public class Player {
     private int engineer;
     private int investor;
     
+<<<<<<< HEAD
+=======
+    private Ship ship;
+    
+    private Planet currentLocation;
+>>>>>>> master
     
     /**
      * Initializes Player Class
@@ -197,6 +203,19 @@ public class Player {
       this.ship = ship;
     }
 
+<<<<<<< HEAD
+=======
+    public Planet getCurrentLocation()
+    {
+      return currentLocation;
+    }
+    
+    public void setCurrentLocation(Planet currentLocation)
+    {
+      this.currentLocation = currentLocation;
+    }
+    
+>>>>>>> master
     @Override
     public String toString()
     {
