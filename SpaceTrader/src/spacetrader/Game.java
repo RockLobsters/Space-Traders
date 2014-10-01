@@ -23,29 +23,35 @@ package spacetrader;
  */
 public class Game {
 
-    Player player;
-    Universe universe;
+    private Player player;
+    private Universe universe;
     
-    public Game(Player player, Universe universe)
+    public void setPlayer(Player player)
     {
-        this.player = player;
-        this.universe = universe;
-        universe.bigBang();
+      this.player = player;
     }
     
-    public Game(String name, int pilot, int fighter, int trader, int engineer, int investor)
+    public Player getPlayer()
     {
-        player = new Player(name);
-        player.setPilot(pilot);
-        player.setFighter(fighter);
-        player.setTrader(trader);
-        player.setEngineer(engineer);
-        player.setInvestor(investor);
-        player.setShip(new Gnat());
-        universe = new Universe();
-        universe.bigBang();
+      return player;
     }
     
+    public void setUniverse(Universe universe)
+    {
+      this.universe = universe;
+    }
+    
+    public Universe getUniverse()
+    {
+      return universe;
+    }
+    
+    public void createUniverse()
+    {
+      universe = new Universe();
+      universe.bigBang();
+    }
+
     @Override
     public String toString()
     {
