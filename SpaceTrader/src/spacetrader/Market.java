@@ -143,7 +143,7 @@ public class Market
    *
    * @return The index of the good or -1 if the good is not found
    */
-  private int getIndex(Good good)
+  public int getIndex(Good good)
   {
     for(int i = 0; i < goods.size(); i++)
     {
@@ -199,7 +199,7 @@ public class Market
    *
    * @return True if the buy was successful
    */
-  public boolean Buy(Good good, int quantity, Player player)
+  public boolean buy(Good good, int quantity, Player player)
   {
     if(canBuy(good, quantity, player) == false)
     {
@@ -271,7 +271,7 @@ public class Market
    *
    * @return True if the sell was successful
    */
-  public boolean Sell(Good good, int quantity, Player player)
+  public boolean sell(Good good, int quantity, Player player)
   {
     if(canSell(good, quantity, player) == false)
     {
@@ -299,5 +299,20 @@ public class Market
       player.addMoney(prices.get(getIndex(good)) * quantity);
       return true;
     }
+  }
+  
+  public boolean buy(GoodType goodType, int quantity, Player player)
+  {
+      return buy(new Good(goodType, 0), quantity, player);
+  }
+  
+  public boolean sell(GoodType goodType, int quantity, Player player)
+  {
+      return sell(new Good(goodType, 0), quantity, player);
+  }
+  
+  public int getQuantity(Good good)
+  {
+      return goods.get(getIndex(good)).quantity;
   }
 }

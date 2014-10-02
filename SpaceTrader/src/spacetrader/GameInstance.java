@@ -24,7 +24,7 @@ public class GameInstance
 {
   private static final Game instance = new Game();
 
-  public Game getInstance()
+  public static Game getInstance()
   {
     return instance;
   }

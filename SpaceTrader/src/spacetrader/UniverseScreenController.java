@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -37,6 +38,8 @@ import javafx.stage.Stage;
 public class UniverseScreenController implements Initializable {
     @FXML
     private BorderPane MenuButton;
+    @FXML
+    private Button button;
 
     /**
      * Initializes the controller class.
@@ -47,7 +50,7 @@ public class UniverseScreenController implements Initializable {
     }    
 
     @FXML
-    private void ReturnMainMenu(MouseEvent event) throws Exception {
+    private void goToMarket(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -56,5 +59,9 @@ public class UniverseScreenController implements Initializable {
         //hide this current window (if this is whant you want
         ((Node) (event.getSource())).getScene().getWindow().hide();
         }
+
+    @FXML
+    private void ReturnMainMenu(MouseEvent event) {
+    }
     
 }

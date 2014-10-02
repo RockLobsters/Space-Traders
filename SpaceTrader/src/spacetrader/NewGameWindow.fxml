@@ -78,6 +78,17 @@
                      <effect>
                         <Glow />
                      </effect></TextField>
+                  <Text layoutX="262.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Points Remaining:" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="128.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="pointsRemaining" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
                <padding>
                   <Insets left="70.0" right="70.0" />

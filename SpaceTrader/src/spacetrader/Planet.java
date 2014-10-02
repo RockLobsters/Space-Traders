@@ -227,4 +227,9 @@ public class Planet implements Comparable
         out = out + "] )";
         return out;
     }
+    
+    public Market getMarket()
+    {
+        return market;
+    }
 }
