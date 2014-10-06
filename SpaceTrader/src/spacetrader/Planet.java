@@ -197,6 +197,7 @@ public class Planet implements Comparable
     public void setSolarSystem(SolarSystem solarSystem)
     {
         this.solarSystem = solarSystem;
+        market.setSolarSystem(solarSystem);
     }
 
     /**
