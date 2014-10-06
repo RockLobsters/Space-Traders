@@ -182,6 +182,10 @@ public class Market
     {
       return false;
     }
+    if(player.getShip().CARGO_BAYS < player.getShip().getCargoSize() + quantity)
+    {
+      return false;
+    }
     
     //tech level solar system must be equal or greater to good mtlp to buy
     if(planet.getSolarSystem().getTechLevel() < toBuy.getMTLP()) {
@@ -221,8 +225,10 @@ public class Market
           found = true;
         }
       }
-      good.setQuantity(quantity);
-      cargo.add(good);
+      if(!found)
+      {
+        cargo.add(new Good(good.getType(), quantity));
+      }
       return true;
     }
   }
@@ -297,6 +303,7 @@ public class Market
         cargo.get(index).quantity -= quantity;
       }
       player.addMoney(prices.get(getIndex(good)) * quantity);
+      goods.get(getIndex(good)).quantity -= quantity;
       return true;
     }
   }

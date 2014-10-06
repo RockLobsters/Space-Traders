@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Ship
 {
     private final String NAME;
-    private final int CARGO_BAYS;
+    final int CARGO_BAYS;
     private final int WEAPON_SLOTS;
     private final int SHIELD_SLOTS;
     private final int GADGET_SLOTS;
@@ -46,5 +46,34 @@ public class Ship
         cargo = new ArrayList(CARGO_BAYS);
     }
     
+    public int getCargoSize()
+    {
+      int out = 0;
+      for(Good good : cargo)
+      {
+        if(good != null)
+        {
+          out += good.getQuantity();
+        }
+      }
+      return out;
+    }
     
+    public String cargoToString()
+    {
+        if(!cargo.isEmpty())
+        {
+          String out = "";
+          for(Good good : cargo)
+          {
+            out = out + good.getType() + ", " + good.getQuantity() + "\n";
+          }
+          return out;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
 }
