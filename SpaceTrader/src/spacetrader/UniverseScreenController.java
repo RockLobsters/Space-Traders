@@ -51,7 +51,9 @@ public class UniverseScreenController implements Initializable {
 
     @FXML
     private void goToMarket(MouseEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
+        Game game = GameInstance.getInstance();
+        game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
+        Parent root = FXMLLoader.load(getClass().getResource("MarketScreen.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();

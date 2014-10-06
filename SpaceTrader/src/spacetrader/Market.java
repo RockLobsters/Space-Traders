@@ -25,7 +25,15 @@ public class Market
   
   public Market(Planet planet)
   {
-    this(planet.getSolarSystem().getPoliticalSystem().supply(), planet);
+    this.planet = planet;
+  }
+  
+  public void setSolarSystem(SolarSystem solarSystem)
+  {
+      this.politicalSystem = solarSystem.getPoliticalSystem();
+      this.goods = politicalSystem.supply();
+      this.techLevel = solarSystem.getTechLevel();
+      this.prices = priceList(goods);
   }
 
 
@@ -67,7 +75,7 @@ public class Market
   {
     Random rand = new Random(); //for variance calculations
     double price;
-    double variance = rand.nextInt(good.getVar()) / 100; //variance percentage
+    double variance = rand.nextInt(Math.abs(good.getVar())) / 100; //variance percentage
     boolean flip = rand.nextBoolean(); 
     if (flip) {
         variance = variance * -1; //determine plus or minus for variance
