@@ -254,7 +254,7 @@ public class Market
     int index = -1;
     for(int i = 0; index == -1 && i < cargo.size(); i++)
     {
-      if(cargo.get(i) == good)
+      if(cargo.get(i).getType() == good.getType())
       {
         index = i;
       }
@@ -297,7 +297,7 @@ public class Market
       int index = -1;
       for(int i = 0; index == -1 && i < cargo.size(); i++)
       {
-        if(cargo.get(i) == good)
+        if(cargo.get(i).getType() == good.getType())
         {
           index = i;
         }
