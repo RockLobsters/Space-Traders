@@ -17,12 +17,13 @@
 package spacetrader;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author Addison Amiri
  */
-public class Ship
+public class Ship implements Serializable
 {
     private final String NAME;
     private final int CARGO_BAYS;

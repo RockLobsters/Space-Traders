@@ -17,11 +17,13 @@
 
 package spacetrader;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kristen Lawrence
  */
-public class Good {
+public class Good implements Serializable{
     GoodType type; //the type of good
     int quantity;
     
