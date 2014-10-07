@@ -227,7 +227,7 @@ public class Market
       ArrayList<Good> cargo = player.getShip().cargo;
       for(int i = 0; i < cargo.size() && !found; i++)
       {
-        if(cargo.get(i) == good)
+        if(cargo.get(i).getType() == good.getType())
         {
           cargo.get(i).setQuantity(cargo.get(i).getQuantity() - quantity);
           found = true;
