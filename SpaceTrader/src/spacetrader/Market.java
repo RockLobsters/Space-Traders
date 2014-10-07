@@ -229,7 +229,7 @@ public class Market
       {
         if(cargo.get(i).getType() == good.getType())
         {
-          cargo.get(i).setQuantity(cargo.get(i).getQuantity() - quantity);
+          cargo.get(i).setQuantity(cargo.get(i).getQuantity() + quantity);
           found = true;
         }
       }
