@@ -26,7 +26,7 @@ public class Player {
     private final String name;
     //Money of Player
     private double money;
-    private final int INITIAL_MONEY = 100;
+    private final int INITIAL_MONEY = 10000000;
     //Wanted Level of player
     private int wantedLevel;
     

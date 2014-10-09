@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -10,6 +11,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.MarketScreenController">
    <children>
+      <ImageView fitHeight="391.0" fitWidth="722.0" layoutX="-91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@10717597_10202517452727075_197587700_n.jpg" />
+         </image>
+      </ImageView>
       <Accordion>
          <panes>
             <TitledPane fx:id="waterTab" animated="false" onMouseClicked="#waterTabOpen" text="Water">
@@ -154,15 +160,23 @@
             </TitledPane>
          </panes>
       </Accordion>
-      <ImageView fitHeight="150.0" fitWidth="390.0" layoutX="212.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@10717597_10202517452727075_197587700_n.jpg" />
-         </image>
-      </ImageView>
-      <Text layoutX="286.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MARKET">
+      <Text fill="WHITE" layoutX="286.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MARKET">
          <font>
             <Font size="61.0" />
          </font>
       </Text>
+      <TextArea fx:id="cargoBox" layoutX="227.0" layoutY="308.0" prefHeight="125.0" prefWidth="361.0">
+         <effect>
+            <ColorAdjust hue="0.21" saturation="-0.55" />
+         </effect></TextArea>
+      <Text layoutX="332.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARGO" textAlignment="CENTER" underline="true" wrappingWidth="150.677734375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="506.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#returnToPlanet" text="Retun To Planet" />
    </children>
+   <effect>
+      <ColorAdjust saturation="-0.02" />
+   </effect>
 </AnchorPane>

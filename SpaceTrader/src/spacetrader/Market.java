@@ -227,8 +227,7 @@ public class Market
       ArrayList<Good> cargo = player.getShip().cargo;
       for(int i = 0; i < cargo.size() && !found; i++)
       {
-        if(cargo.get(i).getType() == good.getType())
-        {
+        if(cargo.get(i).getType() == good.getType())        {
           cargo.get(i).setQuantity(cargo.get(i).getQuantity() + quantity);
           found = true;
         }
@@ -271,7 +270,7 @@ public class Market
     
     //tech level solar system must be equal or greater to good mtlu to sell
     if(planet.getSolarSystem().getTechLevel() < toSell.getMTLU()) {
-        return false;
+      return false;
     }
     return true;
   }
@@ -316,16 +315,38 @@ public class Market
     }
   }
   
+
+  /**
+  * Buys a good in the market
+  * @param goodType  type of good
+  * @param quantity  quantity to buy
+  * @parap player    player that's buying stuff
+  *
+  * @return boolean if transaction was successful
+  */
   public boolean buy(GoodType goodType, int quantity, Player player)
   {
       return buy(new Good(goodType, 0), quantity, player);
   }
   
+  /**
+  * Buys a good in the market
+  * @param goodType  type of good
+  * @param quantity  quantity to sell
+  * @parap player    player that's buying stuff
+  *
+  * @return boolean if transaction was successful
+  */
   public boolean sell(GoodType goodType, int quantity, Player player)
   {
       return sell(new Good(goodType, 0), quantity, player);
   }
   
+  /**
+  * Buys a good in the market
+  *
+  * @return int quantity of good in market
+  */
   public int getQuantity(Good good)
   {
       return goods.get(getIndex(good)).quantity;
