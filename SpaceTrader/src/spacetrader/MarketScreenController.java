@@ -677,9 +677,5 @@ public class MarketScreenController implements Initializable {
         //hide this current window (if this is whant you want
         ((Node) (event.getSource())).getScene().getWindow().hide();
 
-    }
-
-
-    
+    }   
 }
-

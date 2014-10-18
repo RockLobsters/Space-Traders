@@ -28,6 +28,8 @@ public class Game implements Serializable{
     private Player player;
     private Universe universe;
     private String currentScreen;
+    private Planet curPlanet;
+
     
     public void setPlayer(Player player)
     {

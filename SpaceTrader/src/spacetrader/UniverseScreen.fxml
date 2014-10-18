@@ -26,10 +26,17 @@
          <bottom>
             <MenuBar opacity="0.78" BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="Save">
+                <Menu mnemonicParsing="false">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
+                     <graphic>
+                        <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="SAVE">
+                           <effect>
+                              <ColorAdjust brightness="-0.38" />
+                           </effect>
+                        </Button>
+                     </graphic>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                   <items>

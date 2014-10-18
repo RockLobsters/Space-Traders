@@ -31,6 +31,8 @@ public class Player implements Serializable{
     private final int INITIAL_MONEY = 10000000;
     //Wanted Level of player
     private int wantedLevel;
+    //Ship
+    private Ship ship;
     
     // The attribute stats of the mercenary
     private int pilot;
@@ -38,8 +40,6 @@ public class Player implements Serializable{
     private int trader;
     private int engineer;
     private int investor;
-    
-    private Ship ship;
     
     private Planet currentLocation;
     
@@ -215,4 +215,5 @@ public class Player implements Serializable{
     {
         return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ") (" + ship + ")";
     }
+
 }

@@ -15,10 +15,13 @@
          <bottom>
             <MenuBar opacity="0.78" BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
+                     <graphic>
+                        <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="Save" />
+                     </graphic>
                 </Menu>
                 <Menu mnemonicParsing="false">
                   <items>
