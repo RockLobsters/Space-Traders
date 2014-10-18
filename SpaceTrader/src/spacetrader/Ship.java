@@ -25,13 +25,15 @@ import java.util.ArrayList;
 public class Ship
 {
     private final String NAME;
-    private final int CARGO_BAYS;
+    final int CARGO_BAYS;
     private final int WEAPON_SLOTS;
     private final int SHIELD_SLOTS;
     private final int GADGET_SLOTS;
     private final int CREW_QUARTERS;
     private final int FUEL_CAPACITY;
     ArrayList<Good> cargo;
+
+    public int fuel;
 
     public Ship(String NAME, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
                 int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY)
@@ -44,7 +46,44 @@ public class Ship
         this.CREW_QUARTERS = CREW_QUARTERS;
         this.FUEL_CAPACITY = FUEL_CAPACITY;
         cargo = new ArrayList(CARGO_BAYS);
+        this.fuel = FUEL_CAPACITY;
+    }
+
+    public int getFuel() {
+      return fuel;
+    }
+    public void setFuel(int fuel) {
+      this.fuel = fuel;
     }
     
+    public int getCargoSize()
+    {
+      int out = 0;
+      for(Good good : cargo)
+      {
+        if(good != null)
+        {
+          out += good.getQuantity();
+        }
+      }
+      return out;
+    }
     
+    public String cargoToString()
+    {
+        if(!cargo.isEmpty())
+        {
+          String out = "";
+          for(Good good : cargo)
+          {
+            out = out + good.getType() + ", " + good.getQuantity() + "\n";
+          }
+          return out;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
 }

@@ -190,6 +190,10 @@ public class Market
     {
       return false;
     }
+    if(player.getShip().CARGO_BAYS < player.getShip().getCargoSize() + quantity)
+    {
+      return false;
+    }
     
     //tech level solar system must be equal or greater to good mtlp to buy
     if(planet.getSolarSystem().getTechLevel() < toBuy.getMTLP()) {
@@ -223,14 +227,15 @@ public class Market
       ArrayList<Good> cargo = player.getShip().cargo;
       for(int i = 0; i < cargo.size() && !found; i++)
       {
-        if(cargo.get(i) == good)
-        {
-          cargo.get(i).setQuantity(cargo.get(i).getQuantity() - quantity);
+        if(cargo.get(i).getType() == good.getType())        {
+          cargo.get(i).setQuantity(cargo.get(i).getQuantity() + quantity);
           found = true;
         }
       }
-      good.setQuantity(quantity);
-      cargo.add(good);
+      if(!found)
+      {
+        cargo.add(new Good(good.getType(), quantity));
+      }
       return true;
     }
   }
@@ -248,7 +253,7 @@ public class Market
     int index = -1;
     for(int i = 0; index == -1 && i < cargo.size(); i++)
     {
-      if(cargo.get(i) == good)
+      if(cargo.get(i).getType() == good.getType())
       {
         index = i;
       }
@@ -265,7 +270,7 @@ public class Market
     
     //tech level solar system must be equal or greater to good mtlu to sell
     if(planet.getSolarSystem().getTechLevel() < toSell.getMTLU()) {
-        return false;
+      return false;
     }
     return true;
   }
@@ -291,7 +296,7 @@ public class Market
       int index = -1;
       for(int i = 0; index == -1 && i < cargo.size(); i++)
       {
-        if(cargo.get(i) == good)
+        if(cargo.get(i).getType() == good.getType())
         {
           index = i;
         }
@@ -305,20 +310,43 @@ public class Market
         cargo.get(index).quantity -= quantity;
       }
       player.addMoney(prices.get(getIndex(good)) * quantity);
+      goods.get(getIndex(good)).quantity -= quantity;
       return true;
     }
   }
   
+
+  /**
+  * Buys a good in the market
+  * @param goodType  type of good
+  * @param quantity  quantity to buy
+  * @parap player    player that's buying stuff
+  *
+  * @return boolean if transaction was successful
+  */
   public boolean buy(GoodType goodType, int quantity, Player player)
   {
       return buy(new Good(goodType, 0), quantity, player);
   }
   
+  /**
+  * Buys a good in the market
+  * @param goodType  type of good
+  * @param quantity  quantity to sell
+  * @parap player    player that's buying stuff
+  *
+  * @return boolean if transaction was successful
+  */
   public boolean sell(GoodType goodType, int quantity, Player player)
   {
       return sell(new Good(goodType, 0), quantity, player);
   }
   
+  /**
+  * Buys a good in the market
+  *
+  * @return int quantity of good in market
+  */
   public int getQuantity(Good good)
   {
       return goods.get(getIndex(good)).quantity;

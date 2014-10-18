@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,6 +36,9 @@ import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Text;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.TextArea;
 
 /**
  * FXML Controller class
@@ -164,6 +168,9 @@ public class MarketScreenController implements Initializable {
     private TextField robotsToBuy;
     private Market market = GameInstance.getInstance().getPlayer().getCurrentLocation().getMarket();
     private Player player = GameInstance.getInstance().getPlayer();
+    private Ship ship = GameInstance.getInstance().getPlayer().getShip();
+    @FXML
+    private TextArea cargoBox;
     
     
 
@@ -172,7 +179,9 @@ public class MarketScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+        print = print + ship.cargoToString();
+        cargoBox.setText(print);
     }    
 
     @FXML
@@ -282,6 +291,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.WATER);
             waterPrice.setText(Double.toString(price));
             waterQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -304,6 +316,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.WATER);
             waterPrice.setText(Double.toString(price));
             waterQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -325,6 +340,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.FUR);
             furPrice.setText(Double.toString(price));
             furQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -347,6 +365,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.FUR);
             furPrice.setText(Double.toString(price));
             furQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -368,6 +389,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.FOOD);
             foodPrice.setText(Double.toString(price));
             foodQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -389,6 +413,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.FOOD);
             foodPrice.setText(Double.toString(price));
             foodQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -410,6 +437,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.ORE);
             orePrice.setText(Double.toString(price));
             oreQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -431,6 +461,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.ORE);
             orePrice.setText(Double.toString(price));
             oreQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -452,6 +485,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.GAMES);
             gamesPrice.setText(Double.toString(price));
             gamesQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -473,6 +509,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.GAMES);
             gamesPrice.setText(Double.toString(price));
             gamesQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -494,6 +533,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.FIREARMS);
             firearmsPrice.setText(Double.toString(price));
             firearmsQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -515,6 +557,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.FIREARMS);
             firearmsPrice.setText(Double.toString(price));
             firearmsQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -536,6 +581,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.MACHINES);
             machinesPrice.setText(Double.toString(price));
             machinesQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -557,6 +605,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.MACHINES);
             machinesPrice.setText(Double.toString(price));
             machinesQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -578,6 +629,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.ROBOTS);
             robotsPrice.setText(Double.toString(price));
             robotsQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -599,6 +653,9 @@ public class MarketScreenController implements Initializable {
             int quantity = getQuantity(GoodType.ROBOTS);
             robotsPrice.setText(Double.toString(price));
             robotsQuantity.setText(Integer.toString(quantity));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -608,6 +665,18 @@ public class MarketScreenController implements Initializable {
             dialogStage.show();
 
         }
+    }
+
+    @FXML
+    private void returnToPlanet(MouseEvent event) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+        //hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+
     }
 
 
