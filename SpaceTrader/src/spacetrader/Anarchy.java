@@ -10,42 +10,66 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
+ * Anarchic Government type 
+ * 
  * @author Kristen Lawrence
  */
 public class Anarchy extends PoliticalSystem {
     Random rand = new Random();
     
+    /**
+     * 
+     * @return string of government type name
+     */
     @Override
     public String type(){
         return "Anarchy";
     }
     
+    /**
+     * percent rate of un-corrupt-able police in this system
+     * @return double  rate of random police encounter
+     */
     @Override
     public double policeRate(){
         return 0;
     }
-    
+    /**
+     * percent rate of corrupt-able police in this system
+     * @return double  rate of random corrupt police encounter
+     */
     @Override
     public double bribeRate() {
         return 0;
     }
-    
+    /**
+     * percent rate of legal traders in this system
+     * @return double  rate of random trader encounter
+     */
     @Override
     public double traderRate(){
         return 0.5;
     }
-    
+    /**
+     * percent rate of illegal traders in this system
+     * @return double  rate of random illegal trader encounter
+     */
     @Override
     public double illegalTradeRate(){
         return 0.5;
     }
-    
+    /**
+     * establishes which goods are in high supply in this system
+     * @return int array of key(s) of good(s) in high supply
+     */
     @Override
     public int[] highSupply(){
         return new int[0];
     }
-    
+    /**
+     * establishes which goods are in high demand in this system
+     * @return int array of key(s) of good(s) in high supply
+     */
     @Override
     public int[] highDemand(){
         return new int[]{0,1,2,3,5,6,8};
