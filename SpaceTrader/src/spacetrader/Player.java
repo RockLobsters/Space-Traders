@@ -26,7 +26,11 @@ public class Player {
     private String name;
     //Money of Player
     private double money;
+<<<<<<< HEAD
     private final double INITIAL_MONEY = 100;
+=======
+    private final int INITIAL_MONEY = 10000000;
+>>>>>>> master
     //Wanted Level of player
     private int wantedLevel;
     
@@ -69,7 +73,11 @@ public class Player {
      * subtracts money from current money amount
      * @param mon 
      */
+<<<<<<< HEAD
     public void subtractsMoney(double mon){
+=======
+    public void subtractMoney(double mon){
+>>>>>>> master
         money -= mon;   
     }
     

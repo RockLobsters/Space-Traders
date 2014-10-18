@@ -25,6 +25,7 @@ public class Game {
 
     private Player player;
     private Universe universe;
+    private String currentScreen;
     
     public Game(Player player, Universe universe)
     {
@@ -45,6 +46,35 @@ public class Game {
         universe.bigBang();
     }
     
+<<<<<<< HEAD
+=======
+    public void setUniverse(Universe universe)
+    {
+      this.universe = universe;
+    }
+    
+    public Universe getUniverse()
+    {
+      return universe;
+    }
+    
+    public void createUniverse()
+    {
+      universe = new Universe();
+      universe.bigBang();
+    }
+    
+    public void setCurrentScreen(String currentScreen)
+    {
+        this.currentScreen = currentScreen;
+    }
+    
+    public String getCurrentScreen()
+    {
+        return currentScreen;
+    }
+
+>>>>>>> master
     @Override
     public String toString()
     {

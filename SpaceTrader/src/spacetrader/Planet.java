@@ -197,6 +197,7 @@ public class Planet implements Comparable
     public void setSolarSystem(SolarSystem solarSystem)
     {
         this.solarSystem = solarSystem;
+        market.setSolarSystem(solarSystem);
     }
 
     /**
@@ -226,5 +227,10 @@ public class Planet implements Comparable
         }
         out = out + "] )";
         return out;
+    }
+    
+    public Market getMarket()
+    {
+        return market;
     }
 }

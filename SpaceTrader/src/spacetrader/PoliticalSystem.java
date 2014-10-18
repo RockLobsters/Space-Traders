@@ -16,8 +16,15 @@ public abstract class PoliticalSystem {
     public abstract double bribeRate();
     public abstract double traderRate();
     public abstract double illegalTradeRate();
+<<<<<<< HEAD
     public abstract Object[] highSupply();
     public abstract Object[] lowSupply();
     public abstract Object[] highDemand();
     public abstract Object[] lowDemand();
+=======
+    public abstract int[] highSupply();
+    public abstract int[] highDemand();
+    public abstract ArrayList<Good> supply();
+    public abstract ArrayList<Good> demand();
+>>>>>>> master
 }

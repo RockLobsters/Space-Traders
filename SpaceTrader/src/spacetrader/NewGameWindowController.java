@@ -24,6 +24,7 @@ import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -48,6 +49,8 @@ public class NewGameWindowController implements Initializable {
     private Slider investorSlider;
     @FXML
     private Slider pilotSlider;
+    @FXML
+    private Label pointsRemaining;
 
     @FXML
     private void handleCancelAction(ActionEvent event) throws Exception {
@@ -73,9 +76,17 @@ public class NewGameWindowController implements Initializable {
         String name = Name.getText();
         if (skillPoints == 10 && !name.isEmpty()) {
             // Dialogs.create().owner(stage).title("Confirm Dialog").masthead("Look, a Confirm Dialog").message("Do you want to continue?").showConfirm();
-            Game game = new Game(name,pilotValue,fighterValue,traderValue,engineerValue,investorValue);
+            Player player = new Player(name);
+            player.setEngineer(engineerValue);
+            player.setFighter(fighterValue);
+            player.setInvestor(investorValue);
+            player.setPilot(pilotValue);
+            player.setTrader(traderValue);
             
-            System.out.println(game.toString());
+            Game newGame = GameInstance.getInstance();
+            newGame.createUniverse();
+            newGame.setPlayer(player);
+            
             
             Parent root = FXMLLoader.load(getClass().getResource("UniverseScreen.fxml"));
             Stage stage = new Stage();
@@ -117,6 +128,15 @@ public class NewGameWindowController implements Initializable {
     @FXML
     private void slider(MouseEvent event) {
         //to do add lable to tell current values
+        int fighterValue = (int) fighterSlider.getValue();
+        int traderValue = (int) traderSlider.getValue();
+        int engineerValue = (int) engineerSlider.getValue();
+        int investorValue = (int) investorSlider.getValue();
+        int pilotValue = (int) pilotSlider.getValue();
+
+        int remaining = fighterValue + traderValue + engineerValue + investorValue + pilotValue;
+        remaining = 10 - remaining;
+        pointsRemaining.setText(Integer.toString(remaining));
     }
 
 }
