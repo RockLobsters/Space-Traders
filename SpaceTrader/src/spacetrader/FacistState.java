@@ -8,12 +8,13 @@ package spacetrader;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.Serializable;
 
 /**
  *
  * @author Kristen Lawrence
  */
-public class FacistState extends PoliticalSystem{
+public class FacistState extends PoliticalSystem implements Serializable{
     Random rand = new Random();
     
     @Override

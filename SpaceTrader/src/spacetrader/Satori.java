@@ -8,12 +8,13 @@ package spacetrader;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.Serializable;
 
 /**
  *
  * @author Kristen Lawrence
  */
-public class Satori extends PoliticalSystem{
+public class Satori extends PoliticalSystem implements Serializable{
     Random rand = new Random();
     
     @Override

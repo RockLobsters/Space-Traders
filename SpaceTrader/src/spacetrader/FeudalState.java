@@ -8,12 +8,13 @@ package spacetrader;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.Serializable;
 
 /**
  *
  * @author Kristen Lawrence
  */
-public class FeudalState extends PoliticalSystem{
+public class FeudalState extends PoliticalSystem implements Serializable{
     Random rand = new Random();
     
     @Override

@@ -8,13 +8,14 @@ package spacetrader;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.Serializable;
 
 /**
  * Anarchic Government type 
  * 
  * @author Kristen Lawrence
  */
-public class Anarchy extends PoliticalSystem {
+public class Anarchy extends PoliticalSystem implements Serializable{
     Random rand = new Random();
     
     /**
