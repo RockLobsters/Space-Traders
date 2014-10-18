@@ -8,21 +8,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="697.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="spacetrader.GalOneScreenController">
+<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.GalOneScreenController">
    <children>
       <BorderPane layoutX="1.0" prefHeight="403.9024353027344" prefWidth="621.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
          <bottom>
             <MenuBar opacity="0.78" BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
+                  <Menu mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="Save" />
+                     </graphic>
+                  </Menu>
                 <Menu mnemonicParsing="false">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                      <Menu fx:id="fuelTab" mnemonicParsing="false">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="About" />
+                        </items>
+                      </Menu>
                   </items>
                      <graphic>
                         <Button fx:id="returnButton" mnemonicParsing="false" onMouseClicked="#returnToSolar" text="RETURN">
@@ -31,11 +34,6 @@
                            </effect>
                         </Button>
                      </graphic>
-                </Menu>
-                <Menu fx:id="fuelTab" mnemonicParsing="false">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
                 </Menu>
               </menus>
                <effect>

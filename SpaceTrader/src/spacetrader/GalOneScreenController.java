@@ -62,7 +62,7 @@ public class GalOneScreenController implements Initializable {
     private Universe universe = GameInstance.getInstance().getUniverse();
     private Player player = GameInstance.getInstance().getPlayer();
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
-
+    private Game game = GameInstance.getInstance();
     private SolarSystem solar = universe.get(0);
     @FXML
     private Button returnButton;
@@ -73,6 +73,7 @@ public class GalOneScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        game.setCurrentScreen("GalOneScreen.fxml");
         fuelTab.setText("Fuel: " + ship.getFuel());
 
         ArrayList<Planet> planets = solar.getPlanets();
@@ -225,6 +226,11 @@ public class GalOneScreenController implements Initializable {
                 alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
+    }
+
+    @FXML
+    private void saveGame(MouseEvent event) {
+        GameInstance.saveModelBinary();
     }
 
     

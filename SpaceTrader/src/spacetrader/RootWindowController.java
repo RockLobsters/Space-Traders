@@ -45,8 +45,16 @@ public class RootWindowController implements Initializable {
     }
     
     @FXML
-    private void handleLoadGameAction(ActionEvent event) {
-        System.out.println("Needs to be implemented...");
+    private void handleLoadGameAction(ActionEvent event) throws Exception {
+        GameInstance.loadModelBinary();
+        Parent root = FXMLLoader.load(getClass().getResource(GameInstance.getInstance().getCurrentScreen()));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+        //hide this current window (if this is whant you want
+        ((Node)(event.getSource())).getScene().getWindow().hide();
+        
     }
   
     @FXML

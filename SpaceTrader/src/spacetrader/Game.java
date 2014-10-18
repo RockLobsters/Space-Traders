@@ -17,15 +17,19 @@
 
 package spacetrader;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sydnipeterson
  */
-public class Game {
+public class Game implements Serializable{
 
     private Player player;
     private Universe universe;
     private String currentScreen;
+    private Planet curPlanet;
+
     
     public Game(Player player, Universe universe)
     {

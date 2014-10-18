@@ -16,6 +16,7 @@
  */
 package spacetrader;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -38,8 +39,8 @@ import java.util.ArrayList;
  * 
  * @author Addison Amiri
  */
-public class Planet implements Comparable
-{   
+public class Planet implements Comparable, Serializable
+{
     private String name;
     private int coordinateX;
     private int coordinateY;

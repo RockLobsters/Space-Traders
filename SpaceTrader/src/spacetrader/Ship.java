@@ -16,11 +16,14 @@
  */
 package spacetrader;
 
+import java.util.ArrayList;
+import java.io.Serializable;
+
 /**
  *
  * @author Addison Amiri
  */
-public class Ship
+public class Ship implements Serializable
 {
     private final String NAME;
     final int CARGO_BAYS;
@@ -42,9 +45,6 @@ public class Ship
         this.GADGET_SLOTS = GADGET_SLOTS;
         this.CREW_QUARTERS = CREW_QUARTERS;
         this.FUEL_CAPACITY = FUEL_CAPACITY;
-<<<<<<< HEAD
-    }
-=======
         cargo = new ArrayList(CARGO_BAYS);
         this.fuel = FUEL_CAPACITY;
     }
@@ -86,5 +86,4 @@ public class Ship
         }
     }
 
->>>>>>> master
 }

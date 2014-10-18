@@ -17,22 +17,22 @@
 
 package spacetrader;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sydnipeterson
  */
-public class Player {
+public class Player implements Serializable{
     //Name of Player
     private String name;
     //Money of Player
     private double money;
-<<<<<<< HEAD
     private final double INITIAL_MONEY = 100;
-=======
-    private final int INITIAL_MONEY = 10000000;
->>>>>>> master
     //Wanted Level of player
     private int wantedLevel;
+    //Ship
+    private Ship ship;
     
     // The attribute stats of the mercenary
     private int pilot;
@@ -40,6 +40,8 @@ public class Player {
     private int trader;
     private int engineer;
     private int investor;
+    
+    private Planet currentLocation;
     
     /**
      * Initializes Player Class
@@ -73,11 +75,7 @@ public class Player {
      * subtracts money from current money amount
      * @param mon 
      */
-<<<<<<< HEAD
-    public void subtractsMoney(double mon){
-=======
     public void subtractMoney(double mon){
->>>>>>> master
         money -= mon;   
     }
     
@@ -190,4 +188,5 @@ public class Player {
     {
         return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ")";
     }
+
 }

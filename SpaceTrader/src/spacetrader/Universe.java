@@ -6,12 +6,13 @@
 package spacetrader;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author addison
  */
-public class Universe extends ArrayList<SolarSystem>
+public class Universe extends ArrayList<SolarSystem> implements Serializable
 {
     @Override
     public String toString()

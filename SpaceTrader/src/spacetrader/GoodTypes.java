@@ -54,7 +54,7 @@ public class GameInstance
   {
     return instance;
   }
-  public void saveModelBinary()  {
+  public static void saveModelBinary()  {
         try {
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data.bin"))) {
                 out.writeObject(instance);
@@ -65,7 +65,7 @@ public class GameInstance
         
     }
     
-    public void loadModelBinary()  {
+    public static void loadModelBinary()  {
         try {
             try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("data.bin"))) {
                 Game loadGame = (Game) in.readObject();

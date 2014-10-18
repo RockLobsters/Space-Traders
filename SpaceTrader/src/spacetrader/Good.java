@@ -17,16 +17,17 @@
 
 package spacetrader;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kristen Lawrence
  */
-public class Good {
-    
-<<<<<<< HEAD
-}
-=======
+public class Good implements Serializable{
+    GoodType type; //the type of good
+    int quantity;
     int basePrice; //what it sounds like
+
     int MTLP; //minimum tech level needed to produce the good
     int MTLU; //minimum tech level needed to use the good
     int TTP; //tech level that produces most of this good
@@ -208,4 +209,3 @@ public class Good {
         this.price = p;
     }
 }
->>>>>>> master
