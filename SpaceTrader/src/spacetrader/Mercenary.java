@@ -16,11 +16,13 @@
  */
 package spacetrader;
 
+import java.io.Serializable;
+
 /**
  *
  * @author addison
  */
-public class Mercenary implements Comparable
+public class Mercenary implements Comparable, Serializable
 {
     // Name of the mercenary
     private String name;

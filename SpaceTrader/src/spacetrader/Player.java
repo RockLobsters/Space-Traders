@@ -17,11 +17,13 @@
 
 package spacetrader;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sydnipeterson
  */
-public class Player {
+public class Player implements Serializable{
     //Name of Player
     private final String name;
     //Money of Player

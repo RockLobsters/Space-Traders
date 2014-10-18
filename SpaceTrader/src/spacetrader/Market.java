@@ -7,12 +7,13 @@ package spacetrader;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.Serializable;
 
 /**
  *
  * @author Jacqueline Foreman
  */
-public class Market
+public class Market implements Serializable
 {
 
   public ArrayList<Good> goods;
