@@ -29,42 +29,69 @@ public class Game implements Serializable{
     private Universe universe;
     private String currentScreen;
     
+    /**
+     * @param player the player to set
+     */
     public void setPlayer(Player player)
     {
       this.player = player;
     }
     
+    /**
+     * @return the player
+     */
     public Player getPlayer()
     {
       return player;
     }
     
+    /**
+     * @param universe the universe to set
+     */
     public void setUniverse(Universe universe)
     {
       this.universe = universe;
     }
     
+    /**
+     * @return the universe
+     */
     public Universe getUniverse()
     {
       return universe;
     }
     
+    /**
+     * Creates a new universe
+     */
     public void createUniverse()
     {
       universe = new Universe();
       universe.bigBang();
     }
     
+    /**
+     * @param currentScreen the screen to set
+     */
     public void setCurrentScreen(String currentScreen)
     {
         this.currentScreen = currentScreen;
     }
     
+    /**
+     * @return the currentScreen
+     */
     public String getCurrentScreen()
     {
         return currentScreen;
     }
 
+    /**
+     * @return "Player:
+     *          player
+     *          Universe:
+     *          universe"
+     */
     @Override
     public String toString()
     {

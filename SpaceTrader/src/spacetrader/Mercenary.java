@@ -165,6 +165,11 @@ public class Mercenary implements Comparable, Serializable
         return this.name.compareTo(((Mercenary) that).name);
     }
     
+    /**
+     * Gives a string representation of this player
+     * 
+     * @return "name (pilot,fighter,trader,engineer,investor)"
+     */
     @Override
     public String toString()
     {

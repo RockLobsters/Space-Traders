@@ -36,6 +36,17 @@ public class Ship implements Serializable
 
     public int fuel;
 
+    /**
+     * The flushed out Ship constructor
+     * 
+     * @param NAME the name of the ship
+     * @param CARGO_BAYS the number of cargo bays the ship has
+     * @param WEAPON_SLOTS the number of weapon slots the ship has
+     * @param SHIELD_SLOTS the number of shield slots the ship has
+     * @param GADGET_SLOTS the number of gadget slots the ship has
+     * @param CREW_QUARTERS the number of crew quarters the ship has
+     * @param FUEL_CAPACITY the fuel capacity the ship has
+     */
     public Ship(String NAME, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
                 int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY)
     {
@@ -50,13 +61,23 @@ public class Ship implements Serializable
         this.fuel = FUEL_CAPACITY;
     }
 
+    /**
+     * @return the fuel
+     */
     public int getFuel() {
       return fuel;
     }
+    
+    /**
+     * @param fuel the fuel to set
+     */
     public void setFuel(int fuel) {
       this.fuel = fuel;
     }
     
+    /**
+     * @return the current number of items in the cargo
+     */
     public int getCargoSize()
     {
       int out = 0;
@@ -70,6 +91,9 @@ public class Ship implements Serializable
       return out;
     }
     
+    /**
+     * @return good1, good2, good3, ...
+     */
     public String cargoToString()
     {
         if(!cargo.isEmpty())

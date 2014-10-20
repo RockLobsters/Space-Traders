@@ -49,17 +49,36 @@ public class Planet implements Comparable, Serializable
     private ArrayList<Mercenary> personnelRoster;
     private SolarSystem solarSystem;
 
+    /**
+     * Creates a planet with random coordinates
+     *
+     * @param name the name of the new planet
+     */
     public Planet(String name)
     {
         this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.random() * SolarSystem.SIZE_Y));
     }
 
-    public Planet(String name, int minCoordinateX, int maxCoordinateX, int minCoordinateY, int maxCoordinateY, SolarSystem solarSystem)
+    /**
+     * Creates a planet with random coordinates inbetween the given limits
+     *
+     * @param name the name of the new planet
+     * @param minCoordinateX the minimum of the x coordinate
+     * @param maxCoordinateX the maximum of the x coordinate
+     * @param minCoordinateY the minimum of the y coordinate
+     * @param maxCoordinateY the maximum of the y coordinate
+     */
+    public Planet(String name, int minCoordinateX, int maxCoordinateX, int minCoordinateY, int maxCoordinateY)
     {
         this(name, (int) (Math.random() * (maxCoordinateX - minCoordinateX + 1) + minCoordinateX), (int) (Math.random() * (maxCoordinateY - minCoordinateY + 1) + minCoordinateY));
-        this.setSolarSystem(solarSystem);
     }
 
+    /**
+     * Creates a planet with the given name at the given coordinates
+     * @param name the name of the new planet
+     * @param coordinateX the x coordinate of the new planet
+     * @param coordinateY the y coordinate of the new planet
+     */
     public Planet(String name, int coordinateX, int coordinateY)
     {
         this.name = name;
@@ -205,7 +224,7 @@ public class Planet implements Comparable, Serializable
      * Compares two planets based on their names.
      *
      * @param that the planet to compare against
-     * @return
+     * @return -1 if this is less than that, 0 if they are equal, and 1 if this is greater than that
      */
     @Override
     public int compareTo(Object that)
@@ -213,10 +232,15 @@ public class Planet implements Comparable, Serializable
         return this.name.compareTo(((Planet) that).getName());
     }
 
+    /**
+     * Returns a string representing this object
+     *
+     * @return "name (X,Y) resources ( market , personnel_roster )"
+     */
     @Override
     public String toString()
     {
-        String out = name + " (" + coordinateX + "," + coordinateY + ") " + resources + " ( " + /*market +*/ " , [ " ;
+        String out = name + " (" + coordinateX + "," + coordinateY + ") " + resources + " ( " + market +  " , [ " ;
         if(!personnelRoster.isEmpty())
         {
             out = out + "( " + personnelRoster.get(0);
@@ -230,6 +254,9 @@ public class Planet implements Comparable, Serializable
         return out;
     }
     
+    /**
+     * @return the market
+     */
     public Market getMarket()
     {
         return market;
