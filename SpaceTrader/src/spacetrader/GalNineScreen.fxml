@@ -14,17 +14,30 @@
          <bottom>
             <MenuBar opacity="0.78" BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
                 <Menu mnemonicParsing="false">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
                      <graphic>
-                        <Button mnemonicParsing="false" onMouseClicked="#returnToUniverse" text="Return to Universe" />
+                        <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="SAVE">
+                           <effect>
+                              <ColorAdjust brightness="-0.38" />
+                           </effect>
+                        </Button>
+                     </graphic>
+                </Menu>
+                  <Menu mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onMouseClicked="#exit" text="EXIT">
+                           <effect>
+                              <ColorAdjust brightness="-0.38" />
+                           </effect>
+                        </Button>
+                     </graphic>
+                  </Menu>
+                <Menu mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onMouseClicked="#returnToUniverse" text="RETURN">
+                           <effect>
+                              <ColorAdjust brightness="-0.38" />
+                           </effect></Button>
                      </graphic>
                 </Menu>
                 <Menu fx:id="fuelTab" mnemonicParsing="false">

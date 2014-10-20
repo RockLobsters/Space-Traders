@@ -26,15 +26,29 @@
          <bottom>
             <MenuBar opacity="0.78" BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="Save">
+                <Menu mnemonicParsing="false">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
+                     <graphic>
+                        <Button mnemonicParsing="false" onMouseClicked="#SaveGame" text="Save">
+                           <effect>
+                              <ColorAdjust brightness="-0.38" />
+                           </effect>
+                        </Button>
+                     </graphic>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu mnemonicParsing="false">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Delete" />
                   </items>
+                     <graphic>
+                        <Button mnemonicParsing="false" onMouseClicked="#exit" text="Exit">
+                           <effect>
+                              <ColorAdjust brightness="-0.38" />
+                           </effect>
+                        </Button>
+                     </graphic>
                 </Menu>
                 <Menu fx:id="fuelTab" mnemonicParsing="false">
                   <items>

@@ -324,6 +324,25 @@ public class UniverseScreenController implements Initializable {
         }
 
     }
+    
+    @FXML
+    private void SaveGame(MouseEvent event) {
+        GameInstance.saveModelBinary();
+    }
+
+    @FXML
+    private void exit(MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            //hide this current window (if this is whant you want
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    
+    
 
     
 }

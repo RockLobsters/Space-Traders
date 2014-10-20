@@ -39,6 +39,9 @@ import javafx.scene.text.Text;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
+import java.util.Random;
+
+
 /**
  * FXML Controller class
  *
@@ -56,6 +59,8 @@ public class PlanetScreenController implements Initializable {
     private Player player = GameInstance.getInstance().getPlayer();
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     private Planet planet = player.getCurrentLocation();
+    private Game game = GameInstance.getInstance();
+
     @FXML
     private Button returnButton;
 
@@ -64,8 +69,12 @@ public class PlanetScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         // TODO
-        fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()) + "; " + planet.getName());
+        game.setCurrentScreen("PlanetScreen.fxml");
+        String s = randEvent();
+        fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()) + "; " + planet.getName() + ". " + s);
+
     }    
 
     @FXML
@@ -75,6 +84,7 @@ public class PlanetScreenController implements Initializable {
 
     @FXML
     private void goToMarket(MouseEvent event)  throws Exception {
+        //randEvent();
         // Game game = GameInstance.getInstance();
         // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
         // look at this ^^^
@@ -96,6 +106,7 @@ public class PlanetScreenController implements Initializable {
     @FXML
     private void returnToSystem(MouseEvent event) throws Exception {
        if (ship.getFuel() >0){
+            //randEvent();
             SolarSystem system = planet.getSolarSystem();
             ship.setFuel(ship.getFuel()-1);
 
@@ -180,6 +191,68 @@ public class PlanetScreenController implements Initializable {
                 alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
+    }
+
+    private String randEvent() {
+        Random rand = new Random();
+        int x = rand.nextInt(20);
+        String string = "";
+        
+        if (x > 15) {
+            //String string = "";
+            
+            if(x == 16){
+                string = "You found $10!";
+                player.addMoney(100);
+            } else if (x == 15) {
+                string = "Your fuel tank has a hole in it and some spilled out!";
+                ship.setFuel(ship.getFuel() - 1);
+            } else if (x == 17) {
+                string = "Pirates raided your ship and took $50!";
+                player.subtractMoney(50);
+            } else if (x==18) {
+                player.setWantedLevel(player.getWantedLevel() + 1);
+                string = "You accidentally did something illegal. Wanted level: " + player.getWantedLevel();
+            } else if (x==19) {
+                player.addMoney(100);
+                string = "You found a valueable stone and sold it for $100!";
+            } else if (x==20) {
+                ship.setFuel(ship.getFuel() + 1);
+                string = "You found some fuel!";
+            }
+
+            //return string;
+        
+            // Stage dialogStage = new Stage();
+            // dialogStage.initModality(Modality.WINDOW_MODAL);
+            // dialogStage.setScene(new Scene(VBoxBuilder.create().
+            // children(new Text(string)).
+            // alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            // dialogStage.show();
+
+            // try {
+            //     Thread.sleep(2000);                 //1000 milliseconds is one second.
+            // } catch(InterruptedException ex) {
+            //     Thread.currentThread().interrupt();
+            // }
+        }
+        return string;
+    }
+
+     @FXML
+    private void saveGame(MouseEvent event) throws Exception {
+        GameInstance.saveModelBinary();
+    }
+
+    @FXML
+    private void exit(MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            //hide this current window (if this is whant you want
+            ((Node) (event.getSource())).getScene().getWindow().hide();
     }
     
 }
