@@ -191,7 +191,7 @@ public class Market implements Serializable
     {
       return false;
     }
-    if(player.getShip().CARGO_BAYS < player.getShip().getCargoSize() + quantity)
+    if(player.getShip().getCargoBays() < player.getShip().getCargoSize() + quantity)
     {
       return false;
     }

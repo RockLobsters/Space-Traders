@@ -26,7 +26,8 @@ import java.io.Serializable;
 public class Ship implements Serializable
 {
     private final String NAME;
-    final int CARGO_BAYS;
+    private final int HULL_STRENGTH;
+    private final int CARGO_BAYS;
     private final int WEAPON_SLOTS;
     private final int SHIELD_SLOTS;
     private final int GADGET_SLOTS;
@@ -35,11 +36,13 @@ public class Ship implements Serializable
     ArrayList<Good> cargo;
 
     public int fuel;
+    public int health;
 
     /**
      * The flushed out Ship constructor
      * 
      * @param NAME the name of the ship
+     * @param HULL_STRENGTH the hull strength of the ship
      * @param CARGO_BAYS the number of cargo bays the ship has
      * @param WEAPON_SLOTS the number of weapon slots the ship has
      * @param SHIELD_SLOTS the number of shield slots the ship has
@@ -47,10 +50,11 @@ public class Ship implements Serializable
      * @param CREW_QUARTERS the number of crew quarters the ship has
      * @param FUEL_CAPACITY the fuel capacity the ship has
      */
-    public Ship(String NAME, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
+    public Ship(String NAME, int HULL_STRENGTH, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
                 int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY)
     {
         this.NAME = NAME;
+        this.HULL_STRENGTH = HULL_STRENGTH;
         this.CARGO_BAYS = CARGO_BAYS;
         this.WEAPON_SLOTS = WEAPON_SLOTS;
         this.SHIELD_SLOTS = SHIELD_SLOTS;
@@ -59,6 +63,7 @@ public class Ship implements Serializable
         this.FUEL_CAPACITY = FUEL_CAPACITY;
         cargo = new ArrayList(CARGO_BAYS);
         this.fuel = FUEL_CAPACITY;
+        this.health = HULL_STRENGTH;
     }
 
     /**
@@ -111,4 +116,8 @@ public class Ship implements Serializable
         }
     }
 
+    public int getCargoBays()
+    {
+        return CARGO_BAYS;
+    }
 }

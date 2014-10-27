@@ -20,18 +20,18 @@ package spacetrader;
  *
  * @author Addison Amiri
  */
-public class Gnat extends Ship
+public class Bumblebee extends Ship
 {
-    public static final String NAME         = "Gnat";
-    public static final int HULL_STRENGTH   = 20;
-    public static final int CARGO_BAYS      = 15;
-    public static final int WEAPON_SLOTS    = 1;
-    public static final int SHIELD_SLOTS    = 0;
-    public static final int GADGET_SLOTS    = 1;
-    public static final int CREW_QUARTERS   = 0;
-    public static final int FUEL_CAPACITY   = 14;
+    public static final String NAME         = "Bumblebee";
+    public static final int HULL_STRENGTH   = Firefly.HULL_STRENGTH;
+    public static final int CARGO_BAYS      = Firefly.CARGO_BAYS;
+    public static final int WEAPON_SLOTS    = Firefly.WEAPON_SLOTS + 1;
+    public static final int SHIELD_SLOTS    = Firefly.SHIELD_SLOTS + 1;
+    public static final int GADGET_SLOTS    = Firefly.GADGET_SLOTS + 1;
+    public static final int CREW_QUARTERS   = Firefly.CREW_QUARTERS + 1;
+    public static final int FUEL_CAPACITY   = 15;
     
-    public Gnat()
+    public Bumblebee()
     {
         super(NAME,
               HULL_STRENGTH,
