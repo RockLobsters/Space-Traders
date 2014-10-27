@@ -17,41 +17,73 @@ import java.io.Serializable;
 public class Corporate extends PoliticalSystem implements Serializable{
     Random rand = new Random();
     
+    /**
+     * 
+     * @return string of government type name
+     */
     @Override
     public String type(){
         return "Corporate";
     }
     
+    /**
+     * percent rate of un-corrupt-able police in this system
+     * @return double  rate of random police encounter
+     */
     @Override
     public double policeRate(){
         return 0.5;
     }
     
+    /**
+     * percent rate of corrupt-able police in this system
+     * @return double  rate of random corrupt police encounter
+     */
     @Override
     public double bribeRate() {
         return 0;
     }
     
+    /**
+     * percent rate of legal traders in this system
+     * @return double  rate of random trader encounter
+     */
     @Override
     public double traderRate(){
         return 0.5;
     }
     
+    /**
+     * percent rate of illegal traders in this system
+     * @return double  rate of random illegal trader encounter
+     */
     @Override
     public double illegalTradeRate(){
         return 0;
     }
     
+    /**
+     * establishes which goods are in high supply in this system
+     * @return int array of key(s) of good(s) in high supply
+     */
     @Override
     public int[] highSupply(){
         return new int[0];
     }
     
+    /**
+     * establishes which goods are in high demand in this system
+     * @return int array of key(s) of good(s) in high demand
+     */
     @Override
     public int[] highDemand(){
         return new int[]{9};
     }
     
+    /**
+     * creates and returns an array list of buy-able goods on the planet with proper quantities
+     * @return array list of goods availableSupply
+     */
     @Override
     public ArrayList<Good> supply() {
        ArrayList<Good> availableSupply = new ArrayList<>();
@@ -68,6 +100,10 @@ public class Corporate extends PoliticalSystem implements Serializable{
        return availableSupply;
     }
     
+    /**
+     * creates and returns an array list of sellable goods on the planet 
+     * @return array list of goods sellable
+     */
     @Override
     public ArrayList<Good> demand() {
        ArrayList<Good> sellable = new ArrayList<>();

@@ -13,6 +13,9 @@ import java.io.Serializable;
 /**
  * Anarchic Government type 
  * 
+ * Total lack of a police force and crime everywhere. Traders fear to visit an 
+ * anarchy. First needs of life are scarce, and food might bring a reasonably 
+ * good price.
  * @author Kristen Lawrence
  */
 public class Anarchy extends PoliticalSystem implements Serializable{
@@ -35,6 +38,7 @@ public class Anarchy extends PoliticalSystem implements Serializable{
     public double policeRate(){
         return 0;
     }
+    
     /**
      * percent rate of corrupt-able police in this system
      * @return double  rate of random corrupt police encounter
@@ -43,6 +47,7 @@ public class Anarchy extends PoliticalSystem implements Serializable{
     public double bribeRate() {
         return 0;
     }
+    
     /**
      * percent rate of legal traders in this system
      * @return double  rate of random trader encounter
@@ -51,6 +56,7 @@ public class Anarchy extends PoliticalSystem implements Serializable{
     public double traderRate(){
         return 0.5;
     }
+    
     /**
      * percent rate of illegal traders in this system
      * @return double  rate of random illegal trader encounter
@@ -59,6 +65,7 @@ public class Anarchy extends PoliticalSystem implements Serializable{
     public double illegalTradeRate(){
         return 0.5;
     }
+    
     /**
      * establishes which goods are in high supply in this system
      * @return int array of key(s) of good(s) in high supply
@@ -67,15 +74,20 @@ public class Anarchy extends PoliticalSystem implements Serializable{
     public int[] highSupply(){
         return new int[0];
     }
+    
     /**
      * establishes which goods are in high demand in this system
-     * @return int array of key(s) of good(s) in high supply
+     * @return int array of key(s) of good(s) in high demand
      */
     @Override
     public int[] highDemand(){
         return new int[]{0,1,2,3,5,6,8};
     }
     
+    /**
+     * creates and returns an array list of buy-able goods on the planet with proper quantities
+     * @return array list of goods availableSupply
+     */
     @Override
     public ArrayList<Good> supply() {
        ArrayList<Good> availableSupply = new ArrayList<>();
@@ -92,6 +104,10 @@ public class Anarchy extends PoliticalSystem implements Serializable{
        return availableSupply;
     }
     
+    /**
+     * creates and returns an array list of sellable goods on the planet 
+     * @return array list of goods sellable
+     */
     @Override
     public ArrayList<Good> demand() {
        ArrayList<Good> sellable = new ArrayList<>();
