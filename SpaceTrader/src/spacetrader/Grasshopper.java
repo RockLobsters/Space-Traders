@@ -30,6 +30,7 @@ public class Grasshopper extends Ship
     public static final int GADGET_SLOTS    = 3;
     public static final int CREW_QUARTERS   = 3;
     public static final int FUEL_CAPACITY   = 15;
+    public static final int BASE_PRICE      = 2500000;
     
     public Grasshopper()
     {
@@ -40,6 +41,7 @@ public class Grasshopper extends Ship
               SHIELD_SLOTS,
               GADGET_SLOTS,
               CREW_QUARTERS,
-              FUEL_CAPACITY);
+              FUEL_CAPACITY,
+              BASE_PRICE);
     }
 }

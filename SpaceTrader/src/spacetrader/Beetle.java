@@ -30,6 +30,7 @@ public class Beetle extends Ship
     public static final int GADGET_SLOTS    = 1;
     public static final int CREW_QUARTERS   = 3;
     public static final int FUEL_CAPACITY   = 14;
+    public static final int BASE_PRICE      = 1250000;
     
     public Beetle()
     {
@@ -40,6 +41,7 @@ public class Beetle extends Ship
               SHIELD_SLOTS,
               GADGET_SLOTS,
               CREW_QUARTERS,
-              FUEL_CAPACITY);
+              FUEL_CAPACITY,
+              BASE_PRICE);
     }
 }

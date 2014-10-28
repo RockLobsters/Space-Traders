@@ -93,10 +93,25 @@ public class Shipyard implements Serializable{
         double finalPrice = newShip.getPrice() - player.getShip().getPrice() - cargoVal; 
         player.subtractMoney(finalPrice);
         player.setShip(newShip);
-        player.getShip().setFuel(100);
-        //newShip.
     }
     return true;
+  }
+  
+  public void refuel(Player player, int gallons) {
+      Ship ship = player.getShip();
+      int curFuelLevel = ship.getFuel();
+      double cost = gallons * 2/techLevel;
+      ship.setFuel(gallons + curFuelLevel);
+      player.subtractMoney(cost);
+  }
+  
+  public void repairs(Player player) {
+      Ship ship = player.getShip();
+      int curHealth;
+  }
+  
+  public void equip(Player player) {
+      Ship ship = player.getShip();
   }
   
   /**

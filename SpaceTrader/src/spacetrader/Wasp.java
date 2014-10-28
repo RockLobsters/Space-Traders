@@ -30,6 +30,7 @@ public class Wasp extends Ship
     public static final int GADGET_SLOTS    = 2;
     public static final int CREW_QUARTERS   = 3;
     public static final int FUEL_CAPACITY   = 14;
+    public static final int BASE_PRICE      = 10000000;
     
     public Wasp()
     {
@@ -40,6 +41,7 @@ public class Wasp extends Ship
               SHIELD_SLOTS,
               GADGET_SLOTS,
               CREW_QUARTERS,
-              FUEL_CAPACITY);
+              FUEL_CAPACITY, 
+              BASE_PRICE);
     }
 }
