@@ -70,6 +70,13 @@ public class Ship implements Serializable
     }
 
     /**
+     * @return the name
+     */
+    public String getName() {
+      return NAME;
+    }
+    
+    /**
      * @return the fuel
      */
     public int getFuel() {
@@ -121,9 +128,27 @@ public class Ship implements Serializable
      * price getter
      * @return BASE_PRICE of ship
      */
-    public double getPrice()
+    public int getPrice()
     {
         return BASE_PRICE;
+    }
+    
+    /**
+     * getter for max hull strength for ship
+     * @return HULL_STRENGTH
+     */
+    public int getHullStrength()
+    {
+        return HULL_STRENGTH;
+    }
+    
+    /**
+     * getter for max fuel capacity for ship
+     * @return FUEL_CAPACITY
+     */
+    public int getFuelCapacity()
+    {
+        return FUEL_CAPACITY;
     }
     
     /**
