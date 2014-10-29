@@ -30,7 +30,8 @@ public class Hornet extends Ship
     public static final int GADGET_SLOTS    = 1;
     public static final int CREW_QUARTERS   = 2;
     public static final int FUEL_CAPACITY   = 16;
-    public static final int BASE_PRICE      = 1500000;
+    public static final int FUEL_COST       = 11;
+    public static final int BASE_PRICE      = 100000;
     
     public Hornet()
     {
@@ -42,6 +43,7 @@ public class Hornet extends Ship
               GADGET_SLOTS,
               CREW_QUARTERS,
               FUEL_CAPACITY,
+              FUEL_COST,
               BASE_PRICE);
     }
 }
