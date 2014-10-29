@@ -43,6 +43,7 @@ public class Beetle extends Ship
               GADGET_SLOTS,
               CREW_QUARTERS,
               FUEL_CAPACITY,
+              FUEL_COST,
               BASE_PRICE);
     }
 }
