@@ -106,7 +106,7 @@ public class Shipyard implements Serializable{
     if (curFuelLevel + gallons > ship.getFuelCapacity()) {
       return false;
     }
-    double cost = gallons * 2/techLevel;
+    double cost = gallons * ship.getFuelCost();
     if(checkWallet(player, cost)) {
       ship.setFuel(gallons + curFuelLevel);
       player.subtractMoney(cost);
@@ -124,7 +124,7 @@ public class Shipyard implements Serializable{
   public boolean repairs(Player player, int amount) {
     Ship ship = player.getShip();
     int curHealth = ship.getHealth();
-    double cost = amount * 5;
+    double cost = amount * ship.getFuelCost();
     if(checkWallet(player, cost)) {
       ship.setHealth(curHealth + amount);
       player.subtractMoney(cost);

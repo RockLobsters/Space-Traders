@@ -30,7 +30,8 @@ public class Mosquito extends Ship
     public static final int GADGET_SLOTS    = 1;
     public static final int CREW_QUARTERS   = 0;
     public static final int FUEL_CAPACITY   = 13;
-    public static final int BASE_PRICE      = 750000;
+    public static final int FUEL_COST       = 5;
+    public static final int BASE_PRICE      = 30000;
     
     public Mosquito()
     {
@@ -42,6 +43,7 @@ public class Mosquito extends Ship
               GADGET_SLOTS,
               CREW_QUARTERS,
               FUEL_CAPACITY,
+              FUEL_COST,
               BASE_PRICE);
     }
 }

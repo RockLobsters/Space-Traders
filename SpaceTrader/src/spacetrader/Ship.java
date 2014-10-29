@@ -33,6 +33,7 @@ public class Ship implements Serializable
     private final int GADGET_SLOTS;
     private final int CREW_QUARTERS;
     private final int FUEL_CAPACITY;
+    private final int FUEL_COST;
     private final int BASE_PRICE;
     ArrayList<Good> cargo;
 
@@ -49,11 +50,12 @@ public class Ship implements Serializable
      * @param SHIELD_SLOTS the number of shield slots the ship has
      * @param GADGET_SLOTS the number of gadget slots the ship has
      * @param CREW_QUARTERS the number of crew quarters the ship has
-     * @param FUEL_CAPACITY the fuel capacity the ship has
+     * @param FUEL_CAPACITY the fuel capacity the ship has (space-gallons)
+     * @param FUEL_COST the cost of refueling per space-gallon
      * @param BASE_PRICE the base price of the ship based on attributes
      */
     public Ship(String NAME, int HULL_STRENGTH, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
-                int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY, int BASE_PRICE)
+                int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY, int FUEL_COST, int BASE_PRICE)
     {
         this.NAME = NAME;
         this.HULL_STRENGTH = HULL_STRENGTH;
@@ -63,6 +65,7 @@ public class Ship implements Serializable
         this.GADGET_SLOTS = GADGET_SLOTS;
         this.CREW_QUARTERS = CREW_QUARTERS;
         this.FUEL_CAPACITY = FUEL_CAPACITY;
+        this.FUEL_COST = FUEL_COST;
         this.BASE_PRICE = BASE_PRICE;
         cargo = new ArrayList(CARGO_BAYS);
         this.fuel = FUEL_CAPACITY;
@@ -149,6 +152,15 @@ public class Ship implements Serializable
     public int getFuelCapacity()
     {
         return FUEL_CAPACITY;
+    }
+    
+    /**
+     * getter for fuel cost per space-gallon
+     * @return fuelcost
+     */
+    public int getFuelCost()
+    {
+        return FUEL_COST;
     }
     
     /**

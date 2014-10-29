@@ -30,7 +30,8 @@ public class Firefly extends Ship
     public static final int GADGET_SLOTS    = 1;
     public static final int CREW_QUARTERS   = 0;
     public static final int FUEL_CAPACITY   = 17;
-    public static final int BASE_PRICE      = 500000;
+    public static final int FUEL_COST       = 3;
+    public static final int BASE_PRICE      = 25000;
     
     public Firefly()
     {
@@ -42,6 +43,7 @@ public class Firefly extends Ship
               GADGET_SLOTS,
               CREW_QUARTERS,
               FUEL_CAPACITY,
+              FUEL_COST,
               BASE_PRICE);
     }
 }
