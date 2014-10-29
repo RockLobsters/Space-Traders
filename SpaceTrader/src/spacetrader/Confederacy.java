@@ -87,16 +87,16 @@ public class Confederacy extends PoliticalSystem implements Serializable{
     @Override
     public ArrayList<Good> supply() {
        ArrayList<Good> availableSupply = new ArrayList<>();
-       availableSupply.add(new Good(GoodType.WATER, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.FUR, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.ORE, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(100) * 100));
-       availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(100) * 100));
+       availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10) * rand.nextInt(10)));
+       availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10) * rand.nextInt(10)));
        return availableSupply;
     }
     
