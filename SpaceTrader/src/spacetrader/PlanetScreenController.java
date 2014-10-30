@@ -263,7 +263,7 @@ public class PlanetScreenController implements Initializable {
 
     @FXML
     private void goToShipYard(MouseEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ShipYardScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
