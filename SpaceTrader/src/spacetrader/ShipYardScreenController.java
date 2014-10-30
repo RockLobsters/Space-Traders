@@ -40,6 +40,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
 
 
 /**
@@ -103,7 +104,7 @@ public class ShipYardScreenController implements Initializable {
             if (success == 0) {
                 Action response;
                 response = Dialogs.create()
-                        .owner( isOwnerSelected ? stage : null)
+                        .owner( isOwnerSelected() ? stage : null)
                         .title("CARGO NOT ALLOWED")
                         .masthead(isMastheadVisible() ? "Just Checkin'" : null)
                         .message( "Some of your cargo cannot be sold here. Sell anyway?")
