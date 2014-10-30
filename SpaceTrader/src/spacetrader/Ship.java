@@ -26,41 +26,59 @@ import java.io.Serializable;
 public class Ship implements Serializable
 {
     private final String NAME;
-    final int CARGO_BAYS;
+    private final int HULL_STRENGTH;
+    private final int CARGO_BAYS;
     private final int WEAPON_SLOTS;
     private final int SHIELD_SLOTS;
     private final int GADGET_SLOTS;
     private final int CREW_QUARTERS;
     private final int FUEL_CAPACITY;
+    private final int FUEL_COST;
+    private final int BASE_PRICE;
     ArrayList<Good> cargo;
 
     public int fuel;
+    public int health;
 
     /**
      * The flushed out Ship constructor
      * 
      * @param NAME the name of the ship
+     * @param HULL_STRENGTH the hull strength of the ship
      * @param CARGO_BAYS the number of cargo bays the ship has
      * @param WEAPON_SLOTS the number of weapon slots the ship has
      * @param SHIELD_SLOTS the number of shield slots the ship has
      * @param GADGET_SLOTS the number of gadget slots the ship has
      * @param CREW_QUARTERS the number of crew quarters the ship has
-     * @param FUEL_CAPACITY the fuel capacity the ship has
+     * @param FUEL_CAPACITY the fuel capacity the ship has (space-gallons)
+     * @param FUEL_COST the cost of refueling per space-gallon
+     * @param BASE_PRICE the base price of the ship based on attributes
      */
-    public Ship(String NAME, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
-                int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY)
+    public Ship(String NAME, int HULL_STRENGTH, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
+                int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY, int FUEL_COST, int BASE_PRICE)
     {
         this.NAME = NAME;
+        this.HULL_STRENGTH = HULL_STRENGTH;
         this.CARGO_BAYS = CARGO_BAYS;
         this.WEAPON_SLOTS = WEAPON_SLOTS;
         this.SHIELD_SLOTS = SHIELD_SLOTS;
         this.GADGET_SLOTS = GADGET_SLOTS;
         this.CREW_QUARTERS = CREW_QUARTERS;
         this.FUEL_CAPACITY = FUEL_CAPACITY;
+        this.FUEL_COST = FUEL_COST;
+        this.BASE_PRICE = BASE_PRICE;
         cargo = new ArrayList(CARGO_BAYS);
         this.fuel = FUEL_CAPACITY;
+        this.health = HULL_STRENGTH;
     }
 
+    /**
+     * @return the name
+     */
+    public String getName() {
+      return NAME;
+    }
+    
     /**
      * @return the fuel
      */
@@ -92,6 +110,60 @@ public class Ship implements Serializable
     }
     
     /**
+     * health getter
+     * @return health of ship
+     */
+    public int getHealth()
+    {
+        return health;
+    }
+    
+    /**
+     * health setter
+     * @param h new health
+     */
+    public void setHealth(int h)
+    {
+        this.health = h;
+    }
+    
+    /**
+     * price getter
+     * @return BASE_PRICE of ship
+     */
+    public int getPrice()
+    {
+        return BASE_PRICE;
+    }
+    
+    /**
+     * getter for max hull strength for ship
+     * @return HULL_STRENGTH
+     */
+    public int getHullStrength()
+    {
+        return HULL_STRENGTH;
+    }
+    
+    /**
+     * getter for max fuel capacity for ship
+     * @return FUEL_CAPACITY
+     */
+    public int getFuelCapacity()
+    {
+        return FUEL_CAPACITY;
+    }
+    
+    /**
+     * getter for fuel cost per space-gallon
+     * @return fuelcost
+     */
+    public int getFuelCost()
+    {
+        return FUEL_COST;
+    }
+    
+    /**
      * @return good1, good2, good3, ...
      */
     public String cargoToString()
@@ -111,4 +183,8 @@ public class Ship implements Serializable
         }
     }
 
+    public int getCargoBays()
+    {
+        return CARGO_BAYS;
+    }
 }
