@@ -56,7 +56,7 @@ public class ShipYardScreenController implements Initializable {
     private Shipyard yard = new Shipyard(player.getCurrentLocation());
 
     @FXML
-    private TextArea shipName;
+    private Text shipName;
     @FXML
     private TextArea fleaText;
     @FXML
@@ -73,7 +73,7 @@ public class ShipYardScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        shipName.setText("Current Ship: " + ship.getName());
+        shipName.setText("Current Ship: " + ship.getName() + "    Money: " + player.getMoney());
     }    
 
     /**
@@ -112,7 +112,7 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Flea(), true);
-                        shipName.setText("Current Ship: " + ship.getName());
+                        shipName.setText("Current Ship: Flea" + "   Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -127,7 +127,8 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: " + ship.getName());
+                
+                shipName.setText("Current Ship: Flea" + "   Money: " + player.getMoney());
             }
         } else {
 
@@ -160,7 +161,7 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Gnat(), true);
-                        shipName.setText("Current Ship: " + ship.getName());
+                        shipName.setText("Current Ship: Gnat" + "   Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -175,7 +176,7 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: " + ship.getName());
+                shipName.setText("Current Ship: Gnat" + "   Money: " + player.getMoney());
             }
         } else {
 
@@ -208,7 +209,7 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Firefly(), true);
-                        shipName.setText("Current Ship: " + ship.getName());
+                        shipName.setText("Current Ship: Firefly" + "    Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -223,7 +224,7 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: " + ship.getName());
+                shipName.setText("Current Ship: Firefly" + "    Money: " + player.getMoney());
             }
         } else {
 
@@ -256,7 +257,7 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Mosquito(), true);
-                        shipName.setText("Current Ship: " + ship.getName());
+                        shipName.setText("Current Ship: Mosquito" + "   Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -271,7 +272,7 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: " + ship.getName());
+                shipName.setText("Current Ship: Mosquito" + "   Money: " + player.getMoney());
             }
         } else {
 
@@ -304,7 +305,7 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Bumblebee(), true);
-                        shipName.setText("Current Ship: " + ship.getName());
+                        shipName.setText("Current Ship: Bumblebee" + "  Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -319,7 +320,7 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: " + ship.getName());
+                shipName.setText("Current Ship: Bumblebee" + "  Money: " + player.getMoney());
             }
         } else {
 
