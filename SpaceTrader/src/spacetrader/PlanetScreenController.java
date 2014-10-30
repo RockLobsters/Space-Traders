@@ -60,9 +60,12 @@ public class PlanetScreenController implements Initializable {
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     private Planet planet = player.getCurrentLocation();
     private Game game = GameInstance.getInstance();
+    private Shipyard yard = new Shipyard(planet);
 
     @FXML
     private Button returnButton;
+    @FXML
+    private Button shipYardButton;
 
     /**
      * Initializes the controller class.
@@ -70,7 +73,10 @@ public class PlanetScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        // TODO
+        yard.setSolarSystem(planet.getSolarSystem());
+        if(!yard.makeVisible()){
+            shipYardButton.setVisible(false);
+        }
         game.setCurrentScreen("PlanetScreen.fxml");
         String s = randEvent();
         fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()) + "; " + planet.getName() + ". " + s);
@@ -246,6 +252,17 @@ public class PlanetScreenController implements Initializable {
 
     @FXML
     private void exit(MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            //hide this current window (if this is whant you want
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void goToShipYard(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

@@ -15,7 +15,7 @@
             <Image url="@planet.jpg" />
          </image>
       </ImageView>
-      <BorderPane prefHeight="400.0" prefWidth="623.0">
+      <BorderPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="623.0">
          <bottom>
             <MenuBar BorderPane.alignment="CENTER">
               <menus>
@@ -57,15 +57,22 @@
                </effect>
             </MenuBar>
          </bottom>
-         <left>
-            <Button fx:id="stockButton" mnemonicParsing="false" onMouseClicked="#goToStock" text="STOCK EXCHANGE" BorderPane.alignment="CENTER" />
-         </left>
-         <center>
-            <Button fx:id="marketButton" mnemonicParsing="false" onMouseClicked="#goToMarket" text="MARKET" BorderPane.alignment="CENTER" />
-         </center>
-         <right>
-            <Button fx:id="personnelButton" mnemonicParsing="false" onMouseClicked="#goToPersonnel" text="PERSONNEL ROSTER" BorderPane.alignment="CENTER" />
-         </right>
+         <top>
+            <BorderPane prefHeight="296.0" prefWidth="623.0" BorderPane.alignment="CENTER">
+               <bottom>
+                  <Button fx:id="marketButton" mnemonicParsing="false" onMouseClicked="#goToMarket" prefHeight="35.0" prefWidth="72.0" text="MARKET" BorderPane.alignment="CENTER" />
+               </bottom>
+               <left>
+                  <Button fx:id="personnelButton" mnemonicParsing="false" onMouseClicked="#goToPersonnel" text="PERSONNEL ROSTER" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Button fx:id="stockButton" mnemonicParsing="false" onMouseClicked="#goToStock" text="STOCK EXCHANGE" BorderPane.alignment="CENTER" />
+               </right>
+               <center>
+                  <Button fx:id="shipYardButton" mnemonicParsing="false" onMouseClicked="#goToShipYard" text="SHIP YARD" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </top>
       </BorderPane>
    </children>
 </AnchorPane>
