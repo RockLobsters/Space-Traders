@@ -69,12 +69,14 @@ public class UniverseScreenController implements Initializable {
     private Player player = GameInstance.getInstance().getPlayer();
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     private Universe universe = GameInstance.getInstance().getUniverse();
+    private Game game = GameInstance.getInstance();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        game.setCurrentScreen("UniverseScreen.fxml");
         // TODO
         //fuelTab.setText("Fuel: ");
         fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()));
@@ -376,7 +378,7 @@ public class UniverseScreenController implements Initializable {
     * @param event  mouse event of when user clicks on "SAVE" button
     */
     @FXML
-    private void SaveGame(MouseEvent event) {
+    private void saveGame(MouseEvent event) {
         GameInstance.saveModelBinary();
     }
 
