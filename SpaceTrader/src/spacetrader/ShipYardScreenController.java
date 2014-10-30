@@ -104,9 +104,9 @@ public class ShipYardScreenController implements Initializable {
             if (success == 0) {
                 Action response;
                 response = Dialogs.create()
-                        .owner( isOwnerSelected() ? stage : null)
+                        //.owner( isOwnerSelected() ? stage : null)
                         .title("CARGO NOT ALLOWED")
-                        .masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
                         .message( "Some of your cargo cannot be sold here. Sell anyway?")
                         .showConfirm();
 
@@ -152,9 +152,9 @@ public class ShipYardScreenController implements Initializable {
 
             if (success == 0) {
                 Action response = Dialogs.create()
-                    .owner( isOwnerSelected ? stage : null)
+                    //.owner( isOwnerSelected ? stage : null)
                     .title("CARGO NOT ALLOWED")
-                    .masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                    //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
                     .message( "Some of your cargo cannot be sold here. Sell anyway?")
                     .showConfirm();
 
@@ -196,18 +196,18 @@ public class ShipYardScreenController implements Initializable {
     @FXML
     private void buyFirefly(MouseEvent event) {
         if (techLevel >= 5){
-            int success = yard.buy(player, new Firefly(), false);
+            int success = yard.buyShip(player, new Firefly(), false);
 
             if (success == 0) {
                 Action response = Dialogs.create()
-                    .owner( isOwnerSelected ? stage : null)
+                    //.owner( isOwnerSelected ? stage : null)
                     .title("CARGO NOT ALLOWED")
-                    .masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                    //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
                     .message( "Some of your cargo cannot be sold here. Sell anyway?")
                     .showConfirm();
 
                     if (response == Dialog.ACTION_YES) {
-                        int success = yard.buy(player, new Firefly(), true);
+                        success = yard.buyShip(player, new Firefly(), true);
                         shipName.setText("Current Ship: " + ship.getName());
                     } else {
                     // ... user cancelled, reset form to default
@@ -244,18 +244,18 @@ public class ShipYardScreenController implements Initializable {
     @FXML
     private void buyMosquito(MouseEvent event) {
         if (techLevel >= 5){
-            int success = yard.buy(player, new Mosquito(), false);
+            int success = yard.buyShip(player, new Mosquito(), false);
 
             if (success == 0) {
                 Action response = Dialogs.create()
-                    .owner( isOwnerSelected ? stage : null)
+                    //.owner( isOwnerSelected ? stage : null)
                     .title("CARGO NOT ALLOWED")
-                    .masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                    //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
                     .message( "Some of your cargo cannot be sold here. Sell anyway?")
                     .showConfirm();
 
                     if (response == Dialog.ACTION_YES) {
-                        int success = yard.buy(player, new Mosquito(), true);
+                        success = yard.buyShip(player, new Mosquito(), true);
                         shipName.setText("Current Ship: " + ship.getName());
                     } else {
                     // ... user cancelled, reset form to default
@@ -292,18 +292,18 @@ public class ShipYardScreenController implements Initializable {
     @FXML
     private void buyBumblebee(MouseEvent event) {
         if (techLevel >= 5){
-            int success = yard.buy(player, new BumbleBee(), false);
+            int success = yard.buyShip(player, new Bumblebee(), false);
 
             if (success == 0) {
                 Action response = Dialogs.create()
-                    .owner( isOwnerSelected ? stage : null)
+                    //.owner( isOwnerSelected ? stage : null)
                     .title("CARGO NOT ALLOWED")
-                    .masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                    //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
                     .message( "Some of your cargo cannot be sold here. Sell anyway?")
                     .showConfirm();
 
                     if (response == Dialog.ACTION_YES) {
-                        int success = yard.buy(player, new BumbleBee(), true);
+                        success = yard.buyShip(player, new Bumblebee(), true);
                         shipName.setText("Current Ship: " + ship.getName());
                     } else {
                     // ... user cancelled, reset form to default
@@ -380,7 +380,7 @@ public class ShipYardScreenController implements Initializable {
     */
     @FXML
     private void bumbleBeeOpen(MouseEvent event) {
-        String text = "Price:" + yard.shipPrice(player, new BumbleBee())+ "\n";
+        String text = "Price:" + yard.shipPrice(player, new Bumblebee())+ "\n";
         bumbleBeeText.setText(text);
     }
     
