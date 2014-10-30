@@ -20,20 +20,20 @@ package spacetrader;
  *
  * @author Addison Amiri
  */
-public class Gnat extends Ship
+public class Termite extends Ship
 {
-    public static final String NAME         = "Gnat";
-    public static final int HULL_STRENGTH   = 20;
-    public static final int CARGO_BAYS      = 15;
+    public static final String NAME         = "Termite";
+    public static final int HULL_STRENGTH   = 30;
+    public static final int CARGO_BAYS      = 60;
     public static final int WEAPON_SLOTS    = 1;
-    public static final int SHIELD_SLOTS    = 0;
-    public static final int GADGET_SLOTS    = 1;
-    public static final int CREW_QUARTERS   = 0;
-    public static final int FUEL_CAPACITY   = 14;
-    public static final int FUEL_COST       = 2;
-    public static final int BASE_PRICE      = 10000;
+    public static final int SHIELD_SLOTS    = 3;
+    public static final int GADGET_SLOTS    = 2;
+    public static final int CREW_QUARTERS   = 3;
+    public static final int FUEL_CAPACITY   = 13;
+    public static final int FUEL_COST       = 15;
+    public static final int BASE_PRICE      = 250000;
     
-    public Gnat()
+    public Termite()
     {
         super(NAME,
               HULL_STRENGTH,
