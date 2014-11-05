@@ -36,9 +36,15 @@ public class Ship implements Serializable
     private final int FUEL_COST;
     private final int BASE_PRICE;
     ArrayList<Good> cargo;
+    Weapon[] weapons;
+    Defense[] defense;
+    Gadget[] gadgets;
 
     public int fuel;
     public int health;
+    public boolean escapePod;
+    public boolean insurance;
+    private int extraCargo;
 
     /**
      * The flushed out Ship constructor
@@ -68,6 +74,9 @@ public class Ship implements Serializable
         this.FUEL_COST = FUEL_COST;
         this.BASE_PRICE = BASE_PRICE;
         cargo = new ArrayList(CARGO_BAYS);
+        weapons = new Weapon[WEAPON_SLOTS];
+        defense = new Defense[SHIELD_SLOTS];
+        gadgets = new Gadget[GADGET_SLOTS];
         this.fuel = FUEL_CAPACITY;
         this.health = HULL_STRENGTH;
     }
@@ -185,6 +194,28 @@ public class Ship implements Serializable
 
     public int getCargoBays()
     {
-        return CARGO_BAYS;
+        return CARGO_BAYS + extraCargo;
+    }
+    
+    public boolean getEscapePod() {
+        return escapePod;
+    }
+    
+    public void setEscapePod(boolean b)
+    {
+        escapePod = b;
+    }
+    
+    public boolean getInsurance(){
+        return insurance;
+    }
+    
+    public double getInsuranceRate(){
+        return BASE_PRICE*.1;
+    }
+    
+    public void setInsurance(boolean b)
+    {
+        insurance = b;
     }
 }

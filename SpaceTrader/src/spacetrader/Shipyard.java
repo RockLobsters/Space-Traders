@@ -137,8 +137,12 @@ public class Shipyard implements Serializable{
    * upgrades ship with equipment (TODO)
    * @param player 
    */
-  public void buyEquipment(Player player) {
+  public void buyEquipment(Player player, Equipment equip) {
       Ship ship = player.getShip();
+      double cost = equip.getCost();
+      if(checkWallet(player, cost)) {
+          ship.
+      }
   }
   
   /**
