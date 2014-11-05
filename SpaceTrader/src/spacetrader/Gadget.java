@@ -20,52 +20,28 @@ package spacetrader;
  *
  * @author Kristen Lawrence
  */
-public class Gadget {
-    private GadgetType type = GadgetType.CARGO_BAYS;
-    private double price;
-    private int minTL;
+public enum Gadget {
+    CARGO_BAYS("5 Cargo Bays", 500, 4),
+    NAV_SYSTEM("Navigation System", 750, 5),
+    AUTO_REPAIR_SYSTEM("Auto-Repair System", 1000, 6),
+    TARGET_SYSTEM("Targeting System", 1000, 6),
+    CLOAK_DEVICE("Cloaking Device", 2000, 7);
     
-    public Gadget(int t) {
-        if (t == 1) {
-            type = GadgetType.NAV_SYSTEM;
-        } else if (t == 2) {
-            type = GadgetType.AUTO_REPAIR_SYSTEM;
-        } else if (t == 3) {
-            type = GadgetType.TARGET_SYSTEM;
-        } else if (t == 4) {
-            type = GadgetType.CLOAK_DEVICE;
-        }
+    String name;
+    double price;
+    int minTL;
+    
+    Gadget(String name, double price, int minTL) {
+        this.name = name;
+        this.price = price;
+        this.minTL = minTL;
     }
     
-    public double getPrice() {
-        switch(type) {
-            case CARGO_BAYS:
-                price = 500;
-            case NAV_SYSTEM:
-                price = 1000;
-            case AUTO_REPAIR_SYSTEM:
-                price = 1500;
-            case TARGET_SYSTEM:
-                price = 2000;
-            case CLOAK_DEVICE:
-                price = 5000;
-        }
+    double getPrice() {
         return price;
     }
-       
-    public int minTL() {
-        switch(type) {
-            case CARGO_BAYS:
-                minTL = 4;
-            case NAV_SYSTEM:
-                minTL = 5;
-            case AUTO_REPAIR_SYSTEM:
-                minTL = 6;
-            case TARGET_SYSTEM:
-                minTL = 6;
-            case CLOAK_DEVICE:
-                minTL = 7;
-        }
+    
+    int getMinTL() {
         return minTL;
     }
 }

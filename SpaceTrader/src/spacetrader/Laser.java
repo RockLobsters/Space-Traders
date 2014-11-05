@@ -21,7 +21,31 @@ package spacetrader;
  * @author Kristen Lawrence
  */
 public enum Laser {
-    PULSE,
-    BEAM,
-    MILITARY
+    PULSE("Pulse Laser", 250, 4, 4),
+    BEAM("Beam Laser", 500, 8, 6),
+    MILITARY("Military Laser", 1000, 12, 7);
+    
+    String name;
+    double price;
+    int power;
+    int minTL;
+    
+    Laser(String name, double price, int power, int minTL) {
+        this.name = name;
+        this.price = price;
+        this.power = power;
+        this.minTL = minTL;
+    }
+    
+    double getPrice() {
+        return price;
+    }
+    
+    int getPower() {
+        return power;
+    }
+    
+    int getMinTL() {
+        return minTL;
+    }
 }
