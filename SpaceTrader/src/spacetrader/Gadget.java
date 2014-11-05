@@ -17,7 +17,7 @@
 package spacetrader;
 
 /**
- *
+ * Gadgets for ship
  * @author Kristen Lawrence
  */
 public enum Gadget {
@@ -31,16 +31,30 @@ public enum Gadget {
     double price;
     int minTL;
     
+    /**
+     * Gadget constructor for enum
+     * @param name string rep
+     * @param price the price of gadget buying or selling
+     * @param minTL the min tech level needed for a planet to sell
+     */
     Gadget(String name, double price, int minTL) {
         this.name = name;
         this.price = price;
         this.minTL = minTL;
     }
     
+    /**
+     * getter for price
+     * @return price a double
+     */
     double getPrice() {
         return price;
     }
     
+    /**
+     * getter for minTL
+     * @return int minTL
+     */
     int getMinTL() {
         return minTL;
     }
