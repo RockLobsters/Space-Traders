@@ -54,16 +54,29 @@ public class Shipyard implements Serializable{
    * @return the total price of newShip minus cargo and price of current ship
    */
   public double shipPrice(Player player, Ship newShip) {
-      ArrayList<Good> cargo = player.getShip().cargo;
-        double cargoVal = 0;
-        Market m = planet.getMarket();
-        for (Good g : cargo) {
-            if (m.getPrice(g) != -1) {
-                cargoVal = cargoVal + m.getPrice(g);
-            }
+    ArrayList<Good> cargo = player.getShip().cargo;
+    ArrayList<Laser> weapons = player.getShip().weapons;
+    ArrayList<Shield> shields = player.getShip().shields;
+    ArrayList<Gadget> gadgets = player.getShip().gadgets;
+    double cargoVal = 0;
+    double equipVal = 0;
+    for (Laser l : weapons) {
+        equipVal = equipVal + l.getPrice();
+    }
+    for (Shield s : shields) {
+        equipVal = equipVal + s.getPrice();
+    }
+    for (Gadget g : gadgets) {
+        equipVal = equipVal + g.getPrice();
+    }
+    Market m = planet.getMarket();
+    for (Good g : cargo) {
+        if (m.getPrice(g) != -1) {
+            cargoVal = cargoVal + m.getPrice(g);
         }
-        double shipPrice = newShip.getPrice() - player.getShip().getPrice() - cargoVal; 
-        return shipPrice;
+    }
+    double shipPrice = newShip.getPrice() - player.getShip().getPrice() - cargoVal - equipVal; 
+    return shipPrice;
   }
   
   /**
@@ -87,6 +100,10 @@ public class Shipyard implements Serializable{
                 return 0;
             }
         }
+        if (player.getShip().getInsurance())
+            newShip.setInsurance(true);
+        if (player.getShip().getEscapePod())
+            newShip.setEscapePod(true);
         player.subtractMoney(cost);
         player.setShip(newShip);
     }
@@ -184,6 +201,52 @@ public class Shipyard implements Serializable{
       return false;
   }
   
+  public boolean buyEscapePod(Player player) {
+      Ship ship = player.getShip();
+      double cost = 200;
+      if(checkWallet(player, cost)) {
+          if(!(ship.getEscapePod())) {
+              ship.setEscapePod(true);
+              player.subtractMoney(cost);
+          }
+      }
+      return false;
+  }
+  
+  public boolean buyInsurance(Player player) {
+      Ship ship = player.getShip();
+      double cost = 750;
+      if(checkWallet(player, cost)) {
+          if(!(ship.getInsurance())) {
+              ship.setInsurance(true);
+              player.subtractMoney(cost);
+          }
+      }
+      return false;
+  }
+  
+  public void sellWeapon(Player player, int index) {
+      player.addMoney(player.getShip().removeWeapon(index));
+  }
+  
+  public void sellShield(Player player, int index) {
+       player.addMoney(player.getShip().removeShield(index));
+  }
+  
+  public void sellGadget(Player player, int index) {
+       player.addMoney(player.getShip().removeGadget(index));
+  }
+  
+  public void sellInsurance(Player player) {
+      player.getShip().setInsurance(false);
+      player.addMoney(500);
+  }
+  
+  public void sellEscapePod(Player player) {
+      player.getShip().setEscapePod(false);
+      player.addMoney(100);
+  }
+  
   /**
    * Lets window now whether or not to display a shipyard option
    * @return true if techLevel is sufficient to support a shipyard otherwise false
@@ -194,7 +257,29 @@ public class Shipyard implements Serializable{
   
   public ArrayList<Laser> visibleWeapons() {
       ArrayList<Laser> weapons = new ArrayList<>();
+      for (Laser l : Laser.values()) {
+          if (l.getMinTL() >= techLevel)
+              weapons.add(l);
+      }
       return weapons;
+  }
+  
+  public ArrayList<Shield> visibleShields() {
+      ArrayList<Shield> shields = new ArrayList<>();
+      for (Shield s : Shield.values()) {
+          if (s.getMinTL() >= techLevel)
+              shields.add(s);
+      }
+      return shields;
+  }
+  
+  public ArrayList<Gadget> visibleGadgets() {
+      ArrayList<Gadget> gadgets = new ArrayList<>();
+      for (Gadget g : Gadget.values()) {
+          if (g.getMinTL() >= techLevel)
+              gadgets.add(g);
+      }
+      return gadgets;
   }
   
   /**
