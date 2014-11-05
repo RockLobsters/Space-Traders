@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Addison Amiri
+ * @author Addison Amiri/Kristen Lawrence
  */
 public class Ship implements Serializable
 {
@@ -190,29 +190,49 @@ public class Ship implements Serializable
             return "";
         }
     }
-    
+    /**
+     * Is there an escape pod on the ship?
+     * @return true if there is false if not
+     */
     public boolean getEscapePod() {
         return escapePod;
     }
-    
+    /**
+     * Give the ship an escape pod
+     * @param b true if adding an escape pod false if selling one
+     */
     public void setEscapePod(boolean b)
     {
         escapePod = b;
     }
-    
+    /**
+     * is the ship insured?
+     * @return ture if it is false if not
+     */
     public boolean getInsurance(){
         return insurance;
     }
-    
+    /**
+     * Insurance price is 1% of ship price
+     * @return the insurance rate to be paid daily
+     */
     public double getInsuranceRate(){
         return BASE_PRICE*.1;
     }
-    
+    /**
+     * Set the Ship to insured or not
+     * @param b true if insured false otherwise
+     */
     public void setInsurance(boolean b)
     {
         insurance = b;
     }
     
+    /**
+     * Upgrade ship with a weapon
+     * @param l the laser to add
+     * @return true if laser added false if not enough slots
+     */
     public boolean addWeapon(Laser l){
         if (weapons.size() == WEAPON_SLOTS) {
             return false;
@@ -221,7 +241,12 @@ public class Ship implements Serializable
         return true;
     }
     
-    public boolean addDefense(Shield s){
+    /**
+     * Upgrade ship with a shield
+     * @param s the shield to add
+     * @return true if shield was added false if not enough slots left
+     */
+    public boolean addShield(Shield s){
         if (shields.size() == SHIELD_SLOTS) {
             return false;
         }
@@ -229,6 +254,11 @@ public class Ship implements Serializable
         return true;
     }
     
+    /**
+     * Upgrade ship with a gadget
+     * @param g the gadget to add
+     * @return true if gadget was added false if not enough slots left
+     */
     public boolean addGadget(Gadget g){
         if (gadgets.size() == GADGET_SLOTS) {
             return false;
@@ -238,16 +268,31 @@ public class Ship implements Serializable
         return true;
     }
     
+    /**
+     * In case of selling remove a weapon from ship
+     * @param index of the weapon to remove
+     * @return double price of the weapon removed
+     */
     public double removeWeapon(int index) {
         Laser l = weapons.remove(index);
         return l.getPrice();
     }
     
+    /**
+     * In case of selling remove shield
+     * @param index of shield to remove
+     * @return double price of the shield
+     */
     public double removeShield(int index) {
         Shield s = shields.remove(index);
         return s.getPrice();
     }
     
+    /**
+     * In case of selling remove gadget
+     * @param index of the gadget to remove
+     * @return double price of the gadget
+     */
     public double removeGadget(int index) {
         Gadget g = gadgets.remove(index);
         return g.getPrice();

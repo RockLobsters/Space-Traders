@@ -176,7 +176,7 @@ public class Shipyard implements Serializable{
       Ship ship = player.getShip();
       double cost = s.getPrice();
       if(checkWallet(player, cost)) {
-          if(ship.addDefense(s)) {
+          if(ship.addShield(s)) {
               player.subtractMoney(cost);
               return true;
           }
@@ -201,6 +201,12 @@ public class Shipyard implements Serializable{
       return false;
   }
   
+  /**
+   * Buy an Escape Pod 
+   * @param player making transaction
+   * @return true if transaction was successful false if player already has 
+   * escape pod or doesn't have enough money
+   */
   public boolean buyEscapePod(Player player) {
       Ship ship = player.getShip();
       double cost = 200;
@@ -213,6 +219,12 @@ public class Shipyard implements Serializable{
       return false;
   }
   
+  /**
+   * Buy Ship Insurance
+   * @param player making transaction
+   * @return true if transaction went through false if player doesn't have 
+   * enough moolah or already has insurance
+   */
   public boolean buyInsurance(Player player) {
       Ship ship = player.getShip();
       double cost = 750;
@@ -225,36 +237,67 @@ public class Shipyard implements Serializable{
       return false;
   }
   
+  /**
+   * Sell a Weapon
+   * @param player making transaction
+   * @param index of the weapon player wants to sell
+   */
   public void sellWeapon(Player player, int index) {
       player.addMoney(player.getShip().removeWeapon(index));
   }
   
+  /**
+   * Sell a Shield
+   * @param player making transaction
+   * @param index of Shield player wants to sell
+   */
   public void sellShield(Player player, int index) {
        player.addMoney(player.getShip().removeShield(index));
   }
   
+  /**
+   * Sell a Gadget
+   * @param player making transaction
+   * @param index of the gadget player wants to sell
+   */
   public void sellGadget(Player player, int index) {
        player.addMoney(player.getShip().removeGadget(index));
   }
   
+  /**
+   * Sell Ship Insurance
+   * @param player making transaction
+   */
   public void sellInsurance(Player player) {
-      player.getShip().setInsurance(false);
-      player.addMoney(500);
-  }
-  
-  public void sellEscapePod(Player player) {
-      player.getShip().setEscapePod(false);
-      player.addMoney(100);
+      if (player.getShip().getInsurance()) {
+        player.getShip().setInsurance(false);
+        player.addMoney(500);
+      }
   }
   
   /**
-   * Lets window now whether or not to display a shipyard option
+   * Sell Player's Escape Pod
+   * @param player making transaction
+   */
+  public void sellEscapePod(Player player) {
+      if (player.getShip().getEscapePod()) {
+        player.getShip().setEscapePod(false);
+        player.addMoney(100);
+      }
+  }
+  
+  /**
+   * Lets window know whether or not to display a shipyard option
    * @return true if techLevel is sufficient to support a shipyard otherwise false
    */
   public boolean makeVisible() {
       return (techLevel >= 4);
   }
   
+  /**
+   * Lets window know whether or not to display higher level weapons
+   * @return an ArrayList<Laser> of visible lasers
+   */
   public ArrayList<Laser> visibleWeapons() {
       ArrayList<Laser> weapons = new ArrayList<>();
       for (Laser l : Laser.values()) {
@@ -264,6 +307,10 @@ public class Shipyard implements Serializable{
       return weapons;
   }
   
+  /**
+   * Lets window know whether or not to display higher level shields
+   * @return an ArrayList<Shield> of visible shields
+   */
   public ArrayList<Shield> visibleShields() {
       ArrayList<Shield> shields = new ArrayList<>();
       for (Shield s : Shield.values()) {
@@ -273,6 +320,11 @@ public class Shipyard implements Serializable{
       return shields;
   }
   
+  
+  /**
+   * Lets window know whether or not to display higher level gadgets
+   * @return an ArrayList<Gadget> of visible gadgets
+   */
   public ArrayList<Gadget> visibleGadgets() {
       ArrayList<Gadget> gadgets = new ArrayList<>();
       for (Gadget g : Gadget.values()) {
