@@ -44,7 +44,6 @@ public class Ship implements Serializable
     public int health;
     public boolean escapePod;
     public boolean insurance;
-    private int extraCargo;
 
     /**
      * The flushed out Ship constructor
@@ -191,11 +190,6 @@ public class Ship implements Serializable
             return "";
         }
     }
-
-//    public int getCargoBays()
-//    {
-//        return CARGO_BAYS + extraCargo;
-//    }
     
     public boolean getEscapePod() {
         return escapePod;
@@ -242,5 +236,20 @@ public class Ship implements Serializable
         gadgets.add(g);
 
         return true;
+    }
+    
+    public double removeWeapon(int index) {
+        Laser l = weapons.remove(index);
+        return l.getPrice();
+    }
+    
+    public double removeShield(int index) {
+        Shield s = shields.remove(index);
+        return s.getPrice();
+    }
+    
+    public double removeGadget(int index) {
+        Gadget g = gadgets.remove(index);
+        return g.getPrice();
     }
 }
