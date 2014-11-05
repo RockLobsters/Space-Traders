@@ -36,9 +36,9 @@ public class Ship implements Serializable
     private final int FUEL_COST;
     private final int BASE_PRICE;
     ArrayList<Good> cargo;
-    Weapon[] weapons;
-    Defense[] defense;
-    Gadget[] gadgets;
+    ArrayList<Weapon> weapons;
+    ArrayList<Defense> defense;
+    ArrayList<Gadget> gadgets;
 
     public int fuel;
     public int health;
@@ -192,10 +192,10 @@ public class Ship implements Serializable
         }
     }
 
-    public int getCargoBays()
-    {
-        return CARGO_BAYS + extraCargo;
-    }
+//    public int getCargoBays()
+//    {
+//        return CARGO_BAYS + extraCargo;
+//    }
     
     public boolean getEscapePod() {
         return escapePod;
@@ -217,5 +217,29 @@ public class Ship implements Serializable
     public void setInsurance(boolean b)
     {
         insurance = b;
+    }
+    
+    public boolean addWeapon(int subtype){
+        if (weapons.size() == WEAPON_SLOTS) {
+            return false;
+        }
+        weapons.add(new Weapon(subtype));
+        return true;
+    }
+    
+    public boolean addDefense(int subtype){
+        if (defense.size() == SHIELD_SLOTS) {
+            return false;
+        }
+        defense.add(new Defense(subtype));
+        return true;
+    }
+    
+    public boolean addGadget(int subtype){
+        if (gadgets.size() == GADGET_SLOTS) {
+            return false;
+        }
+        gadgets.add(new Gadget(subtype));
+        return true;
     }
 }
