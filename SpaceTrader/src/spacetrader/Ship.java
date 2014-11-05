@@ -74,9 +74,9 @@ public class Ship implements Serializable
         this.FUEL_COST = FUEL_COST;
         this.BASE_PRICE = BASE_PRICE;
         cargo = new ArrayList(CARGO_BAYS);
-        weapons = new Weapon[WEAPON_SLOTS];
-        defense = new Defense[SHIELD_SLOTS];
-        gadgets = new Gadget[GADGET_SLOTS];
+        weapons = new ArrayList<Weapon>();
+        defense = new ArrayList<Defense>();
+        gadgets = new ArrayList<Gadget>();
         this.fuel = FUEL_CAPACITY;
         this.health = HULL_STRENGTH;
     }
