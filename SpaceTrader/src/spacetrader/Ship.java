@@ -190,6 +190,7 @@ public class Ship implements Serializable
             return "";
         }
     }
+    
     /**
      * Is there an escape pod on the ship?
      * @return true if there is false if not
@@ -197,6 +198,7 @@ public class Ship implements Serializable
     public boolean getEscapePod() {
         return escapePod;
     }
+    
     /**
      * Give the ship an escape pod
      * @param b true if adding an escape pod false if selling one
@@ -205,6 +207,7 @@ public class Ship implements Serializable
     {
         escapePod = b;
     }
+    
     /**
      * is the ship insured?
      * @return ture if it is false if not
@@ -212,6 +215,7 @@ public class Ship implements Serializable
     public boolean getInsurance(){
         return insurance;
     }
+    
     /**
      * Insurance price is 1% of ship price
      * @return the insurance rate to be paid daily
@@ -219,6 +223,7 @@ public class Ship implements Serializable
     public double getInsuranceRate(){
         return BASE_PRICE*.1;
     }
+    
     /**
      * Set the Ship to insured or not
      * @param b true if insured false otherwise
