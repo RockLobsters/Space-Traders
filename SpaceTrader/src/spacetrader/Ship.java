@@ -36,8 +36,8 @@ public class Ship implements Serializable
     private final int FUEL_COST;
     private final int BASE_PRICE;
     ArrayList<Good> cargo;
-    ArrayList<Weapon> weapons;
-    ArrayList<Defense> defense;
+    ArrayList<Laser> weapons;
+    ArrayList<Shield> shields;
     ArrayList<Gadget> gadgets;
 
     public int fuel;
@@ -74,9 +74,9 @@ public class Ship implements Serializable
         this.FUEL_COST = FUEL_COST;
         this.BASE_PRICE = BASE_PRICE;
         cargo = new ArrayList(CARGO_BAYS);
-        weapons = new ArrayList<Weapon>();
-        defense = new ArrayList<Defense>();
-        gadgets = new ArrayList<Gadget>();
+        weapons = new ArrayList<>();
+        shields = new ArrayList<>();
+        gadgets = new ArrayList<>();
         this.fuel = FUEL_CAPACITY;
         this.health = HULL_STRENGTH;
     }
@@ -219,27 +219,28 @@ public class Ship implements Serializable
         insurance = b;
     }
     
-    public boolean addWeapon(int subtype){
+    public boolean addWeapon(Laser l){
         if (weapons.size() == WEAPON_SLOTS) {
             return false;
         }
-        weapons.add(new Weapon(subtype));
+        weapons.add(l);
         return true;
     }
     
-    public boolean addDefense(int subtype){
-        if (defense.size() == SHIELD_SLOTS) {
+    public boolean addDefense(Shield s){
+        if (shields.size() == SHIELD_SLOTS) {
             return false;
         }
-        defense.add(new Defense(subtype));
+        shields.add(s);
         return true;
     }
     
-    public boolean addGadget(int subtype){
+    public boolean addGadget(Gadget g){
         if (gadgets.size() == GADGET_SLOTS) {
             return false;
         }
-        gadgets.add(new Gadget(subtype));
+        gadgets.add(g);
+
         return true;
     }
 }

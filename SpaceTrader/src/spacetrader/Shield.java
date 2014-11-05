@@ -21,6 +21,31 @@ package spacetrader;
  * @author Kristen Lawrence
  */
 public enum Shield{
-    ENERGY,
-    REFLECTIVE
+    ENERGY("Energy Shield", 250, 5, 5),
+    REFLECTIVE("Reflective Shield", 750, 10, 7);
+    
+    
+    String name;
+    double price;
+    int power;
+    int minTL;
+    
+    Shield(String name, double price, int power, int minTL) {
+        this.name = name;
+        this.price = price;
+        this.power = power;
+        this.minTL = minTL;
+    }
+    
+    double getPrice() {
+        return price;
+    }
+    
+    int getPower() {
+        return power;
+    }
+    
+    int getMinTL() {
+        return minTL;
+    }
 }

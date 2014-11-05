@@ -134,15 +134,54 @@ public class Shipyard implements Serializable{
   }
   
   /**
-   * upgrades ship with equipment (TODO)
-   * @param player 
+   * upgrades ship with a laser
+   * @param player whose money will pay for weapon
+   * @param l the laser to buy
    */
-  public void buyEquipment(Player player, Equipment equip) {
+  public boolean buyWeapon(Player player, Laser l) {
       Ship ship = player.getShip();
-      double cost = equip.getCost();
+      double cost = l.getPrice();
       if(checkWallet(player, cost)) {
-          ship.
+          if(ship.addWeapon(l)) {
+              player.subtractMoney(cost);
+              return true;
+          }
       }
+      return false;
+  }
+  
+  /**
+   * upgrades ship with a shield
+   * @param player whose money will pay for defense
+   * @param d the defense to buy
+   */
+  public boolean buyDefense(Player player, Shield s) {
+      Ship ship = player.getShip();
+      double cost = s.getPrice();
+      if(checkWallet(player, cost)) {
+          if(ship.addDefense(s)) {
+              player.subtractMoney(cost);
+              return true;
+          }
+      }
+      return false;
+  }
+  
+  /**
+   * upgrades ship with a gadget
+   * @param player whose money will pay for gadget
+   * @param g the gadget to buy
+   */
+  public boolean buyGadget(Player player, Gadget g) {
+      Ship ship = player.getShip();
+      double cost = g.getPrice();
+      if(checkWallet(player, cost)) {
+          if(ship.addGadget(g)) {
+              player.subtractMoney(cost);
+              return true;
+          }
+      }
+      return false;
   }
   
   /**
@@ -151,6 +190,11 @@ public class Shipyard implements Serializable{
    */
   public boolean makeVisible() {
       return (techLevel >= 4);
+  }
+  
+  public ArrayList<Laser> visibleWeapons() {
+      ArrayList<Laser> weapons = new ArrayList<>();
+      return weapons;
   }
   
   /**
