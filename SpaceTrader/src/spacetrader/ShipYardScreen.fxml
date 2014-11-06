@@ -51,39 +51,61 @@
                <children>
                   <Accordion layoutY="-50.0" prefHeight="366.0" prefWidth="202.0">
                     <panes>
-                      <TitledPane animated="false" text="UPGRADES">
+                      <TitledPane animated="false" text="EQUIPMENT">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <Accordion layoutX="-1.0" layoutY="-2.0" prefHeight="321.0" prefWidth="202.0">
                                       <panes>
-                                        <TitledPane animated="false" text="Weapon">
+                                        <TitledPane animated="false" onMouseClicked="#weaponsInfo" text="Weapon">
                                           <content>
                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
-                                                      <Text fx:id="weapon1" layoutX="8.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                                                      <Text fx:id="weapon11" layoutX="4.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100000" />
-                                                      <Text layoutX="13.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                                      <Button layoutX="58.0" layoutY="30.0" mnemonicParsing="false" text="Button" />
-                                                      <Button layoutX="58.0" layoutY="95.0" mnemonicParsing="false" text="Button" />
-                                                      <Button layoutX="58.0" layoutY="169.0" mnemonicParsing="false" text="Button" />
+                                                      <Text fx:id="pulseLasers" layoutX="8.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Text fx:id="beamLasers" layoutX="4.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Text fx:id="millitaryLasers" layoutX="13.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Button layoutX="58.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#buyPulseLasers" text="BUY" />
+                                                      <Button layoutX="58.0" layoutY="95.0" mnemonicParsing="false" onMouseClicked="#buyBeamLasers" text="BUY" />
+                                                      <Button layoutX="58.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#buyMilitaryLasers" text="BUY" />
                                                    </children>
                                                 </AnchorPane>
                                           </content>
                                         </TitledPane>
-                                        <TitledPane animated="false" text="Shield">
+                                        <TitledPane animated="false" onMouseClicked="#shieldsInfo" text="Shield">
                                           <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Text fx:id="energyShield" layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Text fx:id="reflectiveShield" layoutX="14.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Button layoutX="83.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#buyEnergyShield" text="BUY" />
+                                                      <Button layoutX="83.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#buyReflectiveShield" text="BUY" />
+                                                   </children></AnchorPane>
                                           </content>
                                         </TitledPane>
-                                        <TitledPane animated="false" text="Gadgets">
+                                        <TitledPane animated="false" onMouseClicked="#gadgetsInfo" text="Gadgets">
                                           <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Button layoutX="143.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#buyNavigatingSystem" text="BUY" />
+                                                      <Button layoutX="143.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#buyAutoRepairSystem" text="BUY" />
+                                                      <Button layoutX="143.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#buyCargoBays" text="BUY" />
+                                                      <Button layoutX="143.0" layoutY="145.0" mnemonicParsing="false" onContextMenuRequested="#buyTargetingSystem" text="BUY" />
+                                                      <Button layoutX="143.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#buyCloakingDevice" text="BUY" />
+                                                      <Text fx:id="cargoBays" layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Text fx:id="navigatingSystem" layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Text fx:id="autoRepairSystem" layoutX="14.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Text fx:id="targetingSystem" layoutX="14.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Text fx:id="cloakingDevice" layoutX="14.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                   </children></AnchorPane>
                                           </content>
                                         </TitledPane>
-                                          <TitledPane animated="false" text="Esacape Pod">
+                                          <TitledPane animated="false" onMouseClicked="#escapePodInfo" text="Esacape Pod">
                                              <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Button layoutX="70.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#buyEscapePod" text="BUY" />
+                                                      <Text fx:id="escapePod" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                   </children></AnchorPane>
                                              </content>
                                           </TitledPane>
                                       </panes>

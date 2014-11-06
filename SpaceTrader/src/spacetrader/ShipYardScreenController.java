@@ -38,6 +38,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.ContextMenuEvent;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
@@ -68,9 +69,27 @@ public class ShipYardScreenController implements Initializable {
     @FXML
     private TextArea bumbleBeeText;
     @FXML
-    private Text weapon1;
+    private Text pulseLasers;
     @FXML
-    private Text weapon11;
+    private Text beamLasers;
+    @FXML
+    private Text millitaryLasers;
+    @FXML
+    private Text energyShield;
+    @FXML
+    private Text reflectiveShield;
+    @FXML
+    private Text cargoBays;
+    @FXML
+    private Text navigatingSystem;
+    @FXML
+    private Text autoRepairSystem;
+    @FXML
+    private Text targetingSystem;
+    @FXML
+    private Text cloakingDevice;
+    @FXML
+    private Text escapePod;
 
     /**
      * Initializes the controller class.
@@ -387,6 +406,66 @@ public class ShipYardScreenController implements Initializable {
     private void bumbleBeeOpen(MouseEvent event) {
         String text = "Price:" + yard.shipPrice(player, new Bumblebee())+ "\n";
         bumbleBeeText.setText(text);
+    }
+
+    @FXML
+    private void buyPulseLasers(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyBeamLasers(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyMilitaryLasers(MouseEvent event) {
+    }
+
+    @FXML
+    private void weaponsInfo(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyEnergyShield(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyReflectiveShield(MouseEvent event) {
+    }
+
+    @FXML
+    private void shieldsInfo(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyNavigatingSystem(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyAutoRepairSystem(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyCargoBays(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyTargetingSystem(ContextMenuEvent event) {
+    }
+
+    @FXML
+    private void buyCloakingDevice(MouseEvent event) {
+    }
+
+    @FXML
+    private void gadgetsInfo(MouseEvent event) {
+    }
+
+    @FXML
+    private void buyEscapePod(MouseEvent event) {
+    }
+
+    @FXML
+    private void escapePodInfo(MouseEvent event) {
     }
     
 }
