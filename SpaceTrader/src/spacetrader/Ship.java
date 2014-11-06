@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Addison Amiri
+ * @author Addison Amiri/Kristen Lawrence
  */
 public class Ship implements Serializable
 {
@@ -36,9 +36,14 @@ public class Ship implements Serializable
     private final int FUEL_COST;
     private final int BASE_PRICE;
     ArrayList<Good> cargo;
+    ArrayList<Laser> weapons;
+    ArrayList<Shield> shields;
+    ArrayList<Gadget> gadgets;
 
     public int fuel;
     public int health;
+    public boolean escapePod;
+    public boolean insurance;
 
     /**
      * The flushed out Ship constructor
@@ -68,6 +73,9 @@ public class Ship implements Serializable
         this.FUEL_COST = FUEL_COST;
         this.BASE_PRICE = BASE_PRICE;
         cargo = new ArrayList(CARGO_BAYS);
+        weapons = new ArrayList<>();
+        shields = new ArrayList<>();
+        gadgets = new ArrayList<>();
         this.fuel = FUEL_CAPACITY;
         this.health = HULL_STRENGTH;
     }
@@ -182,9 +190,125 @@ public class Ship implements Serializable
             return "";
         }
     }
-
-    public int getCargoBays()
+    
+    public int getCargoBays() {
+        int cb = CARGO_BAYS;
+        for (Gadget g: gadgets) {
+            if (g.equals(Gadget.CARGO_BAYS))
+                    cb += 5;
+        }
+        return cb;
+    }
+    
+    /**
+     * Is there an escape pod on the ship?
+     * @return true if there is false if not
+     */
+    public boolean getEscapePod() {
+        return escapePod;
+    }
+    
+    /**
+     * Give the ship an escape pod
+     * @param b true if adding an escape pod false if selling one
+     */
+    public void setEscapePod(boolean b)
     {
-        return CARGO_BAYS;
+        escapePod = b;
+    }
+    
+    /**
+     * is the ship insured?
+     * @return ture if it is false if not
+     */
+    public boolean getInsurance(){
+        return insurance;
+    }
+    
+    /**
+     * Insurance price is 1% of ship price
+     * @return the insurance rate to be paid daily
+     */
+    public double getInsuranceRate(){
+        return BASE_PRICE*.1;
+    }
+    
+    /**
+     * Set the Ship to insured or not
+     * @param b true if insured false otherwise
+     */
+    public void setInsurance(boolean b)
+    {
+        insurance = b;
+    }
+    
+    /**
+     * Upgrade ship with a weapon
+     * @param l the laser to add
+     * @return true if laser added false if not enough slots
+     */
+    public boolean addWeapon(Laser l){
+        if (weapons.size() == WEAPON_SLOTS) {
+            return false;
+        }
+        weapons.add(l);
+        return true;
+    }
+    
+    /**
+     * Upgrade ship with a shield
+     * @param s the shield to add
+     * @return true if shield was added false if not enough slots left
+     */
+    public boolean addShield(Shield s){
+        if (shields.size() == SHIELD_SLOTS) {
+            return false;
+        }
+        shields.add(s);
+        return true;
+    }
+    
+    /**
+     * Upgrade ship with a gadget
+     * @param g the gadget to add
+     * @return true if gadget was added false if not enough slots left
+     */
+    public boolean addGadget(Gadget g){
+        if (gadgets.size() == GADGET_SLOTS) {
+            return false;
+        }
+        gadgets.add(g);
+
+        return true;
+    }
+    
+    /**
+     * In case of selling remove a weapon from ship
+     * @param index of the weapon to remove
+     * @return double price of the weapon removed
+     */
+    public double removeWeapon(int index) {
+        Laser l = weapons.remove(index);
+        return l.getPrice();
+    }
+    
+    /**
+     * In case of selling remove shield
+     * @param index of shield to remove
+     * @return double price of the shield
+     */
+    public double removeShield(int index) {
+        Shield s = shields.remove(index);
+        return s.getPrice();
+    }
+    
+    /**
+     * In case of selling remove gadget
+     * @param index of the gadget to remove
+     * @return double price of the gadget
+     */
+    public double removeGadget(int index) {
+        Gadget g = gadgets.remove(index);
+        return g.getPrice();
     }
 }

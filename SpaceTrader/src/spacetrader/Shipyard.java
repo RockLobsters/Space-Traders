@@ -54,16 +54,29 @@ public class Shipyard implements Serializable{
    * @return the total price of newShip minus cargo and price of current ship
    */
   public double shipPrice(Player player, Ship newShip) {
-      ArrayList<Good> cargo = player.getShip().cargo;
-        double cargoVal = 0;
-        Market m = planet.getMarket();
-        for (Good g : cargo) {
-            if (m.getPrice(g) != -1) {
-                cargoVal = cargoVal + m.getPrice(g);
-            }
+    ArrayList<Good> cargo = player.getShip().cargo;
+    ArrayList<Laser> weapons = player.getShip().weapons;
+    ArrayList<Shield> shields = player.getShip().shields;
+    ArrayList<Gadget> gadgets = player.getShip().gadgets;
+    double cargoVal = 0;
+    double equipVal = 0;
+    for (Laser l : weapons) {
+        equipVal = equipVal + l.getPrice();
+    }
+    for (Shield s : shields) {
+        equipVal = equipVal + s.getPrice();
+    }
+    for (Gadget g : gadgets) {
+        equipVal = equipVal + g.getPrice();
+    }
+    Market m = planet.getMarket();
+    for (Good g : cargo) {
+        if (m.getPrice(g) != -1) {
+            cargoVal = cargoVal + m.getPrice(g);
         }
-        double shipPrice = newShip.getPrice() - player.getShip().getPrice() - cargoVal; 
-        return shipPrice;
+    }
+    double shipPrice = newShip.getPrice() - player.getShip().getPrice() - cargoVal - equipVal; 
+    return shipPrice;
   }
   
   /**
@@ -87,6 +100,10 @@ public class Shipyard implements Serializable{
                 return 0;
             }
         }
+        if (player.getShip().getInsurance())
+            newShip.setInsurance(true);
+        if (player.getShip().getEscapePod())
+            newShip.setEscapePod(true);
         player.subtractMoney(cost);
         player.setShip(newShip);
     }
@@ -134,19 +151,187 @@ public class Shipyard implements Serializable{
   }
   
   /**
-   * upgrades ship with equipment (TODO)
-   * @param player 
+   * upgrades ship with a laser
+   * @param player whose money will pay for weapon
+   * @param l the laser to buy
    */
-  public void buyEquipment(Player player) {
+  public boolean buyWeapon(Player player, Laser l) {
       Ship ship = player.getShip();
+      double cost = l.getPrice();
+      if(checkWallet(player, cost)) {
+          if(ship.addWeapon(l)) {
+              player.subtractMoney(cost);
+              return true;
+          }
+      }
+      return false;
   }
   
   /**
-   * Lets window now whether or not to display a shipyard option
+   * upgrades ship with a shield
+   * @param player whose money will pay for defense
+   * @param d the defense to buy
+   */
+  public boolean buyDefense(Player player, Shield s) {
+      Ship ship = player.getShip();
+      double cost = s.getPrice();
+      if(checkWallet(player, cost)) {
+          if(ship.addShield(s)) {
+              player.subtractMoney(cost);
+              return true;
+          }
+      }
+      return false;
+  }
+  
+  /**
+   * upgrades ship with a gadget
+   * @param player whose money will pay for gadget
+   * @param g the gadget to buy
+   */
+  public boolean buyGadget(Player player, Gadget g) {
+      Ship ship = player.getShip();
+      double cost = g.getPrice();
+      if(checkWallet(player, cost)) {
+          if(ship.addGadget(g)) {
+              player.subtractMoney(cost);
+              return true;
+          }
+      }
+      return false;
+  }
+  
+  /**
+   * Buy an Escape Pod 
+   * @param player making transaction
+   * @return true if transaction was successful false if player already has 
+   * escape pod or doesn't have enough money
+   */
+  public boolean buyEscapePod(Player player) {
+      Ship ship = player.getShip();
+      double cost = 200;
+      if(checkWallet(player, cost)) {
+          if(!(ship.getEscapePod())) {
+              ship.setEscapePod(true);
+              player.subtractMoney(cost);
+          }
+      }
+      return false;
+  }
+  
+  /**
+   * Buy Ship Insurance
+   * @param player making transaction
+   * @return true if transaction went through false if player doesn't have 
+   * enough moolah or already has insurance
+   */
+  public boolean buyInsurance(Player player) {
+      Ship ship = player.getShip();
+      double cost = 750;
+      if(checkWallet(player, cost)) {
+          if(!(ship.getInsurance())) {
+              ship.setInsurance(true);
+              player.subtractMoney(cost);
+          }
+      }
+      return false;
+  }
+  
+  /**
+   * Sell a Weapon
+   * @param player making transaction
+   * @param index of the weapon player wants to sell
+   */
+  public void sellWeapon(Player player, int index) {
+      player.addMoney(player.getShip().removeWeapon(index));
+  }
+  
+  /**
+   * Sell a Shield
+   * @param player making transaction
+   * @param index of Shield player wants to sell
+   */
+  public void sellShield(Player player, int index) {
+       player.addMoney(player.getShip().removeShield(index));
+  }
+  
+  /**
+   * Sell a Gadget
+   * @param player making transaction
+   * @param index of the gadget player wants to sell
+   */
+  public void sellGadget(Player player, int index) {
+       player.addMoney(player.getShip().removeGadget(index));
+  }
+  
+  /**
+   * Sell Ship Insurance
+   * @param player making transaction
+   */
+  public void sellInsurance(Player player) {
+      if (player.getShip().getInsurance()) {
+        player.getShip().setInsurance(false);
+        player.addMoney(500);
+      }
+  }
+  
+  /**
+   * Sell Player's Escape Pod
+   * @param player making transaction
+   */
+  public void sellEscapePod(Player player) {
+      if (player.getShip().getEscapePod()) {
+        player.getShip().setEscapePod(false);
+        player.addMoney(100);
+      }
+  }
+  
+  /**
+   * Lets window know whether or not to display a shipyard option
    * @return true if techLevel is sufficient to support a shipyard otherwise false
    */
   public boolean makeVisible() {
       return (techLevel >= 4);
+  }
+  
+  /**
+   * Lets window know whether or not to display higher level weapons
+   * @return an ArrayList<Laser> of visible lasers
+   */
+  public ArrayList<Laser> visibleWeapons() {
+      ArrayList<Laser> weapons = new ArrayList<>();
+      for (Laser l : Laser.values()) {
+          if (l.getMinTL() <= techLevel)
+              weapons.add(l);
+      }
+      return weapons;
+  }
+  
+  /**
+   * Lets window know whether or not to display higher level shields
+   * @return an ArrayList<Shield> of visible shields
+   */
+  public ArrayList<Shield> visibleShields() {
+      ArrayList<Shield> shields = new ArrayList<>();
+      for (Shield s : Shield.values()) {
+          if (s.getMinTL() <= techLevel)
+              shields.add(s);
+      }
+      return shields;
+  }
+  
+  
+  /**
+   * Lets window know whether or not to display higher level gadgets
+   * @return an ArrayList<Gadget> of visible gadgets
+   */
+  public ArrayList<Gadget> visibleGadgets() {
+      ArrayList<Gadget> gadgets = new ArrayList<>();
+      for (Gadget g : Gadget.values()) {
+          if (g.getMinTL() <= techLevel)
+              gadgets.add(g);
+      }
+      return gadgets;
   }
   
   /**
