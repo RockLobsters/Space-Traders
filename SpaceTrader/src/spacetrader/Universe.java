@@ -46,8 +46,6 @@ public class Universe extends ArrayList<SolarSystem> implements Serializable
      */
     public void bigBang()
     {
-        //Map<int,SolarSystem> lowTL = new ArrayList<>();
-        //Map<SolarSystem> highTL = new ArrayList<>();
         PoliticalSystem[] govs = {new Anarchy(),
             new CapitalistState(), 
             new CommunistState(), 
@@ -70,44 +68,18 @@ public class Universe extends ArrayList<SolarSystem> implements Serializable
 
         gameUniverse = new SolarSystem[9];
         Random rand = new Random();
-        
-        //TODO
-//        //fill game universe array with systems and fill those systems with planets
-//        for (int i = 0; (i+1) < 9; i++) {
-//            int r = rand.nextInt(highTL.size());
-//            SolarSystem systemHigh = highTL.remove(r);
-//            SolarSystem systemLow = lowTL.remove(r);
-//            gameUniverse[i] = systemHigh;
-//            gameUniverse[i+1] = systemLow;
-//            for (int j = 0; j < NUMPLANETS[i]; j++) {
-//                String name = allNames[r*5+j];
-//                Planet p = new Planet(name);
-//                p.setSolarSystem(system);
-//                system.addPlanet(p);
-//            }
-//            wholeUniverse[r] = null;
-//            this.add(system);
-//            r = rand.nextInt(26);
-//            system = wholeUniverse[r];
-//        }
+        boolean high = rand.nextBoolean();
+        SolarSystemFactory fact = new SolarSystemFactory();
+        for(int i = 0; i < 9; i++) {
+            if(high) {
+                gameUniverse[i] = fact.generateHigh(NUMPLANETS[i]);
+            } else {
+                gameUniverse[i] = fact.generateLow(NUMPLANETS[i]);
+            }
+            high = !high;
+        }
     }
 
-    /**
-     * Helper that maintains balance of high and low techlevel systems
-     * @param cur potential solar system to check tech level of
-     * @param prev previous solar system selected to measure against
-     * @return 
-     */
-    private boolean matchTechLevel(SolarSystem cur, SolarSystem prev) {
-        if (cur.getTechLevel() < 4 && prev.getTechLevel() < 4) {
-            return true;
-        }
-        if (cur.getTechLevel() >= 4 && prev.getTechLevel() >= 4) {
-            return true;
-        }
-        return false;
-    }
-    
     /**
      * getter for gameUniverse
      * @return array of the randomly selected solar systems
