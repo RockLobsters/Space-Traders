@@ -77,6 +77,7 @@ public class Universe extends ArrayList<SolarSystem> implements Serializable
                 gameUniverse[i] = fact.generateLow(NUMPLANETS[i]);
             }
             high = !high;
+            this.add(gameUniverse[i]);
         }
     }
 
