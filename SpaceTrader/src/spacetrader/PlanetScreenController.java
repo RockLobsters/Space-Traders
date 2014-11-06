@@ -41,13 +41,13 @@ import javafx.geometry.Pos;
 
 import java.util.Random;
 
-
 /**
  * FXML Controller class
  *
  * @author jackie
  */
-public class PlanetScreenController implements Initializable {
+public class PlanetScreenController implements Initializable
+{
     @FXML
     private Menu fuelTab;
     @FXML
@@ -68,27 +68,32 @@ public class PlanetScreenController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)
+    {
 
         // TODO
         game.setCurrentScreen("PlanetScreen.fxml");
         String s = randEvent();
-        fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()) + "; " + planet.getName() + ". " + s);
+        fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()) + "; "
+                                + planet.getName() + ". " + s);
 
-    }    
+    }
 
     @FXML
-    private void goToStock(MouseEvent event) {
+    private void goToStock(MouseEvent event)
+    {
         //
     }
 
     @FXML
-    private void goToMarket(MouseEvent event)  throws Exception {
+    private void goToMarket(MouseEvent event) throws Exception
+    {
         //randEvent();
         // Game game = GameInstance.getInstance();
         // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
         // look at this ^^^
-        Parent root = FXMLLoader.load(getClass().getResource("MarketScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass()
+                .getResource("MarketScreen.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -99,137 +104,129 @@ public class PlanetScreenController implements Initializable {
     }
 
     @FXML
-    private void goToPersonnel(MouseEvent event) {
+    private void goToPersonnel(MouseEvent event)
+    {
         //
     }
 
     @FXML
-    private void returnToSystem(MouseEvent event) throws Exception {
-       if (ship.getFuel() >0){
+    private void returnToSystem(MouseEvent event) throws Exception
+    {
+        if(ship.getFuel() > 0)
+        {
             //randEvent();
             SolarSystem system = planet.getSolarSystem();
-            ship.setFuel(ship.getFuel()-1);
+            ship.setFuel(ship.getFuel() - 1);
 
-            if (system.getName().equals("Atlantia")) {
-                Parent root = FXMLLoader.load(getClass().getResource("GalOneScreen.fxml"));
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalOneScreen.fxml"));
+            System.out.print(game.getUniverse().indexOf(system));
+            switch(game.getUniverse().indexOf(system))
+            {
+                case 0:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalOneScreen.fxml"));
+                    break;
+                case 1:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalTwoScreen.fxml"));
+                    break;
+                case 2:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalThreeScreen.fxml"));
+                    break;
+                case 3:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalFourScreen.fxml"));
+                    break;
+                case 4:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalFiveScreen.fxml"));
+                    break;
+                case 5:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalSixScreen.fxml"));
+                    break;
+                case 6:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalSevenScreen.fxml"));
+                    break;
+                case 7:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalEightScreen.fxml"));
+                    break;
+                case 8:
+                    root = FXMLLoader.load(getClass().getResource(
+                            "GalNineScreen.fxml"));
+                    break;
+            }
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
 
-                //hide this current window (if this is whant you want
-                ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (system.getName().equals("Bardic Kingdom")) {
-                Parent root = FXMLLoader.load(getClass().getResource("GalTwoScreen.fxml"));
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-
-                //hide this current window (if this is whant you want
-                ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (system.getName().equals("Cyber Alliance")) {
-                Parent root = FXMLLoader.load(getClass().getResource("GalThreeScreen.fxml"));
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-
-                //hide this current window (if this is whant you want
-                ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (system.getName().equals("Disney System")) {
-                Parent root = FXMLLoader.load(getClass().getResource("GalFourScreen.fxml"));
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-
-                //hide this current window (if this is whant you want
-                ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (system.getName().equals("Engles Union")) {
-                Parent root = FXMLLoader.load(getClass().getResource("GalFiveScreen.fxml"));
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-
-                //hide this current window (if this is whant you want
-                ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (system.getName().equals("FamCo Ltd")) {
-                Parent root = FXMLLoader.load(getClass().getResource("GalSixScreen.fxml"));
-               Stage stage = new Stage();
-               stage.setScene(new Scene(root));
-               stage.show();
-
-               //hide this current window (if this is whant you want
-              ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (system.getName().equals("Golding Barrier Rim")) {
-               Parent root = FXMLLoader.load(getClass().getResource("GalSevenScreen.fxml"));
-               Stage stage = new Stage();
-               stage.setScene(new Scene(root));
-               stage.show();
-
-               //hide this current window (if this is whant you want
-               ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (system.getName().equals("Hipee Settlements")) {
-               Parent root = FXMLLoader.load(getClass().getResource("GalEightScreen.fxml"));
-               Stage stage = new Stage();
-               stage.setScene(new Scene(root));
-               stage.show();
-
-             //hide this current window (if this is whant you want
-             ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (system.getName().equals("iGalaxy")) {
-               Parent root = FXMLLoader.load(getClass().getResource("GalNineScreen.fxml"));
-               Stage stage = new Stage();
-               stage.setScene(new Scene(root));
-               stage.show();
-
-               //hide this current window (if this is whant you want
-               ((Node) (event.getSource())).getScene().getWindow().hide();
-             }
-        } else {
+        }
+        else
+        {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text(
+                                    "You do not have enough fuel to travel there."))
+                    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
 
-    private String randEvent() {
+    private String randEvent()
+    {
         Random rand = new Random();
         int x = rand.nextInt(20);
         String string = "";
-        
-        if (x > 15) {
+
+        if(x > 15)
+        {
             //String string = "";
-            
-            if(x == 16){
+
+            if(x == 16)
+            {
                 string = "You found $10!";
                 player.addMoney(100);
-            } else if (x == 15) {
+            }
+            else if(x == 15)
+            {
                 string = "Your fuel tank has a hole in it and some spilled out!";
                 ship.setFuel(ship.getFuel() - 1);
-            } else if (x == 17) {
+            }
+            else if(x == 17)
+            {
                 string = "Pirates raided your ship and took $50!";
                 player.subtractMoney(50);
-            } else if (x==18) {
+            }
+            else if(x == 18)
+            {
                 player.setWantedLevel(player.getWantedLevel() + 1);
-                string = "You accidentally did something illegal. Wanted level: " + player.getWantedLevel();
-            } else if (x==19) {
+                string = "You accidentally did something illegal. Wanted level: "
+                         + player.getWantedLevel();
+            }
+            else if(x == 19)
+            {
                 player.addMoney(100);
                 string = "You found a valueable stone and sold it for $100!";
-            } else if (x==20) {
+            }
+            else if(x == 20)
+            {
                 ship.setFuel(ship.getFuel() + 1);
                 string = "You found some fuel!";
             }
 
             //return string;
-        
             // Stage dialogStage = new Stage();
             // dialogStage.initModality(Modality.WINDOW_MODAL);
             // dialogStage.setScene(new Scene(VBoxBuilder.create().
             // children(new Text(string)).
             // alignment(Pos.CENTER).padding(new Insets(30)).build()));
             // dialogStage.show();
-
             // try {
             //     Thread.sleep(2000);                 //1000 milliseconds is one second.
             // } catch(InterruptedException ex) {
@@ -239,20 +236,22 @@ public class PlanetScreenController implements Initializable {
         return string;
     }
 
-     @FXML
-    private void saveGame(MouseEvent event) throws Exception {
+    @FXML
+    private void saveGame(MouseEvent event) throws Exception
+    {
         GameInstance.saveModelBinary();
     }
 
     @FXML
-    private void exit(MouseEvent event) throws Exception {
+    private void exit(MouseEvent event) throws Exception
+    {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-            //hide this current window (if this is whant you want
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+        //hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-    
+
 }
