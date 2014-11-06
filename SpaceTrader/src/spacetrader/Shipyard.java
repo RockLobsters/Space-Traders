@@ -155,16 +155,18 @@ public class Shipyard implements Serializable{
    * @param player whose money will pay for weapon
    * @param l the laser to buy
    */
-  public boolean buyWeapon(Player player, Laser l) {
+  public int buyWeapon(Player player, Laser l) {
       Ship ship = player.getShip();
       double cost = l.getPrice();
       if(checkWallet(player, cost)) {
           if(ship.addWeapon(l)) {
               player.subtractMoney(cost);
-              return true;
+              return 1;
+          } else {
+              return 0;
           }
       }
-      return false;
+      return -1;
   }
   
   /**
@@ -172,16 +174,18 @@ public class Shipyard implements Serializable{
    * @param player whose money will pay for defense
    * @param d the defense to buy
    */
-  public boolean buyDefense(Player player, Shield s) {
+  public int buyDefense(Player player, Shield s) {
       Ship ship = player.getShip();
       double cost = s.getPrice();
       if(checkWallet(player, cost)) {
           if(ship.addShield(s)) {
               player.subtractMoney(cost);
-              return true;
+              return 1;
+          } else {
+              return 0;
           }
       }
-      return false;
+      return -1;
   }
   
   /**
@@ -189,16 +193,18 @@ public class Shipyard implements Serializable{
    * @param player whose money will pay for gadget
    * @param g the gadget to buy
    */
-  public boolean buyGadget(Player player, Gadget g) {
+  public int buyGadget(Player player, Gadget g) {
       Ship ship = player.getShip();
       double cost = g.getPrice();
       if(checkWallet(player, cost)) {
           if(ship.addGadget(g)) {
               player.subtractMoney(cost);
-              return true;
+              return 1;
+          } else {
+              return 0;
           }
       }
-      return false;
+      return -1;
   }
   
   /**
@@ -207,16 +213,19 @@ public class Shipyard implements Serializable{
    * @return true if transaction was successful false if player already has 
    * escape pod or doesn't have enough money
    */
-  public boolean buyEscapePod(Player player) {
+  public int buyEscapePod(Player player) {
       Ship ship = player.getShip();
       double cost = 200;
       if(checkWallet(player, cost)) {
           if(!(ship.getEscapePod())) {
               ship.setEscapePod(true);
               player.subtractMoney(cost);
+              return 1;
+          } else {
+              return 0;
           }
       }
-      return false;
+      return -1;
   }
   
   /**

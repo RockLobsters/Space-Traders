@@ -57,7 +57,7 @@ public class ShipYardScreenController implements Initializable {
     private Shipyard yard = new Shipyard(player.getCurrentLocation());
     private Laser laserType;
     private Gadget gadgetType;
-    private Shield sheildType;
+    private Shield shieldType;
 
     @FXML
     private Text shipName;
@@ -93,15 +93,20 @@ public class ShipYardScreenController implements Initializable {
     private Text escapePod;
     @FXML
     private Text militaryLasers;
+    @FXML
+    private Text money;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        shipName.setText("Current Ship: " + ship.getName() + "    Money: " + player.getMoney());
+        shipName.setText("Current Ship: " + ship.getName());
+        money.setText("Money: " + player.getMoney());
+        escapePod.setText("Price: 200");
         setLaser();
-        
+        setGadget();
+        setSheild();
     } 
     
     private void setLaser(){
@@ -134,30 +139,67 @@ public class ShipYardScreenController implements Initializable {
         }
     }
     
+    private void setSheild(){
+        Shield[] allShields = Shield.values();
+        ArrayList<Shield> shields = Shipyard.visibleShields();
+        for (Shield allWeapon : allShields) {
+            switch (allWeapon) {
+                case ENERGY:
+                    if(shields.contains(shieldType.ENERGY)){
+                        energyShield.setText("Price: " + shieldType.ENERGY.getPrice());
+                    } else {
+                        energyShield.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+                case REFLECTIVE:
+                    if(shields.contains(shieldType.REFLECTIVE)){
+                        reflectiveShield.setText("Price: " + shieldType.REFLECTIVE.getPrice());
+                    } else {
+                        reflectiveShield.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+            }
+        }
+    }
+    
     private void setGadget(){
         Gadget[] allGadgets = Gadget.values();
-        ArrayList<Gadget> weapons = Shipyard.visibleGadgets();
+        ArrayList<Gadget> gadgets = Shipyard.visibleGadgets();
         for (Gadget allGadget : allGadgets) {
             switch (allGadget) {
                 case CARGO_BAYS:
-                    if(weapons.contains(laserType.PULSE)){
-                        pulseLasers.setText("Price: " + laserType.PULSE.getPrice());
+                    if(gadgets.contains(gadgetType.CARGO_BAYS)){
+                        cargoBays.setText("Price: " + gadgetType.CARGO_BAYS.getPrice());
                     } else {
-                        pulseLasers.setText("NOT SOLD IN THIS MARKET");
+                        cargoBays.setText("NOT SOLD IN THIS MARKET");
                     }
                     break;
                 case NAV_SYSTEM:
-                    if(weapons.contains(laserType.BEAM)){
-                        beamLasers.setText("Price: " + laserType.BEAM.getPrice());
+                    if(gadgets.contains(gadgetType.NAV_SYSTEM)){
+                        navigatingSystem.setText("Price: " + gadgetType.NAV_SYSTEM.getPrice());
                     } else {
-                        beamLasers.setText("NOT SOLD IN THIS MARKET");
+                        navigatingSystem.setText("NOT SOLD IN THIS MARKET");
                     }
                     break;
                 case AUTO_REPAIR_SYSTEM:
-                    if(weapons.contains(laserType.MILITARY)){
-                        militaryLasers.setText("Price: " + laserType.MILITARY.getPrice());
+                    if(gadgets.contains(gadgetType.AUTO_REPAIR_SYSTEM)){
+                        autoRepairSystem.setText("Price: " + gadgetType.AUTO_REPAIR_SYSTEM.getPrice());
                     } else {
-                        militaryLasers.setText("NOT SOLD IN THIS MARKET");
+                        autoRepairSystem.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+                case TARGET_SYSTEM:
+                    if(gadgets.contains(gadgetType.TARGET_SYSTEM)){
+                        targetingSystem.setText("Price: " + gadgetType.TARGET_SYSTEM.getPrice());
+                    } else {
+                        targetingSystem.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+                case CLOAK_DEVICE:
+                    if(gadgets.contains(gadgetType.CLOAK_DEVICE)){
+                        cloakingDevice.setText("Price: " + gadgetType.CLOAK_DEVICE.getPrice());
+                    } else {
+                        cloakingDevice.setText("NOT SOLD IN THIS MARKET");
                     }
                     break;
             }
@@ -199,7 +241,8 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Flea(), true);
-                        shipName.setText("Current Ship: Flea" + "   Money: " + player.getMoney());
+                        shipName.setText("Current Ship: Flea");
+                        money.setText("Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -215,7 +258,8 @@ public class ShipYardScreenController implements Initializable {
             }
             if (success == 1) {
                 
-                shipName.setText("Current Ship: Flea" + "   Money: " + player.getMoney());
+                shipName.setText("Current Ship: Flea");
+                money.setText("Money: " + player.getMoney());
             }
         } else {
 
@@ -248,7 +292,8 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Gnat(), true);
-                        shipName.setText("Current Ship: Gnat" + "   Money: " + player.getMoney());
+                        shipName.setText("Current Ship: Gnat");
+                        money.setText("Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -263,7 +308,8 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: Gnat" + "   Money: " + player.getMoney());
+                shipName.setText("Current Ship: Gnat");
+                money.setText("Money: " + player.getMoney());
             }
         } else {
 
@@ -296,7 +342,8 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Firefly(), true);
-                        shipName.setText("Current Ship: Firefly" + "    Money: " + player.getMoney());
+                        shipName.setText("Current Ship: Firefly");
+                        money.setText("Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -311,7 +358,8 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: Firefly" + "    Money: " + player.getMoney());
+                shipName.setText("Current Ship: Firefly");
+                money.setText("Money: " + player.getMoney());
             }
         } else {
 
@@ -344,7 +392,8 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Mosquito(), true);
-                        shipName.setText("Current Ship: Mosquito" + "   Money: " + player.getMoney());
+                        shipName.setText("Current Ship: Mosquito");
+                        money.setText("Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -359,7 +408,8 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: Mosquito" + "   Money: " + player.getMoney());
+                shipName.setText("Current Ship: Mosquito");
+                money.setText("Money: " + player.getMoney());
             }
         } else {
 
@@ -392,7 +442,8 @@ public class ShipYardScreenController implements Initializable {
 
                     if (response == Dialog.ACTION_YES) {
                         success = yard.buyShip(player, new Bumblebee(), true);
-                        shipName.setText("Current Ship: Bumblebee" + "  Money: " + player.getMoney());
+                        shipName.setText("Current Ship: Bumblebee");
+                        money.setText("Money: " + player.getMoney());
                     } else {
                     // ... user cancelled, reset form to default
                         return;
@@ -407,7 +458,8 @@ public class ShipYardScreenController implements Initializable {
                 dialogStage.show();
             }
             if (success == 1) {
-                shipName.setText("Current Ship: Bumblebee" + "  Money: " + player.getMoney());
+                shipName.setText("Current Ship: Bumblebee");
+                money.setText("Money: " + player.getMoney());
             }
         } else {
 
@@ -474,102 +526,272 @@ public class ShipYardScreenController implements Initializable {
 
     @FXML
     private void buyPulseLasers(MouseEvent event) {
+        int success = yard.buyWeapon(player, laserType.PULSE);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough weapon space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        
     }
 
     @FXML
     private void buyBeamLasers(MouseEvent event) {
+         int success = yard.buyWeapon(player, laserType.BEAM);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough weapon space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
     @FXML
     private void buyMilitaryLasers(MouseEvent event) {
+        int success = yard.buyWeapon(player, laserType.MILITARY);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough weapon space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
-    @FXML
-    private void weaponsInfo(MouseEvent event) {
-    }
 
     @FXML
     private void buyEnergyShield(MouseEvent event) {
+        int success = yard.buyDefense(player, shieldType.ENERGY);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough sheild space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
     @FXML
     private void buyReflectiveShield(MouseEvent event) {
+        int success = yard.buyDefense(player, shieldType.REFLECTIVE);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough sheild space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
-    @FXML
-    private void shieldsInfo(MouseEvent event) {
-    }
 
     @FXML
     private void buyNavigatingSystem(MouseEvent event) {
+        int success = yard.buyGadget(player, gadgetType.NAV_SYSTEM);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough gadget space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
     @FXML
     private void buyAutoRepairSystem(MouseEvent event) {
+        int success = yard.buyGadget(player, gadgetType.AUTO_REPAIR_SYSTEM);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough gadget space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
     @FXML
     private void buyCargoBays(MouseEvent event) {
+        int success = yard.buyGadget(player, gadgetType.CARGO_BAYS);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough gadget space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
     @FXML
     private void buyTargetingSystem(ContextMenuEvent event) {
+        int success = yard.buyGadget(player, gadgetType.TARGET_SYSTEM);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough gadget space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
     @FXML
     private void buyCloakingDevice(MouseEvent event) {
+        int success = yard.buyGadget(player, gadgetType.CLOAK_DEVICE);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You do not have enough gadget space.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
-    @FXML
-    private void gadgetsInfo(MouseEvent event) {
-    }
 
     @FXML
     private void buyEscapePod(MouseEvent event) {
+        int success = yard.buyEscapePod(player);
+        if(success == 1){
+            money.setText("Money: " + player.getMoney());
+        }
+        if (success == 0){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You already have an escape pod.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
+        if (success == -1){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot afford this.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+        }
     }
 
-    @FXML
-    private void escapePodInfo(MouseEvent event) {
-    }
 
-    @FXML
-    private void sellPulseLasers(MouseEvent event) {
-    }
-
-    @FXML
-    private void sellBeamLasers(MouseEvent event) {
-    }
-
-    @FXML
-    private void sellMilitaryLasers(MouseEvent event) {
-    }
-
-    @FXML
-    private void sellEnergyShield(MouseEvent event) {
-    }
-
-    @FXML
-    private void sellReflectiveShield(MouseEvent event) {
-    }
-
-    @FXML
-    private void sellCargoBays(MouseEvent event) {
-    }
-
-    @FXML
-    private void sellNavigatingSystem(MouseEvent event) {
-    }
-
-    @FXML
-    private void sellAutoRepairSystem(MouseEvent event) {
-    }
-
-    @FXML
-    private void sellTargetingSystem(ContextMenuEvent event) {
-    }
-
-    @FXML
-    private void sellCloakingDevice(MouseEvent event) {
-    }
     
 }
