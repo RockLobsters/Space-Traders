@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package spacetrader;
 
 import java.net.URL;
@@ -44,6 +43,7 @@ import javafx.geometry.Pos;
  * @author sydnipeterson
  */
 public class UniverseScreenController implements Initializable {
+
     @FXML
     private BorderPane MenuButton;
     @FXML
@@ -80,12 +80,13 @@ public class UniverseScreenController implements Initializable {
         // TODO
         //fuelTab.setText("Fuel: ");
         fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()));
-    }    
+    }
 
     /**
-    * Returns to main menu when clicked
-    * @event   the event that triggers this action
-    */
+     * Returns to main menu when clicked
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void ReturnMainMenu(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
@@ -98,13 +99,14 @@ public class UniverseScreenController implements Initializable {
     }
 
     /**
-    * Takes player to first galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to first galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal1(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -116,25 +118,27 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
 
     /**
-    * Takes player to fourth galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to fourth galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal4(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -146,26 +150,27 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
 
-
     /**
-    * Takes player to seventh galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to seventh galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal7(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -177,26 +182,27 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
 
-
     /**
-    * Takes player to fifth galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to fifth galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal5(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -208,26 +214,27 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
 
-
     /**
-    * Takes player to second galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to second galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal2(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -239,25 +246,27 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
 
     /**
-    * Takes player to eigth galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to eigth galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal8(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -269,25 +278,27 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
 
     /**
-    * Takes player to three galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to three galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal3(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -299,26 +310,27 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
 
-
     /**
-    * Takes player to sixth galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to sixth galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal6(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -330,26 +342,27 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
 
-
     /**
-    * Takes player to nineth (0) galaxy
-    * @event   the event that triggers this action
-    */
+     * Takes player to nineth (0) galaxy
+     *
+     * @event the event that triggers this action
+     */
     @FXML
     private void goToGal0(MouseEvent event) throws Exception {
-         if (ship.getFuel() >0){
-            ship.setFuel(ship.getFuel()-1);
+        if (ship.getFuel() > 0) {
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -361,45 +374,42 @@ public class UniverseScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
 
     }
-    
 
     /**
-    * Saves the game
-    * @param event  mouse event of when user clicks on "SAVE" button
-    */
+     * Saves the game
+     *
+     * @param event mouse event of when user clicks on "SAVE" button
+     */
     @FXML
     private void saveGame(MouseEvent event) {
         GameInstance.saveModelBinary();
     }
 
-
     /**
-    * Exits the game and returns to the main screen
-    * @param event  mouse event of when user clicks on "EXIT" button
-    */
+     * Exits the game and returns to the main screen
+     *
+     * @param event mouse event of when user clicks on "EXIT" button
+     */
     @FXML
     private void exit(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-            //hide this current window (if this is whant you want
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+        //hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
-    
-    
-
-    
 }

@@ -9,111 +9,111 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.GalFiveScreenController">
-   <children>
-      <ImageView fitHeight="410.0" fitWidth="635.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@stars.png" />
-         </image>
-      </ImageView>
-      <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <bottom>
-            <MenuBar BorderPane.alignment="CENTER">
-              <menus>
-                <Menu mnemonicParsing="false">
-                     <graphic>
-                        <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="SAVE">
-                           <effect>
-                              <ColorAdjust brightness="-0.38" />
-                           </effect>
-                        </Button>
-                     </graphic>
-                </Menu>
-                  <Menu mnemonicParsing="false">
-                     <graphic>
-                        <Button mnemonicParsing="false" onMouseClicked="#exit" text="EXIT">
-                           <effect>
-                              <ColorAdjust brightness="-0.38" />
-                           </effect>
-                        </Button>
-                     </graphic>
-                  </Menu>
-                <Menu mnemonicParsing="false">
-                     <graphic>
-                        <Button mnemonicParsing="false" onMouseClicked="#returnToSolar" text="RETURN">
-                           <effect>
-                              <ColorAdjust brightness="-0.38" />
-                           </effect>
-                        </Button>
-                     </graphic>
-                </Menu>
-                <Menu fx:id="fuelTab" mnemonicParsing="false" />
-              </menus>
-               <effect>
-                  <ColorAdjust brightness="-0.05" contrast="0.36" hue="1.0" saturation="0.43" />
-               </effect>
-            </MenuBar>
-         </bottom>
-         <right>
-            <ImageView fitHeight="361.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <image>
-                  <Image url="@galexy5.png" />
-               </image>
-            </ImageView>
-         </right>
-      </BorderPane>
-      <GridPane prefHeight="374.0" prefWidth="621.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ImageView fx:id="marxPrime" fitHeight="80.0" fitWidth="80.0" onMouseClicked="#goToMarxPrime" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@plan5.png" />
-               </image>
-               <effect>
-                  <ColorAdjust contrast="0.26" hue="0.48" />
-               </effect>
-            </ImageView>
-            <ImageView fx:id="goryeo" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#goToGoryeo" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@plan2.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.38" contrast="0.26" hue="-0.6" saturation="1.0" />
-               </effect>
-            </ImageView>
-            <ImageView fx:id="shina" fitHeight="97.0" fitWidth="79.0" onMouseClicked="#goToShina" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@plan7.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.31" contrast="-0.6" hue="0.64" saturation="1.0" />
-               </effect>
-            </ImageView>
-            <ImageView fx:id="kuba" fitHeight="63.0" fitWidth="39.0" onMouseClicked="#goToKuba" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@plan9.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.31" contrast="0.38" hue="-0.17" saturation="0.14" />
-               </effect>
-            </ImageView>
-         </children>
-      </GridPane>
-   </children>
+    <children>
+        <ImageView fitHeight="410.0" fitWidth="635.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@stars.png" />
+            </image>
+        </ImageView>
+        <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <bottom>
+                <MenuBar BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="SAVE">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button mnemonicParsing="false" onMouseClicked="#exit" text="EXIT">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button mnemonicParsing="false" onMouseClicked="#returnToSolar" text="RETURN">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu fx:id="fuelTab" mnemonicParsing="false" />
+                    </menus>
+                    <effect>
+                        <ColorAdjust brightness="-0.05" contrast="0.36" hue="1.0" saturation="0.43" />
+                    </effect>
+                </MenuBar>
+            </bottom>
+            <right>
+                <ImageView fitHeight="361.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                    <image>
+                        <Image url="@galexy5.png" />
+                    </image>
+                </ImageView>
+            </right>
+        </BorderPane>
+        <GridPane prefHeight="374.0" prefWidth="621.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <ImageView fx:id="marxPrime" fitHeight="80.0" fitWidth="80.0" onMouseClicked="#goToMarxPrime" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <image>
+                        <Image url="@plan5.png" />
+                    </image>
+                    <effect>
+                        <ColorAdjust contrast="0.26" hue="0.48" />
+                    </effect>
+                </ImageView>
+                <ImageView fx:id="goryeo" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#goToGoryeo" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                    <image>
+                        <Image url="@plan2.png" />
+                    </image>
+                    <effect>
+                        <ColorAdjust brightness="0.38" contrast="0.26" hue="-0.6" saturation="1.0" />
+                    </effect>
+                </ImageView>
+                <ImageView fx:id="shina" fitHeight="97.0" fitWidth="79.0" onMouseClicked="#goToShina" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <image>
+                        <Image url="@plan7.png" />
+                    </image>
+                    <effect>
+                        <ColorAdjust brightness="0.31" contrast="-0.6" hue="0.64" saturation="1.0" />
+                    </effect>
+                </ImageView>
+                <ImageView fx:id="kuba" fitHeight="63.0" fitWidth="39.0" onMouseClicked="#goToKuba" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                    <image>
+                        <Image url="@plan9.png" />
+                    </image>
+                    <effect>
+                        <ColorAdjust brightness="0.31" contrast="0.38" hue="-0.17" saturation="0.14" />
+                    </effect>
+                </ImageView>
+            </children>
+        </GridPane>
+    </children>
 </AnchorPane>

@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package spacetrader;
 
 import java.net.URL;
@@ -46,6 +45,7 @@ import javafx.scene.control.TextArea;
  * @author sydnipeterson
  */
 public class MarketScreenController implements Initializable {
+
     @FXML
     private TitledPane waterTab;
     @FXML
@@ -171,8 +171,6 @@ public class MarketScreenController implements Initializable {
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     @FXML
     private TextArea cargoBox;
-    
-    
 
     /**
      * Initializes the controller class.
@@ -182,7 +180,7 @@ public class MarketScreenController implements Initializable {
         String print = "Money: " + Double.toString(player.getMoney()) + "\n";
         print = print + ship.cargoToString();
         cargoBox.setText(print);
-    }    
+    }
 
     @FXML
     private void waterTabOpen(MouseEvent event) {
@@ -191,9 +189,6 @@ public class MarketScreenController implements Initializable {
         waterPrice.setText(Double.toString(price));
         waterQuantity.setText(Integer.toString(quantity));
     }
-
-
-
 
     @FXML
     private void furTabOpen(MouseEvent event) {
@@ -266,8 +261,7 @@ public class MarketScreenController implements Initializable {
         robotsPrice.setText(Double.toString(price));
         robotsQuantity.setText(Integer.toString(quantity));
     }
-    
-    
+
     private double getPrice(GoodType type) {
         return market.getPrice(new Good(type, 0));
     }
@@ -276,7 +270,6 @@ public class MarketScreenController implements Initializable {
         return market.getQuantity(new Good(type, 0));
     }
 
-  
     @FXML
     private void openTab(MouseEvent event) {
     }
@@ -294,12 +287,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy more than you can hold or afford.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -310,7 +304,7 @@ public class MarketScreenController implements Initializable {
     private void handleWaterSellAction(ActionEvent event) {
         int quan = Integer.parseInt(waterToBuy.getText());
         boolean success = market.sell(GoodType.WATER, quan, player);
-        
+
         if (success) {
             double price = getPrice(GoodType.WATER);
             int quantity = getQuantity(GoodType.WATER);
@@ -319,12 +313,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot sell this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -343,12 +338,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot sell this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -359,7 +355,6 @@ public class MarketScreenController implements Initializable {
         int quan = Integer.parseInt(furToBuy.getText());
         boolean success = market.buy(GoodType.FUR, quan, player);
 
-
         if (success) {
             double price = getPrice(GoodType.FUR);
             int quantity = getQuantity(GoodType.FUR);
@@ -368,12 +363,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy more than you can hold or afford.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -392,12 +388,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy more than you can hold or afford.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -416,12 +413,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot sell this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -440,12 +438,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot sell this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -464,12 +463,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy more than you can hold or afford.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -488,12 +488,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy more than you can hold or afford.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -512,12 +513,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot sell this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -536,12 +538,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot sell this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -560,12 +563,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy more than you can hold or afford.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -584,12 +588,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy more than you can hold or afford.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -608,12 +613,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot sell this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -632,12 +638,13 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot sell this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
@@ -656,23 +663,26 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy more than you can hold or afford.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
     }
+
     /**
-    * Returns the user to the PlanetScreen when the button is clicked
-    * @param event   occours when the user clicks on the "RETURN" button
-    */
+     * Returns the user to the PlanetScreen when the button is clicked
+     *
+     * @param event occours when the user clicks on the "RETURN" button
+     */
 
     @FXML
-    private void returnToPlanet(MouseEvent event) throws Exception{
+    private void returnToPlanet(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -683,7 +693,4 @@ public class MarketScreenController implements Initializable {
 
     }
 
-
-    
 }
-

@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package spacetrader;
 
 import java.io.Serializable;
@@ -23,10 +22,11 @@ import java.io.Serializable;
  *
  * @author Kristen Lawrence
  */
-public class Good implements Serializable{
+public class Good implements Serializable {
+
     GoodType type; //the type of good
     int quantity;
-    
+
     int basePrice; //what it sounds like
     int MTLP; //minimum tech level needed to produce the good
     int MTLU; //minimum tech level needed to use the good
@@ -38,13 +38,13 @@ public class Good implements Serializable{
     int MTL; //min price offered in space trade with random trader
     int MTH; //max price offered in space trade with random trader
     double price; //final price
-    
+
     public Good(GoodType gType, int q) {
         this.type = gType;
         this.quantity = q;
         setValues();
     }
-    
+
     protected void setValues() {
         switch (type) {
             case WATER:
@@ -57,7 +57,7 @@ public class Good implements Serializable{
                 this.CR = 4;
                 this.ER = 3;
                 break;
-                    
+
             case FUR:
                 this.basePrice = 250;
                 this.MTLP = 0;
@@ -68,7 +68,7 @@ public class Good implements Serializable{
                 this.CR = 7;
                 this.ER = 8;
                 break;
-                
+
             case FOOD:
                 this.basePrice = 100;
                 this.MTLP = 1;
@@ -79,7 +79,7 @@ public class Good implements Serializable{
                 this.CR = 5;
                 this.ER = 6;
                 break;
-                
+
             case ORE:
                 this.basePrice = 350;
                 this.MTLP = 2;
@@ -90,7 +90,7 @@ public class Good implements Serializable{
                 this.CR = 1;
                 this.ER = 2;
                 break;
-                
+
             case GAMES:
                 this.basePrice = 250;
                 this.MTLP = 3;
@@ -101,7 +101,7 @@ public class Good implements Serializable{
                 this.CR = 11;
                 this.ER = -1;
                 break;
-            
+
             case FIREARMS:
                 this.basePrice = 1250;
                 this.MTLP = 3;
@@ -112,7 +112,7 @@ public class Good implements Serializable{
                 this.CR = 12;
                 this.ER = -1;
                 break;
-                
+
             case MEDICINE:
                 this.basePrice = 650;
                 this.MTLP = 4;
@@ -123,7 +123,7 @@ public class Good implements Serializable{
                 this.CR = 10;
                 this.ER = -1;
                 break;
-            
+
             case MACHINES:
                 this.basePrice = 900;
                 this.MTLP = 4;
@@ -133,8 +133,8 @@ public class Good implements Serializable{
                 this.var = 5;
                 this.CR = -1;
                 this.ER = -1;
-                break;    
-            
+                break;
+
             case NARCOTICS:
                 this.basePrice = 3500;
                 this.MTLP = 5;
@@ -144,8 +144,8 @@ public class Good implements Serializable{
                 this.var = 150;
                 this.CR = 9;
                 this.ER = -1;
-                break;    
-                
+                break;
+
             case ROBOTS:
                 this.basePrice = 5000;
                 this.MTLP = 6;
@@ -155,57 +155,68 @@ public class Good implements Serializable{
                 this.var = 100;
                 this.CR = -1;
                 this.ER = -1;
-                break; 
-            
+                break;
+
         }
     }
-        
+
     protected GoodType getType() {
         return type;
     }
-    
+
     protected int getQuantity() {
         return quantity;
     }
-    
+
     protected void setQuantity(int newQ) {
         this.quantity = newQ;
     }
-    
+
     protected int getBasePrice() {
         return basePrice;
     }
+
     protected int getMTLP() {
         return MTLP;
     }
+
     protected int getMTLU() {
         return MTLU;
-    } 
+    }
+
     protected int getTTP() {
         return TTP;
-    } 
+    }
+
     protected int getIPL() {
         return IPL;
     }
+
     protected int getVar() {
         return var;
-    } 
+    }
+
     protected int getCR() {
         return CR;
-    } 
+    }
+
     protected int getER() {
         return ER;
     }
+
     protected int getMTL() {
         return MTL;
     }
+
     protected int MTH() {
         return MTH;
-    }   
+    }
+
     protected double getPrice() {
         return price;
     }
-    protected void setPrice(double p){
+
+    protected void setPrice(double p) {
         this.price = p;
     }
 }

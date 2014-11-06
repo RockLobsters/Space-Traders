@@ -36,13 +36,13 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
-
 /**
  * FXML Controller class
  *
  * @author sydnipeterson
  */
 public class GalSevenScreenController implements Initializable {
+
     @FXML
     private Menu fuelTab;
     @FXML
@@ -57,7 +57,6 @@ public class GalSevenScreenController implements Initializable {
 
     private Game game = GameInstance.getInstance();
 
-
     private SolarSystem solar = universe.get(6);
 
     /**
@@ -66,21 +65,23 @@ public class GalSevenScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game.setCurrentScreen("GalSevenScreen.fxml");
-       String s = randEvent();
+        String s = randEvent();
         // TODO
         fuelTab.setText("Fuel: " + ship.getFuel() + ". " + s);
         // TODO
-    }    
-/**
-    * Goes to the CastleRock planet when planet image is clicked on
-    * @param event   occours when the user clicks on the planet
-    */
+    }
+
+    /**
+     * Goes to the CastleRock planet when planet image is clicked on
+     *
+     * @param event occours when the user clicks on the planet
+     */
     @FXML
-    private void goToCastleRockPlan(MouseEvent event) throws Exception{
-        if (ship.getFuel() >=0){
+    private void goToCastleRockPlan(MouseEvent event) throws Exception {
+        if (ship.getFuel() >= 0) {
             //randEvent();
 
-            ship.setFuel(ship.getFuel()-1);
+            ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(0));
 
             //Game game = GameInstance.getInstance();
@@ -93,25 +94,28 @@ public class GalSevenScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
-/**
-    * Goes to the Lotf planet when planet image is clicked on
-    * @param event   occours when the user clicks on the planet
-    */
+
+    /**
+     * Goes to the Lotf planet when planet image is clicked on
+     *
+     * @param event occours when the user clicks on the planet
+     */
     @FXML
-    private void goToLotfPlan(MouseEvent event) throws Exception{
-        if (ship.getFuel() >0){
+    private void goToLotfPlan(MouseEvent event) throws Exception {
+        if (ship.getFuel() > 0) {
             //randEvent();
 
-            ship.setFuel(ship.getFuel()-1);
+            ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(1));
 
             //Game game = GameInstance.getInstance();
@@ -124,26 +128,28 @@ public class GalSevenScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
 
     /**
-    * Goes to the Island planet when planet image is clicked on
-    * @param event   occours when the user clicks on the planet
-    */
+     * Goes to the Island planet when planet image is clicked on
+     *
+     * @param event occours when the user clicks on the planet
+     */
     @FXML
-    private void goToTheIslandPlan(MouseEvent event) throws Exception{
-        if (ship.getFuel() >0){
+    private void goToTheIslandPlan(MouseEvent event) throws Exception {
+        if (ship.getFuel() > 0) {
             //randEvent();
 
-            ship.setFuel(ship.getFuel()-1);
+            ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(2));
 
             //Game game = GameInstance.getInstance();
@@ -156,26 +162,28 @@ public class GalSevenScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
 
     /**
-    * Returns the user to the Solar System screen when the button is clicked
-    * @param event   occours when the user clicks on the "RETURN" button
-    */
+     * Returns the user to the Solar System screen when the button is clicked
+     *
+     * @param event occours when the user clicks on the "RETURN" button
+     */
     @FXML
-    private void returnToUniverse(MouseEvent event) throws Exception{
-        if (ship.getFuel() >0){
+    private void returnToUniverse(MouseEvent event) throws Exception {
+        if (ship.getFuel() > 0) {
             //randEvent();
-            
-            ship.setFuel(ship.getFuel()-1);
+
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -187,56 +195,62 @@ public class GalSevenScreenController implements Initializable {
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } else {
+        }
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
+
     /**
-    * Generates a random event that will appear in the bottom of the screen.
-    * @return string of random event that happened
-    */
+     * Generates a random event that will appear in the bottom of the screen.
+     *
+     * @return string of random event that happened
+     */
     private String randEvent() {
         Random rand = new Random();
         int x = rand.nextInt(20);
         String string = "";
-        
+
         if (x > 15) {
             //String string = "";
-            
-            if(x == 16){
+
+            if (x == 16) {
                 string = "You found $10!";
                 player.addMoney(100);
-            } else if (x == 15) {
+            }
+            else if (x == 15) {
                 string = "Your fuel tank has a hole in it and some spilled out!";
                 ship.setFuel(ship.getFuel() - 1);
-            } else if (x == 17) {
+            }
+            else if (x == 17) {
                 string = "Pirates raided your ship and took $50!";
                 player.subtractMoney(50);
-            } else if (x==18) {
+            }
+            else if (x == 18) {
                 player.setWantedLevel(player.getWantedLevel() + 1);
                 string = "You accidentally did something illegal. Wanted level: " + player.getWantedLevel();
-            } else if (x==19) {
+            }
+            else if (x == 19) {
                 player.addMoney(100);
                 string = "You found a valueable stone and sold it for $100!";
-            } else if (x==20) {
+            }
+            else if (x == 20) {
                 ship.setFuel(ship.getFuel() + 1);
                 string = "You found some fuel!";
             }
 
             //return string;
-        
             // Stage dialogStage = new Stage();
             // dialogStage.initModality(Modality.WINDOW_MODAL);
             // dialogStage.setScene(new Scene(VBoxBuilder.create().
             // children(new Text(string)).
             // alignment(Pos.CENTER).padding(new Insets(30)).build()));
             // dialogStage.show();
-
             // try {
             //     Thread.sleep(2000);                 //1000 milliseconds is one second.
             // } catch(InterruptedException ex) {
@@ -247,27 +261,29 @@ public class GalSevenScreenController implements Initializable {
     }
 
     /**
-    * Saves the game
-    * @param event  mouse event of when user clicks on "SAVE" button
-    */
+     * Saves the game
+     *
+     * @param event mouse event of when user clicks on "SAVE" button
+     */
     @FXML
     private void saveGame(MouseEvent event) {
         GameInstance.saveModelBinary();
     }
 
     /**
-    * Exits the game and returns to the main screen
-    * @param event  mouse event of when user clicks on "EXIT" button
-    */
+     * Exits the game and returns to the main screen
+     *
+     * @param event mouse event of when user clicks on "EXIT" button
+     */
     @FXML
     private void exit(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-            //hide this current window (if this is whant you want
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+        //hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-    
+
 }

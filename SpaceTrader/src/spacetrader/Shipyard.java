@@ -22,39 +22,44 @@ import java.io.Serializable;
 
 /**
  * Creates a Shipyard for buying new Ships and selling old Ships + cargo
+ *
  * @author Kristen Lawrence
  */
-public class Shipyard implements Serializable{
-  public Planet planet;
-  public PoliticalSystem politicalSystem;
-  public int techLevel;
-  
-  /**
-   * Constructor sets planet
-   * @param planet - Planet home of shipyard
-   */
-  public Shipyard(Planet planet) {
-      this.planet = planet;
-  }
-  
-  /**
-   * sets solarSystem to shipyard for retrieving techlevel and gov
-   * @param solarSystem - solarSystem of the planet
-   */
-  public void setSolarSystem(SolarSystem solarSystem)
-  {
-      this.politicalSystem = solarSystem.getPoliticalSystem();
-      this.techLevel = solarSystem.getTechLevel();
-  }
-  
-  /**
-   * Calculates and returns a ship's price
-   * @param player whose cargo and current ship are deducted from ship price
-   * @param newShip to be priced
-   * @return the total price of newShip minus cargo and price of current ship
-   */
-  public double shipPrice(Player player, Ship newShip) {
-      ArrayList<Good> cargo = player.getShip().cargo;
+public class Shipyard implements Serializable {
+
+    public Planet planet;
+    public PoliticalSystem politicalSystem;
+    public int techLevel;
+
+    /**
+     * Constructor sets planet
+     *
+     * @param planet - Planet home of shipyard
+     */
+    public Shipyard(Planet planet) {
+        this.planet = planet;
+    }
+
+    /**
+     * sets solarSystem to shipyard for retrieving techlevel and gov
+     *
+     * @param solarSystem - solarSystem of the planet
+     */
+    public void setSolarSystem(SolarSystem solarSystem) {
+        this.politicalSystem = solarSystem.getPoliticalSystem();
+        this.techLevel = solarSystem.getTechLevel();
+    }
+
+    /**
+     * Calculates and returns a ship's price
+     *
+     * @param player  whose cargo and current ship are deducted from ship price
+     * @param newShip to be priced
+     *
+     * @return the total price of newShip minus cargo and price of current ship
+     */
+    public double shipPrice(Player player, Ship newShip) {
+        ArrayList<Good> cargo = player.getShip().cargo;
         double cargoVal = 0;
         Market m = planet.getMarket();
         for (Good g : cargo) {
@@ -62,100 +67,113 @@ public class Shipyard implements Serializable{
                 cargoVal = cargoVal + m.getPrice(g);
             }
         }
-        double shipPrice = newShip.getPrice() - player.getShip().getPrice() - cargoVal; 
+        double shipPrice = newShip.getPrice() - player.getShip().getPrice()
+                - cargoVal;
         return shipPrice;
-  }
-  
-  /**
-   * Checks if player can afford ship and proceeds with transaction if true this
-   * includes selling all cargo and equipment. Also transfers escape pod if 
-   * there is one. 
-   * @param player - to whom the new ship will go to
-   * @param newShip - the new ship for player
-   * @return negative if not enough money, zero if cargo will be lost, otherwise
-   * positive (transaction went through)
-   */
-  public int buyShip(Player player, Ship newShip, boolean userVerified) {
-    double cost = shipPrice(player, newShip);
-    if(checkWallet(player, cost) == false) {
-      return -1;
-    } else {
-        ArrayList<Good> cargo = player.getShip().cargo;
-        Market m = planet.getMarket();
-        for (Good g : cargo) {
-            if (m.getPrice(g) == -1 && userVerified == false) {
-                return 0;
-            }
+    }
+
+    /**
+     * Checks if player can afford ship and proceeds with transaction if true
+     * this includes selling all cargo and equipment. Also transfers escape pod
+     * if there is one.
+     *
+     * @param player  - to whom the new ship will go to
+     * @param newShip - the new ship for player
+     *
+     * @return negative if not enough money, zero if cargo will be lost,
+     *         otherwise positive (transaction went through)
+     */
+    public int buyShip(Player player, Ship newShip, boolean userVerified) {
+        double cost = shipPrice(player, newShip);
+        if (checkWallet(player, cost) == false) {
+            return -1;
         }
-        player.subtractMoney(cost);
-        player.setShip(newShip);
+        else {
+            ArrayList<Good> cargo = player.getShip().cargo;
+            Market m = planet.getMarket();
+            for (Good g : cargo) {
+                if (m.getPrice(g) == -1 && userVerified == false) {
+                    return 0;
+                }
+            }
+            player.subtractMoney(cost);
+            player.setShip(newShip);
+        }
+        return 1;
     }
-    return 1;
-  }
-  
-  /**
-   * Refuel the ship
-   * @param player 
-   * @param gallons wished to be added to fuel tank
-   * @return true if transaction worked false if not enough money or amount
-   * requested exceeds fuel tank capacity
-   */
-  public boolean refuel(Player player, int gallons) {
-    Ship ship = player.getShip();
-    int curFuelLevel = ship.getFuel();
-    if (curFuelLevel + gallons > ship.getFuelCapacity()) {
-      return false;
+
+    /**
+     * Refuel the ship
+     *
+     * @param player
+     * @param gallons wished to be added to fuel tank
+     *
+     * @return true if transaction worked false if not enough money or amount
+     *         requested exceeds fuel tank capacity
+     */
+    public boolean refuel(Player player, int gallons) {
+        Ship ship = player.getShip();
+        int curFuelLevel = ship.getFuel();
+        if (curFuelLevel + gallons > ship.getFuelCapacity()) {
+            return false;
+        }
+        double cost = gallons * ship.getFuelCost();
+        if (checkWallet(player, cost)) {
+            ship.setFuel(gallons + curFuelLevel);
+            player.subtractMoney(cost);
+            return true;
+        }
+        return false;
     }
-    double cost = gallons * ship.getFuelCost();
-    if(checkWallet(player, cost)) {
-      ship.setFuel(gallons + curFuelLevel);
-      player.subtractMoney(cost);
-      return true;
+
+    /**
+     * Repair damage to Ship Hull
+     *
+     * @param player
+     * @param amount to increase Ship
+     *
+     * @return
+     */
+    public boolean repairs(Player player, int amount) {
+        Ship ship = player.getShip();
+        int curHealth = ship.getHealth();
+        double cost = amount * ship.getFuelCost();
+        if (checkWallet(player, cost)) {
+            ship.setHealth(curHealth + amount);
+            player.subtractMoney(cost);
+            return true;
+        }
+        return false;
     }
-    return false;
-  }
-  
-  /**
-   * Repair damage to Ship Hull
-   * @param player
-   * @param amount to increase Ship 
-   * @return 
-   */
-  public boolean repairs(Player player, int amount) {
-    Ship ship = player.getShip();
-    int curHealth = ship.getHealth();
-    double cost = amount * ship.getFuelCost();
-    if(checkWallet(player, cost)) {
-      ship.setHealth(curHealth + amount);
-      player.subtractMoney(cost);
-      return true;
+
+    /**
+     * upgrades ship with equipment (TODO)
+     *
+     * @param player
+     */
+    public void buyEquipment(Player player) {
+        Ship ship = player.getShip();
     }
-    return false;
-  }
-  
-  /**
-   * upgrades ship with equipment (TODO)
-   * @param player 
-   */
-  public void buyEquipment(Player player) {
-      Ship ship = player.getShip();
-  }
-  
-  /**
-   * Lets window now whether or not to display a shipyard option
-   * @return true if techLevel is sufficient to support a shipyard otherwise false
-   */
-  public boolean makeVisible() {
-      return (techLevel >= 4);
-  }
-  
-  /**
-   * Helper that checks if Player has enough money to make transaction
-   * @param player whose wallet will be checked
-   * @param price to check against player's money
-   * @return 
-   */
-  private boolean checkWallet(Player player, double price) {
-      return (price <= player.getMoney());
-  }
+
+    /**
+     * Lets window now whether or not to display a shipyard option
+     *
+     * @return true if techLevel is sufficient to support a shipyard otherwise
+     *         false
+     */
+    public boolean makeVisible() {
+        return (techLevel >= 4);
+    }
+
+    /**
+     * Helper that checks if Player has enough money to make transaction
+     *
+     * @param player whose wallet will be checked
+     * @param price  to check against player's money
+     *
+     * @return
+     */
+    private boolean checkWallet(Player player, double price) {
+        return (price <= player.getMoney());
+    }
 }

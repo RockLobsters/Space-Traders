@@ -42,14 +42,13 @@ import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
-
 /**
  * FXML Controller class
  *
  * @author jackie
  */
 public class ShipYardScreenController implements Initializable {
-    
+
     private Player player = GameInstance.getInstance().getPlayer();
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     private int techLevel = player.getCurrentLocation().getSolarSystem().getTechLevel();
@@ -74,15 +73,16 @@ public class ShipYardScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         shipName.setText("Current Ship: " + ship.getName() + "    Money: " + player.getMoney());
-    }    
+    }
 
     /**
-    * Returns player to planet screen
-    * @param  event     when mouse is clicked
-    */
+     * Returns player to planet screen
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void returnToPlanet(MouseEvent event) throws Exception {
-    	Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -92,13 +92,14 @@ public class ShipYardScreenController implements Initializable {
     }
 
     /**
-    * Buys a flea ship.
-    * @param  event     when mouse is clicked
-    */
+     * Buys a flea ship.
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void buyFlea(MouseEvent event) {
 
-        if (techLevel >= 4){
+        if (techLevel >= 4) {
             int success = yard.buyShip(player, new Flea(), false);
 
             if (success == 0) {
@@ -107,282 +108,300 @@ public class ShipYardScreenController implements Initializable {
                         //.owner( isOwnerSelected() ? stage : null)
                         .title("CARGO NOT ALLOWED")
                         //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
-                        .message( "Some of your cargo cannot be sold here. Sell anyway?")
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
                         .showConfirm();
 
-                    if (response == Dialog.ACTION_YES) {
-                        success = yard.buyShip(player, new Flea(), true);
-                        shipName.setText("Current Ship: Flea" + "   Money: " + player.getMoney());
-                    } else {
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Flea(), true);
+                    shipName.setText("Current Ship: Flea" + "   Money: " + player.getMoney());
+                }
+                else {
                     // ... user cancelled, reset form to default
-                        return;
-                    }
+                    return;
+                }
             }
-            if (success == -1 ){
+            if (success == -1) {
                 Stage dialogStage = new Stage();
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot afford this.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
                 dialogStage.show();
             }
             if (success == 1) {
-                
+
                 shipName.setText("Current Ship: Flea" + "   Money: " + player.getMoney());
             }
-        } else {
+        }
+        else {
 
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
     }
 
     /**
-    * Buys a gnat ship
-    * @param  event     when mouse is clicked
-    */
+     * Buys a gnat ship
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void buyGnat(MouseEvent event) {
-        if (techLevel >= 5){
+        if (techLevel >= 5) {
             int success = yard.buyShip(player, new Gnat(), false);
 
             if (success == 0) {
                 Action response = Dialogs.create()
-                    //.owner( isOwnerSelected ? stage : null)
-                    .title("CARGO NOT ALLOWED")
-                    //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
-                    .message( "Some of your cargo cannot be sold here. Sell anyway?")
-                    .showConfirm();
+                        //.owner( isOwnerSelected ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
 
-                    if (response == Dialog.ACTION_YES) {
-                        success = yard.buyShip(player, new Gnat(), true);
-                        shipName.setText("Current Ship: Gnat" + "   Money: " + player.getMoney());
-                    } else {
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Gnat(), true);
+                    shipName.setText("Current Ship: Gnat" + "   Money: " + player.getMoney());
+                }
+                else {
                     // ... user cancelled, reset form to default
-                        return;
-                    }
+                    return;
+                }
             }
-            if (success == -1 ){
+            if (success == -1) {
                 Stage dialogStage = new Stage();
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot afford this.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
                 dialogStage.show();
             }
             if (success == 1) {
                 shipName.setText("Current Ship: Gnat" + "   Money: " + player.getMoney());
             }
-        } else {
+        }
+        else {
 
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
     }
 
     /**
-    * Buys a firefly ship.
-    * @param  event     when mouse is clicked
-    */
+     * Buys a firefly ship.
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void buyFirefly(MouseEvent event) {
-        if (techLevel >= 5){
+        if (techLevel >= 5) {
             int success = yard.buyShip(player, new Firefly(), false);
 
             if (success == 0) {
                 Action response = Dialogs.create()
-                    //.owner( isOwnerSelected ? stage : null)
-                    .title("CARGO NOT ALLOWED")
-                    //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
-                    .message( "Some of your cargo cannot be sold here. Sell anyway?")
-                    .showConfirm();
+                        //.owner( isOwnerSelected ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
 
-                    if (response == Dialog.ACTION_YES) {
-                        success = yard.buyShip(player, new Firefly(), true);
-                        shipName.setText("Current Ship: Firefly" + "    Money: " + player.getMoney());
-                    } else {
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Firefly(), true);
+                    shipName.setText("Current Ship: Firefly" + "    Money: " + player.getMoney());
+                }
+                else {
                     // ... user cancelled, reset form to default
-                        return;
-                    }
+                    return;
+                }
             }
-            if (success == -1 ){
+            if (success == -1) {
                 Stage dialogStage = new Stage();
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot afford this.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
                 dialogStage.show();
             }
             if (success == 1) {
                 shipName.setText("Current Ship: Firefly" + "    Money: " + player.getMoney());
             }
-        } else {
+        }
+        else {
 
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
     }
 
     /**
-    * Buys a mosquito ship.
-    * @param  event     when mouse is clicked
-    */
+     * Buys a mosquito ship.
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void buyMosquito(MouseEvent event) {
-        if (techLevel >= 5){
+        if (techLevel >= 5) {
             int success = yard.buyShip(player, new Mosquito(), false);
 
             if (success == 0) {
                 Action response = Dialogs.create()
-                    //.owner( isOwnerSelected ? stage : null)
-                    .title("CARGO NOT ALLOWED")
-                    //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
-                    .message( "Some of your cargo cannot be sold here. Sell anyway?")
-                    .showConfirm();
+                        //.owner( isOwnerSelected ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
 
-                    if (response == Dialog.ACTION_YES) {
-                        success = yard.buyShip(player, new Mosquito(), true);
-                        shipName.setText("Current Ship: Mosquito" + "   Money: " + player.getMoney());
-                    } else {
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Mosquito(), true);
+                    shipName.setText("Current Ship: Mosquito" + "   Money: " + player.getMoney());
+                }
+                else {
                     // ... user cancelled, reset form to default
-                        return;
-                    }
+                    return;
+                }
             }
-            if (success == -1 ){
+            if (success == -1) {
                 Stage dialogStage = new Stage();
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot afford this.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
                 dialogStage.show();
             }
             if (success == 1) {
                 shipName.setText("Current Ship: Mosquito" + "   Money: " + player.getMoney());
             }
-        } else {
+        }
+        else {
 
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
     }
 
     /**
-    * Buys a bumblebee ship.
-    * @param  event     when mouse is clicked
-    */
+     * Buys a bumblebee ship.
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void buyBumblebee(MouseEvent event) {
-        if (techLevel >= 5){
+        if (techLevel >= 5) {
             int success = yard.buyShip(player, new Bumblebee(), false);
 
             if (success == 0) {
                 Action response = Dialogs.create()
-                    //.owner( isOwnerSelected ? stage : null)
-                    .title("CARGO NOT ALLOWED")
-                    //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
-                    .message( "Some of your cargo cannot be sold here. Sell anyway?")
-                    .showConfirm();
+                        //.owner( isOwnerSelected ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
 
-                    if (response == Dialog.ACTION_YES) {
-                        success = yard.buyShip(player, new Bumblebee(), true);
-                        shipName.setText("Current Ship: Bumblebee" + "  Money: " + player.getMoney());
-                    } else {
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Bumblebee(), true);
+                    shipName.setText("Current Ship: Bumblebee" + "  Money: " + player.getMoney());
+                }
+                else {
                     // ... user cancelled, reset form to default
-                        return;
-                    }
+                    return;
+                }
             }
-            if (success == -1 ){
+            if (success == -1) {
                 Stage dialogStage = new Stage();
                 dialogStage.initModality(Modality.WINDOW_MODAL);
                 dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot afford this.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
                 dialogStage.show();
             }
             if (success == 1) {
                 shipName.setText("Current Ship: Bumblebee" + "  Money: " + player.getMoney());
             }
-        } else {
+        }
+        else {
 
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You cannot buy this here.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
         }
     }
 
-
     /**
-    * sets text to text area when opened
-    * @param  event     when mouse is clicked
-    */
+     * sets text to text area when opened
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void fleaOpen(MouseEvent event) {
-        String text = "Price:" + yard.shipPrice(player, new Flea())+ "\n";
+        String text = "Price:" + yard.shipPrice(player, new Flea()) + "\n";
         fleaText.setText(text);
     }
 
     /**
-    * sets text to text area when opened
-    * @param  event     when mouse is clicked
-    */
+     * sets text to text area when opened
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void gnatOpen(MouseEvent event) {
-        String text = "Price:" + yard.shipPrice(player, new Gnat())+ "\n";
+        String text = "Price:" + yard.shipPrice(player, new Gnat()) + "\n";
         gnatText.setText(text);
     }
 
     /**
-    * sets text to text area when opened
-    * @param  event     when mouse is clicked
-    */
+     * sets text to text area when opened
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void fireflyOpen(MouseEvent event) {
-        String text = "Price:" + yard.shipPrice(player, new Firefly())+ "\n";
+        String text = "Price:" + yard.shipPrice(player, new Firefly()) + "\n";
         fireflyText.setText(text);
     }
 
     /**
-    * sets text to text area when opened
-    * @param  event     when mouse is clicked
-    */
+     * sets text to text area when opened
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void mosquitoOpen(MouseEvent event) {
-        String text = "Price:" + yard.shipPrice(player, new Mosquito())+ "\n";
+        String text = "Price:" + yard.shipPrice(player, new Mosquito()) + "\n";
         mosquitoText.setText(text);
     }
 
     /**
-    * sets text to text area when opened
-    * @param  event     when mouse is clicked
-    */
+     * sets text to text area when opened
+     *
+     * @param event when mouse is clicked
+     */
     @FXML
     private void bumbleBeeOpen(MouseEvent event) {
-        String text = "Price:" + yard.shipPrice(player, new Bumblebee())+ "\n";
+        String text = "Price:" + yard.shipPrice(player, new Bumblebee()) + "\n";
         bumbleBeeText.setText(text);
     }
-    
+
 }

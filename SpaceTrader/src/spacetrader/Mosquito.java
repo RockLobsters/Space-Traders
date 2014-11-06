@@ -20,21 +20,20 @@ package spacetrader;
  *
  * @author Addison Amiri
  */
-public class Mosquito extends Ship
-{
-    public static final String NAME         = "Mosquito";
-    public static final int HULL_STRENGTH   = 30;
-    public static final int CARGO_BAYS      = Gnat.CARGO_BAYS;
-    public static final int WEAPON_SLOTS    = 2;
-    public static final int SHIELD_SLOTS    = 1;
-    public static final int GADGET_SLOTS    = 1;
-    public static final int CREW_QUARTERS   = 0;
-    public static final int FUEL_CAPACITY   = 13;
-    public static final int FUEL_COST       = 5;
-    public static final int BASE_PRICE      = 30000;
-    
-    public Mosquito()
-    {
+public class Mosquito extends Ship {
+
+    public static final String NAME = "Mosquito";
+    public static final int HULL_STRENGTH = 30;
+    public static final int CARGO_BAYS = Gnat.CARGO_BAYS;
+    public static final int WEAPON_SLOTS = 2;
+    public static final int SHIELD_SLOTS = 1;
+    public static final int GADGET_SLOTS = 1;
+    public static final int CREW_QUARTERS = 0;
+    public static final int FUEL_CAPACITY = 13;
+    public static final int FUEL_COST = 5;
+    public static final int BASE_PRICE = 30000;
+
+    public Mosquito() {
         super(NAME,
               HULL_STRENGTH,
               CARGO_BAYS,
