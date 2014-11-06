@@ -22,345 +22,479 @@ import java.io.Serializable;
 
 /**
  * Creates a Shipyard for buying new Ships and selling old Ships + cargo
+ *
  * @author Kristen Lawrence
  */
-public class Shipyard implements Serializable{
-  public Planet planet;
-  public PoliticalSystem politicalSystem;
-  public int techLevel;
-  
-  /**
-   * Constructor sets planet
-   * @param planet - Planet home of shipyard
-   */
-  public Shipyard(Planet planet) {
-      this.planet = planet;
-  }
-  
-  /**
-   * sets solarSystem to shipyard for retrieving techlevel and gov
-   * @param solarSystem - solarSystem of the planet
-   */
-  public void setSolarSystem(SolarSystem solarSystem)
-  {
-      this.politicalSystem = solarSystem.getPoliticalSystem();
-      this.techLevel = solarSystem.getTechLevel();
-  }
-  
-  /**
-   * Calculates and returns a ship's price
-   * @param player whose cargo and current ship are deducted from ship price
-   * @param newShip to be priced
-   * @return the total price of newShip minus cargo and price of current ship
-   */
-  public double shipPrice(Player player, Ship newShip) {
-    ArrayList<Good> cargo = player.getShip().cargo;
-    ArrayList<Laser> weapons = player.getShip().weapons;
-    ArrayList<Shield> shields = player.getShip().shields;
-    ArrayList<Gadget> gadgets = player.getShip().gadgets;
-    double cargoVal = 0;
-    double equipVal = 0;
-    for (Laser l : weapons) {
-        equipVal = equipVal + l.getPrice();
+public class Shipyard implements Serializable
+{
+    public Planet planet;
+    public PoliticalSystem politicalSystem;
+    public int techLevel;
+
+    /**
+     * Constructor sets planet
+     *
+     * @param planet - Planet home of shipyard
+     */
+    public Shipyard(Planet planet)
+    {
+        this.planet = planet;
     }
-    for (Shield s : shields) {
-        equipVal = equipVal + s.getPrice();
+
+    /**
+     * sets solarSystem to shipyard for retrieving techlevel and gov
+     *
+     * @param solarSystem - solarSystem of the planet
+     */
+    public void setSolarSystem(SolarSystem solarSystem)
+    {
+        this.politicalSystem = solarSystem.getPoliticalSystem();
+        this.techLevel = solarSystem.getTechLevel();
     }
-    for (Gadget g : gadgets) {
-        equipVal = equipVal + g.getPrice();
-    }
-    Market m = planet.getMarket();
-    for (Good g : cargo) {
-        if (m.getPrice(g) != -1) {
-            cargoVal = cargoVal + m.getPrice(g);
-        }
-    }
-    double shipPrice = newShip.getPrice() - player.getShip().getPrice() - cargoVal - equipVal; 
-    return shipPrice;
-  }
-  
-  /**
-   * Checks if player can afford ship and proceeds with transaction if true this
-   * includes selling all cargo and equipment. Also transfers escape pod if 
-   * there is one. 
-   * @param player - to whom the new ship will go to
-   * @param newShip - the new ship for player
-   * @return negative if not enough money, zero if cargo will be lost, otherwise
-   * positive (transaction went through)
-   */
-  public int buyShip(Player player, Ship newShip, boolean userVerified) {
-    double cost = shipPrice(player, newShip);
-    if(checkWallet(player, cost) == false) {
-      return -1;
-    } else {
+
+    /**
+     * Calculates and returns a ship's price
+     *
+     * @param player  whose cargo and current ship are deducted from ship price
+     * @param newShip to be priced
+     *
+     * @return the total price of newShip minus cargo and price of current ship
+     */
+    public double shipPrice(Player player, Ship newShip)
+    {
         ArrayList<Good> cargo = player.getShip().cargo;
+        ArrayList<Laser> weapons = player.getShip().weapons;
+        ArrayList<Shield> shields = player.getShip().shields;
+        ArrayList<Gadget> gadgets = player.getShip().gadgets;
+        double cargoVal = 0;
+        double equipVal = 0;
+        for(Laser l : weapons)
+        {
+            equipVal = equipVal + l.getPrice();
+        }
+        for(Shield s : shields)
+        {
+            equipVal = equipVal + s.getPrice();
+        }
+        for(Gadget g : gadgets)
+        {
+            equipVal = equipVal + g.getPrice();
+        }
         Market m = planet.getMarket();
-        for (Good g : cargo) {
-            if (m.getPrice(g) == -1 && userVerified == false) {
-                return 0;
+        for(Good g : cargo)
+        {
+            if(m.getPrice(g) != -1)
+            {
+                cargoVal = cargoVal + m.getPrice(g);
             }
         }
-        if (player.getShip().getInsurance())
-            newShip.setInsurance(true);
-        if (player.getShip().getEscapePod())
-            newShip.setEscapePod(true);
-        player.subtractMoney(cost);
-        player.setShip(newShip);
+        double shipPrice = newShip.getPrice() - player.getShip().getPrice()
+                           - cargoVal - equipVal;
+        return shipPrice;
     }
-    return 1;
-  }
-  
-  /**
-   * Refuel the ship
-   * @param player 
-   * @param gallons wished to be added to fuel tank
-   * @return true if transaction worked false if not enough money or amount
-   * requested exceeds fuel tank capacity
-   */
-  public boolean refuel(Player player, int gallons) {
-    Ship ship = player.getShip();
-    int curFuelLevel = ship.getFuel();
-    if (curFuelLevel + gallons > ship.getFuelCapacity()) {
-      return false;
-    }
-    double cost = gallons * ship.getFuelCost();
-    if(checkWallet(player, cost)) {
-      ship.setFuel(gallons + curFuelLevel);
-      player.subtractMoney(cost);
-      return true;
-    }
-    return false;
-  }
-  
-  /**
-   * Repair damage to Ship Hull
-   * @param player
-   * @param amount to increase Ship 
-   * @return 
-   */
-  public boolean repairs(Player player, int amount) {
-    Ship ship = player.getShip();
-    int curHealth = ship.getHealth();
-    double cost = amount * ship.getFuelCost();
-    if(checkWallet(player, cost)) {
-      ship.setHealth(curHealth + amount);
-      player.subtractMoney(cost);
-      return true;
-    }
-    return false;
-  }
-  
-  /**
-   * upgrades ship with a laser
-   * @param player whose money will pay for weapon
-   * @param l the laser to buy
-   */
-  public boolean buyWeapon(Player player, Laser l) {
-      Ship ship = player.getShip();
-      double cost = l.getPrice();
-      if(checkWallet(player, cost)) {
-          if(ship.addWeapon(l)) {
-              player.subtractMoney(cost);
-              return true;
-          }
-      }
-      return false;
-  }
-  
-  /**
-   * upgrades ship with a shield
-   * @param player whose money will pay for defense
-   * @param d the defense to buy
-   */
-  public boolean buyDefense(Player player, Shield s) {
-      Ship ship = player.getShip();
-      double cost = s.getPrice();
-      if(checkWallet(player, cost)) {
-          if(ship.addShield(s)) {
-              player.subtractMoney(cost);
-              return true;
-          }
-      }
-      return false;
-  }
-  
-  /**
-   * upgrades ship with a gadget
-   * @param player whose money will pay for gadget
-   * @param g the gadget to buy
-   */
-  public boolean buyGadget(Player player, Gadget g) {
-      Ship ship = player.getShip();
-      double cost = g.getPrice();
-      if(checkWallet(player, cost)) {
-          if(ship.addGadget(g)) {
-              player.subtractMoney(cost);
-              return true;
-          }
-      }
-      return false;
-  }
-  
-  /**
-   * Buy an Escape Pod 
-   * @param player making transaction
-   * @return true if transaction was successful false if player already has 
-   * escape pod or doesn't have enough money
-   */
-  public boolean buyEscapePod(Player player) {
-      Ship ship = player.getShip();
-      double cost = 200;
-      if(checkWallet(player, cost)) {
-          if(!(ship.getEscapePod())) {
-              ship.setEscapePod(true);
-              player.subtractMoney(cost);
-          }
-      }
-      return false;
-  }
-  
-  /**
-   * Buy Ship Insurance
-   * @param player making transaction
-   * @return true if transaction went through false if player doesn't have 
-   * enough moolah or already has insurance
-   */
-  public boolean buyInsurance(Player player) {
-      Ship ship = player.getShip();
-      double cost = 750;
-      if(checkWallet(player, cost)) {
-          if(!(ship.getInsurance())) {
-              ship.setInsurance(true);
-              player.subtractMoney(cost);
-          }
-      }
-      return false;
-  }
-  
-  /**
-   * Sell a Weapon
-   * @param player making transaction
-   * @param index of the weapon player wants to sell
-   */
-  public void sellWeapon(Player player, int index) {
-      player.addMoney(player.getShip().removeWeapon(index));
-  }
 
-  public boolean sellWeapon(Player player, String name) {
-      int index = -1;
-      ArrayList<Laser> weapons = player.getShip().weapons;
-      for(i = 0; i < weapons.size() && index == -1; i++)
-      {
-          if(weapons.get(i).name.equalsIgnoreCase(name)) {
-              index = i;
-          }
-      }
-      if(index == -1)
-      {
-          return false;
-      }
-      else
-      {
-          sellWeapon(player, index);
-          return true;
-      }
-  }
-  
-  /**
-   * Sell a Shield
-   * @param player making transaction
-   * @param index of Shield player wants to sell
-   */
-  public void sellShield(Player player, int index) {
-       player.addMoney(player.getShip().removeShield(index));
-  }
-  
-  /**
-   * Sell a Gadget
-   * @param player making transaction
-   * @param index of the gadget player wants to sell
-   */
-  public void sellGadget(Player player, int index) {
-       player.addMoney(player.getShip().removeGadget(index));
-  }
-  
-  /**
-   * Sell Ship Insurance
-   * @param player making transaction
-   */
-  public void sellInsurance(Player player) {
-      if (player.getShip().getInsurance()) {
-        player.getShip().setInsurance(false);
-        player.addMoney(500);
-      }
-  }
-  
-  /**
-   * Sell Player's Escape Pod
-   * @param player making transaction
-   */
-  public void sellEscapePod(Player player) {
-      if (player.getShip().getEscapePod()) {
-        player.getShip().setEscapePod(false);
-        player.addMoney(100);
-      }
-  }
-  
-  /**
-   * Lets window know whether or not to display a shipyard option
-   * @return true if techLevel is sufficient to support a shipyard otherwise false
-   */
-  public boolean makeVisible() {
-      return (techLevel >= 4);
-  }
-  
-  /**
-   * Lets window know whether or not to display higher level weapons
-   * @return an ArrayList<Laser> of visible lasers
-   */
-  public ArrayList<Laser> visibleWeapons() {
-      ArrayList<Laser> weapons = new ArrayList<>();
-      for (Laser l : Laser.values()) {
-          if (l.getMinTL() <= techLevel)
-              weapons.add(l);
-      }
-      return weapons;
-  }
-  
-  /**
-   * Lets window know whether or not to display higher level shields
-   * @return an ArrayList<Shield> of visible shields
-   */
-  public ArrayList<Shield> visibleShields() {
-      ArrayList<Shield> shields = new ArrayList<>();
-      for (Shield s : Shield.values()) {
-          if (s.getMinTL() <= techLevel)
-              shields.add(s);
-      }
-      return shields;
-  }
-  
-  
-  /**
-   * Lets window know whether or not to display higher level gadgets
-   * @return an ArrayList<Gadget> of visible gadgets
-   */
-  public ArrayList<Gadget> visibleGadgets() {
-      ArrayList<Gadget> gadgets = new ArrayList<>();
-      for (Gadget g : Gadget.values()) {
-          if (g.getMinTL() <= techLevel)
-              gadgets.add(g);
-      }
-      return gadgets;
-  }
-  
-  /**
-   * Helper that checks if Player has enough money to make transaction
-   * @param player whose wallet will be checked
-   * @param price to check against player's money
-   * @return 
-   */
-  private boolean checkWallet(Player player, double price) {
-      return (price <= player.getMoney());
-  }
+    /**
+     * Checks if player can afford ship and proceeds with transaction if true this
+     * includes selling all cargo and equipment. Also transfers escape pod if
+     * there is one.
+     *
+     * @param player  - to whom the new ship will go to
+     * @param newShip - the new ship for player
+     *
+     * @return negative if not enough money, zero if cargo will be lost, otherwise
+     *         positive (transaction went through)
+     */
+    public int buyShip(Player player, Ship newShip, boolean userVerified)
+    {
+        double cost = shipPrice(player, newShip);
+        if(checkWallet(player, cost) == false)
+        {
+            return -1;
+        }
+        else
+        {
+            ArrayList<Good> cargo = player.getShip().cargo;
+            Market m = planet.getMarket();
+            for(Good g : cargo)
+            {
+                if(m.getPrice(g) == -1 && userVerified == false)
+                {
+                    return 0;
+                }
+            }
+            if(player.getShip().getInsurance())
+            {
+                newShip.setInsurance(true);
+            }
+            if(player.getShip().getEscapePod())
+            {
+                newShip.setEscapePod(true);
+            }
+            player.subtractMoney(cost);
+            player.setShip(newShip);
+        }
+        return 1;
+    }
+
+    /**
+     * Refuel the ship
+     *
+     * @param player
+     * @param gallons wished to be added to fuel tank
+     *
+     * @return true if transaction worked false if not enough money or amount
+     *         requested exceeds fuel tank capacity
+     */
+    public boolean refuel(Player player, int gallons)
+    {
+        Ship ship = player.getShip();
+        int curFuelLevel = ship.getFuel();
+        if(curFuelLevel + gallons > ship.getFuelCapacity())
+        {
+            return false;
+        }
+        double cost = gallons * ship.getFuelCost();
+        if(checkWallet(player, cost))
+        {
+            ship.setFuel(gallons + curFuelLevel);
+            player.subtractMoney(cost);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Repair damage to Ship Hull
+     *
+     * @param player
+     * @param amount to increase Ship
+     *
+     * @return
+     */
+    public boolean repairs(Player player, int amount)
+    {
+        Ship ship = player.getShip();
+        int curHealth = ship.getHealth();
+        double cost = amount * ship.getFuelCost();
+        if(checkWallet(player, cost))
+        {
+            ship.setHealth(curHealth + amount);
+            player.subtractMoney(cost);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * upgrades ship with a laser
+     *
+     * @param player whose money will pay for weapon
+     * @param l      the laser to buy
+     */
+    public boolean buyWeapon(Player player, Laser l)
+    {
+        Ship ship = player.getShip();
+        double cost = l.getPrice();
+        if(checkWallet(player, cost))
+        {
+            if(ship.addWeapon(l))
+            {
+                player.subtractMoney(cost);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * upgrades ship with a shield
+     *
+     * @param player whose money will pay for defense
+     * @param d      the defense to buy
+     */
+    public boolean buyDefense(Player player, Shield s)
+    {
+        Ship ship = player.getShip();
+        double cost = s.getPrice();
+        if(checkWallet(player, cost))
+        {
+            if(ship.addShield(s))
+            {
+                player.subtractMoney(cost);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * upgrades ship with a gadget
+     *
+     * @param player whose money will pay for gadget
+     * @param g      the gadget to buy
+     */
+    public boolean buyGadget(Player player, Gadget g)
+    {
+        Ship ship = player.getShip();
+        double cost = g.getPrice();
+        if(checkWallet(player, cost))
+        {
+            if(ship.addGadget(g))
+            {
+                player.subtractMoney(cost);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Buy an Escape Pod
+     *
+     * @param player making transaction
+     *
+     * @return true if transaction was successful false if player already has
+     *         escape pod or doesn't have enough money
+     */
+    public boolean buyEscapePod(Player player)
+    {
+        Ship ship = player.getShip();
+        double cost = 200;
+        if(checkWallet(player, cost))
+        {
+            if(!(ship.getEscapePod()))
+            {
+                ship.setEscapePod(true);
+                player.subtractMoney(cost);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Buy Ship Insurance
+     *
+     * @param player making transaction
+     *
+     * @return true if transaction went through false if player doesn't have
+     *         enough moolah or already has insurance
+     */
+    public boolean buyInsurance(Player player)
+    {
+        Ship ship = player.getShip();
+        double cost = 750;
+        if(checkWallet(player, cost))
+        {
+            if(!(ship.getInsurance()))
+            {
+                ship.setInsurance(true);
+                player.subtractMoney(cost);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Sell a Weapon
+     *
+     * @param player making transaction
+     * @param index  of the weapon player wants to sell
+     */
+    public void sellWeapon(Player player, int index)
+    {
+        player.addMoney(player.getShip().removeWeapon(index));
+    }
+
+    public boolean sellWeapon(Player player, String name)
+    {
+        int index = -1;
+        ArrayList<Laser> weapons = player.getShip().weapons;
+        for(int i = 0; i < weapons.size() && index == -1; i++)
+        {
+            if(weapons.get(i).name.equalsIgnoreCase(name))
+            {
+                index = i;
+            }
+        }
+        if(index == -1)
+        {
+            return false;
+        }
+        else
+        {
+            sellWeapon(player, index);
+            return true;
+        }
+    }
+
+    /**
+     * Sell a Shield
+     *
+     * @param player making transaction
+     * @param index  of Shield player wants to sell
+     */
+    public void sellShield(Player player, int index)
+    {
+        player.addMoney(player.getShip().removeShield(index));
+    }
+
+    public boolean sellShield(Player player, String name)
+    {
+        int index = -1;
+        ArrayList<Shield> shields = player.getShip().shields;
+        for(int i = 0; i < shields.size() && index == -1; i++)
+        {
+            if(shields.get(i).name.equalsIgnoreCase(name))
+            {
+                index = i;
+            }
+        }
+        if(index == -1)
+        {
+            return false;
+        }
+        else
+        {
+            sellShield(player, index);
+            return true;
+        }
+    }
+
+    /**
+     * Sell a Gadget
+     *
+     * @param player making transaction
+     * @param index  of the gadget player wants to sell
+     */
+    public void sellGadget(Player player, int index)
+    {
+        player.addMoney(player.getShip().removeGadget(index));
+    }
+
+    public boolean sellGadget(Player player, String name)
+    {
+        int index = -1;
+        ArrayList<Gadget> gadgets = player.getShip().shields;
+        for(int i = 0; i < gadgets.size() && index == -1; i++)
+        {
+            if(gadgets.get(i).name.equalsIgnoreCase(name))
+            {
+                index = i;
+            }
+        }
+        if(index == -1)
+        {
+            return false;
+        }
+        else
+        {
+            sellGadget(player, index);
+            return true;
+        }
+    }
+
+    /**
+     * Sell Ship Insurance
+     *
+     * @param player making transaction
+     */
+    public void sellInsurance(Player player)
+    {
+        if(player.getShip().getInsurance())
+        {
+            player.getShip().setInsurance(false);
+            player.addMoney(500);
+        }
+    }
+
+    /**
+     * Sell Player's Escape Pod
+     *
+     * @param player making transaction
+     */
+    public void sellEscapePod(Player player)
+    {
+        if(player.getShip().getEscapePod())
+        {
+            player.getShip().setEscapePod(false);
+            player.addMoney(100);
+        }
+    }
+
+    /**
+     * Lets window know whether or not to display a shipyard option
+     *
+     * @return true if techLevel is sufficient to support a shipyard otherwise false
+     */
+    public boolean makeVisible()
+    {
+        return (techLevel >= 4);
+    }
+
+    /**
+     * Lets window know whether or not to display higher level weapons
+     *
+     * @return an ArrayList<Laser> of visible lasers
+     */
+    public ArrayList<Laser> visibleWeapons()
+    {
+        ArrayList<Laser> weapons = new ArrayList<>();
+        for(Laser l : Laser.values())
+        {
+            if(l.getMinTL() <= techLevel)
+            {
+                weapons.add(l);
+            }
+        }
+        return weapons;
+    }
+
+    /**
+     * Lets window know whether or not to display higher level gadgets
+     *
+     * @return an ArrayList<Shield> of visible gadgets
+     */
+    public ArrayList<Shield> visibleShields()
+    {
+        ArrayList<Shield> shields = new ArrayList<>();
+        for(Shield s : Shield.values())
+        {
+            if(s.getMinTL() <= techLevel)
+            {
+                shields.add(s);
+            }
+        }
+        return shields;
+    }
+
+    /**
+     * Lets window know whether or not to display higher level gadgets
+     *
+     * @return an ArrayList<Gadget> of visible gadgets
+     */
+    public ArrayList<Gadget> visibleGadgets()
+    {
+        ArrayList<Gadget> gadgets = new ArrayList<>();
+        for(Gadget g : Gadget.values())
+        {
+            if(g.getMinTL() <= techLevel)
+            {
+                gadgets.add(g);
+            }
+        }
+        return gadgets;
+    }
+
+    /**
+     * Helper that checks if Player has enough money to make transaction
+     *
+     * @param player whose wallet will be checked
+     * @param price  to check against player's money
+     *
+     * @return
+     */
+    private boolean checkWallet(Player player, double price)
+    {
+        return (price <= player.getMoney());
+    }
 }
