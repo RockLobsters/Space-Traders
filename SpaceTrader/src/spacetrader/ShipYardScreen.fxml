@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.ShipYardScreenController">
    <children>
-      <ImageView fitHeight="303.0" fitWidth="606.0" layoutX="-1.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="321.0" fitWidth="710.0" layoutX="-1.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@10733675_10202699995570532_1996837210_n.jpg" />
          </image>
@@ -28,9 +28,9 @@
             </MenuBar>
          </bottom>
          <top>
-            <SplitPane dividerPositions="0.34" prefHeight="49.0" prefWidth="605.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.3076923076923077" prefHeight="49.0" prefWidth="605.0" BorderPane.alignment="CENTER">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="47.0" prefWidth="308.0" />
+                  <Accordion prefHeight="47.0" prefWidth="269.0" />
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="47.0" prefWidth="250.0">
                      <children>
                         <Text fx:id="shipName" layoutX="30.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="363.6575012207031" />
@@ -46,60 +46,119 @@
                </font>
             </Text>
          </right>
+         <left>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="47.0" prefWidth="308.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Accordion layoutY="-50.0" prefHeight="366.0" prefWidth="202.0">
+                    <panes>
+                      <TitledPane animated="false" text="UPGRADES">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Accordion layoutX="-1.0" layoutY="-2.0" prefHeight="321.0" prefWidth="202.0">
+                                      <panes>
+                                        <TitledPane animated="false" text="Weapon">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Text fx:id="weapon1" layoutX="8.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                                      <Text fx:id="weapon11" layoutX="4.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100000" />
+                                                      <Text layoutX="13.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                                      <Button layoutX="58.0" layoutY="30.0" mnemonicParsing="false" text="Button" />
+                                                      <Button layoutX="58.0" layoutY="95.0" mnemonicParsing="false" text="Button" />
+                                                      <Button layoutX="58.0" layoutY="169.0" mnemonicParsing="false" text="Button" />
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                        <TitledPane animated="false" text="Shield">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          </content>
+                                        </TitledPane>
+                                        <TitledPane animated="false" text="Gadgets">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          </content>
+                                        </TitledPane>
+                                          <TitledPane animated="false" text="Esacape Pod">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                             </content>
+                                          </TitledPane>
+                                      </panes>
+                                    </Accordion>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="NEW SHIP">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Accordion layoutX="-6.0" prefHeight="313.0" prefWidth="212.0">
+                                      <panes>
+                                        <TitledPane animated="false" onMouseClicked="#fleaOpen" prefHeight="91.0" prefWidth="203.0" text="Flea">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyFlea" text="Buy" />
+                                                      <TextArea fx:id="fleaText" prefHeight="74.0" prefWidth="212.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                          <TitledPane animated="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#gnatOpen" text="Gnat">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyGnat" text="Buy" />
+                                                      <TextArea fx:id="gnatText" prefHeight="66.0" prefWidth="206.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                          <TitledPane animated="false" layoutX="10.0" layoutY="36.0" onMouseClicked="#fireflyOpen" text="Firefly">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyFirefly" text="Buy" />
+                                                      <TextArea fx:id="fireflyText" prefHeight="72.0" prefWidth="212.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                          <TitledPane animated="false" layoutX="10.0" layoutY="62.0" onMouseClicked="#mosquitoOpen" text="Mosquito">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyMosquito" text="Buy" />
+                                                      <TextArea fx:id="mosquitoText" prefHeight="72.0" prefWidth="212.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                          <TitledPane animated="false" layoutX="10.0" layoutY="88.0" onMouseClicked="#bumbleBeeOpen" prefHeight="134.0" prefWidth="212.0" text="BumbleBee">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyBumblebee" text="Buy" />
+                                                      <TextArea fx:id="bumbleBeeText" prefHeight="66.0" prefWidth="212.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                      </panes>
+                                    </Accordion>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </AnchorPane>
+         </left>
       </BorderPane>
-      <Accordion>
-        <panes>
-          <TitledPane animated="false" onMouseClicked="#fleaOpen" text="Flea">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyFlea" text="Buy" />
-                        <TextArea fx:id="fleaText" prefHeight="74.0" prefWidth="212.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
-            <TitledPane animated="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#gnatOpen" text="Gnat">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyGnat" text="Buy" />
-                        <TextArea fx:id="gnatText" prefHeight="66.0" prefWidth="206.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
-            <TitledPane animated="false" layoutX="10.0" layoutY="36.0" onMouseClicked="#fireflyOpen" text="Firefly">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyFirefly" text="Buy" />
-                        <TextArea fx:id="fireflyText" prefHeight="72.0" prefWidth="212.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
-            <TitledPane animated="false" layoutX="10.0" layoutY="62.0" onMouseClicked="#mosquitoOpen" text="Mosquito">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyMosquito" text="Buy" />
-                        <TextArea fx:id="mosquitoText" prefHeight="72.0" prefWidth="212.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
-            <TitledPane animated="false" layoutX="10.0" layoutY="88.0" onMouseClicked="#bumbleBeeOpen" text="BumbleBee">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#buyBumblebee" text="Buy" />
-                        <TextArea fx:id="bumbleBeeText" prefHeight="66.0" prefWidth="212.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
-        </panes>
-      </Accordion>
    </children>
 </AnchorPane>

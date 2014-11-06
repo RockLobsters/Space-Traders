@@ -67,6 +67,10 @@ public class ShipYardScreenController implements Initializable {
     private TextArea mosquitoText;
     @FXML
     private TextArea bumbleBeeText;
+    @FXML
+    private Text weapon1;
+    @FXML
+    private Text weapon11;
 
     /**
      * Initializes the controller class.
