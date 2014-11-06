@@ -301,7 +301,7 @@ public class Shipyard implements Serializable{
   public ArrayList<Laser> visibleWeapons() {
       ArrayList<Laser> weapons = new ArrayList<>();
       for (Laser l : Laser.values()) {
-          if (l.getMinTL() >= techLevel)
+          if (l.getMinTL() <= techLevel)
               weapons.add(l);
       }
       return weapons;
@@ -314,7 +314,7 @@ public class Shipyard implements Serializable{
   public ArrayList<Shield> visibleShields() {
       ArrayList<Shield> shields = new ArrayList<>();
       for (Shield s : Shield.values()) {
-          if (s.getMinTL() >= techLevel)
+          if (s.getMinTL() <= techLevel)
               shields.add(s);
       }
       return shields;
@@ -328,7 +328,7 @@ public class Shipyard implements Serializable{
   public ArrayList<Gadget> visibleGadgets() {
       ArrayList<Gadget> gadgets = new ArrayList<>();
       for (Gadget g : Gadget.values()) {
-          if (g.getMinTL() >= techLevel)
+          if (g.getMinTL() <= techLevel)
               gadgets.add(g);
       }
       return gadgets;
