@@ -27,7 +27,7 @@ import java.io.Serializable;
 public class Shipyard implements Serializable{
   public Planet planet;
   public PoliticalSystem politicalSystem;
-  public int techLevel;
+  public static int techLevel;
   
   /**
    * Constructor sets planet
@@ -298,10 +298,10 @@ public class Shipyard implements Serializable{
    * Lets window know whether or not to display higher level weapons
    * @return an ArrayList<Laser> of visible lasers
    */
-  public ArrayList<Laser> visibleWeapons() {
+  public static ArrayList<Laser> visibleWeapons() {
       ArrayList<Laser> weapons = new ArrayList<>();
       for (Laser l : Laser.values()) {
-          if (l.getMinTL() >= techLevel)
+          if (l.getMinTL() <= techLevel)
               weapons.add(l);
       }
       return weapons;
@@ -311,10 +311,10 @@ public class Shipyard implements Serializable{
    * Lets window know whether or not to display higher level shields
    * @return an ArrayList<Shield> of visible shields
    */
-  public ArrayList<Shield> visibleShields() {
+  public static ArrayList<Shield> visibleShields() {
       ArrayList<Shield> shields = new ArrayList<>();
       for (Shield s : Shield.values()) {
-          if (s.getMinTL() >= techLevel)
+          if (s.getMinTL() <= techLevel)
               shields.add(s);
       }
       return shields;
@@ -325,10 +325,10 @@ public class Shipyard implements Serializable{
    * Lets window know whether or not to display higher level gadgets
    * @return an ArrayList<Gadget> of visible gadgets
    */
-  public ArrayList<Gadget> visibleGadgets() {
+  public static ArrayList<Gadget> visibleGadgets() {
       ArrayList<Gadget> gadgets = new ArrayList<>();
       for (Gadget g : Gadget.values()) {
-          if (g.getMinTL() >= techLevel)
+          if (g.getMinTL() <= techLevel)
               gadgets.add(g);
       }
       return gadgets;

@@ -55,6 +55,9 @@ public class ShipYardScreenController implements Initializable {
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     private int techLevel = player.getCurrentLocation().getSolarSystem().getTechLevel();
     private Shipyard yard = new Shipyard(player.getCurrentLocation());
+    private Laser laserType;
+    private Gadget gadgetType;
+    private Shield sheildType;
 
     @FXML
     private Text shipName;
@@ -73,8 +76,6 @@ public class ShipYardScreenController implements Initializable {
     @FXML
     private Text beamLasers;
     @FXML
-    private Text millitaryLasers;
-    @FXML
     private Text energyShield;
     @FXML
     private Text reflectiveShield;
@@ -90,6 +91,8 @@ public class ShipYardScreenController implements Initializable {
     private Text cloakingDevice;
     @FXML
     private Text escapePod;
+    @FXML
+    private Text militaryLasers;
 
     /**
      * Initializes the controller class.
@@ -97,8 +100,69 @@ public class ShipYardScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         shipName.setText("Current Ship: " + ship.getName() + "    Money: " + player.getMoney());
-    }    
-
+        setLaser();
+        
+    } 
+    
+    private void setLaser(){
+        Laser[] allWeapons = Laser.values();
+        ArrayList<Laser> weapons = Shipyard.visibleWeapons();
+        for (Laser allWeapon : allWeapons) {
+            switch (allWeapon) {
+                case PULSE:
+                    if(weapons.contains(laserType.PULSE)){
+                        pulseLasers.setText("Price: " + laserType.PULSE.getPrice());
+                    } else {
+                        pulseLasers.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+                case BEAM:
+                    if(weapons.contains(laserType.BEAM)){
+                        beamLasers.setText("Price: " + laserType.BEAM.getPrice());
+                    } else {
+                        beamLasers.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+                case MILITARY:
+                    if(weapons.contains(laserType.MILITARY)){
+                        militaryLasers.setText("Price: " + laserType.MILITARY.getPrice());
+                    } else {
+                        militaryLasers.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+            }
+        }
+    }
+    
+    private void setGadget(){
+        Gadget[] allGadgets = Gadget.values();
+        ArrayList<Gadget> weapons = Shipyard.visibleGadgets();
+        for (Gadget allGadget : allGadgets) {
+            switch (allGadget) {
+                case CARGO_BAYS:
+                    if(weapons.contains(laserType.PULSE)){
+                        pulseLasers.setText("Price: " + laserType.PULSE.getPrice());
+                    } else {
+                        pulseLasers.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+                case NAV_SYSTEM:
+                    if(weapons.contains(laserType.BEAM)){
+                        beamLasers.setText("Price: " + laserType.BEAM.getPrice());
+                    } else {
+                        beamLasers.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+                case AUTO_REPAIR_SYSTEM:
+                    if(weapons.contains(laserType.MILITARY)){
+                        militaryLasers.setText("Price: " + laserType.MILITARY.getPrice());
+                    } else {
+                        militaryLasers.setText("NOT SOLD IN THIS MARKET");
+                    }
+                    break;
+            }
+        }
+    }
     /**
     * Returns player to planet screen
     * @param  event     when mouse is clicked
@@ -466,6 +530,46 @@ public class ShipYardScreenController implements Initializable {
 
     @FXML
     private void escapePodInfo(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellPulseLasers(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellBeamLasers(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellMilitaryLasers(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellEnergyShield(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellReflectiveShield(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellCargoBays(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellNavigatingSystem(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellAutoRepairSystem(MouseEvent event) {
+    }
+
+    @FXML
+    private void sellTargetingSystem(ContextMenuEvent event) {
+    }
+
+    @FXML
+    private void sellCloakingDevice(MouseEvent event) {
     }
     
 }
