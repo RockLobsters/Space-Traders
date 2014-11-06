@@ -191,6 +191,15 @@ public class Ship implements Serializable
         }
     }
     
+    public int getCargoBays() {
+        int cb = CARGO_BAYS;
+        for (Gadget g: gadgets) {
+            if (g.equals(Gadget.CARGO_BAYS))
+                    cb += 5;
+        }
+        return cb;
+    }
+    
     /**
      * Is there an escape pod on the ship?
      * @return true if there is false if not
