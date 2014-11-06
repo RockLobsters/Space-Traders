@@ -245,6 +245,26 @@ public class Shipyard implements Serializable{
   public void sellWeapon(Player player, int index) {
       player.addMoney(player.getShip().removeWeapon(index));
   }
+
+  public boolean sellWeapon(Player player, String name) {
+      int index = -1;
+      ArrayList<Laser> weapons = player.getShip().weapons;
+      for(i = 0; i < weapons.size() && index == -1; i++)
+      {
+          if(weapons.get(i).name.equalsIgnoreCase(name)) {
+              index = i;
+          }
+      }
+      if(index == -1)
+      {
+          return false;
+      }
+      else
+      {
+          sellWeapon(player, index);
+          return true;
+      }
+  }
   
   /**
    * Sell a Shield
