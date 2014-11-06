@@ -21,6 +21,7 @@ package spacetrader;
  * @author Kristen Lawrence
  */
 public enum SystemPool {
+
     A("Atlantia", 1, 6),
     B("Bardic Kingdom", 11, 2),
     C("Cyber Alliance", 5, 7),
@@ -40,7 +41,7 @@ public enum SystemPool {
     Q("QI Panel Empire", 7, 5),
     R("Retrofuturistic Battle Corp", 10, 6),
     S("Samsong Galaxy", 15, 7),
-    T("Tutt tribes", 0 ,0),
+    T("Tutt tribes", 0, 0),
     U("Utopia", 14, 0),
     V("Volpone Militia", 10, 3),
     W("Worlds of Wodehouse", 11, 3),
@@ -51,11 +52,13 @@ public enum SystemPool {
     int govType;
     int techLevel;
     boolean highLevel = false;
+
     SystemPool(String name, int govType, int techLevel) {
         this.name = name;
         this.govType = govType;
         this.techLevel = techLevel;
-        if(techLevel >= 4) 
+        if (techLevel >= 4) {
             highLevel = true;
+        }
     }
 }

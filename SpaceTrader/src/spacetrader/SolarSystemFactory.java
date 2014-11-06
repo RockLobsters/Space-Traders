@@ -20,36 +20,34 @@ package spacetrader;
  *
  * @author Addison Amiri
  */
-public class SolarSystemFactory
-{
-    PoliticalSystem[] govs =
-    {
-        new Anarchy(),
-        new CapitalistState(),
-        new CommunistState(),
-        new Confederacy(),
-        new Corporate(),
-        new Cybernetic(),
-        new Democracy(),
-        new Dictatorship(),
-        new FascistState(),
-        new FeudalState(),
-        new MilitaryState(),
-        new Monarchy(),
-        new PacifistState(),
-        new SocialistState(),
-        new Satori(),
-        new Technocracy(),
-        new Theocracy()
-    };
+public class SolarSystemFactory {
 
-    public SolarSystem newRandomSolarSystem(int numOfPlanets)
-    {
+    PoliticalSystem[] govs
+                      = {
+                new Anarchy(),
+                new CapitalistState(),
+                new CommunistState(),
+                new Confederacy(),
+                new Corporate(),
+                new Cybernetic(),
+                new Democracy(),
+                new Dictatorship(),
+                new FascistState(),
+                new FeudalState(),
+                new MilitaryState(),
+                new Monarchy(),
+                new PacifistState(),
+                new SocialistState(),
+                new Satori(),
+                new Technocracy(),
+                new Theocracy()
+            };
+
+    public SolarSystem newRandomSolarSystem(int numOfPlanets) {
         int random = (int) (Math.random() * SystemPool.values().length);
         SystemPool x = SystemPool.values()[random];
         SolarSystem out = new SolarSystem(x.name, govs[x.govType], x.techLevel);
-        for(int i = 0; i < numOfPlanets; i++)
-        {
+        for (int i = 0; i < numOfPlanets; i++) {
             Planet newPlanet = new Planet(PlanetNames.values()[random * 5 + i]
                     .getName(), out);
             out.addPlanet(newPlanet);
@@ -57,17 +55,14 @@ public class SolarSystemFactory
         return out;
     }
 
-    public SolarSystem generateHigh(int numOfPlanets)
-    {
+    public SolarSystem generateHigh(int numOfPlanets) {
         int random = (int) (Math.random() * SystemPool.values().length);
-        while(SystemPool.values()[random].techLevel < 4)
-        {
+        while (SystemPool.values()[random].techLevel < 4) {
             random = (int) (Math.random() * SystemPool.values().length);
         }
         SystemPool x = SystemPool.values()[random];
         SolarSystem out = new SolarSystem(x.name, govs[x.govType], x.techLevel);
-        for(int i = 0; i < numOfPlanets; i++)
-        {
+        for (int i = 0; i < numOfPlanets; i++) {
             Planet newPlanet = new Planet(PlanetNames.values()[random * 5 + i]
                     .getName(), out);
             out.addPlanet(newPlanet);
@@ -75,17 +70,14 @@ public class SolarSystemFactory
         return out;
     }
 
-    public SolarSystem generateLow(int numOfPlanets)
-    {
+    public SolarSystem generateLow(int numOfPlanets) {
         int random = (int) (Math.random() * SystemPool.values().length);
-        while(SystemPool.values()[random].techLevel > 3)
-        {
+        while (SystemPool.values()[random].techLevel > 3) {
             random = (int) (Math.random() * SystemPool.values().length);
         }
         SystemPool x = SystemPool.values()[random];
         SolarSystem out = new SolarSystem(x.name, govs[x.govType], x.techLevel);
-        for(int i = 0; i < numOfPlanets; i++)
-        {
+        for (int i = 0; i < numOfPlanets; i++) {
             Planet newPlanet = new Planet(PlanetNames.values()[random * 5 + i]
                     .getName(), out);
             out.addPlanet(newPlanet);

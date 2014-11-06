@@ -18,24 +18,27 @@ package spacetrader;
 
 /**
  * Laser Weapon types
+ *
  * @author Kristen Lawrence
  */
 public enum Laser {
+
     PULSE("Pulse Laser", 250, 4, 4),
     BEAM("Beam Laser", 500, 8, 6),
     MILITARY("Military Laser", 1000, 12, 7);
-    
+
     String name;
     double price;
     int power;
     int minTL;
-    
+
     /**
      * Laser Constructor for enum type
-     * @param name the string rep
+     *
+     * @param name  the string rep
      * @param price the price of laser in shipyard buy/sell
      * @param power the power of the laser in battle
-     * @param minTL  the min tech level a planet needs to sell said laser
+     * @param minTL the min tech level a planet needs to sell said laser
      */
     Laser(String name, double price, int power, int minTL) {
         this.name = name;
@@ -43,25 +46,28 @@ public enum Laser {
         this.power = power;
         this.minTL = minTL;
     }
-    
+
     /**
      * getter for price of laser
+     *
      * @return price a double
      */
     double getPrice() {
         return price;
     }
-    
+
     /**
      * getter for power
+     *
      * @return int power
      */
     int getPower() {
         return power;
     }
-    
+
     /**
      * getter for minTL
+     *
      * @return int minTL
      */
     int getMinTL() {

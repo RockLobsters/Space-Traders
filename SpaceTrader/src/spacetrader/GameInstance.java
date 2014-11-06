@@ -17,7 +17,6 @@
 package spacetrader;
 
 //import file writestream some stream
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,60 +26,55 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
  * @author Addison Amiri
  */
-public class GameInstance
-{
-  private static Game instance = new Game();
+public class GameInstance {
 
-  public static Game getInstance()
-  {
-    return instance;
-  }
-  public static void saveModelBinary()  {
+    private static Game instance = new Game();
+
+    public static Game getInstance() {
+        return instance;
+    }
+
+    public static void saveModelBinary() {
         try {
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data.bin"))) {
                 out.writeObject(instance);
             }
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    public static void loadModelBinary()  {
+
+    public static void loadModelBinary() {
         try {
             try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("data.bin"))) {
                 Game loadGame = (Game) in.readObject();
                 instance = loadGame;
             }
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        }
+        catch (ClassNotFoundException ex) {
             Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    /*
-    private void generateUniverse() {
-          for (int i = 0; i < 10; ++i) {
-              Planet p = new Planet((i*10), (i*2*10), "Planet " + i);
-              planets.add(p);
-          }
-    }
 
-    public Iterable<Planet> getPlanets() {
-       return planets;
-    }
-    
-    public Planet getSelectedPlanet() { return planets.get(selectedPlanet); }
-    */
-    
+    /*
+     * private void generateUniverse() { for (int i = 0; i < 10; ++i) { Planet p
+     * = new Planet((i*10), (i*2*10), "Planet " + i); planets.add(p); } }
+     *
+     * public Iterable<Planet> getPlanets() { return planets; }
+     *
+     * public Planet getSelectedPlanet() { return planets.get(selectedPlanet); }
+     */
   //save game static savegame = new stream(create a file);//stream.write give game obj
-  //catch filenotfound
-  //load game static //stream.read game obj
-  //catch filenotfound
+    //catch filenotfound
+    //load game static //stream.read game obj
+    //catch filenotfound
 }

@@ -21,5 +21,5 @@ package spacetrader;
  * @author Kristen Lawrence
  */
 class EquipmentFactory {
-    
+
 }

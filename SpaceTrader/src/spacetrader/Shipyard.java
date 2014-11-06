@@ -53,7 +53,7 @@ public class Shipyard implements Serializable {
     /**
      * Calculates and returns a ship's price
      *
-     * @param player whose cargo and current ship are deducted from ship price
+     * @param player  whose cargo and current ship are deducted from ship price
      * @param newShip to be priced
      *
      * @return the total price of newShip minus cargo and price of current ship
@@ -75,10 +75,8 @@ public class Shipyard implements Serializable {
             equipVal = equipVal + g.getPrice();
         }
         Market m = planet.getMarket();
-        for(Good g : cargo)
-        {
-            if(m.getPrice(g) != -1)
-            {
+        for (Good g : cargo) {
+            if (m.getPrice(g) != -1) {
                 cargoVal = cargoVal + m.getPrice(g);
             }
         }
@@ -92,17 +90,18 @@ public class Shipyard implements Serializable {
      * this includes selling all cargo and equipment. Also transfers escape pod
      * if there is one.
      *
-     * @param player - to whom the new ship will go to
+     * @param player  - to whom the new ship will go to
      * @param newShip - the new ship for player
      *
      * @return negative if not enough money, zero if cargo will be lost,
-     * otherwise positive (transaction went through)
+     *         otherwise positive (transaction went through)
      */
     public int buyShip(Player player, Ship newShip, boolean userVerified) {
         double cost = shipPrice(player, newShip);
         if (checkWallet(player, cost) == false) {
             return -1;
-        } else {
+        }
+        else {
             ArrayList<Good> cargo = player.getShip().cargo;
             Market m = planet.getMarket();
             for (Good g : cargo) {
@@ -129,7 +128,7 @@ public class Shipyard implements Serializable {
      * @param gallons wished to be added to fuel tank
      *
      * @return true if transaction worked false if not enough money or amount
-     * requested exceeds fuel tank capacity
+     *         requested exceeds fuel tank capacity
      */
     public boolean refuel(Player player, int gallons) {
         Ship ship = player.getShip();
@@ -170,7 +169,7 @@ public class Shipyard implements Serializable {
      * Sell a Weapon
      *
      * @param player making transaction
-     * @param index of the weapon player wants to sell
+     * @param index  of the weapon player wants to sell
      */
     public void sellWeapon(Player player, int index) {
         player.addMoney(player.getShip().removeWeapon(index));
@@ -186,7 +185,8 @@ public class Shipyard implements Serializable {
         }
         if (index == -1) {
             return false;
-        } else {
+        }
+        else {
             sellWeapon(player, index);
             return true;
         }
@@ -196,7 +196,7 @@ public class Shipyard implements Serializable {
      * Sell a Shield
      *
      * @param player making transaction
-     * @param index of Shield player wants to sell
+     * @param index  of Shield player wants to sell
      */
     public void sellShield(Player player, int index) {
         player.addMoney(player.getShip().removeShield(index));
@@ -212,7 +212,8 @@ public class Shipyard implements Serializable {
         }
         if (index == -1) {
             return false;
-        } else {
+        }
+        else {
             sellShield(player, index);
             return true;
         }
@@ -222,7 +223,7 @@ public class Shipyard implements Serializable {
      * Sell a Gadget
      *
      * @param player making transaction
-     * @param index of the gadget player wants to sell
+     * @param index  of the gadget player wants to sell
      */
     public void sellGadget(Player player, int index) {
         player.addMoney(player.getShip().removeGadget(index));
@@ -238,7 +239,8 @@ public class Shipyard implements Serializable {
         }
         if (index == -1) {
             return false;
-        } else {
+        }
+        else {
             sellGadget(player, index);
             return true;
         }
@@ -274,7 +276,7 @@ public class Shipyard implements Serializable {
      * Lets window know whether or not to display a shipyard option
      *
      * @return true if techLevel is sufficient to support a shipyard otherwise
-     * false
+     *         false
      */
     public boolean makeVisible() {
         return (techLevel >= 4);
@@ -284,7 +286,7 @@ public class Shipyard implements Serializable {
      * upgrades ship with a laser
      *
      * @param player whose money will pay for weapon
-     * @param l the laser to buy
+     * @param l      the laser to buy
      */
     public int buyWeapon(Player player, Laser l) {
         Ship ship = player.getShip();
@@ -293,7 +295,8 @@ public class Shipyard implements Serializable {
             if (ship.addWeapon(l)) {
                 player.subtractMoney(cost);
                 return 1;
-            } else {
+            }
+            else {
                 return 0;
             }
         }
@@ -304,7 +307,7 @@ public class Shipyard implements Serializable {
      * upgrades ship with a shield
      *
      * @param player whose money will pay for defense
-     * @param d the defense to buy
+     * @param d      the defense to buy
      */
     public int buyDefense(Player player, Shield s) {
         Ship ship = player.getShip();
@@ -313,7 +316,8 @@ public class Shipyard implements Serializable {
             if (ship.addShield(s)) {
                 player.subtractMoney(cost);
                 return 1;
-            } else {
+            }
+            else {
                 return 0;
             }
         }
@@ -324,7 +328,7 @@ public class Shipyard implements Serializable {
      * upgrades ship with a gadget
      *
      * @param player whose money will pay for gadget
-     * @param g the gadget to buy
+     * @param g      the gadget to buy
      */
     public int buyGadget(Player player, Gadget g) {
         Ship ship = player.getShip();
@@ -333,7 +337,8 @@ public class Shipyard implements Serializable {
             if (ship.addGadget(g)) {
                 player.subtractMoney(cost);
                 return 1;
-            } else {
+            }
+            else {
                 return 0;
             }
         }
@@ -344,8 +349,9 @@ public class Shipyard implements Serializable {
      * Buy an Escape Pod
      *
      * @param player making transaction
+     *
      * @return true if transaction was successful false if player already has
-     * escape pod or doesn't have enough money
+     *         escape pod or doesn't have enough money
      */
     public int buyEscapePod(Player player) {
         Ship ship = player.getShip();
@@ -355,7 +361,8 @@ public class Shipyard implements Serializable {
                 ship.setEscapePod(true);
                 player.subtractMoney(cost);
                 return 1;
-            } else {
+            }
+            else {
                 return 0;
             }
         }
@@ -366,8 +373,9 @@ public class Shipyard implements Serializable {
      * Buy Ship Insurance
      *
      * @param player making transaction
+     *
      * @return true if transaction went through false if player doesn't have
-     * enough moolah or already has insurance
+     *         enough moolah or already has insurance
      */
     public boolean buyInsurance(Player player) {
         Ship ship = player.getShip();
@@ -430,7 +438,8 @@ public class Shipyard implements Serializable {
      * Helper that checks if Player has enough money to make transaction
      *
      * @param player whose wallet will be checked
-     * @param price to check against player's money
+     * @param price  to check against player's money
+     *
      * @return
      */
     private boolean checkWallet(Player player, double price) {

@@ -46,8 +46,8 @@ import java.util.Random;
  *
  * @author jackie
  */
-public class PlanetScreenController implements Initializable
-{
+public class PlanetScreenController implements Initializable {
+
     @FXML
     private Menu fuelTab;
     @FXML
@@ -71,29 +71,26 @@ public class PlanetScreenController implements Initializable
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
 
         yard.setSolarSystem(planet.getSolarSystem());
-        if(!yard.makeVisible()){
+        if (!yard.makeVisible()) {
             shipYardButton.setVisible(false);
         }
         game.setCurrentScreen("PlanetScreen.fxml");
         String s = randEvent();
         fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()) + "; "
-                                + planet.getName() + ". " + s);
+                + planet.getName() + ". " + s);
 
     }
 
     @FXML
-    private void goToStock(MouseEvent event)
-    {
+    private void goToStock(MouseEvent event) {
         //
     }
 
     @FXML
-    private void goToMarket(MouseEvent event) throws Exception
-    {
+    private void goToMarket(MouseEvent event) throws Exception {
         //randEvent();
         // Game game = GameInstance.getInstance();
         // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -110,16 +107,13 @@ public class PlanetScreenController implements Initializable
     }
 
     @FXML
-    private void goToPersonnel(MouseEvent event)
-    {
+    private void goToPersonnel(MouseEvent event) {
         //
     }
 
     @FXML
-    private void returnToSystem(MouseEvent event) throws Exception
-    {
-        if(ship.getFuel() > 0)
-        {
+    private void returnToSystem(MouseEvent event) throws Exception {
+        if (ship.getFuel() > 0) {
             //randEvent();
             SolarSystem system = planet.getSolarSystem();
             ship.setFuel(ship.getFuel() - 1);
@@ -127,8 +121,7 @@ public class PlanetScreenController implements Initializable
             Parent root = FXMLLoader.load(getClass().getResource(
                     "GalOneScreen.fxml"));
             System.out.print(game.getUniverse().indexOf(system));
-            switch(game.getUniverse().indexOf(system))
-            {
+            switch (game.getUniverse().indexOf(system)) {
                 case 0:
                     root = FXMLLoader.load(getClass().getResource(
                             "GalOneScreen.fxml"));
@@ -172,8 +165,7 @@ public class PlanetScreenController implements Initializable
             ((Node) (event.getSource())).getScene().getWindow().hide();
 
         }
-        else
-        {
+        else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -184,44 +176,36 @@ public class PlanetScreenController implements Initializable
         }
     }
 
-    private String randEvent()
-    {
+    private String randEvent() {
         Random rand = new Random();
         int x = rand.nextInt(20);
         String string = "";
 
-        if(x > 15)
-        {
+        if (x > 15) {
             //String string = "";
 
-            if(x == 16)
-            {
+            if (x == 16) {
                 string = "You found $10!";
                 player.addMoney(100);
             }
-            else if(x == 15)
-            {
+            else if (x == 15) {
                 string = "Your fuel tank has a hole in it and some spilled out!";
                 ship.setFuel(ship.getFuel() - 1);
             }
-            else if(x == 17)
-            {
+            else if (x == 17) {
                 string = "Pirates raided your ship and took $50!";
                 player.subtractMoney(50);
             }
-            else if(x == 18)
-            {
+            else if (x == 18) {
                 player.setWantedLevel(player.getWantedLevel() + 1);
                 string = "You accidentally did something illegal. Wanted level: "
-                         + player.getWantedLevel();
+                        + player.getWantedLevel();
             }
-            else if(x == 19)
-            {
+            else if (x == 19) {
                 player.addMoney(100);
                 string = "You found a valueable stone and sold it for $100!";
             }
-            else if(x == 20)
-            {
+            else if (x == 20) {
                 ship.setFuel(ship.getFuel() + 1);
                 string = "You found some fuel!";
             }
@@ -243,14 +227,12 @@ public class PlanetScreenController implements Initializable
     }
 
     @FXML
-    private void saveGame(MouseEvent event) throws Exception
-    {
+    private void saveGame(MouseEvent event) throws Exception {
         GameInstance.saveModelBinary();
     }
 
     @FXML
-    private void exit(MouseEvent event) throws Exception
-    {
+    private void exit(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -263,11 +245,11 @@ public class PlanetScreenController implements Initializable
     @FXML
     private void goToShipYard(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("ShipYardScreen.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-            //hide this current window (if this is whant you want
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+        //hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }

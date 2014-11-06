@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package spacetrader;
 
 import java.io.Serializable;
@@ -23,79 +22,68 @@ import java.io.Serializable;
  *
  * @author sydnipeterson
  */
-public class Game implements Serializable{
+public class Game implements Serializable {
 
     private Player player;
     private Universe universe;
     private String currentScreen;
-    
+
     /**
      * @param player the player to set
      */
-    public void setPlayer(Player player)
-    {
-      this.player = player;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
-    
+
     /**
      * @return the player
      */
-    public Player getPlayer()
-    {
-      return player;
+    public Player getPlayer() {
+        return player;
     }
-    
+
     /**
      * @param universe the universe to set
      */
-    public void setUniverse(Universe universe)
-    {
-      this.universe = universe;
+    public void setUniverse(Universe universe) {
+        this.universe = universe;
     }
-    
+
     /**
      * @return the universe
      */
-    public Universe getUniverse()
-    {
-      return universe;
+    public Universe getUniverse() {
+        return universe;
     }
-    
+
     /**
      * Creates a new universe
      */
-    public void createUniverse()
-    {
-      universe = new Universe();
-      universe.bigBang();
+    public void createUniverse() {
+        universe = new Universe();
+        universe.bigBang();
     }
-    
+
     /**
      * @param currentScreen the screen to set
      */
-    public void setCurrentScreen(String currentScreen)
-    {
+    public void setCurrentScreen(String currentScreen) {
         this.currentScreen = currentScreen;
     }
-    
+
     /**
      * @return the currentScreen
      */
-    public String getCurrentScreen()
-    {
+    public String getCurrentScreen() {
         return currentScreen;
     }
 
     /**
-     * @return "Player:
-     *          player
-     *          Universe:
-     *          universe"
+     * @return "Player: player Universe: universe"
      */
     @Override
-    public String toString()
-    {
-        return    "Player:\n"
+    public String toString() {
+        return "Player:\n"
                 + player.toString() + "\n"
                 + "\n"
                 + "Universe:\n"

@@ -9,99 +9,99 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.GalOneScreenController">
-   <children>
-      <BorderPane layoutX="1.0" prefHeight="403.9024353027344" prefWidth="621.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-         <bottom>
-            <MenuBar opacity="0.78" BorderPane.alignment="CENTER">
-              <menus>
-                <Menu mnemonicParsing="false">
-                     <graphic>
-                        <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="SAVE">
-                           <effect>
-                              <ColorAdjust brightness="-0.38" />
-                           </effect>
-                        </Button>
-                     </graphic>
-                </Menu>
-                  <Menu mnemonicParsing="false">
-                     <graphic>
-                        <Button mnemonicParsing="false" onMouseClicked="#exit" text="EXIT">
-                           <effect>
-                              <ColorAdjust brightness="-0.38" />
-                           </effect>
-                        </Button>
-                     </graphic>
-                  </Menu>
-                <Menu mnemonicParsing="false">
-                     <graphic>
-                        <Button fx:id="returnButton" mnemonicParsing="false" onMouseClicked="#returnToSolar" text="RETURN">
-                           <effect>
-                              <ColorAdjust brightness="-0.38" />
-                           </effect>
-                        </Button>
-                     </graphic>
-                </Menu>
-                <Menu fx:id="fuelTab" mnemonicParsing="false" />
-              </menus>
-               <effect>
-                  <ColorAdjust brightness="-0.05" contrast="0.36" hue="1.0" saturation="0.43" />
-               </effect>
-            </MenuBar>
-         </bottom>
-         <top>
-            <ImageView fitHeight="528.0" fitWidth="843.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <image>
-                  <Image url="@stars.png" />
-               </image>
-            </ImageView>
-         </top>
-      </BorderPane>
-      <ImageView fitHeight="472.0" fitWidth="762.0" layoutX="18.0" layoutY="20.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@galexy.png" />
-         </image>
-      </ImageView>
-      <GridPane prefHeight="527.0" prefWidth="811.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ImageView fx:id="peachtreePlan" fitHeight="115.0" fitWidth="118.0" onMouseClicked="#goToPeachtreePlan" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@plan1.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="gastatePLan" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#goToGastatePlan" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@plan2.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="gatechPlan" fitHeight="171.0" fitWidth="171.0" onMouseClicked="#goToGatechPlan" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@plan4.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="poncePlan" fitHeight="66.0" fitWidth="65.0" onMouseClicked="#goToPoncePlan" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@plan6.png" />
-               </image>
-            </ImageView>
-         </children>
-      </GridPane>
-   </children>
+    <children>
+        <BorderPane layoutX="1.0" prefHeight="403.9024353027344" prefWidth="621.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+            <bottom>
+                <MenuBar opacity="0.78" BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="SAVE">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button mnemonicParsing="false" onMouseClicked="#exit" text="EXIT">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button fx:id="returnButton" mnemonicParsing="false" onMouseClicked="#returnToSolar" text="RETURN">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu fx:id="fuelTab" mnemonicParsing="false" />
+                    </menus>
+                    <effect>
+                        <ColorAdjust brightness="-0.05" contrast="0.36" hue="1.0" saturation="0.43" />
+                    </effect>
+                </MenuBar>
+            </bottom>
+            <top>
+                <ImageView fitHeight="528.0" fitWidth="843.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                    <image>
+                        <Image url="@stars.png" />
+                    </image>
+                </ImageView>
+            </top>
+        </BorderPane>
+        <ImageView fitHeight="472.0" fitWidth="762.0" layoutX="18.0" layoutY="20.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@galexy.png" />
+            </image>
+        </ImageView>
+        <GridPane prefHeight="527.0" prefWidth="811.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <ImageView fx:id="peachtreePlan" fitHeight="115.0" fitWidth="118.0" onMouseClicked="#goToPeachtreePlan" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <image>
+                        <Image url="@plan1.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="gastatePLan" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#goToGastatePlan" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                    <image>
+                        <Image url="@plan2.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="gatechPlan" fitHeight="171.0" fitWidth="171.0" onMouseClicked="#goToGatechPlan" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <image>
+                        <Image url="@plan4.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="poncePlan" fitHeight="66.0" fitWidth="65.0" onMouseClicked="#goToPoncePlan" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                    <image>
+                        <Image url="@plan6.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </GridPane>
+    </children>
 </AnchorPane>
