@@ -76,6 +76,10 @@ public class GalSixScreenController implements Initializable {
         fuelTab.setText("Fuel: " + ship.getFuel() + ". " + s);
     }    
 
+    /**
+    * Goes to the FamCoHQ planet when planet image is clicked on
+    * @param event   occurs when the user clicks on the planet
+    */
     @FXML
     private void goToFamCoHQPlan(MouseEvent event) throws Exception {
        if (ship.getFuel() >=0){
@@ -104,6 +108,10 @@ public class GalSixScreenController implements Initializable {
         }
     }
 
+    /**
+    * Goes to the FamCoWarehouse planet when planet image is clicked on
+    * @param event   occurs when the user clicks on the planet
+    */
     @FXML
     private void goToFamCoWarehousePlan(MouseEvent event) throws Exception{
          if (ship.getFuel() >0){
@@ -131,7 +139,10 @@ public class GalSixScreenController implements Initializable {
             dialogStage.show();
         }
     }
-
+    /**
+    * Goes to the FamCoSattaliteBranch planet when planet image is clicked on
+    * @param event   occours when the user clicks on the planet
+    */
     @FXML
     private void goToFamCoSatteliteBranchPlan(MouseEvent event) throws Exception {
         if (ship.getFuel() >0){
@@ -160,6 +171,10 @@ public class GalSixScreenController implements Initializable {
         }
     }
 
+    /**
+    * Goes to the FamCoMoonBranch planet when planet image is clicked on
+    * @param event   occours when the user clicks on the planet
+    */
     @FXML
     private void goToFamCoMoonBranchPlan(MouseEvent event) throws Exception {
         if (ship.getFuel() >0){
@@ -188,6 +203,10 @@ public class GalSixScreenController implements Initializable {
         }
     }
 
+    /**
+    * Returns the user to the Solar System screen when the button is clicked
+    * @param event   occours when the user clicks on the "RETURN" button
+    */
     @FXML
     private void returnToUniverse(MouseEvent event) throws Exception{
         if (ship.getFuel() >0){
@@ -214,7 +233,10 @@ public class GalSixScreenController implements Initializable {
             dialogStage.show();
         }
     }
-
+    /**
+    * Generates a random event that will appear in the bottom of the screen.
+    * @return string of random event that happened
+    */
     private String randEvent() {
         Random rand = new Random();
         int x = rand.nextInt(20);
@@ -261,11 +283,19 @@ public class GalSixScreenController implements Initializable {
         return string;
     }
 
+    /**
+    * Saves the game
+    * @param event  mouse event of when user clicks on "SAVE" button
+    */
     @FXML
     private void saveGame(MouseEvent event) {
         GameInstance.saveModelBinary();
     }
 
+    /**
+    * Exits the game and returns to the main screen
+    * @param event  mouse event of when user clicks on "EXIT" button
+    */
     @FXML
     private void exit(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));

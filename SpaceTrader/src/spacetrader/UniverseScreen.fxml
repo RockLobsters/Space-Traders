@@ -29,11 +29,8 @@
             <MenuBar opacity="0.78" BorderPane.alignment="CENTER">
               <menus>
                 <Menu mnemonicParsing="false">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
                      <graphic>
-                        <Button mnemonicParsing="false" onMouseClicked="#SaveGame" text="Save">
+                        <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="Save">
                            <effect>
                               <ColorAdjust brightness="-0.38" />
                            </effect>
@@ -41,9 +38,6 @@
                      </graphic>
                 </Menu>
                 <Menu mnemonicParsing="false">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
                      <graphic>
                         <Button mnemonicParsing="false" onMouseClicked="#exit" text="Exit">
                            <effect>

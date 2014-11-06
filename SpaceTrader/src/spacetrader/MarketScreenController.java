@@ -666,6 +666,10 @@ public class MarketScreenController implements Initializable {
 
         }
     }
+    /**
+    * Returns the user to the PlanetScreen when the button is clicked
+    * @param event   occours when the user clicks on the "RETURN" button
+    */
 
     @FXML
     private void returnToPlanet(MouseEvent event) throws Exception{

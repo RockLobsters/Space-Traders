@@ -92,6 +92,11 @@ public class GalThreeScreenController implements Initializable {
         pohl.setY(planet.getCoordinateY());
     }    
 
+
+    /**
+    * Returns the user to the Solar System screen when the button is clicked
+    * @param event   occours when the user clicks on the "RETURN" button
+    */
     @FXML
     private void returnToSolar(MouseEvent event) throws Exception {
         if (ship.getFuel() >0){
@@ -119,6 +124,11 @@ public class GalThreeScreenController implements Initializable {
         }
     }
 
+
+    /**
+    * Goes to the Asmio planet when planet image is clicked on
+    * @param event   occours when the user clicks on the planet
+    */
     @FXML
     private void goToAsmio(MouseEvent event) throws Exception {
         if (ship.getFuel() >0){
@@ -148,6 +158,10 @@ public class GalThreeScreenController implements Initializable {
 
     }
 
+    /**
+    * Goes to the Pohl planet when planet image is clicked on
+    * @param event   occours when the user clicks on the planet
+    */
     @FXML
     private void goToPohl(MouseEvent event) throws Exception {
         if (ship.getFuel() >0){
@@ -176,6 +190,11 @@ public class GalThreeScreenController implements Initializable {
         }
     }
 
+
+    /**
+    * Goes to the HeinLein planet when planet image is clicked on
+    * @param event   occours when the user clicks on the planet
+    */
     @FXML
     private void goToHeinLein(MouseEvent event) throws Exception {
         if (ship.getFuel() >0){
@@ -205,6 +224,11 @@ public class GalThreeScreenController implements Initializable {
 
     }
 
+
+    /**
+    * Generates a random event that will appear in the bottom of the screen.
+    * @return string of random event that happened
+    */
     private String randEvent() {
         Random rand = new Random();
         int x = rand.nextInt(20);
@@ -251,11 +275,19 @@ public class GalThreeScreenController implements Initializable {
         return string;
     }
 
+    /**
+    * Saves the game
+    * @param event  mouse event of when user clicks on "SAVE" button
+    */
     @FXML
     private void saveGame(MouseEvent event) {
         GameInstance.saveModelBinary();
     }
 
+    /**
+    * Exits the game and returns to the main screen
+    * @param event  mouse event of when user clicks on "EXIT" button
+    */
     @FXML
     private void exit(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));

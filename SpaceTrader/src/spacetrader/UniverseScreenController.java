@@ -69,17 +69,23 @@ public class UniverseScreenController implements Initializable {
     private Player player = GameInstance.getInstance().getPlayer();
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     private Universe universe = GameInstance.getInstance().getUniverse();
+    private Game game = GameInstance.getInstance();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        game.setCurrentScreen("UniverseScreen.fxml");
         // TODO
         //fuelTab.setText("Fuel: ");
         fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()));
     }    
 
+    /**
+    * Returns to main menu when clicked
+    * @event   the event that triggers this action
+    */
     @FXML
     private void ReturnMainMenu(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
@@ -89,8 +95,12 @@ public class UniverseScreenController implements Initializable {
 
         //hide this current window (if this is whant you want
         ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
+    }
 
+    /**
+    * Takes player to first galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal1(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -117,6 +127,10 @@ public class UniverseScreenController implements Initializable {
 
     }
 
+    /**
+    * Takes player to fourth galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal4(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -143,6 +157,11 @@ public class UniverseScreenController implements Initializable {
 
     }
 
+
+    /**
+    * Takes player to seventh galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal7(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -169,6 +188,11 @@ public class UniverseScreenController implements Initializable {
 
     }
 
+
+    /**
+    * Takes player to fifth galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal5(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -195,6 +219,11 @@ public class UniverseScreenController implements Initializable {
 
     }
 
+
+    /**
+    * Takes player to second galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal2(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -221,6 +250,10 @@ public class UniverseScreenController implements Initializable {
 
     }
 
+    /**
+    * Takes player to eigth galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal8(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -247,6 +280,10 @@ public class UniverseScreenController implements Initializable {
 
     }
 
+    /**
+    * Takes player to three galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal3(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -273,6 +310,11 @@ public class UniverseScreenController implements Initializable {
 
     }
 
+
+    /**
+    * Takes player to sixth galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal6(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -299,6 +341,11 @@ public class UniverseScreenController implements Initializable {
 
     }
 
+
+    /**
+    * Takes player to nineth (0) galaxy
+    * @event   the event that triggers this action
+    */
     @FXML
     private void goToGal0(MouseEvent event) throws Exception {
          if (ship.getFuel() >0){
@@ -325,11 +372,21 @@ public class UniverseScreenController implements Initializable {
 
     }
     
+
+    /**
+    * Saves the game
+    * @param event  mouse event of when user clicks on "SAVE" button
+    */
     @FXML
-    private void SaveGame(MouseEvent event) {
+    private void saveGame(MouseEvent event) {
         GameInstance.saveModelBinary();
     }
 
+
+    /**
+    * Exits the game and returns to the main screen
+    * @param event  mouse event of when user clicks on "EXIT" button
+    */
     @FXML
     private void exit(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
