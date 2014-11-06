@@ -58,9 +58,20 @@ public class Planet implements Comparable, Serializable
     {
         this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.random() * SolarSystem.SIZE_Y));
     }
+    /**
+     * Creates a planet with random coordinates of a specific SolarSystem
+     *
+     * @param name the name of the new planet
+     * @param solarSystem the solar system of the new planet
+     */
+    public Planet(String name, SolarSystem solarSystem)
+    {
+        this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.random() * SolarSystem.SIZE_Y));
+        this.solarSystem = solarSystem;
+    }
 
     /**
-     * Creates a planet with random coordinates inbetween the given limits
+     * Creates a planet with random coordinates in between the given limits
      *
      * @param name the name of the new planet
      * @param minCoordinateX the minimum of the x coordinate
