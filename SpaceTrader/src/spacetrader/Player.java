@@ -98,7 +98,7 @@ public class Player implements Serializable {
      * @param level
      */
     public void setWantedLevel(int level) {
-        wantedLevel += level;
+        wantedLevel = level;
     }
 
     /**
