@@ -22,8 +22,8 @@ package spacetrader;
  */
 public class SolarSystemFactory {
 
-    PoliticalSystem[] govs
-                      = {
+    static PoliticalSystem[] govs
+                             = {
                 new Anarchy(),
                 new CapitalistState(),
                 new CommunistState(),
@@ -43,7 +43,7 @@ public class SolarSystemFactory {
                 new Theocracy()
             };
 
-    public SolarSystem newRandomSolarSystem(int numOfPlanets) {
+    public static SolarSystem newRandomSolarSystem(int numOfPlanets) {
         int random = (int) (Math.random() * SystemPool.values().length);
         SystemPool x = SystemPool.values()[random];
         SolarSystem out = new SolarSystem(x.name, govs[x.govType], x.techLevel);
@@ -55,7 +55,7 @@ public class SolarSystemFactory {
         return out;
     }
 
-    public SolarSystem generateHigh(int numOfPlanets) {
+    static public SolarSystem generateHigh(int numOfPlanets) {
         int random = (int) (Math.random() * SystemPool.values().length);
         while (SystemPool.values()[random].techLevel < 4) {
             random = (int) (Math.random() * SystemPool.values().length);
@@ -70,7 +70,7 @@ public class SolarSystemFactory {
         return out;
     }
 
-    public SolarSystem generateLow(int numOfPlanets) {
+    static public SolarSystem generateLow(int numOfPlanets) {
         int random = (int) (Math.random() * SystemPool.values().length);
         while (SystemPool.values()[random].techLevel > 3) {
             random = (int) (Math.random() * SystemPool.values().length);

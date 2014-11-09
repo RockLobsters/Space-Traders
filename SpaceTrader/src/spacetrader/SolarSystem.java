@@ -23,7 +23,7 @@ import java.io.Serializable;
  *
  * @author Addison Amiri
  */
-class SolarSystem implements Serializable {
+public class SolarSystem implements Serializable {
 
     private String name;
     private ArrayList<Planet> planets;
