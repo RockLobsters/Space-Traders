@@ -11,21 +11,21 @@
 <AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.RootWindowController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Space Trader">
-               <font>
-                  <Font name="System Bold" size="96.0" />
-               </font>
-            </Text>
-            <Button fx:id="newGameButton" alignment="CENTER" onAction="#handleNewGameAction" prefHeight="30.0" prefWidth="200.0" text="New Game" textAlignment="CENTER" />
-            <Button fx:id="loadGameButton" alignment="CENTER" onAction="#handleLoadGameAction" prefHeight="30.0" prefWidth="200.0" text="Load Game" textAlignment="CENTER" />
-            <Button fx:id="exitButton" alignment="CENTER" onAction="#handleExitAction" prefHeight="30.0" prefWidth="200.0" text="Exit" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
+        <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Space Trader">
+                    <font>
+                        <Font name="System Bold" size="96.0" />
+                    </font>
+                </Text>
+                <Button fx:id="newGameButton" alignment="CENTER" onAction="#handleNewGameAction" prefHeight="30.0" prefWidth="200.0" text="New Game" textAlignment="CENTER" />
+                <Button fx:id="loadGameButton" alignment="CENTER" onAction="#handleLoadGameAction" prefHeight="30.0" prefWidth="200.0" text="Load Game" textAlignment="CENTER" />
+                <Button fx:id="exitButton" alignment="CENTER" onAction="#handleExitAction" prefHeight="30.0" prefWidth="200.0" text="Exit" textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
     </children>
 </AnchorPane>

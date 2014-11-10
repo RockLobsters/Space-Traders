@@ -18,21 +18,24 @@ package spacetrader;
 
 /**
  * Gadgets for ship
+ *
  * @author Kristen Lawrence
  */
 public enum Gadget {
+
     CARGO_BAYS("5 Cargo Bays", 500, 4),
     NAV_SYSTEM("Navigation System", 750, 5),
     AUTO_REPAIR_SYSTEM("Auto-Repair System", 1000, 6),
     TARGET_SYSTEM("Targeting System", 1000, 6),
     CLOAK_DEVICE("Cloaking Device", 2000, 7);
-    
+
     String name;
     double price;
     int minTL;
-    
+
     /**
      * Gadget constructor for enum
+     *
      * @param name string rep
      * @param price the price of gadget buying or selling
      * @param minTL the min tech level needed for a planet to sell
@@ -42,17 +45,19 @@ public enum Gadget {
         this.price = price;
         this.minTL = minTL;
     }
-    
+
     /**
      * getter for price
+     *
      * @return price a double
      */
     double getPrice() {
         return price;
     }
-    
+
     /**
      * getter for minTL
+     *
      * @return int minTL
      */
     int getMinTL() {

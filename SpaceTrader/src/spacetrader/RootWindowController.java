@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  * @author addison
  */
 public class RootWindowController implements Initializable {
-    
+
     @FXML
     private Label label;
     @FXML
@@ -32,7 +32,7 @@ public class RootWindowController implements Initializable {
     private Button loadGameButton;
     @FXML
     private Button exitButton;
-    
+
     @FXML
     private void handleNewGameAction(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("NewGameWindow.fxml"));
@@ -41,9 +41,9 @@ public class RootWindowController implements Initializable {
         stage.show();
 
         //hide this current window (if this is whant you want
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-    
+
     @FXML
     private void handleLoadGameAction(ActionEvent event) throws Exception {
         GameInstance.loadModelBinary();
@@ -53,17 +53,17 @@ public class RootWindowController implements Initializable {
         stage.show();
 
         //hide this current window (if this is whant you want
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-  
+
     @FXML
     private void handleExitAction(ActionEvent event) {
         System.exit(0);
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }

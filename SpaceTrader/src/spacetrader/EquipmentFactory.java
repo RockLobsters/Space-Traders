@@ -21,5 +21,7 @@ package spacetrader;
  * @author Kristen Lawrence
  */
 class EquipmentFactory {
-    
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

@@ -64,7 +64,7 @@ public class NewGameWindowController implements Initializable {
     }
 
     @FXML
-    private void handleStartGameAction(ActionEvent event) throws Exception{
+    private void handleStartGameAction(ActionEvent event) throws Exception {
         int fighterValue = (int) fighterSlider.getValue();
         int traderValue = (int) traderSlider.getValue();
         int engineerValue = (int) engineerSlider.getValue();
@@ -82,12 +82,11 @@ public class NewGameWindowController implements Initializable {
             player.setInvestor(investorValue);
             player.setPilot(pilotValue);
             player.setTrader(traderValue);
-            
+
             Game newGame = GameInstance.getInstance();
             newGame.createUniverse();
             newGame.setPlayer(player);
-            
-            
+
             Parent root = FXMLLoader.load(getClass().getResource("UniverseScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -96,20 +95,20 @@ public class NewGameWindowController implements Initializable {
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
 
-        } else if(name.isEmpty()) {
+        } else if (name.isEmpty()) {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("Please Enter a Valid Name")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("Please Enter a Valid Name")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
             System.out.println("invlaid name");
         } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You can only allocate 10 stat points to your player.\nPlease do that to continue.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You can only allocate 10 stat points to your player.\nPlease do that to continue.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
             System.out.println("wrong number of skill points");

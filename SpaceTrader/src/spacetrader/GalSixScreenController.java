@@ -37,14 +37,13 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
-
-
 /**
  * FXML Controller class
  *
  * @author sydnipeterson
  */
 public class GalSixScreenController implements Initializable {
+
     @FXML
     private Menu fuelTab;
     @FXML
@@ -55,7 +54,7 @@ public class GalSixScreenController implements Initializable {
     private ImageView FamCoSatteliteBranchPlan;
     @FXML
     private ImageView FamCoMoonBranchPlan;
-    
+
     private Universe universe = GameInstance.getInstance().getUniverse();
     private Player player = GameInstance.getInstance().getPlayer();
 
@@ -74,18 +73,19 @@ public class GalSixScreenController implements Initializable {
         String s = randEvent();
         // TODO
         fuelTab.setText("Fuel: " + ship.getFuel() + ". " + s);
-    }    
+    }
 
     /**
-    * Goes to the FamCoHQ planet when planet image is clicked on
-    * @param event   occurs when the user clicks on the planet
-    */
+     * Goes to the FamCoHQ planet when planet image is clicked on
+     *
+     * @param event occurs when the user clicks on the planet
+     */
     @FXML
     private void goToFamCoHQPlan(MouseEvent event) throws Exception {
-       if (ship.getFuel() >=0){
+        if (ship.getFuel() >= 0) {
             randEvent();
 
-            ship.setFuel(ship.getFuel()-1);
+            ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(0));
 
             //Game game = GameInstance.getInstance();
@@ -102,22 +102,23 @@ public class GalSixScreenController implements Initializable {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
 
     /**
-    * Goes to the FamCoWarehouse planet when planet image is clicked on
-    * @param event   occurs when the user clicks on the planet
-    */
+     * Goes to the FamCoWarehouse planet when planet image is clicked on
+     *
+     * @param event occurs when the user clicks on the planet
+     */
     @FXML
-    private void goToFamCoWarehousePlan(MouseEvent event) throws Exception{
-         if (ship.getFuel() >0){
+    private void goToFamCoWarehousePlan(MouseEvent event) throws Exception {
+        if (ship.getFuel() > 0) {
             //randEvent();
 
-            ship.setFuel(ship.getFuel()-1);
+            ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(3));
 
             //Game game = GameInstance.getInstance();
@@ -134,21 +135,23 @@ public class GalSixScreenController implements Initializable {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
+
     /**
-    * Goes to the FamCoSattaliteBranch planet when planet image is clicked on
-    * @param event   occours when the user clicks on the planet
-    */
+     * Goes to the FamCoSattaliteBranch planet when planet image is clicked on
+     *
+     * @param event occours when the user clicks on the planet
+     */
     @FXML
     private void goToFamCoSatteliteBranchPlan(MouseEvent event) throws Exception {
-        if (ship.getFuel() >0){
+        if (ship.getFuel() > 0) {
             //randEvent();
 
-            ship.setFuel(ship.getFuel()-1);
+            ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(2));
 
             //Game game = GameInstance.getInstance();
@@ -165,22 +168,23 @@ public class GalSixScreenController implements Initializable {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
 
     /**
-    * Goes to the FamCoMoonBranch planet when planet image is clicked on
-    * @param event   occours when the user clicks on the planet
-    */
+     * Goes to the FamCoMoonBranch planet when planet image is clicked on
+     *
+     * @param event occours when the user clicks on the planet
+     */
     @FXML
     private void goToFamCoMoonBranchPlan(MouseEvent event) throws Exception {
-        if (ship.getFuel() >0){
+        if (ship.getFuel() > 0) {
             //randEvent();
 
-            ship.setFuel(ship.getFuel()-1);
+            ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(1));
 
             //Game game = GameInstance.getInstance();
@@ -197,22 +201,23 @@ public class GalSixScreenController implements Initializable {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
 
     /**
-    * Returns the user to the Solar System screen when the button is clicked
-    * @param event   occours when the user clicks on the "RETURN" button
-    */
+     * Returns the user to the Solar System screen when the button is clicked
+     *
+     * @param event occours when the user clicks on the "RETURN" button
+     */
     @FXML
-    private void returnToUniverse(MouseEvent event) throws Exception{
-        if (ship.getFuel() >0){
+    private void returnToUniverse(MouseEvent event) throws Exception {
+        if (ship.getFuel() > 0) {
             //randEvent();
-            
-            ship.setFuel(ship.getFuel()-1);
+
+            ship.setFuel(ship.getFuel() - 1);
 
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
@@ -228,24 +233,26 @@ public class GalSixScreenController implements Initializable {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                children(new Text("You do not have enough fuel to travel there.")).
-                alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    children(new Text("You do not have enough fuel to travel there.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
     }
+
     /**
-    * Generates a random event that will appear in the bottom of the screen.
-    * @return string of random event that happened
-    */
+     * Generates a random event that will appear in the bottom of the screen.
+     *
+     * @return string of random event that happened
+     */
     private String randEvent() {
         Random rand = new Random();
         int x = rand.nextInt(20);
         String string = "";
-        
+
         if (x > 15) {
             //String string = "";
-            
-            if(x == 16){
+
+            if (x == 16) {
                 string = "You found $10!";
                 player.addMoney(100);
             } else if (x == 15) {
@@ -254,26 +261,24 @@ public class GalSixScreenController implements Initializable {
             } else if (x == 17) {
                 string = "Pirates raided your ship and took $50!";
                 player.subtractMoney(50);
-            } else if (x==18) {
+            } else if (x == 18) {
                 player.setWantedLevel(player.getWantedLevel() + 1);
                 string = "You accidentally did something illegal. Wanted level: " + player.getWantedLevel();
-            } else if (x==19) {
+            } else if (x == 19) {
                 player.addMoney(100);
                 string = "You found a valueable stone and sold it for $100!";
-            } else if (x==20) {
+            } else if (x == 20) {
                 ship.setFuel(ship.getFuel() + 1);
                 string = "You found some fuel!";
             }
 
             //return string;
-        
             // Stage dialogStage = new Stage();
             // dialogStage.initModality(Modality.WINDOW_MODAL);
             // dialogStage.setScene(new Scene(VBoxBuilder.create().
             // children(new Text(string)).
             // alignment(Pos.CENTER).padding(new Insets(30)).build()));
             // dialogStage.show();
-
             // try {
             //     Thread.sleep(2000);                 //1000 milliseconds is one second.
             // } catch(InterruptedException ex) {
@@ -284,27 +289,29 @@ public class GalSixScreenController implements Initializable {
     }
 
     /**
-    * Saves the game
-    * @param event  mouse event of when user clicks on "SAVE" button
-    */
+     * Saves the game
+     *
+     * @param event mouse event of when user clicks on "SAVE" button
+     */
     @FXML
     private void saveGame(MouseEvent event) {
         GameInstance.saveModelBinary();
     }
 
     /**
-    * Exits the game and returns to the main screen
-    * @param event  mouse event of when user clicks on "EXIT" button
-    */
+     * Exits the game and returns to the main screen
+     *
+     * @param event mouse event of when user clicks on "EXIT" button
+     */
     @FXML
     private void exit(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-            //hide this current window (if this is whant you want
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+        //hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-    
+
 }
