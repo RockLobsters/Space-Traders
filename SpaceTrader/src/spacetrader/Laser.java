@@ -23,9 +23,8 @@ package spacetrader;
  */
 public enum Laser {
 
-    PULSE("Pulse Laser", 250, 4, 4),
-    BEAM("Beam Laser", 500, 8, 6),
-    MILITARY("Military Laser", 1000, 12, 7);
+    PULSE("Pulse Laser", 250, 4, 4), BEAM("Beam Laser", 500, 8, 6), MILITARY(
+	    "Military Laser", 1000, 12, 7);
 
     String name;
     double price;
@@ -35,16 +34,20 @@ public enum Laser {
     /**
      * Laser Constructor for enum type
      *
-     * @param name the string rep
-     * @param price the price of laser in shipyard buy/sell
-     * @param power the power of the laser in battle
-     * @param minTL the min tech level a planet needs to sell said laser
+     * @param name
+     *            the string rep
+     * @param price
+     *            the price of laser in shipyard buy/sell
+     * @param power
+     *            the power of the laser in battle
+     * @param minTL
+     *            the min tech level a planet needs to sell said laser
      */
     Laser(String name, double price, int power, int minTL) {
-        this.name = name;
-        this.price = price;
-        this.power = power;
-        this.minTL = minTL;
+	this.name = name;
+	this.price = price;
+	this.power = power;
+	this.minTL = minTL;
     }
 
     /**
@@ -53,7 +56,7 @@ public enum Laser {
      * @return price a double
      */
     double getPrice() {
-        return price;
+	return price;
     }
 
     /**
@@ -62,7 +65,7 @@ public enum Laser {
      * @return int power
      */
     int getPower() {
-        return power;
+	return power;
     }
 
     /**
@@ -71,6 +74,6 @@ public enum Laser {
      * @return int minTL
      */
     int getMinTL() {
-        return minTL;
+	return minTL;
     }
 }

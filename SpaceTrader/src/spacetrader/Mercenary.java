@@ -39,117 +39,126 @@ public class Mercenary implements Comparable, Serializable {
      * The constructor for a mercenary. It takes an int and randomly allocates
      * them to different attributes.
      *
-     * @param name The name of the mercenary
-     * @param totalAttributePoints The total attribute points to be allocated
+     * @param name
+     *            The name of the mercenary
+     * @param totalAttributePoints
+     *            The total attribute points to be allocated
      */
     public Mercenary(String name, int totalAttributePoints) {
-        this.name = name;
+	this.name = name;
 
-        int[] tmp = new int[4];
-        for (int i = 5; i > 1; i--) {
-            tmp[5 - i] = (int) (Math.random() * (totalAttributePoints + 1) / i);
-            totalAttributePoints -= tmp[5 - i];
-        }
-        pilot = tmp[0];
-        fighter = tmp[1];
-        trader = tmp[2];
-        engineer = tmp[3];
-        investor = totalAttributePoints;
+	int[] tmp = new int[4];
+	for (int i = 5; i > 1; i--) {
+	    tmp[5 - i] = (int) (Math.random() * (totalAttributePoints + 1) / i);
+	    totalAttributePoints -= tmp[5 - i];
+	}
+	pilot = tmp[0];
+	fighter = tmp[1];
+	trader = tmp[2];
+	engineer = tmp[3];
+	investor = totalAttributePoints;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-        return name;
+	return name;
     }
 
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     /**
      * @return the pilot
      */
     public int getPilot() {
-        return pilot;
+	return pilot;
     }
 
     /**
-     * @param pilot the pilot to set
+     * @param pilot
+     *            the pilot to set
      */
     public void setPilot(int pilot) {
-        this.pilot = pilot;
+	this.pilot = pilot;
     }
 
     /**
      * @return the fighter
      */
     public int getFighter() {
-        return fighter;
+	return fighter;
     }
 
     /**
-     * @param fighter the fighter to set
+     * @param fighter
+     *            the fighter to set
      */
     public void setFighter(int fighter) {
-        this.fighter = fighter;
+	this.fighter = fighter;
     }
 
     /**
      * @return the trader
      */
     public int getTrader() {
-        return trader;
+	return trader;
     }
 
     /**
-     * @param trader the trader to set
+     * @param trader
+     *            the trader to set
      */
     public void setTrader(int trader) {
-        this.trader = trader;
+	this.trader = trader;
     }
 
     /**
      * @return the engineer
      */
     public int getEngineer() {
-        return engineer;
+	return engineer;
     }
 
     /**
-     * @param engineer the engineer to set
+     * @param engineer
+     *            the engineer to set
      */
     public void setEngineer(int engineer) {
-        this.engineer = engineer;
+	this.engineer = engineer;
     }
 
     /**
      * @return the investor
      */
     public int getInvestor() {
-        return investor;
+	return investor;
     }
 
     /**
-     * @param investor the investor to set
+     * @param investor
+     *            the investor to set
      */
     public void setInvestor(int investor) {
-        this.investor = investor;
+	this.investor = investor;
     }
 
     /**
      * Compares two mercenaries based on their names.
      *
-     * @param that the mercenary to compare against
+     * @param that
+     *            the mercenary to compare against
      * @return
      */
     @Override
     public int compareTo(Object that) {
-        return this.name.compareTo(((Mercenary) that).name);
+	return this.name.compareTo(((Mercenary) that).name);
     }
 
     /**
@@ -159,6 +168,7 @@ public class Mercenary implements Comparable, Serializable {
      */
     @Override
     public String toString() {
-        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ")";
+	return name + " (" + pilot + "," + fighter + "," + trader + ","
+		+ engineer + "," + investor + ")";
     }
 }

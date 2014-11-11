@@ -23,8 +23,8 @@ package spacetrader;
  */
 public enum Shield {
 
-    ENERGY("Energy Shield", 250, 5, 5),
-    REFLECTIVE("Reflective Shield", 750, 10, 7);
+    ENERGY("Energy Shield", 250, 5, 5), REFLECTIVE("Reflective Shield", 750,
+	    10, 7);
 
     String name;
     double price;
@@ -34,16 +34,20 @@ public enum Shield {
     /**
      * Shield constructor
      *
-     * @param name string rep of the obj
-     * @param price the price to buy/sell this obj
-     * @param power power of the shield (hp in battle)
-     * @param minTL the min Tech Level a planet needs to sell this obj
+     * @param name
+     *            string rep of the obj
+     * @param price
+     *            the price to buy/sell this obj
+     * @param power
+     *            power of the shield (hp in battle)
+     * @param minTL
+     *            the min Tech Level a planet needs to sell this obj
      */
     Shield(String name, double price, int power, int minTL) {
-        this.name = name;
-        this.price = price;
-        this.power = power;
-        this.minTL = minTL;
+	this.name = name;
+	this.price = price;
+	this.power = power;
+	this.minTL = minTL;
     }
 
     /**
@@ -52,7 +56,7 @@ public enum Shield {
      * @return price a double
      */
     double getPrice() {
-        return price;
+	return price;
     }
 
     /**
@@ -61,7 +65,7 @@ public enum Shield {
      * @return int power
      */
     int getPower() {
-        return power;
+	return power;
     }
 
     /**
@@ -70,6 +74,6 @@ public enum Shield {
      * @return int minTL
      */
     int getMinTL() {
-        return minTL;
+	return minTL;
     }
 }

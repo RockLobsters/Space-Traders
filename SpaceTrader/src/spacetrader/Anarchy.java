@@ -28,7 +28,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public String type() {
-        return "Anarchy";
+	return "Anarchy";
     }
 
     /**
@@ -38,7 +38,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double policeRate() {
-        return 0;
+	return 0;
     }
 
     /**
@@ -48,7 +48,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double bribeRate() {
-        return 0;
+	return 0;
     }
 
     /**
@@ -58,7 +58,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-        return 0.5;
+	return 0.5;
     }
 
     /**
@@ -68,7 +68,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-        return 0.5;
+	return 0.5;
     }
 
     /**
@@ -78,7 +78,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public int[] highSupply() {
-        return new int[0];
+	return new int[0];
     }
 
     /**
@@ -88,7 +88,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public int[] highDemand() {
-        return new int[]{0, 1, 2, 3, 5, 6, 8};
+	return new int[] { 0, 1, 2, 3, 5, 6, 8 };
     }
 
     /**
@@ -99,18 +99,28 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public ArrayList<Good> supply() {
-        ArrayList<Good> availableSupply = new ArrayList<>();
-        availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10) * rand.nextInt(10)));
-        availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10) * rand.nextInt(5)));
-        availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10) * rand.nextInt(10)));
-        availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10) * rand.nextInt(10)));
-        availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10) * rand.nextInt(10)));
-        availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10) * rand.nextInt(10)));
-        availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10) * rand.nextInt(10)));
-        availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10) * rand.nextInt(10)));
-        availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10) * rand.nextInt(10)));
-        availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10) * rand.nextInt(10)));
-        return availableSupply;
+	ArrayList<Good> availableSupply = new ArrayList<>();
+	availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10)
+		* rand.nextInt(10)));
+	availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10)
+		* rand.nextInt(5)));
+	availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10)
+		* rand.nextInt(10)));
+	availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10)
+		* rand.nextInt(10)));
+	availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10)
+		* rand.nextInt(10)));
+	availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10)
+		* rand.nextInt(10)));
+	availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10)
+		* rand.nextInt(10)));
+	availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10)
+		* rand.nextInt(10)));
+	availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10)
+		* rand.nextInt(10)));
+	availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10)
+		* rand.nextInt(10)));
+	return availableSupply;
     }
 
     /**
@@ -120,17 +130,17 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public ArrayList<Good> demand() {
-        ArrayList<Good> sellable = new ArrayList<>();
-        sellable.add(new Good(GoodType.WATER, 0));
-        sellable.add(new Good(GoodType.FOOD, 0));
-        sellable.add(new Good(GoodType.FUR, 0));
-        sellable.add(new Good(GoodType.ORE, 0));
-        sellable.add(new Good(GoodType.GAMES, 0));
-        sellable.add(new Good(GoodType.FIREARMS, 0));
-        sellable.add(new Good(GoodType.MEDICINE, 0));
-        sellable.add(new Good(GoodType.MACHINES, 0));
-        sellable.add(new Good(GoodType.NARCOTICS, 0));
-        sellable.add(new Good(GoodType.ROBOTS, 0));
-        return sellable;
+	ArrayList<Good> sellable = new ArrayList<>();
+	sellable.add(new Good(GoodType.WATER, 0));
+	sellable.add(new Good(GoodType.FOOD, 0));
+	sellable.add(new Good(GoodType.FUR, 0));
+	sellable.add(new Good(GoodType.ORE, 0));
+	sellable.add(new Good(GoodType.GAMES, 0));
+	sellable.add(new Good(GoodType.FIREARMS, 0));
+	sellable.add(new Good(GoodType.MEDICINE, 0));
+	sellable.add(new Good(GoodType.MACHINES, 0));
+	sellable.add(new Good(GoodType.NARCOTICS, 0));
+	sellable.add(new Good(GoodType.ROBOTS, 0));
+	return sellable;
     }
 }

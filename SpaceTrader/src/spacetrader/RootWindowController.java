@@ -35,35 +35,37 @@ public class RootWindowController implements Initializable {
 
     @FXML
     private void handleNewGameAction(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("NewGameWindow.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+	Parent root = FXMLLoader.load(getClass().getResource(
+		"NewGameWindow.fxml"));
+	Stage stage = new Stage();
+	stage.setScene(new Scene(root));
+	stage.show();
 
-        //hide this current window (if this is whant you want
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+	// hide this current window (if this is whant you want
+	((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
     private void handleLoadGameAction(ActionEvent event) throws Exception {
-        GameInstance.loadModelBinary();
-        Parent root = FXMLLoader.load(getClass().getResource(GameInstance.getInstance().getCurrentScreen()));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+	GameInstance.loadModelBinary();
+	Parent root = FXMLLoader.load(getClass().getResource(
+		GameInstance.getInstance().getCurrentScreen()));
+	Stage stage = new Stage();
+	stage.setScene(new Scene(root));
+	stage.show();
 
-        //hide this current window (if this is whant you want
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+	// hide this current window (if this is whant you want
+	((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
     private void handleExitAction(ActionEvent event) {
-        System.exit(0);
+	System.exit(0);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+	// TODO
     }
 
 }

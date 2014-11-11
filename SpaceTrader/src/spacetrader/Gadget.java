@@ -23,11 +23,9 @@ package spacetrader;
  */
 public enum Gadget {
 
-    CARGO_BAYS("5 Cargo Bays", 500, 4),
-    NAV_SYSTEM("Navigation System", 750, 5),
-    AUTO_REPAIR_SYSTEM("Auto-Repair System", 1000, 6),
-    TARGET_SYSTEM("Targeting System", 1000, 6),
-    CLOAK_DEVICE("Cloaking Device", 2000, 7);
+    CARGO_BAYS("5 Cargo Bays", 500, 4), NAV_SYSTEM("Navigation System", 750, 5), AUTO_REPAIR_SYSTEM(
+	    "Auto-Repair System", 1000, 6), TARGET_SYSTEM("Targeting System",
+	    1000, 6), CLOAK_DEVICE("Cloaking Device", 2000, 7);
 
     String name;
     double price;
@@ -36,14 +34,17 @@ public enum Gadget {
     /**
      * Gadget constructor for enum
      *
-     * @param name string rep
-     * @param price the price of gadget buying or selling
-     * @param minTL the min tech level needed for a planet to sell
+     * @param name
+     *            string rep
+     * @param price
+     *            the price of gadget buying or selling
+     * @param minTL
+     *            the min tech level needed for a planet to sell
      */
     Gadget(String name, double price, int minTL) {
-        this.name = name;
-        this.price = price;
-        this.minTL = minTL;
+	this.name = name;
+	this.price = price;
+	this.minTL = minTL;
     }
 
     /**
@@ -52,7 +53,7 @@ public enum Gadget {
      * @return price a double
      */
     double getPrice() {
-        return price;
+	return price;
     }
 
     /**
@@ -61,6 +62,6 @@ public enum Gadget {
      * @return int minTL
      */
     int getMinTL() {
-        return minTL;
+	return minTL;
     }
 }

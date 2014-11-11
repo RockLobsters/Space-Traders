@@ -166,7 +166,8 @@ public class MarketScreenController implements Initializable {
     private TextField narcoticsToBuy;
     @FXML
     private TextField robotsToBuy;
-    private Market market = GameInstance.getInstance().getPlayer().getCurrentLocation().getMarket();
+    private Market market = GameInstance.getInstance().getPlayer()
+	    .getCurrentLocation().getMarket();
     private Player player = GameInstance.getInstance().getPlayer();
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     @FXML
@@ -177,97 +178,97 @@ public class MarketScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-        print = print + ship.cargoToString();
-        cargoBox.setText(print);
+	String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+	print = print + ship.cargoToString();
+	cargoBox.setText(print);
     }
 
     @FXML
     private void waterTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.WATER);
-        int quantity = getQuantity(GoodType.WATER);
-        waterPrice.setText(Double.toString(price));
-        waterQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.WATER);
+	int quantity = getQuantity(GoodType.WATER);
+	waterPrice.setText(Double.toString(price));
+	waterQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void furTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.FUR);
-        int quantity = getQuantity(GoodType.FUR);
-        furPrice.setText(Double.toString(price));
-        furQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.FUR);
+	int quantity = getQuantity(GoodType.FUR);
+	furPrice.setText(Double.toString(price));
+	furQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void foodTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.FOOD);
-        int quantity = getQuantity(GoodType.FOOD);
-        foodPrice.setText(Double.toString(price));
-        foodQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.FOOD);
+	int quantity = getQuantity(GoodType.FOOD);
+	foodPrice.setText(Double.toString(price));
+	foodQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void oreTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.ORE);
-        int quantity = getQuantity(GoodType.ORE);
-        orePrice.setText(Double.toString(price));
-        oreQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.ORE);
+	int quantity = getQuantity(GoodType.ORE);
+	orePrice.setText(Double.toString(price));
+	oreQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void gamesTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.GAMES);
-        int quantity = getQuantity(GoodType.GAMES);
-        gamesPrice.setText(Double.toString(price));
-        gamesQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.GAMES);
+	int quantity = getQuantity(GoodType.GAMES);
+	gamesPrice.setText(Double.toString(price));
+	gamesQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void fireamrsTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.FIREARMS);
-        int quantity = getQuantity(GoodType.FIREARMS);
-        firearmsPrice.setText(Double.toString(price));
-        firearmsQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.FIREARMS);
+	int quantity = getQuantity(GoodType.FIREARMS);
+	firearmsPrice.setText(Double.toString(price));
+	firearmsQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void medicineTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.MEDICINE);
-        int quantity = getQuantity(GoodType.MEDICINE);
-        medicinePrice.setText(Double.toString(price));
-        medicineQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.MEDICINE);
+	int quantity = getQuantity(GoodType.MEDICINE);
+	medicinePrice.setText(Double.toString(price));
+	medicineQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void machinesTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.MACHINES);
-        int quantity = getQuantity(GoodType.MACHINES);
-        machinesPrice.setText(Double.toString(price));
-        machinesQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.MACHINES);
+	int quantity = getQuantity(GoodType.MACHINES);
+	machinesPrice.setText(Double.toString(price));
+	machinesQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void narcoticsTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.NARCOTICS);
-        int quantity = getQuantity(GoodType.NARCOTICS);
-        narcoticsPrice.setText(Double.toString(price));
-        narcoticsQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.NARCOTICS);
+	int quantity = getQuantity(GoodType.NARCOTICS);
+	narcoticsPrice.setText(Double.toString(price));
+	narcoticsQuantity.setText(Integer.toString(quantity));
     }
 
     @FXML
     private void robotsTabOpen(MouseEvent event) {
-        double price = getPrice(GoodType.ROBOTS);
-        int quantity = getQuantity(GoodType.ROBOTS);
-        robotsPrice.setText(Double.toString(price));
-        robotsQuantity.setText(Integer.toString(quantity));
+	double price = getPrice(GoodType.ROBOTS);
+	int quantity = getQuantity(GoodType.ROBOTS);
+	robotsPrice.setText(Double.toString(price));
+	robotsQuantity.setText(Integer.toString(quantity));
     }
 
     private double getPrice(GoodType type) {
-        return market.getPrice(new Good(type, 0));
+	return market.getPrice(new Good(type, 0));
     }
 
     private int getQuantity(GoodType type) {
-        return market.getQuantity(new Good(type, 0));
+	return market.getQuantity(new Good(type, 0));
     }
 
     @FXML
@@ -276,404 +277,470 @@ public class MarketScreenController implements Initializable {
 
     @FXML
     private void handleWaterBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
-        boolean success = market.buy(GoodType.WATER, quan, player);
+	int quan = Integer.parseInt(waterToBuy.getText());
+	boolean success = market.buy(GoodType.WATER, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.WATER);
-            int quantity = getQuantity(GoodType.WATER);
-            waterPrice.setText(Double.toString(price));
-            waterQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.WATER);
+	    int quantity = getQuantity(GoodType.WATER);
+	    waterPrice.setText(Double.toString(price));
+	    waterQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage
+		    .setScene(new Scene(
+			    VBoxBuilder
+				    .create()
+				    .children(
+					    new Text(
+						    "You cannot buy more than you can hold or afford."))
+				    .alignment(Pos.CENTER)
+				    .padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
 
     }
 
     @FXML
     private void handleWaterSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
-        boolean success = market.sell(GoodType.WATER, quan, player);
+	int quan = Integer.parseInt(waterToBuy.getText());
+	boolean success = market.sell(GoodType.WATER, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.WATER);
-            int quantity = getQuantity(GoodType.WATER);
-            waterPrice.setText(Double.toString(price));
-            waterQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot sell this here.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.WATER);
+	    int quantity = getQuantity(GoodType.WATER);
+	    waterPrice.setText(Double.toString(price));
+	    waterQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage.setScene(new Scene(VBoxBuilder.create()
+		    .children(new Text("You cannot sell this here."))
+		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleFurSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(furToBuy.getText());
-        boolean success = market.sell(GoodType.FUR, quan, player);
+	int quan = Integer.parseInt(furToBuy.getText());
+	boolean success = market.sell(GoodType.FUR, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.FUR);
-            int quantity = getQuantity(GoodType.FUR);
-            furPrice.setText(Double.toString(price));
-            furQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot sell this here.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.FUR);
+	    int quantity = getQuantity(GoodType.FUR);
+	    furPrice.setText(Double.toString(price));
+	    furQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage.setScene(new Scene(VBoxBuilder.create()
+		    .children(new Text("You cannot sell this here."))
+		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleFurBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(furToBuy.getText());
-        boolean success = market.buy(GoodType.FUR, quan, player);
+	int quan = Integer.parseInt(furToBuy.getText());
+	boolean success = market.buy(GoodType.FUR, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.FUR);
-            int quantity = getQuantity(GoodType.FUR);
-            furPrice.setText(Double.toString(price));
-            furQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.FUR);
+	    int quantity = getQuantity(GoodType.FUR);
+	    furPrice.setText(Double.toString(price));
+	    furQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage
+		    .setScene(new Scene(
+			    VBoxBuilder
+				    .create()
+				    .children(
+					    new Text(
+						    "You cannot buy more than you can hold or afford."))
+				    .alignment(Pos.CENTER)
+				    .padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleFoodBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(foodToBuy.getText());
-        boolean success = market.buy(GoodType.FOOD, quan, player);
+	int quan = Integer.parseInt(foodToBuy.getText());
+	boolean success = market.buy(GoodType.FOOD, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.FOOD);
-            int quantity = getQuantity(GoodType.FOOD);
-            foodPrice.setText(Double.toString(price));
-            foodQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.FOOD);
+	    int quantity = getQuantity(GoodType.FOOD);
+	    foodPrice.setText(Double.toString(price));
+	    foodQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage
+		    .setScene(new Scene(
+			    VBoxBuilder
+				    .create()
+				    .children(
+					    new Text(
+						    "You cannot buy more than you can hold or afford."))
+				    .alignment(Pos.CENTER)
+				    .padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleFoodSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(foodToBuy.getText());
-        boolean success = market.sell(GoodType.FOOD, quan, player);
+	int quan = Integer.parseInt(foodToBuy.getText());
+	boolean success = market.sell(GoodType.FOOD, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.FOOD);
-            int quantity = getQuantity(GoodType.FOOD);
-            foodPrice.setText(Double.toString(price));
-            foodQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot sell this here.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.FOOD);
+	    int quantity = getQuantity(GoodType.FOOD);
+	    foodPrice.setText(Double.toString(price));
+	    foodQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage.setScene(new Scene(VBoxBuilder.create()
+		    .children(new Text("You cannot sell this here."))
+		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleOreSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(oreToBuy.getText());
-        boolean success = market.sell(GoodType.ORE, quan, player);
+	int quan = Integer.parseInt(oreToBuy.getText());
+	boolean success = market.sell(GoodType.ORE, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.ORE);
-            int quantity = getQuantity(GoodType.ORE);
-            orePrice.setText(Double.toString(price));
-            oreQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot sell this here.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.ORE);
+	    int quantity = getQuantity(GoodType.ORE);
+	    orePrice.setText(Double.toString(price));
+	    oreQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage.setScene(new Scene(VBoxBuilder.create()
+		    .children(new Text("You cannot sell this here."))
+		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleOreBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(oreToBuy.getText());
-        boolean success = market.buy(GoodType.ORE, quan, player);
+	int quan = Integer.parseInt(oreToBuy.getText());
+	boolean success = market.buy(GoodType.ORE, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.ORE);
-            int quantity = getQuantity(GoodType.ORE);
-            orePrice.setText(Double.toString(price));
-            oreQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.ORE);
+	    int quantity = getQuantity(GoodType.ORE);
+	    orePrice.setText(Double.toString(price));
+	    oreQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage
+		    .setScene(new Scene(
+			    VBoxBuilder
+				    .create()
+				    .children(
+					    new Text(
+						    "You cannot buy more than you can hold or afford."))
+				    .alignment(Pos.CENTER)
+				    .padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleGamesSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(gamesToBuy.getText());
-        boolean success = market.sell(GoodType.GAMES, quan, player);
+	int quan = Integer.parseInt(gamesToBuy.getText());
+	boolean success = market.sell(GoodType.GAMES, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.GAMES);
-            int quantity = getQuantity(GoodType.GAMES);
-            gamesPrice.setText(Double.toString(price));
-            gamesQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.GAMES);
+	    int quantity = getQuantity(GoodType.GAMES);
+	    gamesPrice.setText(Double.toString(price));
+	    gamesQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage
+		    .setScene(new Scene(
+			    VBoxBuilder
+				    .create()
+				    .children(
+					    new Text(
+						    "You cannot buy more than you can hold or afford."))
+				    .alignment(Pos.CENTER)
+				    .padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleGamesBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(gamesToBuy.getText());
-        boolean success = market.sell(GoodType.GAMES, quan, player);
+	int quan = Integer.parseInt(gamesToBuy.getText());
+	boolean success = market.sell(GoodType.GAMES, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.GAMES);
-            int quantity = getQuantity(GoodType.GAMES);
-            gamesPrice.setText(Double.toString(price));
-            gamesQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot sell this here.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.GAMES);
+	    int quantity = getQuantity(GoodType.GAMES);
+	    gamesPrice.setText(Double.toString(price));
+	    gamesQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage.setScene(new Scene(VBoxBuilder.create()
+		    .children(new Text("You cannot sell this here."))
+		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleFirearmsSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(firearmsToBuy.getText());
-        boolean success = market.sell(GoodType.FIREARMS, quan, player);
+	int quan = Integer.parseInt(firearmsToBuy.getText());
+	boolean success = market.sell(GoodType.FIREARMS, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.FIREARMS);
-            int quantity = getQuantity(GoodType.FIREARMS);
-            firearmsPrice.setText(Double.toString(price));
-            firearmsQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot sell this here.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.FIREARMS);
+	    int quantity = getQuantity(GoodType.FIREARMS);
+	    firearmsPrice.setText(Double.toString(price));
+	    firearmsQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage.setScene(new Scene(VBoxBuilder.create()
+		    .children(new Text("You cannot sell this here."))
+		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleFirearmsBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(firearmsToBuy.getText());
-        boolean success = market.buy(GoodType.FIREARMS, quan, player);
+	int quan = Integer.parseInt(firearmsToBuy.getText());
+	boolean success = market.buy(GoodType.FIREARMS, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.FIREARMS);
-            int quantity = getQuantity(GoodType.FIREARMS);
-            firearmsPrice.setText(Double.toString(price));
-            firearmsQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.FIREARMS);
+	    int quantity = getQuantity(GoodType.FIREARMS);
+	    firearmsPrice.setText(Double.toString(price));
+	    firearmsQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage
+		    .setScene(new Scene(
+			    VBoxBuilder
+				    .create()
+				    .children(
+					    new Text(
+						    "You cannot buy more than you can hold or afford."))
+				    .alignment(Pos.CENTER)
+				    .padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleMachinesBuyAction(MouseEvent event) {
-        int quan = Integer.parseInt(machinesToBuy.getText());
-        boolean success = market.buy(GoodType.MACHINES, quan, player);
+	int quan = Integer.parseInt(machinesToBuy.getText());
+	boolean success = market.buy(GoodType.MACHINES, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.MACHINES);
-            int quantity = getQuantity(GoodType.MACHINES);
-            machinesPrice.setText(Double.toString(price));
-            machinesQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.MACHINES);
+	    int quantity = getQuantity(GoodType.MACHINES);
+	    machinesPrice.setText(Double.toString(price));
+	    machinesQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage
+		    .setScene(new Scene(
+			    VBoxBuilder
+				    .create()
+				    .children(
+					    new Text(
+						    "You cannot buy more than you can hold or afford."))
+				    .alignment(Pos.CENTER)
+				    .padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleMachinesSellAction(MouseEvent event) {
-        int quan = Integer.parseInt(machinesToBuy.getText());
-        boolean success = market.sell(GoodType.MACHINES, quan, player);
+	int quan = Integer.parseInt(machinesToBuy.getText());
+	boolean success = market.sell(GoodType.MACHINES, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.MACHINES);
-            int quantity = getQuantity(GoodType.MACHINES);
-            machinesPrice.setText(Double.toString(price));
-            machinesQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot sell this here.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.MACHINES);
+	    int quantity = getQuantity(GoodType.MACHINES);
+	    machinesPrice.setText(Double.toString(price));
+	    machinesQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage.setScene(new Scene(VBoxBuilder.create()
+		    .children(new Text("You cannot sell this here."))
+		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleRobotsSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(robotsToBuy.getText());
-        boolean success = market.sell(GoodType.ROBOTS, quan, player);
+	int quan = Integer.parseInt(robotsToBuy.getText());
+	boolean success = market.sell(GoodType.ROBOTS, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.ROBOTS);
-            int quantity = getQuantity(GoodType.ROBOTS);
-            robotsPrice.setText(Double.toString(price));
-            robotsQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot sell this here.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.ROBOTS);
+	    int quantity = getQuantity(GoodType.ROBOTS);
+	    robotsPrice.setText(Double.toString(price));
+	    robotsQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage.setScene(new Scene(VBoxBuilder.create()
+		    .children(new Text("You cannot sell this here."))
+		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     @FXML
     private void handleRobotsBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(robotsToBuy.getText());
-        boolean success = market.buy(GoodType.ROBOTS, quan, player);
+	int quan = Integer.parseInt(robotsToBuy.getText());
+	boolean success = market.buy(GoodType.ROBOTS, quan, player);
 
-        if (success) {
-            double price = getPrice(GoodType.ROBOTS);
-            int quantity = getQuantity(GoodType.ROBOTS);
-            robotsPrice.setText(Double.toString(price));
-            robotsQuantity.setText(Integer.toString(quantity));
-            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
-            print = print + ship.cargoToString();
-            cargoBox.setText(print);
-        } else {
-            Stage dialogStage = new Stage();
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
-                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            dialogStage.show();
+	if (success) {
+	    double price = getPrice(GoodType.ROBOTS);
+	    int quantity = getQuantity(GoodType.ROBOTS);
+	    robotsPrice.setText(Double.toString(price));
+	    robotsQuantity.setText(Integer.toString(quantity));
+	    String print = "Money: " + Double.toString(player.getMoney())
+		    + "\n";
+	    print = print + ship.cargoToString();
+	    cargoBox.setText(print);
+	} else {
+	    Stage dialogStage = new Stage();
+	    dialogStage.initModality(Modality.WINDOW_MODAL);
+	    dialogStage
+		    .setScene(new Scene(
+			    VBoxBuilder
+				    .create()
+				    .children(
+					    new Text(
+						    "You cannot buy more than you can hold or afford."))
+				    .alignment(Pos.CENTER)
+				    .padding(new Insets(30)).build()));
+	    dialogStage.show();
 
-        }
+	}
     }
 
     /**
      * Returns the user to the PlanetScreen when the button is clicked
      *
-     * @param event occours when the user clicks on the "RETURN" button
+     * @param event
+     *            occours when the user clicks on the "RETURN" button
      */
 
     @FXML
     private void returnToPlanet(MouseEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+	Parent root = FXMLLoader.load(getClass().getResource(
+		"PlanetScreen.fxml"));
+	Stage stage = new Stage();
+	stage.setScene(new Scene(root));
+	stage.show();
 
-        //hide this current window (if this is whant you want
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+	// hide this current window (if this is whant you want
+	((Node) (event.getSource())).getScene().getWindow().hide();
 
     }
 

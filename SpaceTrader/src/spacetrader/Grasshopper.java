@@ -34,15 +34,8 @@ public class Grasshopper extends Ship {
     public static final int BASE_PRICE = 125000;
 
     public Grasshopper() {
-        super(NAME,
-                HULL_STRENGTH,
-                CARGO_BAYS,
-                WEAPON_SLOTS,
-                SHIELD_SLOTS,
-                GADGET_SLOTS,
-                CREW_QUARTERS,
-                FUEL_CAPACITY,
-                FUEL_COST,
-                BASE_PRICE);
+	super(NAME, HULL_STRENGTH, CARGO_BAYS, WEAPON_SLOTS, SHIELD_SLOTS,
+		GADGET_SLOTS, CREW_QUARTERS, FUEL_CAPACITY, FUEL_COST,
+		BASE_PRICE);
     }
 }

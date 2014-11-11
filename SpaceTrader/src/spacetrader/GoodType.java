@@ -1,4 +1,4 @@
- /* it under the terms of the GNU General Public License as published by
+/* it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
@@ -18,14 +18,5 @@ package spacetrader;
  */
 public enum GoodType {
 
-    WATER,
-    FOOD,
-    FUR,
-    ORE,
-    GAMES,
-    FIREARMS,
-    MEDICINE,
-    MACHINES,
-    NARCOTICS,
-    ROBOTS;
+    WATER, FOOD, FUR, ORE, GAMES, FIREARMS, MEDICINE, MACHINES, NARCOTICS, ROBOTS;
 }

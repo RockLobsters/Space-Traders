@@ -42,165 +42,187 @@ public class Planet implements Comparable, Serializable {
     /**
      * Creates a planet with random coordinates
      *
-     * @param name the name of the new planet
+     * @param name
+     *            the name of the new planet
      */
     public Planet(String name) {
-        this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.random() * SolarSystem.SIZE_Y));
+	this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math
+		.random() * SolarSystem.SIZE_Y));
     }
 
     /**
      * Creates a planet with random coordinates inbetween the given limits
      *
-     * @param name the name of the new planet
-     * @param minCoordinateX the minimum of the x coordinate
-     * @param maxCoordinateX the maximum of the x coordinate
-     * @param minCoordinateY the minimum of the y coordinate
-     * @param maxCoordinateY the maximum of the y coordinate
+     * @param name
+     *            the name of the new planet
+     * @param minCoordinateX
+     *            the minimum of the x coordinate
+     * @param maxCoordinateX
+     *            the maximum of the x coordinate
+     * @param minCoordinateY
+     *            the minimum of the y coordinate
+     * @param maxCoordinateY
+     *            the maximum of the y coordinate
      */
-    public Planet(String name, int minCoordinateX, int maxCoordinateX, int minCoordinateY, int maxCoordinateY) {
-        this(name, (int) (Math.random() * (maxCoordinateX - minCoordinateX + 1) + minCoordinateX), (int) (Math.random() * (maxCoordinateY - minCoordinateY + 1) + minCoordinateY));
+    public Planet(String name, int minCoordinateX, int maxCoordinateX,
+	    int minCoordinateY, int maxCoordinateY) {
+	this(
+		name,
+		(int) (Math.random() * (maxCoordinateX - minCoordinateX + 1) + minCoordinateX),
+		(int) (Math.random() * (maxCoordinateY - minCoordinateY + 1) + minCoordinateY));
     }
 
     /**
      * Creates a planet with the given name at the given coordinates
      *
-     * @param name the name of the new planet
-     * @param coordinateX the x coordinate of the new planet
-     * @param coordinateY the y coordinate of the new planet
+     * @param name
+     *            the name of the new planet
+     * @param coordinateX
+     *            the x coordinate of the new planet
+     * @param coordinateY
+     *            the y coordinate of the new planet
      */
     public Planet(String name, int coordinateX, int coordinateY) {
-        this.name = name;
-        this.coordinateX = coordinateX;
-        this.coordinateY = coordinateY;
-        this.resources = (int) (Math.random() * 25);
-        if (resources < 0) {
-            resources = 0;
-        }
-        market = new Market(this);
-        personnelRoster = new ArrayList();
+	this.name = name;
+	this.coordinateX = coordinateX;
+	this.coordinateY = coordinateY;
+	this.resources = (int) (Math.random() * 25);
+	if (resources < 0) {
+	    resources = 0;
+	}
+	market = new Market(this);
+	personnelRoster = new ArrayList();
     }
 
     /**
      * @return the name
      */
     public String getName() {
-        return name;
+	return name;
     }
 
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     /**
      * @return the coordinateX
      */
     public int getCoordinateX() {
-        return coordinateX;
+	return coordinateX;
     }
 
     /**
-     * @param coordinateX the coordinateX to set
+     * @param coordinateX
+     *            the coordinateX to set
      */
     public void setCoordinateX(int coordinateX) {
-        this.coordinateX = coordinateX;
+	this.coordinateX = coordinateX;
     }
 
     /**
      * @return the coordinateY
      */
     public int getCoordinateY() {
-        return coordinateY;
+	return coordinateY;
     }
 
     /**
-     * @param coordinateY the coordinateY to set
+     * @param coordinateY
+     *            the coordinateY to set
      */
     public void setCoordinateY(int coordinateY) {
-        this.coordinateY = coordinateY;
+	this.coordinateY = coordinateY;
     }
 
     /**
      * Adds a mercenary to the Personnel roster
      *
-     * @param mercenary The mercenary to add
+     * @param mercenary
+     *            The mercenary to add
      */
     public void addMercenary(Mercenary mercenary) {
-        getPersonnelRoster().add(mercenary);
+	getPersonnelRoster().add(mercenary);
     }
 
     /**
      * Remove a mercenary from the personnel roster
      *
-     * @param name The name of the mercenary to remove
+     * @param name
+     *            The name of the mercenary to remove
      * @return
      */
     public Mercenary removeMercenary(String name) {
-        Mercenary toFind = new Mercenary(name, 0);
-        for (int i = 0; i < getPersonnelRoster().size(); i++) {
-            if (getPersonnelRoster().get(i).compareTo(toFind) == 0) {
-                return getPersonnelRoster().remove(i);
-            }
-        }
-        return null;
+	Mercenary toFind = new Mercenary(name, 0);
+	for (int i = 0; i < getPersonnelRoster().size(); i++) {
+	    if (getPersonnelRoster().get(i).compareTo(toFind) == 0) {
+		return getPersonnelRoster().remove(i);
+	    }
+	}
+	return null;
     }
 
     /**
      * @return the resources
      */
     public int getResources() {
-        return resources;
+	return resources;
     }
 
     /**
-     * @param resources the resources to set
+     * @param resources
+     *            the resources to set
      */
     public void setResources(int resources) {
-        this.resources = resources;
+	this.resources = resources;
     }
 
     /**
      * @return the personnelRoster
      */
     public ArrayList<Mercenary> getPersonnelRoster() {
-        return personnelRoster;
+	return personnelRoster;
     }
 
     /**
-     * @param personnelRoster the personnelRoster to set
+     * @param personnelRoster
+     *            the personnelRoster to set
      */
-    public void setPersonnelRoster(
-            ArrayList<Mercenary> personnelRoster) {
-        this.personnelRoster = personnelRoster;
+    public void setPersonnelRoster(ArrayList<Mercenary> personnelRoster) {
+	this.personnelRoster = personnelRoster;
     }
 
     /**
      * @return the solarSystem
      */
     public SolarSystem getSolarSystem() {
-        return solarSystem;
+	return solarSystem;
     }
 
     /**
-     * @param solarSystem the solarSystem to set
+     * @param solarSystem
+     *            the solarSystem to set
      */
     public void setSolarSystem(SolarSystem solarSystem) {
-        this.solarSystem = solarSystem;
-        market.setSolarSystem(solarSystem);
+	this.solarSystem = solarSystem;
+	market.setSolarSystem(solarSystem);
     }
 
     /**
      * Compares two planets based on their names.
      *
-     * @param that the planet to compare against
+     * @param that
+     *            the planet to compare against
      * @return -1 if this is less than that, 0 if they are equal, and 1 if this
-     * is greater than that
+     *         is greater than that
      */
     @Override
     public int compareTo(Object that) {
-        return this.name.compareTo(((Planet) that).getName());
+	return this.name.compareTo(((Planet) that).getName());
     }
 
     /**
@@ -210,22 +232,23 @@ public class Planet implements Comparable, Serializable {
      */
     @Override
     public String toString() {
-        String out = name + " (" + coordinateX + "," + coordinateY + ") " + resources + " ( " + market + " , [ ";
-        if (!personnelRoster.isEmpty()) {
-            out = out + "( " + personnelRoster.get(0);
-            for (int i = 1; i < personnelRoster.size(); i++) {
-                out = out + " ) , ( " + personnelRoster.get(i);
-            }
-            out = out + " ) ";
-        }
-        out = out + "] )";
-        return out;
+	String out = name + " (" + coordinateX + "," + coordinateY + ") "
+		+ resources + " ( " + market + " , [ ";
+	if (!personnelRoster.isEmpty()) {
+	    out = out + "( " + personnelRoster.get(0);
+	    for (int i = 1; i < personnelRoster.size(); i++) {
+		out = out + " ) , ( " + personnelRoster.get(i);
+	    }
+	    out = out + " ) ";
+	}
+	out = out + "] )";
+	return out;
     }
 
     /**
      * @return the market
      */
     public Market getMarket() {
-        return market;
+	return market;
     }
 }

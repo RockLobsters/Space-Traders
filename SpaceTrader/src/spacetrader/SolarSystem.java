@@ -33,76 +33,82 @@ class SolarSystem implements Serializable {
     public static final int SIZE_X = 50;
     public static final int SIZE_Y = 50;
 
-    public SolarSystem(String name, PoliticalSystem politicalSystem, int techLevel) {
-        this.name = name;
-        planets = new ArrayList();
-        this.politicalSystem = politicalSystem;
-        this.techLevel = techLevel;
+    public SolarSystem(String name, PoliticalSystem politicalSystem,
+	    int techLevel) {
+	this.name = name;
+	planets = new ArrayList();
+	this.politicalSystem = politicalSystem;
+	this.techLevel = techLevel;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-        return name;
+	return name;
     }
 
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     /**
      * Add a planet to the SolarSystem
      *
-     * @param planet the planet to add
+     * @param planet
+     *            the planet to add
      */
     public void addPlanet(Planet planet) {
-        planets.add(planet);
+	planets.add(planet);
     }
 
     /**
      * @return the planets
      */
     public ArrayList<Planet> getPlanets() {
-        return planets;
+	return planets;
     }
 
     /**
-     * @param planets the planets to set
+     * @param planets
+     *            the planets to set
      */
     public void setPlanets(ArrayList<Planet> planets) {
-        this.planets = planets;
+	this.planets = planets;
     }
 
     /**
      * @return the techLevel
      */
     public int getTechLevel() {
-        return techLevel;
+	return techLevel;
     }
 
     /**
-     * @param techLevel the techLevel to set
+     * @param techLevel
+     *            the techLevel to set
      */
     public void setTechLevel(int techLevel) {
-        this.techLevel = techLevel;
+	this.techLevel = techLevel;
     }
 
     @Override
     public String toString() {
-        String out = name + " ( " + getPoliticalSystem() + " " + techLevel + " ) [ ";
-        if (!planets.isEmpty()) {
-            out = out + "( " + planets.get(0);
-            for (int i = 1; i < planets.size(); i++) {
-                out = out + " ) , ( " + planets.get(i);
-            }
-            out = out + " ) ";
-        }
-        out = out + "]";
-        return out;
+	String out = name + " ( " + getPoliticalSystem() + " " + techLevel
+		+ " ) [ ";
+	if (!planets.isEmpty()) {
+	    out = out + "( " + planets.get(0);
+	    for (int i = 1; i < planets.size(); i++) {
+		out = out + " ) , ( " + planets.get(i);
+	    }
+	    out = out + " ) ";
+	}
+	out = out + "]";
+	return out;
 
     }
 
@@ -110,13 +116,14 @@ class SolarSystem implements Serializable {
      * @return the politicalSystem
      */
     public PoliticalSystem getPoliticalSystem() {
-        return politicalSystem;
+	return politicalSystem;
     }
 
     /**
-     * @param politicalSystem the politicalSystem to set
+     * @param politicalSystem
+     *            the politicalSystem to set
      */
     public void setPoliticalSystem(PoliticalSystem politicalSystem) {
-        this.politicalSystem = politicalSystem;
+	this.politicalSystem = politicalSystem;
     }
 }

@@ -24,13 +24,13 @@ import java.io.Serializable;
  */
 public class Player implements Serializable {
 
-    //Name of Player
+    // Name of Player
 
     private final String name;
-    //Money of Player
+    // Money of Player
     private double money;
     private final int INITIAL_MONEY = 1000;
-    //Wanted Level of player
+    // Wanted Level of player
     private int wantedLevel;
 
     // The attribute stats of the mercenary
@@ -50,10 +50,10 @@ public class Player implements Serializable {
      * @param name
      */
     public Player(String name) {
-        this.name = name;
-        money = INITIAL_MONEY;
-        wantedLevel = 0;
-        ship = new Gnat();
+	this.name = name;
+	money = INITIAL_MONEY;
+	wantedLevel = 0;
+	ship = new Gnat();
     }
 
     /**
@@ -62,7 +62,7 @@ public class Player implements Serializable {
      * @return name
      */
     public String getName() {
-        return name;
+	return name;
     }
 
     /**
@@ -71,7 +71,7 @@ public class Player implements Serializable {
      * @param mon
      */
     public void addMoney(double mon) {
-        money += mon;
+	money += mon;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Player implements Serializable {
      * @param mon
      */
     public void subtractMoney(double mon) {
-        money -= mon;
+	money -= mon;
     }
 
     /**
@@ -89,7 +89,7 @@ public class Player implements Serializable {
      * @return money
      */
     public double getMoney() {
-        return money;
+	return money;
     }
 
     /**
@@ -98,7 +98,7 @@ public class Player implements Serializable {
      * @param level
      */
     public void setWantedLevel(int level) {
-        wantedLevel += level;
+	wantedLevel += level;
     }
 
     /**
@@ -107,103 +107,111 @@ public class Player implements Serializable {
      * @return wantedLevel
      */
     public int getWantedLevel() {
-        return wantedLevel;
+	return wantedLevel;
     }
 
     /**
      * @return the pilot
      */
     public int getPilot() {
-        return pilot;
+	return pilot;
     }
 
     /**
-     * @param pilot the pilot to set
+     * @param pilot
+     *            the pilot to set
      */
     public void setPilot(int pilot) {
-        this.pilot = pilot;
+	this.pilot = pilot;
     }
 
     /**
      * @return the fighter
      */
     public int getFighter() {
-        return fighter;
+	return fighter;
     }
 
     /**
-     * @param fighter the fighter to set
+     * @param fighter
+     *            the fighter to set
      */
     public void setFighter(int fighter) {
-        this.fighter = fighter;
+	this.fighter = fighter;
     }
 
     /**
      * @return the trader
      */
     public int getTrader() {
-        return trader;
+	return trader;
     }
 
     /**
-     * @param trader the trader to set
+     * @param trader
+     *            the trader to set
      */
     public void setTrader(int trader) {
-        this.trader = trader;
+	this.trader = trader;
     }
 
     /**
      * @return the engineer
      */
     public int getEngineer() {
-        return engineer;
+	return engineer;
     }
 
     /**
-     * @param engineer the engineer to set
+     * @param engineer
+     *            the engineer to set
      */
     public void setEngineer(int engineer) {
-        this.engineer = engineer;
+	this.engineer = engineer;
     }
 
     /**
      * @return the investor
      */
     public int getInvestor() {
-        return investor;
+	return investor;
     }
 
     /**
-     * @param investor the investor to set
+     * @param investor
+     *            the investor to set
      */
     public void setInvestor(int investor) {
-        this.investor = investor;
+	this.investor = investor;
     }
 
     /**
      * @return the ship
      */
     public Ship getShip() {
-        return ship;
+	return ship;
     }
 
     /**
-     * @param ship the ship to set
+     * @param ship
+     *            the ship to set
      */
     public void setShip(Ship ship) {
-        this.ship = ship;
+	this.ship = ship;
     }
 
     public Planet getCurrentLocation() {
-        return currentLocation;
+	return currentLocation;
     }
 
     public void setCurrentLocation(Planet currentLocation) {
-        this.currentLocation = currentLocation;
+	this.currentLocation = currentLocation;
     }
 
     @Override
     public String toString() {
-        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ") (" + ship + ")";
+	return name + " (" + pilot + "," + fighter + "," + trader + ","
+		+ engineer + "," + investor + ") (" + money + "," + wantedLevel
+		+ ") (" + ship + ")";
     }
 }
