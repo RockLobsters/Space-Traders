@@ -25,7 +25,6 @@ import java.io.Serializable;
 public class Player implements Serializable {
 
     //Name of Player
-
     private final String name;
     //Money of Player
     private double money;
@@ -194,16 +193,27 @@ public class Player implements Serializable {
         this.ship = ship;
     }
 
+    /**
+     *
+     * @return
+     */
     public Planet getCurrentLocation() {
         return currentLocation;
     }
 
+    /**
+     *
+     * @param currentLocation
+     */
     public void setCurrentLocation(Planet currentLocation) {
         this.currentLocation = currentLocation;
     }
 
     @Override
     public String toString() {
-        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ") (" + money + "," + wantedLevel + ") (" + ship + ")";
+        return name + " (" + pilot + "," + fighter + "," + trader + ","
+                       + engineer + "," + investor + ") (" + money + ","
+                       + wantedLevel
+                       + ") (" + ship + ")";
     }
 }

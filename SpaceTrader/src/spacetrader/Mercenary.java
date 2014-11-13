@@ -25,7 +25,6 @@ import java.io.Serializable;
 public class Mercenary implements Comparable, Serializable {
 
     // Name of the mercenary
-
     private String name;
 
     // The attribute stats of the mercenary
@@ -160,6 +159,7 @@ public class Mercenary implements Comparable, Serializable {
      */
     @Override
     public String toString() {
-        return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ")";
+        return name + " (" + pilot + "," + fighter + "," + trader + ","
+                       + engineer + "," + investor + ")";
     }
 }

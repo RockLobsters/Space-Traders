@@ -30,10 +30,24 @@ public class SolarSystem implements Serializable {
     private PoliticalSystem politicalSystem;
     private int techLevel;
 
+    /**
+     *
+     */
     public static final int SIZE_X = 50;
+
+    /**
+     *
+     */
     public static final int SIZE_Y = 50;
 
-    public SolarSystem(String name, PoliticalSystem politicalSystem, int techLevel) {
+    /**
+     *
+     * @param name
+     * @param politicalSystem
+     * @param techLevel
+     */
+    public SolarSystem(String name, PoliticalSystem politicalSystem,
+                       int techLevel) {
         this.name = name;
         planets = new ArrayList();
         this.politicalSystem = politicalSystem;
@@ -93,7 +107,8 @@ public class SolarSystem implements Serializable {
 
     @Override
     public String toString() {
-        String out = name + " ( " + getPoliticalSystem() + " " + techLevel + " ) [ ";
+        String out = name + " ( " + getPoliticalSystem() + " " + techLevel
+                             + " ) [ ";
         if (!planets.isEmpty()) {
             out = out + "( " + planets.get(0);
             for (int i = 1; i < planets.size(); i++) {

@@ -22,17 +22,59 @@ package spacetrader;
  */
 public class Wasp extends Ship {
 
+    /**
+     *
+     */
     public static final String NAME = "Wasp";
+
+    /**
+     *
+     */
     public static final int HULL_STRENGTH = 30;
+
+    /**
+     *
+     */
     public static final int CARGO_BAYS = 35;
+
+    /**
+     *
+     */
     public static final int WEAPON_SLOTS = 3;
+
+    /**
+     *
+     */
     public static final int SHIELD_SLOTS = 2;
+
+    /**
+     *
+     */
     public static final int GADGET_SLOTS = 2;
+
+    /**
+     *
+     */
     public static final int CREW_QUARTERS = 3;
+
+    /**
+     *
+     */
     public static final int FUEL_CAPACITY = 14;
+
+    /**
+     *
+     */
     public static final int FUEL_COST = 16;
+
+    /**
+     *
+     */
     public static final int BASE_PRICE = 500000;
 
+    /**
+     *
+     */
     public Wasp() {
         super(NAME,
               HULL_STRENGTH,

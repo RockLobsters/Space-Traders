@@ -17,6 +17,10 @@ import java.util.Random;
 public class Universe extends ArrayList<SolarSystem> implements Serializable {
 
     static final int[] NUMPLANETS = new int[]{4, 4, 3, 2, 4, 4, 3, 4, 5};
+
+    /**
+     *
+     */
     public SolarSystem[] gameUniverse;
 
     /**
@@ -33,8 +37,7 @@ public class Universe extends ArrayList<SolarSystem> implements Serializable {
             }
             out = out + " ) ]";
             return out;
-        }
-        else {
+        } else {
             return "";
         }
     }
@@ -69,8 +72,7 @@ public class Universe extends ArrayList<SolarSystem> implements Serializable {
         for (int i = 0; i < 9; i++) {
             if (high) {
                 gameUniverse[i] = fact.generateHigh(NUMPLANETS[i]);
-            }
-            else {
+            } else {
                 gameUniverse[i] = fact.generateLow(NUMPLANETS[i]);
             }
             high = !high;

@@ -23,24 +23,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Menu;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import javafx.scene.control.Button;
 
 import javafx.stage.Modality;
-import javafx.scene.Scene;
+
 import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Text;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 import java.util.Random;
+import javafx.scene.Scene;
 
 /**
  * FXML Controller class
@@ -65,6 +65,9 @@ public class GalFourScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -99,19 +102,20 @@ public class GalFourScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("UniverseScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "UniverseScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -133,19 +137,20 @@ public class GalFourScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "PlanetScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -167,19 +172,20 @@ public class GalFourScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "PlanetScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -201,24 +207,21 @@ public class GalFourScreenController implements Initializable {
             if (x == 16) {
                 string = "You found $10!";
                 player.addMoney(100);
-            }
-            else if (x == 15) {
+            } else if (x == 15) {
                 string = "Your fuel tank has a hole in it and some spilled out!";
                 ship.setFuel(ship.getFuel() - 1);
-            }
-            else if (x == 17) {
+            } else if (x == 17) {
                 string = "Pirates raided your ship and took $50!";
                 player.subtractMoney(50);
-            }
-            else if (x == 18) {
+            } else if (x == 18) {
                 player.setWantedLevel(player.getWantedLevel() + 1);
-                string = "You accidentally did something illegal. Wanted level: " + player.getWantedLevel();
-            }
-            else if (x == 19) {
+                string
+                        = "You accidentally did something illegal. Wanted level: "
+                          + player.getWantedLevel();
+            } else if (x == 19) {
                 player.addMoney(100);
                 string = "You found a valueable stone and sold it for $100!";
-            }
-            else if (x == 20) {
+            } else if (x == 20) {
                 ship.setFuel(ship.getFuel() + 1);
                 string = "You found some fuel!";
             }

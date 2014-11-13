@@ -35,7 +35,8 @@ public class RootWindowController implements Initializable {
 
     @FXML
     private void handleNewGameAction(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("NewGameWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(
+                "NewGameWindow.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -47,7 +48,8 @@ public class RootWindowController implements Initializable {
     @FXML
     private void handleLoadGameAction(ActionEvent event) throws Exception {
         GameInstance.loadModelBinary();
-        Parent root = FXMLLoader.load(getClass().getResource(GameInstance.getInstance().getCurrentScreen()));
+        Parent root = FXMLLoader.load(getClass().getResource(GameInstance.
+                getInstance().getCurrentScreen()));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();

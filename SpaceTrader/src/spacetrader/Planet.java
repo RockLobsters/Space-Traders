@@ -45,7 +45,9 @@ public class Planet implements Comparable, Serializable {
      * @param name the name of the new planet
      */
     public Planet(String name) {
-        this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.random() * SolarSystem.SIZE_Y));
+        this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.
+                                                                      random()
+                                                                      * SolarSystem.SIZE_Y));
     }
 
     /**
@@ -55,7 +57,9 @@ public class Planet implements Comparable, Serializable {
      * @param solarSystem the solar system of the new planet
      */
     public Planet(String name, SolarSystem solarSystem) {
-        this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.random() * SolarSystem.SIZE_Y));
+        this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math.
+                                                                      random()
+                                                                      * SolarSystem.SIZE_Y));
         this.solarSystem = solarSystem;
     }
 
@@ -68,8 +72,13 @@ public class Planet implements Comparable, Serializable {
      * @param minCoordinateY the minimum of the y coordinate
      * @param maxCoordinateY the maximum of the y coordinate
      */
-    public Planet(String name, int minCoordinateX, int maxCoordinateX, int minCoordinateY, int maxCoordinateY) {
-        this(name, (int) (Math.random() * (maxCoordinateX - minCoordinateX + 1) + minCoordinateX), (int) (Math.random() * (maxCoordinateY - minCoordinateY + 1) + minCoordinateY));
+    public Planet(String name, int minCoordinateX, int maxCoordinateX,
+                  int minCoordinateY, int maxCoordinateY) {
+        this(name, (int) (Math.random() * (maxCoordinateX - minCoordinateX + 1)
+                          + minCoordinateX), (int) (Math.random()
+                                                    * (maxCoordinateY
+                                                       - minCoordinateY + 1)
+                                                    + minCoordinateY));
     }
 
     /**
@@ -223,7 +232,8 @@ public class Planet implements Comparable, Serializable {
      */
     @Override
     public String toString() {
-        String out = name + " (" + coordinateX + "," + coordinateY + ") " + resources + " ( " + market + " , [ ";
+        String out = name + " (" + coordinateX + "," + coordinateY + ") "
+                             + resources + " ( " + market + " , [ ";
         if (!personnelRoster.isEmpty()) {
             out = out + "( " + personnelRoster.get(0);
             for (int i = 1; i < personnelRoster.size(); i++) {

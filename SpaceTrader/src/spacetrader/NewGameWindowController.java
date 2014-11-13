@@ -71,7 +71,8 @@ public class NewGameWindowController implements Initializable {
         int investorValue = (int) investorSlider.getValue();
         int pilotValue = (int) pilotSlider.getValue();
 
-        int skillPoints = fighterValue + traderValue + engineerValue + investorValue + pilotValue;
+        int skillPoints = fighterValue + traderValue + engineerValue
+                                  + investorValue + pilotValue;
 
         String name = Name.getText();
         if (skillPoints == 10 && !name.isEmpty()) {
@@ -87,7 +88,8 @@ public class NewGameWindowController implements Initializable {
             newGame.createUniverse();
             newGame.setPlayer(player);
 
-            Parent root = FXMLLoader.load(getClass().getResource("UniverseScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "UniverseScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -95,8 +97,7 @@ public class NewGameWindowController implements Initializable {
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
 
-        }
-        else if (name.isEmpty()) {
+        } else if (name.isEmpty()) {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -104,12 +105,12 @@ public class NewGameWindowController implements Initializable {
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
             System.out.println("invlaid name");
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You can only allocate 10 stat points to your player.\nPlease do that to continue.")).
+                    children(new Text(
+                                    "You can only allocate 10 stat points to your player.\nPlease do that to continue.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -120,6 +121,9 @@ public class NewGameWindowController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -135,7 +139,8 @@ public class NewGameWindowController implements Initializable {
         int investorValue = (int) investorSlider.getValue();
         int pilotValue = (int) pilotSlider.getValue();
 
-        int remaining = fighterValue + traderValue + engineerValue + investorValue + pilotValue;
+        int remaining = fighterValue + traderValue + engineerValue
+                                + investorValue + pilotValue;
         remaining = 10 - remaining;
         pointsRemaining.setText(Integer.toString(remaining));
     }

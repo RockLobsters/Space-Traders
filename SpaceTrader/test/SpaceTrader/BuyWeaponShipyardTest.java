@@ -35,22 +35,37 @@ import spacetrader.CapitalistState;
  * @author sydnipeterson
  */
 public class BuyWeaponShipyardTest {
-    
+
+    /**
+     *
+     */
     public BuyWeaponShipyardTest() {
     }
-    
+
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
-    
+
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -60,21 +75,23 @@ public class BuyWeaponShipyardTest {
     //
     // @Test
     // public void hello() {}
-    
-    @Test(timeout=100)
-    public void buyWeaponTest(){
+    /**
+     *
+     */
+    @Test(timeout = 100)
+    public void buyWeaponTest() {
         Player player = new Player("a");
         //Makes systems
         SolarSystem systemA = new SolarSystem("A", new CapitalistState(), 10);
         Planet a = new Planet("a", systemA);
         Shipyard shipyardA = new Shipyard(a);
+        //Enough Money and Enough Weapon Space Test
         assertEquals(1, shipyardA.buyWeapon(player, Laser.BEAM));
+        //Enough Money but Not Enough Weapon Space Test
         assertEquals(0, shipyardA.buyWeapon(player, Laser.BEAM));
-        
+        //Not Enough Money Test
         player.subtractMoney(1000);
         assertEquals(-1, shipyardA.buyWeapon(player, Laser.BEAM));
-        
-        //assertEquals(null, shipyardA.buyWeapon(player, null));
-        
+
     }
 }

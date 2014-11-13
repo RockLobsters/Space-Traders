@@ -61,6 +61,9 @@ public class GalSevenScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,21 +88,21 @@ public class GalSevenScreenController implements Initializable {
             player.setCurrentLocation(solar.getPlanets().get(0));
 
             //Game game = GameInstance.getInstance();
-            //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "PlanetScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -121,19 +124,20 @@ public class GalSevenScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "PlanetScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -155,19 +159,20 @@ public class GalSevenScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "PlanetScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -188,19 +193,20 @@ public class GalSevenScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("UniverseScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "UniverseScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -222,24 +228,21 @@ public class GalSevenScreenController implements Initializable {
             if (x == 16) {
                 string = "You found $10!";
                 player.addMoney(100);
-            }
-            else if (x == 15) {
+            } else if (x == 15) {
                 string = "Your fuel tank has a hole in it and some spilled out!";
                 ship.setFuel(ship.getFuel() - 1);
-            }
-            else if (x == 17) {
+            } else if (x == 17) {
                 string = "Pirates raided your ship and took $50!";
                 player.subtractMoney(50);
-            }
-            else if (x == 18) {
+            } else if (x == 18) {
                 player.setWantedLevel(player.getWantedLevel() + 1);
-                string = "You accidentally did something illegal. Wanted level: " + player.getWantedLevel();
-            }
-            else if (x == 19) {
+                string
+                        = "You accidentally did something illegal. Wanted level: "
+                          + player.getWantedLevel();
+            } else if (x == 19) {
                 player.addMoney(100);
                 string = "You found a valueable stone and sold it for $100!";
-            }
-            else if (x == 20) {
+            } else if (x == 20) {
                 ship.setFuel(ship.getFuel() + 1);
                 string = "You found some fuel!";
             }

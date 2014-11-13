@@ -84,9 +84,9 @@ public class Game implements Serializable {
     @Override
     public String toString() {
         return "Player:\n"
-                + player.toString() + "\n"
-                + "\n"
-                + "Universe:\n"
-                + universe.toString();
+                       + player.toString() + "\n"
+                       + "\n"
+                       + "Universe:\n"
+                       + universe.toString();
     }
 }

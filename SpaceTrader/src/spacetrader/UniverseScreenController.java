@@ -73,6 +73,9 @@ public class UniverseScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -111,19 +114,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalOneScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalOneScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -143,19 +147,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalFourScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalFourScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -175,19 +180,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalSevenScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalSevenScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -207,19 +213,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalFiveScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalFiveScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -239,19 +246,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalTwoScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalTwoScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -271,19 +279,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalEightScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalEightScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -303,19 +312,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalThreeScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalThreeScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -335,19 +345,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalSixScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalSixScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
@@ -367,19 +378,20 @@ public class UniverseScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("GalNineScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "GalNineScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
 
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You do not have enough fuel to travel there.")).
+                    children(new Text(
+                                    "You do not have enough fuel to travel there.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }

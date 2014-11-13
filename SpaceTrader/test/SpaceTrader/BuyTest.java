@@ -38,21 +38,36 @@ import spacetrader.GoodType;
  */
 public class BuyTest {
 
+    /**
+     *
+     */
     public BuyTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -62,25 +77,25 @@ public class BuyTest {
      */
     @Test(timeout = 100)
     public void validBuyTest() {
-	// array list market and planet for shit
-	Planet planet = new Planet("Planet", 1, 1);
-	SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
-	planet.setSolarSystem(ss);
-	ArrayList<Good> goodList = new ArrayList<>();
-	goodList.add(new Good(GoodType.WATER, 100));
-	planet.getMarket().goods = goodList;
-	Market market = planet.getMarket();
+        // array list market and planet for shit
+        Planet planet = new Planet("Planet", 1, 1);
+        SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
+        planet.setSolarSystem(ss);
+        ArrayList<Good> goodList = new ArrayList<>();
+        goodList.add(new Good(GoodType.WATER, 100));
+        planet.getMarket().goods = goodList;
+        Market market = planet.getMarket();
 
-	Player player = new Player("Player");
+        Player player = new Player("Player");
 
-	player.addMoney(10000000);
-	Boolean bought = market.buy(GoodType.WATER, 1, player);
-	ArrayList<Good> car = player.getShip().getCargo();
-	assertEquals(car.isEmpty(), false);
-	assertEquals(car.get(0).getQuantity(), 1);
-	assertEquals(car.get(0).getType(), GoodType.WATER);
-	assertEquals(bought, true);
-	assertEquals(market.goods.get(0).getQuantity(), 99);
+        player.addMoney(10000000);
+        Boolean bought = market.buy(GoodType.WATER, 1, player);
+        ArrayList<Good> car = player.getShip().getCargo();
+        assertEquals(car.isEmpty(), false);
+        assertEquals(car.get(0).getQuantity(), 1);
+        assertEquals(car.get(0).getType(), GoodType.WATER);
+        assertEquals(bought, true);
+        assertEquals(market.goods.get(0).getQuantity(), 99);
     }
 
     /**
@@ -88,23 +103,23 @@ public class BuyTest {
      */
     @Test(timeout = 100)
     public void noMoneyTest() {
-	Planet planet = new Planet("Planet", 1, 1);
-	SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
-	planet.setSolarSystem(ss);
-	ArrayList<Good> goodList = new ArrayList<>();
-	goodList.add(new Good(GoodType.WATER, 100));
-	planet.getMarket().goods = goodList;
-	Market market = planet.getMarket();
+        Planet planet = new Planet("Planet", 1, 1);
+        SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
+        planet.setSolarSystem(ss);
+        ArrayList<Good> goodList = new ArrayList<>();
+        goodList.add(new Good(GoodType.WATER, 100));
+        planet.getMarket().goods = goodList;
+        Market market = planet.getMarket();
 
-	// array list market and planet for shit
-	// set ship to player
-	Player player = new Player("Player");
-	player.subtractMoney(1000);
-	Boolean bought = market.buy(GoodType.WATER, 1, player);
-	ArrayList<Good> car = player.getShip().getCargo();
-	assertEquals(car.isEmpty(), true);
-	assertEquals(bought, false);
-	assertEquals(market.goods.get(0).getQuantity(), 100);
+        // array list market and planet for shit
+        // set ship to player
+        Player player = new Player("Player");
+        player.subtractMoney(1000);
+        Boolean bought = market.buy(GoodType.WATER, 1, player);
+        ArrayList<Good> car = player.getShip().getCargo();
+        assertEquals(car.isEmpty(), true);
+        assertEquals(bought, false);
+        assertEquals(market.goods.get(0).getQuantity(), 100);
     }
 
     /**
@@ -112,22 +127,22 @@ public class BuyTest {
      */
     @Test(timeout = 100)
     public void noSpaceValues() {
-	Planet planet = new Planet("Planet", 1, 1);
-	SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
-	planet.setSolarSystem(ss);
-	ArrayList<Good> goodList = new ArrayList<>();
-	goodList.add(new Good(GoodType.WATER, 100));
-	planet.getMarket().goods = goodList;
-	Market market = planet.getMarket();
-	// array list market and planet for shit
-	// set ship to player
-	Player player = new Player("Player");
-	player.addMoney(10000000);
-	Boolean bought = market.buy(GoodType.WATER, 20, player);
-	ArrayList<Good> car = player.getShip().getCargo();
-	assertEquals(car.isEmpty(), true);
-	assertEquals(bought, false);
-	assertEquals(market.goods.get(0).getQuantity(), 100);
+        Planet planet = new Planet("Planet", 1, 1);
+        SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
+        planet.setSolarSystem(ss);
+        ArrayList<Good> goodList = new ArrayList<>();
+        goodList.add(new Good(GoodType.WATER, 100));
+        planet.getMarket().goods = goodList;
+        Market market = planet.getMarket();
+        // array list market and planet for shit
+        // set ship to player
+        Player player = new Player("Player");
+        player.addMoney(10000000);
+        Boolean bought = market.buy(GoodType.WATER, 20, player);
+        ArrayList<Good> car = player.getShip().getCargo();
+        assertEquals(car.isEmpty(), true);
+        assertEquals(bought, false);
+        assertEquals(market.goods.get(0).getQuantity(), 100);
     }
 
     /**
@@ -135,25 +150,25 @@ public class BuyTest {
      */
     @Test(timeout = 100)
     public void sameGoodTwice() {
-	Planet planet = new Planet("Planet", 1, 1);
-	SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
-	planet.setSolarSystem(ss);
-	ArrayList<Good> goodList = new ArrayList<>();
-	goodList.add(new Good(GoodType.WATER, 100));
-	planet.getMarket().goods = goodList;
-	Market market = planet.getMarket();
-	// array list market and planet for shit
-	// set ship to player
-	Player player = new Player("Player");
-	player.addMoney(10000000);
-	Boolean bought = market.buy(GoodType.WATER, 1, player);
-	bought = market.buy(GoodType.WATER, 1, player);
-	ArrayList<Good> car = player.getShip().getCargo();
-	assertEquals(bought, true);
-	assertEquals(car.isEmpty(), false);
-	assertEquals(car.get(0).getQuantity(), 2);
-	assertEquals(car.get(0).getType(), GoodType.WATER);
-	assertEquals(market.goods.get(0).getQuantity(), 98);
+        Planet planet = new Planet("Planet", 1, 1);
+        SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
+        planet.setSolarSystem(ss);
+        ArrayList<Good> goodList = new ArrayList<>();
+        goodList.add(new Good(GoodType.WATER, 100));
+        planet.getMarket().goods = goodList;
+        Market market = planet.getMarket();
+        // array list market and planet for shit
+        // set ship to player
+        Player player = new Player("Player");
+        player.addMoney(10000000);
+        Boolean bought = market.buy(GoodType.WATER, 1, player);
+        bought = market.buy(GoodType.WATER, 1, player);
+        ArrayList<Good> car = player.getShip().getCargo();
+        assertEquals(bought, true);
+        assertEquals(car.isEmpty(), false);
+        assertEquals(car.get(0).getQuantity(), 2);
+        assertEquals(car.get(0).getType(), GoodType.WATER);
+        assertEquals(market.goods.get(0).getQuantity(), 98);
     }
 
     /**
@@ -161,38 +176,38 @@ public class BuyTest {
      */
     @Test(timeout = 100)
     public void twoDifferentGoods() {
-	Planet planet = new Planet("Planet", 1, 1);
-	SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
-	planet.setSolarSystem(ss);
-	ArrayList<Good> goodList = new ArrayList<>();
-	goodList.add(new Good(GoodType.WATER, 100));
-	goodList.add(new Good(GoodType.FOOD, 100));
-	planet.getMarket().goods = goodList;
-	Market market = planet.getMarket();
-	// array list market and planet for shit
-	// set ship to player
-	Player player = new Player("Player");
-	player.addMoney(10000000);
-	Boolean bought = market.buy(GoodType.WATER, 1, player);
-	bought = market.buy(GoodType.FOOD, 1, player);
-	ArrayList<Good> car = player.getShip().getCargo();
+        Planet planet = new Planet("Planet", 1, 1);
+        SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
+        planet.setSolarSystem(ss);
+        ArrayList<Good> goodList = new ArrayList<>();
+        goodList.add(new Good(GoodType.WATER, 100));
+        goodList.add(new Good(GoodType.FOOD, 100));
+        planet.getMarket().goods = goodList;
+        Market market = planet.getMarket();
+        // array list market and planet for shit
+        // set ship to player
+        Player player = new Player("Player");
+        player.addMoney(10000000);
+        Boolean bought = market.buy(GoodType.WATER, 1, player);
+        bought = market.buy(GoodType.FOOD, 1, player);
+        ArrayList<Good> car = player.getShip().getCargo();
 
-	int index1;
-	int index2;
-	if (car.get(0).getType().equals(GoodType.WATER)) {
-	    index1 = 0;
-	    index2 = 1;
-	} else {
-	    index2 = 0;
-	    index1 = 1;
-	}
+        int index1;
+        int index2;
+        if (car.get(0).getType().equals(GoodType.WATER)) {
+            index1 = 0;
+            index2 = 1;
+        } else {
+            index2 = 0;
+            index1 = 1;
+        }
 
-	assertEquals(bought, true);
-	assertEquals(car.isEmpty(), false);
-	assertEquals(car.size(), 2);
-	assertEquals(car.get(0).getQuantity(), 1);
-	assertEquals(car.get(index1).getType(), GoodType.WATER);
-	assertEquals(car.get(index2).getType(), GoodType.FOOD);
+        assertEquals(bought, true);
+        assertEquals(car.isEmpty(), false);
+        assertEquals(car.size(), 2);
+        assertEquals(car.get(0).getQuantity(), 1);
+        assertEquals(car.get(index1).getType(), GoodType.WATER);
+        assertEquals(car.get(index2).getType(), GoodType.FOOD);
 
     }
 
@@ -201,28 +216,28 @@ public class BuyTest {
      */
     @Test(timeout = 100)
     public void buyThenSellThenBuy() {
-	Planet planet = new Planet("Planet", 1, 1);
-	SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
-	planet.setSolarSystem(ss);
-	ArrayList<Good> goodList = new ArrayList<>();
-	goodList.add(new Good(GoodType.WATER, 100));
-	planet.getMarket().goods = goodList;
-	Market market = planet.getMarket();
+        Planet planet = new Planet("Planet", 1, 1);
+        SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 7);
+        planet.setSolarSystem(ss);
+        ArrayList<Good> goodList = new ArrayList<>();
+        goodList.add(new Good(GoodType.WATER, 100));
+        planet.getMarket().goods = goodList;
+        Market market = planet.getMarket();
 
-	Player player = new Player("Player");
-	player.addMoney(10000000);
-	Boolean bought = market.buy(GoodType.WATER, 1, player);
-	bought = market.sell(GoodType.WATER, 1, player);
-	bought = market.buy(GoodType.WATER, 1, player);
+        Player player = new Player("Player");
+        player.addMoney(10000000);
+        Boolean bought = market.buy(GoodType.WATER, 1, player);
+        bought = market.sell(GoodType.WATER, 1, player);
+        bought = market.buy(GoodType.WATER, 1, player);
 
-	ArrayList<Good> car = player.getShip().getCargo();
+        ArrayList<Good> car = player.getShip().getCargo();
 
-	assertEquals(bought, true);
-	assertEquals(car.isEmpty(), false);
-	assertEquals(car.size(), 1);
-	assertEquals(car.get(0).getQuantity(), 1);
-	assertEquals(car.get(0).getType(), GoodType.WATER);
-	assertEquals(market.goods.get(0).getQuantity(), 99);
+        assertEquals(bought, true);
+        assertEquals(car.isEmpty(), false);
+        assertEquals(car.size(), 1);
+        assertEquals(car.get(0).getQuantity(), 1);
+        assertEquals(car.get(0).getType(), GoodType.WATER);
+        assertEquals(market.goods.get(0).getQuantity(), 99);
     }
 
     /**
@@ -230,21 +245,21 @@ public class BuyTest {
      */
     @Test(timeout = 100)
     public void lowerMTLP() {
-	Planet planet = new Planet("Planet", 1, 1);
-	SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 1);
-	planet.setSolarSystem(ss);
-	ArrayList<Good> goodList = new ArrayList<>();
-	goodList.add(new Good(GoodType.ROBOTS, 100));
-	planet.getMarket().goods = goodList;
-	Market market = planet.getMarket();
+        Planet planet = new Planet("Planet", 1, 1);
+        SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 1);
+        planet.setSolarSystem(ss);
+        ArrayList<Good> goodList = new ArrayList<>();
+        goodList.add(new Good(GoodType.ROBOTS, 100));
+        planet.getMarket().goods = goodList;
+        Market market = planet.getMarket();
 
-	Player player = new Player("Player");
-	player.addMoney(10000000);
-	Boolean bought = market.buy(GoodType.ROBOTS, 1, player);
-	ArrayList<Good> car = player.getShip().getCargo();
-	assertEquals(car.isEmpty(), true);
-	assertEquals(bought, false);
-	assertEquals(market.goods.get(0).getQuantity(), 100);
+        Player player = new Player("Player");
+        player.addMoney(10000000);
+        Boolean bought = market.buy(GoodType.ROBOTS, 1, player);
+        ArrayList<Good> car = player.getShip().getCargo();
+        assertEquals(car.isEmpty(), true);
+        assertEquals(bought, false);
+        assertEquals(market.goods.get(0).getQuantity(), 100);
     }
 
     /**
@@ -253,20 +268,20 @@ public class BuyTest {
      */
     @Test(timeout = 100)
     public void noGoodMarketTest() {
-	Planet planet = new Planet("Planet", 1, 1);
-	SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 1);
-	planet.setSolarSystem(ss);
-	ArrayList<Good> goodList = new ArrayList<>();
-	goodList.add(new Good(GoodType.WATER, 0));
-	planet.getMarket().goods = goodList;
-	Market market = planet.getMarket();
+        Planet planet = new Planet("Planet", 1, 1);
+        SolarSystem ss = new SolarSystem("SS", new CapitalistState(), 1);
+        planet.setSolarSystem(ss);
+        ArrayList<Good> goodList = new ArrayList<>();
+        goodList.add(new Good(GoodType.WATER, 0));
+        planet.getMarket().goods = goodList;
+        Market market = planet.getMarket();
 
-	Player player = new Player("Player");
-	player.addMoney(10000000);
-	Boolean bought = market.buy(GoodType.WATER, 1, player);
-	ArrayList<Good> car = player.getShip().getCargo();
-	assertEquals(car.isEmpty(), true);
-	assertEquals(bought, false);
+        Player player = new Player("Player");
+        player.addMoney(10000000);
+        Boolean bought = market.buy(GoodType.WATER, 1, player);
+        ArrayList<Good> car = player.getShip().getCargo();
+        assertEquals(car.isEmpty(), true);
+        assertEquals(bought, false);
     }
 
 }

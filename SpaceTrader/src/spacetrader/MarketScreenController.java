@@ -166,7 +166,8 @@ public class MarketScreenController implements Initializable {
     private TextField narcoticsToBuy;
     @FXML
     private TextField robotsToBuy;
-    private Market market = GameInstance.getInstance().getPlayer().getCurrentLocation().getMarket();
+    private Market market = GameInstance.getInstance().getPlayer().
+            getCurrentLocation().getMarket();
     private Player player = GameInstance.getInstance().getPlayer();
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     @FXML
@@ -174,6 +175,9 @@ public class MarketScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -287,12 +291,12 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    children(new Text(
+                                    "You cannot buy more than you can hold or afford.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -313,8 +317,7 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -338,8 +341,7 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -363,12 +365,12 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    children(new Text(
+                                    "You cannot buy more than you can hold or afford.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -388,12 +390,12 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    children(new Text(
+                                    "You cannot buy more than you can hold or afford.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -413,8 +415,7 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -438,8 +439,7 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -463,12 +463,12 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    children(new Text(
+                                    "You cannot buy more than you can hold or afford.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -488,12 +488,12 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    children(new Text(
+                                    "You cannot buy more than you can hold or afford.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -513,8 +513,7 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -538,8 +537,7 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -563,12 +561,12 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    children(new Text(
+                                    "You cannot buy more than you can hold or afford.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -588,12 +586,12 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    children(new Text(
+                                    "You cannot buy more than you can hold or afford.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -613,8 +611,7 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -638,8 +635,7 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
@@ -663,12 +659,12 @@ public class MarketScreenController implements Initializable {
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
-        }
-        else {
+        } else {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    children(new Text(
+                                    "You cannot buy more than you can hold or afford.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
 
@@ -680,10 +676,10 @@ public class MarketScreenController implements Initializable {
      *
      * @param event occours when the user clicks on the "RETURN" button
      */
-
     @FXML
     private void returnToPlanet(MouseEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().
+                getResource("PlanetScreen.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();

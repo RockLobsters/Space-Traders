@@ -39,12 +39,20 @@ public class Good implements Serializable {
     int MTH; //max price offered in space trade with random trader
     double price; //final price
 
+    /**
+     *
+     * @param gType
+     * @param q
+     */
     public Good(GoodType gType, int q) {
         this.type = gType;
         this.quantity = q;
         setValues();
     }
 
+    /**
+     *
+     */
     protected void setValues() {
         switch (type) {
             case WATER:
@@ -160,62 +168,122 @@ public class Good implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public GoodType getType() {
         return type;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     *
+     * @param newQ
+     */
     public void setQuantity(int newQ) {
         this.quantity = newQ;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getBasePrice() {
         return basePrice;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMTLP() {
         return MTLP;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMTLU() {
         return MTLU;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTTP() {
         return TTP;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIPL() {
         return IPL;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getVar() {
         return var;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCR() {
         return CR;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getER() {
         return ER;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMTL() {
         return MTL;
     }
 
+    /**
+     *
+     * @return
+     */
     public int MTH() {
         return MTH;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     *
+     * @param p
+     */
     public void setPrice(double p) {
         this.price = p;
     }

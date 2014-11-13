@@ -34,34 +34,46 @@ public class GameInstance {
 
     private static Game instance = new Game();
 
+    /**
+     *
+     * @return
+     */
     public static Game getInstance() {
         return instance;
     }
 
+    /**
+     *
+     */
     public static void saveModelBinary() {
         try {
-            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data.bin"))) {
+            try (ObjectOutputStream out = new ObjectOutputStream(
+                    new FileOutputStream("data.bin"))) {
                 out.writeObject(instance);
             }
-        }
-        catch (IOException ex) {
-            Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE,
+                                                               null, ex);
         }
 
     }
 
+    /**
+     *
+     */
     public static void loadModelBinary() {
         try {
-            try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("data.bin"))) {
+            try (ObjectInputStream in = new ObjectInputStream(
+                    new FileInputStream("data.bin"))) {
                 Game loadGame = (Game) in.readObject();
                 instance = loadGame;
             }
-        }
-        catch (IOException ex) {
-            Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (ClassNotFoundException ex) {
-            Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE,
+                                                               null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GameInstance.class.getName()).log(Level.SEVERE,
+                                                               null, ex);
         }
     }
 

@@ -32,21 +32,36 @@ import spacetrader.GoodType;
  */
 public class ContainsGoodTest {
 
+    /**
+     *
+     */
     public ContainsGoodTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -56,34 +71,42 @@ public class ContainsGoodTest {
     //
     // @Test
     // public void hello() {}
-
+    /**
+     *
+     */
     @Test(timeout = 100)
     public void containsGoodTest() {
-	Good[] list = new Good[GoodType.values().length];
-	for (int i = 0; i < list.length; i++) {
-	    list[i] = new Good(GoodType.values()[i], 1);
-	}
-	for (int i = 0; i < list.length; i++) {
-	    assertTrue(Market.containsGood(list, new Good(GoodType.values()[i],
-		    1)));
-	}
+        Good[] list = new Good[GoodType.values().length];
+        for (int i = 0; i < list.length; i++) {
+            list[i] = new Good(GoodType.values()[i], 1);
+        }
+        for (int i = 0; i < list.length; i++) {
+            assertTrue(Market.containsGood(list, new Good(GoodType.values()[i],
+                                                          1)));
+        }
     }
 
+    /**
+     *
+     */
     @Test(timeout = 100)
     public void containsNothingTest() {
-	Good[] list = new Good[GoodType.values().length];
-	for (int i = 0; i < list.length; i++) {
-	    assertFalse(Market.containsGood(list, new Good(
-		    GoodType.values()[i], 1)));
-	}
+        Good[] list = new Good[GoodType.values().length];
+        for (int i = 0; i < list.length; i++) {
+            assertFalse(Market.containsGood(list, new Good(
+                                            GoodType.values()[i], 1)));
+        }
     }
 
+    /**
+     *
+     */
     @Test(timeout = 100)
     public void containsNullTest() {
-	Good[] list = new Good[GoodType.values().length];
-	for (int i = 0; i < list.length; i++) {
-	    list[i] = new Good(GoodType.values()[i], 1);
-	}
-	assertFalse(Market.containsGood(list, null));
+        Good[] list = new Good[GoodType.values().length];
+        for (int i = 0; i < list.length; i++) {
+            list[i] = new Good(GoodType.values()[i], 1);
+        }
+        assertFalse(Market.containsGood(list, null));
     }
 }
