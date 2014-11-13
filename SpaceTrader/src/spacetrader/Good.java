@@ -39,12 +39,20 @@ public class Good implements Serializable {
     int MTH; // max price offered in space trade with random trader
     double price; // final price
 
+    /**
+     *
+     * @param gType
+     * @param q
+     */
     public Good(GoodType gType, int q) {
 	this.type = gType;
 	this.quantity = q;
 	setValues();
     }
 
+    /**
+     *
+     */
     protected void setValues() {
 	switch (type) {
 	case WATER:
@@ -160,62 +168,122 @@ public class Good implements Serializable {
 	}
     }
 
+    /**
+     *
+     * @return
+     */
     protected GoodType getType() {
 	return type;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getQuantity() {
 	return quantity;
     }
 
+    /**
+     *
+     * @param newQ
+     */
     protected void setQuantity(int newQ) {
 	this.quantity = newQ;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getBasePrice() {
 	return basePrice;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getMTLP() {
 	return MTLP;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getMTLU() {
 	return MTLU;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getTTP() {
 	return TTP;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getIPL() {
 	return IPL;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getVar() {
 	return var;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getCR() {
 	return CR;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getER() {
 	return ER;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getMTL() {
 	return MTL;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int MTH() {
 	return MTH;
     }
 
+    /**
+     *
+     * @return
+     */
     protected double getPrice() {
 	return price;
     }
 
+    /**
+     *
+     * @param p
+     */
     protected void setPrice(double p) {
 	this.price = p;
     }

@@ -20,7 +20,7 @@ import java.io.Serializable;
  *
  * @author Kristen Lawrence
  */
-public class CommunistState extends PoliticalSystem implements Serializable {
+public class CommunistState extends AbstractPoliticalSystem implements Serializable {
 
     Random rand = new Random();
 

@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Kristen Lawrence
  */
-public class Cybernetic extends PoliticalSystem implements Serializable {
+public class Cybernetic extends AbstractPoliticalSystem implements Serializable {
 
     Random rand = new Random();
 

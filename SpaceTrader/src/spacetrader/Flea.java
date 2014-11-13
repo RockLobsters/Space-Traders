@@ -22,17 +22,59 @@ package spacetrader;
  */
 public class Flea extends Ship {
 
+    /**
+     *
+     */
     public static final String NAME = "Flea";
+
+    /**
+     *
+     */
     public static final int HULL_STRENGTH = 10;
+
+    /**
+     *
+     */
     public static final int CARGO_BAYS = 5;
+
+    /**
+     *
+     */
     public static final int WEAPON_SLOTS = 0;
+
+    /**
+     *
+     */
     public static final int SHIELD_SLOTS = 0;
+
+    /**
+     *
+     */
     public static final int GADGET_SLOTS = 0;
+
+    /**
+     *
+     */
     public static final int CREW_QUARTERS = 0;
+
+    /**
+     *
+     */
     public static final int FUEL_CAPACITY = 20;
+
+    /**
+     *
+     */
     public static final int FUEL_COST = 1;
+
+    /**
+     *
+     */
     public static final int BASE_PRICE = 2000;
 
+    /**
+     *
+     */
     public Flea() {
 	super(NAME, HULL_STRENGTH, CARGO_BAYS, WEAPON_SLOTS, SHIELD_SLOTS,
 		GADGET_SLOTS, CREW_QUARTERS, FUEL_CAPACITY, FUEL_COST,

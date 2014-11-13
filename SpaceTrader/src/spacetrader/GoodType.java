@@ -18,5 +18,53 @@ package spacetrader;
  */
 public enum GoodType {
 
-    WATER, FOOD, FUR, ORE, GAMES, FIREARMS, MEDICINE, MACHINES, NARCOTICS, ROBOTS;
+    /**
+     *
+     */
+    WATER,
+
+    /**
+     *
+     */
+    FOOD,
+
+    /**
+     *
+     */
+    FUR,
+
+    /**
+     *
+     */
+    ORE,
+
+    /**
+     *
+     */
+    GAMES,
+
+    /**
+     *
+     */
+    FIREARMS,
+
+    /**
+     *
+     */
+    MEDICINE,
+
+    /**
+     *
+     */
+    MACHINES,
+
+    /**
+     *
+     */
+    NARCOTICS,
+
+    /**
+     *
+     */
+    ROBOTS;
 }

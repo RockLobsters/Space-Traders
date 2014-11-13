@@ -40,9 +40,24 @@ public class Ship implements Serializable {
     ArrayList<Shield> shields;
     ArrayList<Gadget> gadgets;
 
+    /**
+     *
+     */
     public int fuel;
+
+    /**
+     *
+     */
     public int health;
+
+    /**
+     *
+     */
     public boolean escapePod;
+
+    /**
+     *
+     */
     public boolean insurance;
 
     /**
@@ -195,6 +210,10 @@ public class Ship implements Serializable {
 	}
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCargoBays() {
 	int cb = CARGO_BAYS;
 	for (Gadget g : gadgets) {

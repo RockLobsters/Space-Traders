@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Kristen Lawrence
  */
-public class Satori extends PoliticalSystem implements Serializable {
+public class Satori extends AbstractPoliticalSystem implements Serializable {
 
     Random rand = new Random();
 

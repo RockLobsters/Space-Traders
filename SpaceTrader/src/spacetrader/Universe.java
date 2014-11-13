@@ -28,6 +28,9 @@ public class Universe extends ArrayList<SolarSystem> implements Serializable {
 	}
     }
 
+    /**
+     *
+     */
     public void bigBang() {
 	// ...::: Put the instantiation code here :::...
 	SolarSystem aSystem = new SolarSystem("Atlantia",

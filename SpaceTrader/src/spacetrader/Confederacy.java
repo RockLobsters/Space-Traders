@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Kristen Lawrence
  */
-public class Confederacy extends PoliticalSystem implements Serializable {
+public class Confederacy extends AbstractPoliticalSystem implements Serializable {
 
     Random rand = new Random();
 

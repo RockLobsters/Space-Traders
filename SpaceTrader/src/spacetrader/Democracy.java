@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Kristen Lawrence
  */
-public class Democracy extends PoliticalSystem implements Serializable {
+public class Democracy extends AbstractPoliticalSystem implements Serializable {
 
     Random rand = new Random();
 

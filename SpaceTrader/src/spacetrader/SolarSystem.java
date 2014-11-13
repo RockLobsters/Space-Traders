@@ -27,13 +27,13 @@ class SolarSystem implements Serializable {
 
     private String name;
     private ArrayList<Planet> planets;
-    private PoliticalSystem politicalSystem;
+    private AbstractPoliticalSystem politicalSystem;
     private int techLevel;
 
     public static final int SIZE_X = 50;
     public static final int SIZE_Y = 50;
 
-    public SolarSystem(String name, PoliticalSystem politicalSystem,
+    public SolarSystem(String name, AbstractPoliticalSystem politicalSystem,
 	    int techLevel) {
 	this.name = name;
 	planets = new ArrayList();
@@ -115,7 +115,7 @@ class SolarSystem implements Serializable {
     /**
      * @return the politicalSystem
      */
-    public PoliticalSystem getPoliticalSystem() {
+    public AbstractPoliticalSystem getPoliticalSystem() {
 	return politicalSystem;
     }
 
@@ -123,7 +123,7 @@ class SolarSystem implements Serializable {
      * @param politicalSystem
      *            the politicalSystem to set
      */
-    public void setPoliticalSystem(PoliticalSystem politicalSystem) {
+    public void setPoliticalSystem(AbstractPoliticalSystem politicalSystem) {
 	this.politicalSystem = politicalSystem;
     }
 }

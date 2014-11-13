@@ -15,17 +15,43 @@ import java.io.Serializable;
  */
 public class Market implements Serializable {
 
+    /**
+     *
+     */
     public ArrayList<Good> goods;
-    public Planet planet;
-    public ArrayList<Double> prices;
-    public PoliticalSystem politicalSystem;
 
+    /**
+     *
+     */
+    public Planet planet;
+
+    /**
+     *
+     */
+    public ArrayList<Double> prices;
+
+    /**
+     *
+     */
+    public AbstractPoliticalSystem politicalSystem;
+
+    /**
+     *
+     */
     public int techLevel;
 
+    /**
+     *
+     * @param planet
+     */
     public Market(Planet planet) {
 	this.planet = planet;
     }
 
+    /**
+     *
+     * @param solarSystem
+     */
     public void setSolarSystem(SolarSystem solarSystem) {
 	this.politicalSystem = solarSystem.getPoliticalSystem();
 	this.goods = politicalSystem.supply();
@@ -121,6 +147,12 @@ public class Market implements Serializable {
 	return price;
     }
 
+    /**
+     *
+     * @param list
+     * @param good
+     * @return
+     */
     public static boolean containsGood(Good[] list, Good good) {
 	for (Good listItem : list) {
 	    if (listItem == good) {
@@ -310,6 +342,7 @@ public class Market implements Serializable {
      *            type of good
      * @param quantity
      *            quantity to buy
+     * @param player
      * @parap player player that's buying stuff
      *
      * @return boolean if transaction was successful
@@ -325,6 +358,7 @@ public class Market implements Serializable {
      *            type of good
      * @param quantity
      *            quantity to sell
+     * @param player
      * @parap player player that's buying stuff
      *
      * @return boolean if transaction was successful
@@ -336,6 +370,7 @@ public class Market implements Serializable {
     /**
      * Buys a good in the market
      *
+     * @param good
      * @return int quantity of good in market
      */
     public int getQuantity(Good good) {
