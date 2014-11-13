@@ -65,6 +65,7 @@ public class GalNineScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

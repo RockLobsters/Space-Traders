@@ -195,6 +195,10 @@ public class Ship implements Serializable {
 	}
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCargoBays() {
 	int cb = CARGO_BAYS;
 	for (Gadget g : gadgets) {

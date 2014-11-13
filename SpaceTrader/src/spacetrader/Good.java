@@ -45,6 +45,9 @@ public class Good implements Serializable {
 	setValues();
     }
 
+    /**
+     *
+     */
     protected void setValues() {
 	switch (type) {
 	case WATER:
@@ -160,6 +163,10 @@ public class Good implements Serializable {
 	}
     }
 
+    /**
+     *
+     * @return
+     */
     protected GoodType getType() {
 	return type;
     }
@@ -176,10 +183,18 @@ public class Good implements Serializable {
 	return basePrice;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getMTLP() {
 	return MTLP;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getMTLU() {
 	return MTLU;
     }
@@ -188,6 +203,10 @@ public class Good implements Serializable {
 	return TTP;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getIPL() {
 	return IPL;
     }
@@ -208,6 +227,10 @@ public class Good implements Serializable {
 	return MTL;
     }
 
+    /**
+     *
+     * @return
+     */
     protected int MTH() {
 	return MTH;
     }
