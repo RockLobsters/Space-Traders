@@ -319,4 +319,8 @@ public class Ship implements Serializable {
         Gadget g = gadgets.remove(index);
         return g.getPrice();
     }
+    
+    public void adjustCargo(ArrayList<Good> newCargo) {
+        this.cargo = newCargo;
+    }
 }

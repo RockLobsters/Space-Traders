@@ -209,6 +209,7 @@ public class Market implements Serializable {
             if (!found) {
                 cargo.add(new Good(good.getType(), quantity));
             }
+            player.getShip().adjustCargo(cargo);
             return true;
         }
     }
@@ -272,6 +273,7 @@ public class Market implements Serializable {
             }
             player.addMoney(prices.get(getIndex(good)) * quantity);
             goods.get(getIndex(good)).quantity -= quantity;
+            player.getShip().adjustCargo(cargo);
             return true;
         }
     }
