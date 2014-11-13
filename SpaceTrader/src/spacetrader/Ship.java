@@ -48,69 +48,81 @@ public class Ship implements Serializable {
     /**
      * The flushed out Ship constructor
      *
-     * @param NAME          the name of the ship
-     * @param HULL_STRENGTH the hull strength of the ship
-     * @param CARGO_BAYS    the number of cargo bays the ship has
-     * @param WEAPON_SLOTS  the number of weapon slots the ship has
-     * @param SHIELD_SLOTS  the number of shield slots the ship has
-     * @param GADGET_SLOTS  the number of gadget slots the ship has
-     * @param CREW_QUARTERS the number of crew quarters the ship has
-     * @param FUEL_CAPACITY the fuel capacity the ship has (space-gallons)
-     * @param FUEL_COST     the cost of refueling per space-gallon
-     * @param BASE_PRICE    the base price of the ship based on attributes
+     * @param NAME
+     *            the name of the ship
+     * @param HULL_STRENGTH
+     *            the hull strength of the ship
+     * @param CARGO_BAYS
+     *            the number of cargo bays the ship has
+     * @param WEAPON_SLOTS
+     *            the number of weapon slots the ship has
+     * @param SHIELD_SLOTS
+     *            the number of shield slots the ship has
+     * @param GADGET_SLOTS
+     *            the number of gadget slots the ship has
+     * @param CREW_QUARTERS
+     *            the number of crew quarters the ship has
+     * @param FUEL_CAPACITY
+     *            the fuel capacity the ship has (space-gallons)
+     * @param FUEL_COST
+     *            the cost of refueling per space-gallon
+     * @param BASE_PRICE
+     *            the base price of the ship based on attributes
      */
-    public Ship(String NAME, int HULL_STRENGTH, int CARGO_BAYS, int WEAPON_SLOTS, int SHIELD_SLOTS,
-                int GADGET_SLOTS, int CREW_QUARTERS, int FUEL_CAPACITY, int FUEL_COST, int BASE_PRICE) {
-        this.NAME = NAME;
-        this.HULL_STRENGTH = HULL_STRENGTH;
-        this.CARGO_BAYS = CARGO_BAYS;
-        this.WEAPON_SLOTS = WEAPON_SLOTS;
-        this.SHIELD_SLOTS = SHIELD_SLOTS;
-        this.GADGET_SLOTS = GADGET_SLOTS;
-        this.CREW_QUARTERS = CREW_QUARTERS;
-        this.FUEL_CAPACITY = FUEL_CAPACITY;
-        this.FUEL_COST = FUEL_COST;
-        this.BASE_PRICE = BASE_PRICE;
-        cargo = new ArrayList(CARGO_BAYS);
-        weapons = new ArrayList<>();
-        shields = new ArrayList<>();
-        gadgets = new ArrayList<>();
-        this.fuel = FUEL_CAPACITY;
-        this.health = HULL_STRENGTH;
+    public Ship(String NAME, int HULL_STRENGTH, int CARGO_BAYS,
+	    int WEAPON_SLOTS, int SHIELD_SLOTS, int GADGET_SLOTS,
+	    int CREW_QUARTERS, int FUEL_CAPACITY, int FUEL_COST, int BASE_PRICE) {
+	this.NAME = NAME;
+	this.HULL_STRENGTH = HULL_STRENGTH;
+	this.CARGO_BAYS = CARGO_BAYS;
+	this.WEAPON_SLOTS = WEAPON_SLOTS;
+	this.SHIELD_SLOTS = SHIELD_SLOTS;
+	this.GADGET_SLOTS = GADGET_SLOTS;
+	this.CREW_QUARTERS = CREW_QUARTERS;
+	this.FUEL_CAPACITY = FUEL_CAPACITY;
+	this.FUEL_COST = FUEL_COST;
+	this.BASE_PRICE = BASE_PRICE;
+	cargo = new ArrayList(CARGO_BAYS);
+	weapons = new ArrayList<>();
+	shields = new ArrayList<>();
+	gadgets = new ArrayList<>();
+	this.fuel = FUEL_CAPACITY;
+	this.health = HULL_STRENGTH;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-        return NAME;
+	return NAME;
     }
 
     /**
      * @return the fuel
      */
     public int getFuel() {
-        return fuel;
+	return fuel;
     }
 
     /**
-     * @param fuel the fuel to set
+     * @param fuel
+     *            the fuel to set
      */
     public void setFuel(int fuel) {
-        this.fuel = fuel;
+	this.fuel = fuel;
     }
 
     /**
      * @return the current number of items in the cargo
      */
     public int getCargoSize() {
-        int out = 0;
-        for (Good good : cargo) {
-            if (good != null) {
-                out += good.getQuantity();
-            }
-        }
-        return out;
+	int out = 0;
+	for (Good good : cargo) {
+	    if (good != null) {
+		out += good.getQuantity();
+	    }
+	}
+	return out;
     }
 
     /**
@@ -119,16 +131,17 @@ public class Ship implements Serializable {
      * @return health of ship
      */
     public int getHealth() {
-        return health;
+	return health;
     }
 
     /**
      * health setter
      *
-     * @param h new health
+     * @param h
+     *            new health
      */
     public void setHealth(int h) {
-        this.health = h;
+	this.health = h;
     }
 
     /**
@@ -137,7 +150,7 @@ public class Ship implements Serializable {
      * @return BASE_PRICE of ship
      */
     public int getPrice() {
-        return BASE_PRICE;
+	return BASE_PRICE;
     }
 
     /**
@@ -146,7 +159,7 @@ public class Ship implements Serializable {
      * @return HULL_STRENGTH
      */
     public int getHullStrength() {
-        return HULL_STRENGTH;
+	return HULL_STRENGTH;
     }
 
     /**
@@ -155,7 +168,7 @@ public class Ship implements Serializable {
      * @return FUEL_CAPACITY
      */
     public int getFuelCapacity() {
-        return FUEL_CAPACITY;
+	return FUEL_CAPACITY;
     }
 
     /**
@@ -164,33 +177,32 @@ public class Ship implements Serializable {
      * @return fuelcost
      */
     public int getFuelCost() {
-        return FUEL_COST;
+	return FUEL_COST;
     }
 
     /**
      * @return good1, good2, good3, ...
      */
     public String cargoToString() {
-        if (!cargo.isEmpty()) {
-            String out = "";
-            for (Good good : cargo) {
-                out = out + good.getType() + ", " + good.getQuantity() + "\n";
-            }
-            return out;
-        }
-        else {
-            return "";
-        }
+	if (!cargo.isEmpty()) {
+	    String out = "";
+	    for (Good good : cargo) {
+		out = out + good.getType() + ", " + good.getQuantity() + "\n";
+	    }
+	    return out;
+	} else {
+	    return "";
+	}
     }
 
     public int getCargoBays() {
-        int cb = CARGO_BAYS;
-        for (Gadget g : gadgets) {
-            if (g.equals(Gadget.CARGO_BAYS)) {
-                cb += 5;
-            }
-        }
-        return cb;
+	int cb = CARGO_BAYS;
+	for (Gadget g : gadgets) {
+	    if (g.equals(Gadget.CARGO_BAYS)) {
+		cb += 5;
+	    }
+	}
+	return cb;
     }
 
     /**
@@ -199,16 +211,17 @@ public class Ship implements Serializable {
      * @return true if there is false if not
      */
     public boolean getEscapePod() {
-        return escapePod;
+	return escapePod;
     }
 
     /**
      * Give the ship an escape pod
      *
-     * @param b true if adding an escape pod false if selling one
+     * @param b
+     *            true if adding an escape pod false if selling one
      */
     public void setEscapePod(boolean b) {
-        escapePod = b;
+	escapePod = b;
     }
 
     /**
@@ -217,7 +230,7 @@ public class Ship implements Serializable {
      * @return ture if it is false if not
      */
     public boolean getInsurance() {
-        return insurance;
+	return insurance;
     }
 
     /**
@@ -226,97 +239,113 @@ public class Ship implements Serializable {
      * @return the insurance rate to be paid daily
      */
     public double getInsuranceRate() {
-        return BASE_PRICE * .1;
+	return BASE_PRICE * .1;
     }
 
     /**
      * Set the Ship to insured or not
      *
-     * @param b true if insured false otherwise
+     * @param b
+     *            true if insured false otherwise
      */
     public void setInsurance(boolean b) {
-        insurance = b;
+	insurance = b;
     }
 
     /**
      * Upgrade ship with a weapon
      *
-     * @param l the laser to add
+     * @param l
+     *            the laser to add
      *
      * @return true if laser added false if not enough slots
      */
     public boolean addWeapon(Laser l) {
-        if (weapons.size() == WEAPON_SLOTS) {
-            return false;
-        }
-        weapons.add(l);
-        return true;
+	if (weapons.size() == WEAPON_SLOTS) {
+	    return false;
+	}
+	weapons.add(l);
+	return true;
     }
 
     /**
      * Upgrade ship with a shield
      *
-     * @param s the shield to add
+     * @param s
+     *            the shield to add
      *
      * @return true if shield was added false if not enough slots left
      */
     public boolean addShield(Shield s) {
-        if (shields.size() == SHIELD_SLOTS) {
-            return false;
-        }
-        shields.add(s);
-        return true;
+	if (shields.size() == SHIELD_SLOTS) {
+	    return false;
+	}
+	shields.add(s);
+	return true;
     }
 
     /**
      * Upgrade ship with a gadget
      *
-     * @param g the gadget to add
+     * @param g
+     *            the gadget to add
      *
      * @return true if gadget was added false if not enough slots left
      */
     public boolean addGadget(Gadget g) {
-        if (gadgets.size() == GADGET_SLOTS) {
-            return false;
-        }
-        gadgets.add(g);
+	if (gadgets.size() == GADGET_SLOTS) {
+	    return false;
+	}
+	gadgets.add(g);
 
-        return true;
+	return true;
     }
 
     /**
      * In case of selling remove a weapon from ship
      *
-     * @param index of the weapon to remove
+     * @param index
+     *            of the weapon to remove
      *
      * @return double price of the weapon removed
      */
     public double removeWeapon(int index) {
-        Laser l = weapons.remove(index);
-        return l.getPrice();
+	Laser l = weapons.remove(index);
+	return l.getPrice();
     }
 
     /**
      * In case of selling remove shield
      *
-     * @param index of shield to remove
+     * @param index
+     *            of shield to remove
      *
      * @return double price of the shield
      */
     public double removeShield(int index) {
-        Shield s = shields.remove(index);
-        return s.getPrice();
+	Shield s = shields.remove(index);
+	return s.getPrice();
     }
 
     /**
      * In case of selling remove gadget
      *
-     * @param index of the gadget to remove
+     * @param index
+     *            of the gadget to remove
      *
      * @return double price of the gadget
      */
     public double removeGadget(int index) {
-        Gadget g = gadgets.remove(index);
-        return g.getPrice();
+	Gadget g = gadgets.remove(index);
+	return g.getPrice();
+    }
+
+    /**
+     * Getter for cargo
+     * 
+     * @return cargo
+     */
+    public ArrayList<Good> getCargo() {
+	return cargo;
     }
 }
