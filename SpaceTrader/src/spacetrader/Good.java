@@ -160,63 +160,63 @@ public class Good implements Serializable {
         }
     }
 
-    protected GoodType getType() {
+    public GoodType getType() {
         return type;
     }
 
-    protected int getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    protected void setQuantity(int newQ) {
+    public void setQuantity(int newQ) {
         this.quantity = newQ;
     }
 
-    protected int getBasePrice() {
+    public int getBasePrice() {
         return basePrice;
     }
 
-    protected int getMTLP() {
+    public int getMTLP() {
         return MTLP;
     }
 
-    protected int getMTLU() {
+    public int getMTLU() {
         return MTLU;
     }
 
-    protected int getTTP() {
+    public int getTTP() {
         return TTP;
     }
 
-    protected int getIPL() {
+    public int getIPL() {
         return IPL;
     }
 
-    protected int getVar() {
+    public int getVar() {
         return var;
     }
 
-    protected int getCR() {
+    public int getCR() {
         return CR;
     }
 
-    protected int getER() {
+    public int getER() {
         return ER;
     }
 
-    protected int getMTL() {
+    public int getMTL() {
         return MTL;
     }
 
-    protected int MTH() {
+    public int MTH() {
         return MTH;
     }
 
-    protected double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    protected void setPrice(double p) {
+    public void setPrice(double p) {
         this.price = p;
     }
 }

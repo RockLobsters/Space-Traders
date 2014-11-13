@@ -19,8 +19,8 @@ package spacetrader;
 public enum GoodType {
 
     WATER,
-    FOOD,
     FUR,
+    FOOD,
     ORE,
     GAMES,
     FIREARMS,
