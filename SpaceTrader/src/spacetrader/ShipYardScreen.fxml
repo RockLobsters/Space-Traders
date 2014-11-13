@@ -203,6 +203,17 @@
                                         </AnchorPane>
                                     </content>
                                 </TitledPane>
+                        <TitledPane animated="false" layoutX="10.0" layoutY="10.0" onMouseClicked="#refuelTab" prefHeight="379.0" prefWidth="266.0" text="REFUEL">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fx:id="fuelPrice" layoutX="22.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                    <TextField fx:id="fuelQuantity" layoutX="22.0" layoutY="54.0" />
+                                    <Button layoutX="68.0" layoutY="117.0" mnemonicParsing="false" onMouseClicked="#buyFuel" text="BUY" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
                             </panes>
                         </Accordion>
                     </children>

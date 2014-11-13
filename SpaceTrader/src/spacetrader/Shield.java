@@ -23,7 +23,12 @@ package spacetrader;
  */
 public enum Shield {
 
-    ENERGY("Energy Shield", 250, 5, 5), REFLECTIVE("Reflective Shield", 750,
+    ENERGY("Energy Shield", 250, 5, 5),
+
+    /**
+     *
+     */
+    REFLECTIVE("Reflective Shield", 750,
 	    10, 7);
 
     String name;

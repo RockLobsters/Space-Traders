@@ -38,6 +38,9 @@ public class GameInstance {
 	return instance;
     }
 
+    /**
+     *
+     */
     public static void saveModelBinary() {
 	try {
 	    try (ObjectOutputStream out = new ObjectOutputStream(

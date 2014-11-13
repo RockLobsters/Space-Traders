@@ -27,9 +27,17 @@ public class Termite extends Ship {
     public static final int CARGO_BAYS = 60;
     public static final int WEAPON_SLOTS = 1;
     public static final int SHIELD_SLOTS = 3;
+
+    /**
+     *
+     */
     public static final int GADGET_SLOTS = 2;
     public static final int CREW_QUARTERS = 3;
     public static final int FUEL_CAPACITY = 13;
+
+    /**
+     *
+     */
     public static final int FUEL_COST = 15;
     public static final int BASE_PRICE = 250000;
 

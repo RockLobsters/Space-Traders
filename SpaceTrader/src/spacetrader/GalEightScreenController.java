@@ -63,6 +63,7 @@ public class GalEightScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

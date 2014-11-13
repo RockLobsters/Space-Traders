@@ -103,6 +103,10 @@ public class ShipYardScreenController implements Initializable {
     private Text gadgetList;
     @FXML
     private Text escapePodBool;
+    @FXML
+    private Text fuelPrice;
+    @FXML
+    private TextField fuelQuantity;
 
     /**
      * Initializes the controller class.
@@ -1388,5 +1392,25 @@ public class ShipYardScreenController implements Initializable {
 	gadgetList.setText(gadgets);
 	escapePodBool.setText(escapePod);
     }
+
+   @FXML
+    private void refuelTab(MouseEvent event) {
+    	fuelPrice.setText("Price: " + Integer.toString(ship.getFuelCost()));
+    }
+
+
+    @FXML
+    private void buyFuel(MouseEvent event) {
+    	boolean fueled = yard.refuel(player, Integer.parseInt(fuelQuantity.getText()));
+    	if (!(fueled)) {
+    		Stage dialogStage = new Stage();
+		    dialogStage.initModality(Modality.WINDOW_MODAL);
+		    dialogStage.setScene(new Scene(VBoxBuilder.create()
+			    .children(new Text("INSUFFICIENT FUNDS"))
+			    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    dialogStage.show();
+    	}
+    }
+
 
 }

@@ -204,6 +204,10 @@ public class Player implements Serializable {
 	return currentLocation;
     }
 
+    /**
+     *
+     * @param currentLocation
+     */
     public void setCurrentLocation(Planet currentLocation) {
 	this.currentLocation = currentLocation;
     }

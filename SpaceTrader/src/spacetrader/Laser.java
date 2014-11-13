@@ -23,7 +23,15 @@ package spacetrader;
  */
 public enum Laser {
 
-    PULSE("Pulse Laser", 250, 4, 4), BEAM("Beam Laser", 500, 8, 6), MILITARY(
+    /**
+     *
+     */
+    PULSE("Pulse Laser", 250, 4, 4), BEAM("Beam Laser", 500, 8, 6),
+
+    /**
+     *
+     */
+    MILITARY(
 	    "Military Laser", 1000, 12, 7);
 
     String name;

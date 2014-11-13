@@ -23,9 +23,19 @@ package spacetrader;
  */
 public enum Gadget {
 
-    CARGO_BAYS("5 Cargo Bays", 500, 4), NAV_SYSTEM("Navigation System", 750, 5), AUTO_REPAIR_SYSTEM(
+    CARGO_BAYS("5 Cargo Bays", 500, 4),
+
+    /**
+     *
+     */
+    NAV_SYSTEM("Navigation System", 750, 5), AUTO_REPAIR_SYSTEM(
 	    "Auto-Repair System", 1000, 6), TARGET_SYSTEM("Targeting System",
-	    1000, 6), CLOAK_DEVICE("Cloaking Device", 2000, 7);
+	    1000, 6),
+
+    /**
+     *
+     */
+    CLOAK_DEVICE("Cloaking Device", 2000, 7);
 
     String name;
     double price;

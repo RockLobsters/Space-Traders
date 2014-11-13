@@ -23,6 +23,10 @@ package spacetrader;
 public class Mosquito extends Ship {
 
     public static final String NAME = "Mosquito";
+
+    /**
+     *
+     */
     public static final int HULL_STRENGTH = 30;
     public static final int CARGO_BAYS = Gnat.CARGO_BAYS;
     public static final int WEAPON_SLOTS = 2;
