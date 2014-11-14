@@ -14,8 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -24,48 +22,56 @@ import javafx.stage.Stage;
  */
 public class RootWindowController implements Initializable {
 
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
-    private Label label;
-    @FXML
-    private Button newGameButton;
-    @FXML
-    private Button loadGameButton;
-    @FXML
-    private Button exitButton;
+    private void handleNewGameAction(final ActionEvent event) throws Exception {
+        final Parent root = FXMLLoader.load(getClass().getResource(
+                "NewGameWindow.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-    @FXML
-    private void handleNewGameAction(ActionEvent event) throws Exception {
-	Parent root = FXMLLoader.load(getClass().getResource(
-		"NewGameWindow.fxml"));
-	Stage stage = new Stage();
-	stage.setScene(new Scene(root));
-	stage.show();
-
-	// hide this current window (if this is whant you want
-	((Node) (event.getSource())).getScene().getWindow().hide();
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
-    private void handleLoadGameAction(ActionEvent event) throws Exception {
-	GameInstance.loadModelBinary();
-	Parent root = FXMLLoader.load(getClass().getResource(
-		GameInstance.getInstance().getCurrentScreen()));
-	Stage stage = new Stage();
-	stage.setScene(new Scene(root));
-	stage.show();
+    private void handleLoadGameAction(final ActionEvent event) 
+            throws Exception {
+        GameInstance.loadModelBinary();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+                GameInstance.getInstance().getCurrentScreen()));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	// hide this current window (if this is whant you want
-	((Node) (event.getSource())).getScene().getWindow().hide();
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void handleExitAction(ActionEvent event) {
-	System.exit(0);
+    private void handleExitAction(final ActionEvent event) {
+        System.exit(0);
     }
-
+    /**
+     *
+     * @param url
+     * @param rb
+     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-	// TODO
+    public void initialize(final URL url, final ResourceBundle rb) {
+        // TODO
     }
 
 }

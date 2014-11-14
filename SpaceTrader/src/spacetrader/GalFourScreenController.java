@@ -27,14 +27,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import javafx.scene.control.Button;
 
 import javafx.stage.Modality;
-import javafx.scene.Scene;
 import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Text;
 import javafx.geometry.Insets;
@@ -43,168 +40,207 @@ import javafx.geometry.Pos;
 import java.util.Random;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author jackie
  */
 public class GalFourScreenController implements Initializable {
 
-    @FXML
-    private Menu fuelTab;
-    @FXML
-    private ImageView disneyPlanet;
-    @FXML
-    private ImageView disneyResort;
 
-    private Universe universe = GameInstance.getInstance().getUniverse();
-    private Player player = GameInstance.getInstance().getPlayer();
-    private SolarSystem solar = universe.get(3);
-    private Ship ship = GameInstance.getInstance().getPlayer().getShip();
+    /**
+     * Tab for fuel.
+     */
+    @FXML
+    private static transient Menu fuelTab;
+    /**
+     * Image for planet.
+     */
+    @FXML
+    private static transient ImageView disneyPlanet;
+    /**
+     * Image for planet.
+     */
+    @FXML
+    private static transient ImageView disneyResort;
 
-    private Game game = GameInstance.getInstance();
+     /**
+     * Instance of universe.
+     */
+    private static final Universe UNIVERSE =
+            GameInstance.getInstance().getUniverse();
+    /**
+     * Instance of player.
+     */
+    private static final Player PLAYER = GameInstance.getInstance().getPlayer();
+    /**
+     * Instance of ship.
+     */
+    private static final Ship SHIP =
+            GameInstance.getInstance().getPlayer().getShip();
+    /**
+     * Instance of game.
+     */
+    private static final Game GAME = GameInstance.getInstance();
+    /**
+     * Instance of current solar system.
+     */
+    private static final SolarSystem SOLAR = UNIVERSE.get(4);
+
+    /**
+     * Final string cause it's an error which is dumb.
+     */
+    private static final String PLANETSTRING = "PlanetScreen.fxml";
+    /**
+     * Final string cause it's an error which is dumb.
+     */
+    private static final String FUELERROR =
+            "You do not have enough fuel to travel there.";
+    /**
+    * INT they made me have.
+    */
+    private static final int PADDING = 30;
+    /**
+    * INT they made me have.
+    */
+    private static final int FIFTY = 50;
 
     /**
      * Initializes the controller class.
-     * @param url
+     * @param resource  resource
+     * @param url   a url
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-	game.setCurrentScreen("GalFourScreen.fxml");
-	String s = randEvent();
-	// TODO
-	fuelTab.setText("Fuel: " + ship.getFuel() + ". " + s);
+    public final void initialize(final URL url, final ResourceBundle resource) {
+    GAME.setCurrentScreen("GalFourScreen.fxml");
+    final String string = randEvent();
+    // TODO
+    fuelTab.setText("Fuel: " + SHIP.getFuel() + ". " + string);
 
-	ArrayList<Planet> planets = solar.getPlanets();
+    final ArrayList<Planet> planets = SOLAR.getPlanets();
 
-	Planet planet = planets.get(0);
-	disneyPlanet.setX(planet.getCoordinateX());
-	disneyPlanet.setY(planet.getCoordinateY());
+    Planet planet = planets.get(0);
+    disneyPlanet.setX(planet.getCoordinateX());
+    disneyPlanet.setY(planet.getCoordinateY());
 
-	planet = planets.get(1);
-	disneyResort.setX(planet.getCoordinateX());
-	disneyResort.setY(planet.getCoordinateY());
+    planet = planets.get(1);
+    disneyResort.setX(planet.getCoordinateX());
+    disneyResort.setY(planet.getCoordinateY());
     }
 
     /**
-     * Returns the user to the Solar System screen when the button is clicked
+     * Returns the user to the Solar System screen when the button is clicked.
      *
      * @param event
-     *            occours when the user clicks on the "RETURN" button
+     *            occurs when the user clicks on the "RETURN" button
+     * @throws Exception
      */
     @FXML
-    private void returnToSolar(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    // randEvent();
+    private void returnToSolar(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        // randEvent();
 
-	    ship.setFuel(ship.getFuel() - 1);
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "UniverseScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "UniverseScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            FUELERROR))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
     }
 
     /**
-     * Goes to the Disney planet when planet image is clicked on
-     *
-     * @param event
-     *            occours when the user clicks on the planet
-     */
-    @FXML
-    private void goToDisneyPlanet(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    // randEvent();
-
-	    ship.setFuel(ship.getFuel() - 1);
-	    player.setCurrentLocation(solar.getPlanets().get(0));
-
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "PlanetScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
-
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
-    }
-
-    /**
-     * Goes to the Disney Resort planet when planet image is clicked on
+     * Goes to the Disney planet when planet image is clicked on.
      *
      * @param event
      *            occours when the user clicks on the planet
+     * @throws Exception
      */
     @FXML
-    private void goToDisneyResort(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    // randEvent();
+    private void goToDisneyPlanet(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        // randEvent();
 
-	    ship.setFuel(ship.getFuel() - 1);
-	    player.setCurrentLocation(solar.getPlanets().get(1));
+        SHIP.setFuel(SHIP.getFuel() - 1);
+        PLAYER.setCurrentLocation(SOLAR.getPlanets().get(0));
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "PlanetScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            PLANETSTRING));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            FUELERROR))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
+    }
+
+    /**
+     * Goes to the Disney Resort planet when planet image is clicked on.
+     *
+     * @param event
+     *            occurs when the user clicks on the planet
+     * @throws Exception
+     */
+    @FXML
+    private void goToDisneyResort(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        // randEvent();
+
+        SHIP.setFuel(SHIP.getFuel() - 1);
+        PLAYER.setCurrentLocation(SOLAR.getPlanets().get(1));
+
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            PLANETSTRING));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            FUELERROR))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
     }
 
     /**
@@ -213,76 +249,65 @@ public class GalFourScreenController implements Initializable {
      * @return string of random event that happened
      */
     private String randEvent() {
-	Random rand = new Random();
-	int x = rand.nextInt(20);
-	String string = "";
+    final Random rand = new Random();
+    final int val = rand.nextInt(20);
+    String string = "";
 
-	if (x > 15) {
-	    // String string = "";
+    if (val > (((2 ^ 2) ^ 2) - 1)) {
+        // String string = "";
 
-	    if (x == 16) {
-		string = "You found $10!";
-		player.addMoney(100);
-	    } else if (x == 15) {
-		string = "Your fuel tank has a hole in it and some spilled out!";
-		ship.setFuel(ship.getFuel() - 1);
-	    } else if (x == 17) {
-		string = "Pirates raided your ship and took $50!";
-		player.subtractMoney(50);
-	    } else if (x == 18) {
-		player.setWantedLevel(player.getWantedLevel() + 1);
-		string = "You accidentally did something illegal. Wanted level: "
-			+ player.getWantedLevel();
-	    } else if (x == 19) {
-		player.addMoney(100);
-		string = "You found a valueable stone and sold it for $100!";
-	    } else if (x == 20) {
-		ship.setFuel(ship.getFuel() + 1);
-		string = "You found some fuel!";
-	    }
-
-	    // Stage dialogStage = new Stage();
-	    // dialogStage.initModality(Modality.WINDOW_MODAL);
-	    // dialogStage.setScene(new Scene(VBoxBuilder.create().
-	    // children(new Text(string)).
-	    // alignment(Pos.CENTER).padding(new Insets(30)).build()));
-	    // dialogStage.show();
-	    // try {
-	    // Thread.sleep(2000); //1000 milliseconds is one second.
-	    // } catch(InterruptedException ex) {
-	    // Thread.currentThread().interrupt();
-	    // }
-	}
-	return string;
+        if (val == ((2 ^ 2) ^ 2)) {
+            string = "You found $10!";
+            PLAYER.addMoney(FIFTY * 2);
+        } else if (val == (((2 ^ 2) ^ 2) - 1)) {
+            string = "Your fuel tank has a hole in it and some spilled out!";
+            SHIP.setFuel(SHIP.getFuel() - 1);
+        } else if (val == (((2 ^ 2) ^ 2) + 1)) {
+            string = "Pirates raided your ship and took $50!";
+            PLAYER.subtractMoney(FIFTY);
+        } else if (val == (((2 ^ 2) ^ 2) + 2)) {
+            PLAYER.setWantedLevel(PLAYER.getWantedLevel() + 1);
+            string = "You accidentally did something illegal. Wanted level: "
+                + PLAYER.getWantedLevel();
+        } else if (val == (((2 ^ 2) ^ 2) + 1 + 2)) {
+            PLAYER.addMoney(FIFTY + FIFTY);
+            string = "You found a valueable stone and sold it for $100!";
+        } else if (val == (((2 ^ 2) ^ 2) + 2 + 2)) {
+            SHIP.setFuel(SHIP.getFuel() + 1);
+            string = "You found some fuel!";
+        }
+    }
+    return string;
     }
 
     /**
-     * Saves the game
+     * Saves the game.
      *
      * @param event
      *            mouse event of when user clicks on "SAVE" button
      */
     @FXML
-    private void saveGame(MouseEvent event) {
-	GameInstance.saveModelBinary();
+    private void saveGame(final MouseEvent event) {
+    GameInstance.saveModelBinary();
     }
 
     /**
-     * Exits the game and returns to the main screen
+     * Exits the game and returns to the main screen.
      *
      * @param event
      *            mouse event of when user clicks on "EXIT" button
+     * @throws Exception
      */
     @FXML
-    private void exit(MouseEvent event) throws Exception {
-	Parent root = FXMLLoader
-		.load(getClass().getResource("RootWindow.fxml"));
-	Stage stage = new Stage();
-	stage.setScene(new Scene(root));
-	stage.show();
+    private void exit(final MouseEvent event) throws Exception {
+    final Parent root = FXMLLoader
+        .load(getClass().getResource("RootWindow.fxml"));
+    final Stage stage = new Stage();
+    stage.setScene(new Scene(root));
+    stage.show();
 
-	// hide this current window (if this is whant you want
-	((Node) (event.getSource())).getScene().getWindow().hide();
+    // hide this current window (if this is whant you want
+    ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }

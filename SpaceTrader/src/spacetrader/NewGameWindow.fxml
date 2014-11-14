@@ -75,7 +75,7 @@
                                 <Font size="32.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="Name" GridPane.columnIndex="1">
+                        <TextField fx:id="name" GridPane.columnIndex="1">
                             <effect>
                                 <Glow />
                             </effect>

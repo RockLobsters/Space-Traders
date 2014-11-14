@@ -19,14 +19,10 @@ package spacetrader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
@@ -38,93 +34,195 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.ContextMenuEvent;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author jackie
  */
 public class ShipYardScreenController implements Initializable {
-
-    private Player player = GameInstance.getInstance().getPlayer();
-    private Ship ship = GameInstance.getInstance().getPlayer().getShip();
-    private int techLevel = player.getCurrentLocation().getSolarSystem()
+    /**
+     * Player.
+     */
+    private static final transient
+            Player PLAYER = GameInstance.getInstance().getPlayer();
+    /**
+     * Player's Ship.
+     */
+    private static final transient
+            Ship SHIP = GameInstance.getInstance().getPlayer().getShip();
+    /**
+     * tech level.
+     */
+    private static final transient int
+            TECHLEVEL = PLAYER.getCurrentLocation().getSolarSystem()
 	    .getTechLevel();
-    private Shipyard yard = new Shipyard(player.getCurrentLocation());
-    private Laser laserType;
-    private Gadget gadgetType;
-    private Shield shieldType;
-
+    /**
+     * Shipyard.
+     */
+    private static final transient 
+            Shipyard YARD = new Shipyard(PLAYER.getCurrentLocation());
+    /**
+     * laserTypes.
+     */
+    private transient Laser laserType;
+    /**
+     * gadetTypes.
+     */
+    private transient Gadget gadgetType;
+    /**
+     * shieldTypes.
+     */
+    private transient Shield shieldType;
+    /**
+     *
+     */
     @FXML
-    private Text shipName;
+    private static transient Text shipName;
+    /**
+     *
+     */
     @FXML
-    private TextArea fleaText;
+    private static transient TextArea fleaText;
+    /**
+     *
+     */
     @FXML
-    private TextArea gnatText;
+    private static transient TextArea gnatText;
+    /**
+     *
+     */
     @FXML
-    private TextArea fireflyText;
+    private static transient TextArea fireflyText;
+    /**
+     *
+     */
     @FXML
-    private TextArea mosquitoText;
+    private static transient TextArea mosquitoText;
+    /**
+     *
+     */
     @FXML
-    private TextArea bumbleBeeText;
+    private static transient TextArea bumbleBeeText;
+    /**
+     *
+     */
     @FXML
-    private Text pulseLasers;
+    private static transient Text pulseLasers;
+    /**
+     *
+     */
     @FXML
-    private Text beamLasers;
+    private static transient Text beamLasers;
+    /**
+     *
+     */
     @FXML
-    private Text energyShield;
+    private static transient Text energyShield;
+    /**
+     *
+     */
     @FXML
-    private Text reflectiveShield;
+    private static transient Text reflectiveShield;
+    /**
+     *
+     */
     @FXML
-    private Text cargoBays;
+    private static transient Text cargoBays;
+     /**
+     *
+     */
     @FXML
-    private Text navigatingSystem;
+    private static transient Text navigatingSystem;
+     /**
+     *
+     */
     @FXML
-    private Text autoRepairSystem;
+    private static transient Text autoRepairSystem;
+     /**
+     *
+     */
     @FXML
-    private Text targetingSystem;
+    private static transient Text targetingSystem;
+     /**
+     *
+     */
     @FXML
-    private Text cloakingDevice;
+    private static transient Text cloakingDevice;
+     /**
+     *
+     */
     @FXML
-    private Text escapePod;
+    private static transient Text escapePod;
+     /**
+     *
+     */
     @FXML
-    private Text militaryLasers;
+    private static transient Text militaryLasers;
+     /**
+     *
+     */
     @FXML
-    private Text money;
+    private static transient Text money;
+     /**
+     *
+     */
     @FXML
-    private Text listWeapons;
+    private static transient Text listWeapons;
+     /**
+     *
+     */
     @FXML
-    private Text listShield;
+    private static transient Text listShield;
+     /**
+     *
+     */
     @FXML
-    private Text gadgetList;
+    private static transient Text gadgetList;
+     /**
+     *
+     */
     @FXML
-    private Text escapePodBool;
+    private static transient Text escapePodBool;
+     /**
+     *
+     */
     @FXML
-    private Text fuelPrice;
+    private static transient Text fuelPrice;
+     /**
+     *
+     */
     @FXML
-    private TextField fuelQuantity;
+    private static transient TextField fuelQuantity;
+    /**
+     *
+     */
+    private static final transient int PADDING = 30;
 
     /**
-     * Initializes the controller class.
+     * Initialize controller.
+     * @param url
+     * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-	shipName.setText("Current Ship: " + ship.getName());
-	money.setText("Money: " + player.getMoney());
+    public void initialize(final URL url, final ResourceBundle rb) {
+	shipName.setText("Current Ship: " + SHIP.getName());
+	money.setText("Money: " + PLAYER.getMoney());
 	escapePod.setText("Price: 200");
 	setLaser();
 	setGadget();
-	setSheild();
+	setShield();
 	populateFields();
     }
-
+    /**
+     * Sets visible weapons.
+     */
     private void setLaser() {
-	Laser[] allWeapons = Laser.values();
-	ArrayList<Laser> weapons = Shipyard.visibleWeapons();
+	final Laser[] allWeapons = Laser.values();
+	final ArrayList<Laser> weapons = Shipyard.visibleWeapons();
 	for (Laser allWeapon : allWeapons) {
 	    switch (allWeapon) {
 	    case PULSE:
@@ -149,13 +247,16 @@ public class ShipYardScreenController implements Initializable {
 		    militaryLasers.setText("NOT SOLD IN THIS MARKET");
 		}
 		break;
+            default:
 	    }
 	}
     }
-
-    private void setSheild() {
-	Shield[] allShields = Shield.values();
-	ArrayList<Shield> shields = Shipyard.visibleShields();
+    /**
+     * Sets visible Shields.
+     */
+    private void setShield() {
+	final Shield[] allShields = Shield.values();
+	final ArrayList<Shield> shields = Shipyard.visibleShields();
 	for (Shield allWeapon : allShields) {
 	    switch (allWeapon) {
 	    case ENERGY:
@@ -174,13 +275,16 @@ public class ShipYardScreenController implements Initializable {
 		    reflectiveShield.setText("NOT SOLD IN THIS MARKET");
 		}
 		break;
+            default:
 	    }
 	}
     }
-
+    /**
+     * Sets visible gadgets.
+     */
     private void setGadget() {
-	Gadget[] allGadgets = Gadget.values();
-	ArrayList<Gadget> gadgets = Shipyard.visibleGadgets();
+	final Gadget[] allGadgets = Gadget.values();
+	final ArrayList<Gadget> gadgets = Shipyard.visibleGadgets();
 	for (Gadget allGadget : allGadgets) {
 	    switch (allGadget) {
 	    case CARGO_BAYS:
@@ -223,21 +327,23 @@ public class ShipYardScreenController implements Initializable {
 		    cloakingDevice.setText("NOT SOLD IN THIS MARKET");
 		}
 		break;
+            default:
 	    }
 	}
     }
 
     /**
-     * Returns player to planet screen
+     * Returns player to planet screen.
      *
      * @param event
      *            when mouse is clicked
+     * @throws Exception
      */
     @FXML
-    private void returnToPlanet(MouseEvent event) throws Exception {
-	Parent root = FXMLLoader.load(getClass().getResource(
+    private void returnToPlanet(final MouseEvent event) throws Exception {
+	final Parent root = FXMLLoader.load(getClass().getResource(
 		"PlanetScreen.fxml"));
-	Stage stage = new Stage();
+	final Stage stage = new Stage();
 	stage.setScene(new Scene(root));
 	stage.show();
 
@@ -252,111 +358,74 @@ public class ShipYardScreenController implements Initializable {
      *            when mouse is clicked
      */
     @FXML
-    private void buyFlea(MouseEvent event) {
+    private void buyFlea(final MouseEvent event) {
 
-	if (techLevel >= 4) {
-	    int success = yard.buyShip(player, new Flea(), false);
+	if (TECHLEVEL >= 2 + 2) {
+	    final int success = YARD.buyShip(PLAYER, new Flea(), false);
 
-	    if (success == 0) {
-		Action response;
-		response = Dialogs
-			.create()
-			// .owner( isOwnerSelected() ? stage : null)
-			.title("CARGO NOT ALLOWED")
-			// .masthead(isMastheadVisible() ? "Just Checkin'" :
-			// null)
-			.message(
-				"Some of your cargo cannot be sold here. Sell anyway?")
-			.showConfirm();
-
-		if (response == Dialog.ACTION_YES) {
-		    success = yard.buyShip(player, new Flea(), true);
-		    shipName.setText("Current Ship: Flea");
-		    money.setText("Money: " + player.getMoney());
-		} else {
-		    // ... user cancelled, reset form to default
-		    return;
-		}
-	    }
 	    if (success == -1) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(VBoxBuilder.create()
 				.children(new Text("You cannot afford this."))
-				.alignment(Pos.CENTER).padding(new Insets(30))
+				.alignment(Pos.CENTER)
+                                .padding(new Insets(PADDING))
 				.build()));
 		dialogStage.show();
 	    }
 	    if (success == 1) {
 
 		shipName.setText("Current Ship: Flea");
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	} else {
 
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot buy this here."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 
 	}
     }
 
     /**
-     * Buys a gnat ship
+     * Buys a gnat ship.
      *
      * @param event
      *            when mouse is clicked
      */
     @FXML
-    private void buyGnat(MouseEvent event) {
-	if (techLevel >= 5) {
-	    int success = yard.buyShip(player, new Gnat(), false);
+    private void buyGnat(final MouseEvent event) {
+	if (TECHLEVEL >= 2 + 2 + 1) {
+	    final int success = YARD.buyShip(PLAYER, new Gnat(), false);
 
-	    if (success == 0) {
-		Action response = Dialogs
-			.create()
-			// .owner( isOwnerSelected ? stage : null)
-			.title("CARGO NOT ALLOWED")
-			// .masthead(isMastheadVisible() ? "Just Checkin'" :
-			// null)
-			.message(
-				"Some of your cargo cannot be sold here. Sell anyway?")
-			.showConfirm();
-
-		if (response == Dialog.ACTION_YES) {
-		    success = yard.buyShip(player, new Gnat(), true);
-		    shipName.setText("Current Ship: Gnat");
-		    money.setText("Money: " + player.getMoney());
-		} else {
-		    // ... user cancelled, reset form to default
-		    return;
-		}
-	    }
 	    if (success == -1) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(VBoxBuilder.create()
 				.children(new Text("You cannot afford this."))
-				.alignment(Pos.CENTER).padding(new Insets(30))
+				.alignment(Pos.CENTER).
+                                padding(new Insets(PADDING))
 				.build()));
 		dialogStage.show();
 	    }
 	    if (success == 1) {
 		shipName.setText("Current Ship: Gnat");
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	} else {
 
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot buy this here."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 
 	}
@@ -369,51 +438,33 @@ public class ShipYardScreenController implements Initializable {
      *            when mouse is clicked
      */
     @FXML
-    private void buyFirefly(MouseEvent event) {
-	if (techLevel >= 5) {
-	    int success = yard.buyShip(player, new Firefly(), false);
+    private void buyFirefly(final MouseEvent event) {
+	if (TECHLEVEL >= 2 + 2 + 1) {
+	    final int success = YARD.buyShip(PLAYER, new Firefly(), false);
 
-	    if (success == 0) {
-		Action response = Dialogs
-			.create()
-			// .owner( isOwnerSelected ? stage : null)
-			.title("CARGO NOT ALLOWED")
-			// .masthead(isMastheadVisible() ? "Just Checkin'" :
-			// null)
-			.message(
-				"Some of your cargo cannot be sold here. Sell anyway?")
-			.showConfirm();
-
-		if (response == Dialog.ACTION_YES) {
-		    success = yard.buyShip(player, new Firefly(), true);
-		    shipName.setText("Current Ship: Firefly");
-		    money.setText("Money: " + player.getMoney());
-		} else {
-		    // ... user cancelled, reset form to default
-		    return;
-		}
-	    }
 	    if (success == -1) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(VBoxBuilder.create()
 				.children(new Text("You cannot afford this."))
-				.alignment(Pos.CENTER).padding(new Insets(30))
+				.alignment(Pos.CENTER)
+                                .padding(new Insets(PADDING))
 				.build()));
 		dialogStage.show();
 	    }
 	    if (success == 1) {
 		shipName.setText("Current Ship: Firefly");
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	} else {
 
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot buy this here."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 
 	}
@@ -426,51 +477,34 @@ public class ShipYardScreenController implements Initializable {
      *            when mouse is clicked
      */
     @FXML
-    private void buyMosquito(MouseEvent event) {
-	if (techLevel >= 5) {
-	    int success = yard.buyShip(player, new Mosquito(), false);
+    private void buyMosquito(final MouseEvent event) {
+	if (TECHLEVEL >= 2 + 2 + 1) {
+	    final int success = YARD.buyShip(PLAYER, new Mosquito(), false);
 
-	    if (success == 0) {
-		Action response = Dialogs
-			.create()
-			// .owner( isOwnerSelected ? stage : null)
-			.title("CARGO NOT ALLOWED")
-			// .masthead(isMastheadVisible() ? "Just Checkin'" :
-			// null)
-			.message(
-				"Some of your cargo cannot be sold here. Sell anyway?")
-			.showConfirm();
-
-		if (response == Dialog.ACTION_YES) {
-		    success = yard.buyShip(player, new Mosquito(), true);
-		    shipName.setText("Current Ship: Mosquito");
-		    money.setText("Money: " + player.getMoney());
-		} else {
-		    // ... user cancelled, reset form to default
-		    return;
-		}
-	    }
+	    
 	    if (success == -1) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(VBoxBuilder.create()
 				.children(new Text("You cannot afford this."))
-				.alignment(Pos.CENTER).padding(new Insets(30))
+				.alignment(Pos.CENTER)
+                                .padding(new Insets(PADDING))
 				.build()));
 		dialogStage.show();
 	    }
 	    if (success == 1) {
 		shipName.setText("Current Ship: Mosquito");
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	} else {
 
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot buy this here."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 
 	}
@@ -483,519 +517,574 @@ public class ShipYardScreenController implements Initializable {
      *            when mouse is clicked
      */
     @FXML
-    private void buyBumblebee(MouseEvent event) {
-	if (techLevel >= 5) {
-	    int success = yard.buyShip(player, new Bumblebee(), false);
+    private void buyBumblebee(final MouseEvent event) {
+	if (TECHLEVEL >= 2 + 2 + 1) {
+	    final int success = YARD.buyShip(PLAYER, new Bumblebee(), false);
 
-	    if (success == 0) {
-		Action response = Dialogs
-			.create()
-			// .owner( isOwnerSelected ? stage : null)
-			.title("CARGO NOT ALLOWED")
-			// .masthead(isMastheadVisible() ? "Just Checkin'" :
-			// null)
-			.message(
-				"Some of your cargo cannot be sold here. Sell anyway?")
-			.showConfirm();
-
-		if (response == Dialog.ACTION_YES) {
-		    success = yard.buyShip(player, new Bumblebee(), true);
-		    shipName.setText("Current Ship: Bumblebee");
-		    money.setText("Money: " + player.getMoney());
-		} else {
-		    // ... user cancelled, reset form to default
-		    return;
-		}
-	    }
 	    if (success == -1) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(VBoxBuilder.create()
 				.children(new Text("You cannot afford this."))
-				.alignment(Pos.CENTER).padding(new Insets(30))
+				.alignment(Pos.CENTER)
+                                .padding(new Insets(PADDING))
 				.build()));
 		dialogStage.show();
 	    }
 	    if (success == 1) {
 		shipName.setText("Current Ship: Bumblebee");
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	} else {
 
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot buy this here."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 
 	}
     }
 
     /**
-     * sets text to text area when opened
+     * sets text to text area when opened.
      *
      * @param event
      *            when mouse is clicked
      */
     @FXML
-    private void fleaOpen(MouseEvent event) {
-	String text = "Price:" + yard.shipPrice(player, new Flea()) + "\n";
+    private void fleaOpen(final MouseEvent event) {
+	final String text = "Price:"
+                + YARD.shipPrice(PLAYER, new Flea()) + "\n";
 	fleaText.setText(text);
     }
 
     /**
-     * sets text to text area when opened
+     * sets text to text area when opened.
      *
      * @param event
      *            when mouse is clicked
      */
     @FXML
-    private void gnatOpen(MouseEvent event) {
-	String text = "Price:" + yard.shipPrice(player, new Gnat()) + "\n";
+    private void gnatOpen(final MouseEvent event) {
+	final String text = "Price:"
+                + YARD.shipPrice(PLAYER, new Gnat()) + "\n";
 	gnatText.setText(text);
     }
 
     /**
-     * sets text to text area when opened
+     * sets text to text area when opened.
      *
      * @param event
      *            when mouse is clicked
      */
     @FXML
-    private void fireflyOpen(MouseEvent event) {
-	String text = "Price:" + yard.shipPrice(player, new Firefly()) + "\n";
+    private void fireflyOpen(final MouseEvent event) {
+	final String text = "Price:"
+                + YARD.shipPrice(PLAYER, new Firefly()) + "\n";
 	fireflyText.setText(text);
     }
 
     /**
-     * sets text to text area when opened
+     * sets text to text area when opened.
      *
      * @param event
      *            when mouse is clicked
      */
     @FXML
-    private void mosquitoOpen(MouseEvent event) {
-	String text = "Price:" + yard.shipPrice(player, new Mosquito()) + "\n";
+    private void mosquitoOpen(final MouseEvent event) {
+	final String text = "Price:"
+                + YARD.shipPrice(PLAYER, new Mosquito()) + "\n";
 	mosquitoText.setText(text);
     }
 
     /**
-     * sets text to text area when opened
+     * sets text to text area when opened.
      *
      * @param event
      *            when mouse is clicked
      */
     @FXML
-    private void bumbleBeeOpen(MouseEvent event) {
-	String text = "Price:" + yard.shipPrice(player, new Bumblebee()) + "\n";
+    private void bumbleBeeOpen(final MouseEvent event) {
+	final String text = "Price:"
+                + YARD.shipPrice(PLAYER, new Bumblebee()) + "\n";
 	bumbleBeeText.setText(text);
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyPulseLasers(MouseEvent event) {
-	int success = -2;
+    private void buyPulseLasers(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!pulseLasers.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyWeapon(player, laserType.PULSE);
+	    success = YARD.buyWeapon(PLAYER, laserType.PULSE);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough weapon space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
 
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyBeamLasers(MouseEvent event) {
-	int success = -2;
+    private void buyBeamLasers(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!beamLasers.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyWeapon(player, laserType.BEAM);
+	    success = YARD.buyWeapon(PLAYER, laserType.BEAM);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough weapon space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyMilitaryLasers(MouseEvent event) {
-	int success = -2;
+    private void buyMilitaryLasers(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!militaryLasers.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyWeapon(player, laserType.MILITARY);
+	    success = YARD.buyWeapon(PLAYER, laserType.MILITARY);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough weapon space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyEnergyShield(MouseEvent event) {
-	int success = -2;
+    private void buyEnergyShield(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!energyShield.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyDefense(player, shieldType.ENERGY);
+	    success = YARD.buyDefense(PLAYER, shieldType.ENERGY);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough sheild space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyReflectiveShield(MouseEvent event) {
-	int success = -2;
+    private void buyReflectiveShield(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!reflectiveShield.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyDefense(player, shieldType.REFLECTIVE);
+	    success = YARD.buyDefense(PLAYER, shieldType.REFLECTIVE);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough sheild space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyNavigatingSystem(MouseEvent event) {
-	int success = -2;
+    private void buyNavigatingSystem(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!navigatingSystem.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyGadget(player, gadgetType.NAV_SYSTEM);
+	    success = YARD.buyGadget(PLAYER, gadgetType.NAV_SYSTEM);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough gadget space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyAutoRepairSystem(MouseEvent event) {
-	int success = -2;
+    private void buyAutoRepairSystem(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!autoRepairSystem.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyGadget(player, gadgetType.AUTO_REPAIR_SYSTEM);
+	    success = YARD.buyGadget(PLAYER, gadgetType.AUTO_REPAIR_SYSTEM);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough gadget space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyCargoBays(MouseEvent event) {
-	int success = -2;
+    private void buyCargoBays(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!cargoBays.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyGadget(player, gadgetType.CARGO_BAYS);
+	    success = YARD.buyGadget(PLAYER, gadgetType.CARGO_BAYS);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough gadget space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER).
+                    padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyTargetingSystem(MouseEvent event) {
-	int success = -2;
+    private void buyTargetingSystem(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!targetingSystem.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyGadget(player, gadgetType.TARGET_SYSTEM);
+	    success = YARD.buyGadget(PLAYER, gadgetType.TARGET_SYSTEM);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough gadget space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyCloakingDevice(MouseEvent event) {
-	int success = -2;
+    private void buyCloakingDevice(final MouseEvent event) {
+	int success = -1 - 1;
 	if (!cloakingDevice.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.buyGadget(player, gadgetType.CLOAK_DEVICE);
+	    success = YARD.buyGadget(PLAYER, gadgetType.CLOAK_DEVICE);
 	}
-	if (success == -2) {
-	    Stage dialogStage = new Stage();
+	if (success == -1 - 1) {
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You do not have enough gadget space."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyEscapePod(MouseEvent event) {
-	int success = yard.buyEscapePod(player);
+    private void buyEscapePod(final MouseEvent event) {
+	final int success = YARD.buyEscapePod(PLAYER);
 	if (success == 1) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (success == 0) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You already have an escape pod."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	if (success == -1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("You cannot afford this."))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellPulseLasers(MouseEvent event) {
+    private void sellPulseLasers(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!pulseLasers.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellWeapon(player, "Pulse Laser");
+	    success = YARD.sellWeapon(PLAYER, "Pulse Laser");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1003,35 +1092,39 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellBeamLasers(MouseEvent event) {
+    private void sellBeamLasers(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!beamLasers.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellWeapon(player, "Beam Laser");
+	    success = YARD.sellWeapon(PLAYER, "Beam Laser");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1039,35 +1132,39 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellEnergyShield(MouseEvent event) {
+    private void sellEnergyShield(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!energyShield.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellShield(player, "Energy Shield");
+	    success = YARD.sellShield(PLAYER, "Energy Shield");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1075,35 +1172,38 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
-	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellReflectiveShield(MouseEvent event) {
+    private void sellReflectiveShield(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!reflectiveShield.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellShield(player, "Reflective Shield");
+	    success = YARD.sellShield(PLAYER, "Reflective Shield");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1111,35 +1211,39 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellCargoBays(MouseEvent event) {
+    private void sellCargoBays(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!cargoBays.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellGadget(player, "5 Cargo Bays");
+	    success = YARD.sellGadget(PLAYER, "5 Cargo Bays");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1147,35 +1251,39 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellNavigatingSystem(MouseEvent event) {
+    private void sellNavigatingSystem(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!navigatingSystem.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellGadget(player, "Navigation System");
+	    success = YARD.sellGadget(PLAYER, "Navigation System");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1183,35 +1291,39 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellAutoRepairSystem(MouseEvent event) {
+    private void sellAutoRepairSystem(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!autoRepairSystem.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellGadget(player, "Auto-Repair System");
+	    success = YARD.sellGadget(PLAYER, "Auto-Repair System");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1219,35 +1331,39 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellCloakingDevice(MouseEvent event) {
+    private void sellCloakingDevice(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!cloakingDevice.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellGadget(player, "Cloaking Device");
+	    success = YARD.sellGadget(PLAYER, "Cloaking Device");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1255,31 +1371,35 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellEscapePod(MouseEvent event) {
-	boolean success = yard.sellEscapePod(player);
+    private void sellEscapePod(final MouseEvent event) {
+	final boolean success = YARD.sellEscapePod(PLAYER);
 	if (success) {
-	    money.setText("Money: " + player.getMoney());
+	    money.setText("Money: " + PLAYER.getMoney());
 	}
 	if (!success) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage
 		    .setScene(new Scene(
@@ -1287,26 +1407,29 @@ public class ShipYardScreenController implements Initializable {
 				    .create()
 				    .children(
 					    new Text(
-						    "You cannot sell something you don't own."))
+			"You cannot sell something you don't own."))
 				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
+				    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellMilitaryLasers(MouseEvent event) {
+    private void sellMilitaryLasers(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!militaryLasers.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellWeapon(player, "Military Laser");
+	    success = YARD.sellWeapon(PLAYER, "Military Laser");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1314,35 +1437,39 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void sellTargetingSystem(MouseEvent event) {
+    private void sellTargetingSystem(final MouseEvent event) {
 	boolean success;
 	int notInMarket = 1;
 	if (!targetingSystem.getText().contains("NOT SOLD IN THIS MARKET")) {
-	    success = yard.sellGadget(player, "Targeting System");
+	    success = YARD.sellGadget(PLAYER, "Targeting System");
 	    notInMarket = 0;
 	    if (success) {
-		money.setText("Money: " + player.getMoney());
+		money.setText("Money: " + PLAYER.getMoney());
 	    }
 	    if (!success) {
-		Stage dialogStage = new Stage();
+		final Stage dialogStage = new Stage();
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage
 			.setScene(new Scene(
@@ -1350,39 +1477,42 @@ public class ShipYardScreenController implements Initializable {
 					.create()
 					.children(
 						new Text(
-							"You cannot sell something you don't own."))
+				"You cannot sell something you don't own."))
 					.alignment(Pos.CENTER)
-					.padding(new Insets(30)).build()));
+					.padding(new Insets(PADDING)).build()));
 		dialogStage.show();
 	    }
 	}
 	if (notInMarket == 1) {
-	    Stage dialogStage = new Stage();
+	    final Stage dialogStage = new Stage();
 	    dialogStage.initModality(Modality.WINDOW_MODAL);
 	    dialogStage.setScene(new Scene(VBoxBuilder.create()
 		    .children(new Text("NOT SOLD IN THIS MARKET"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+		    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
 	    dialogStage.show();
 	}
 	populateFields();
     }
-
+    /**
+     * 
+     */
     private void populateFields() {
 	String weapons = "";
 	String shields = "";
 	String gadgets = "";
 	String escapePod = "";
-	Ship ship = GameInstance.getInstance().getPlayer().getShip();
-	for (Laser x : ship.weapons) {
+	
+	for (Laser x : SHIP.weapons) {
 	    weapons = weapons + x.name + "\n";
 	}
-	for (Shield x : ship.shields) {
+	for (Shield x : SHIP.shields) {
 	    shields = shields + x.name + "\n";
 	}
-	for (Gadget x : ship.gadgets) {
+	for (Gadget x : SHIP.gadgets) {
 	    gadgets = gadgets + x.name + "\n";
 	}
-	if (ship.getEscapePod()) {
+	if (SHIP.getEscapePod()) {
 	    escapePod = "Owned";
 	} else {
 	    escapePod = "Not owned";
@@ -1392,22 +1522,30 @@ public class ShipYardScreenController implements Initializable {
 	gadgetList.setText(gadgets);
 	escapePodBool.setText(escapePod);
     }
-
+    /**
+     *
+     * @param event
+     */
    @FXML
-    private void refuelTab(MouseEvent event) {
-    	fuelPrice.setText("Price: " + Integer.toString(ship.getFuelCost()));
+    private void refuelTab(final MouseEvent event) {
+    	fuelPrice.setText("Price: " + Integer.toString(SHIP.getFuelCost()));
     }
 
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void buyFuel(MouseEvent event) {
-    	boolean fueled = yard.refuel(player, Integer.parseInt(fuelQuantity.getText()));
+    private void buyFuel(final MouseEvent event) {
+    	final boolean fueled =
+                YARD.refuel(PLAYER, Integer.parseInt(fuelQuantity.getText()));
     	if (!(fueled)) {
-    		Stage dialogStage = new Stage();
+    		final Stage dialogStage = new Stage();
 		    dialogStage.initModality(Modality.WINDOW_MODAL);
 		    dialogStage.setScene(new Scene(VBoxBuilder.create()
 			    .children(new Text("INSUFFICIENT FUNDS"))
-			    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
+			    .alignment(Pos.CENTER)
+                            .padding(new Insets(PADDING)).build()));
 		    dialogStage.show();
     	}
     }

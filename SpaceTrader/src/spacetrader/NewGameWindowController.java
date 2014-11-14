@@ -16,7 +16,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -27,126 +26,161 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author addison
  */
 public class NewGameWindowController implements Initializable {
-
+    /**
+     * fighter skills.
+     */
     @FXML
-    private Button startGameButton;
+    private static transient Slider fighterSlider;
+    /**
+     * trader skills.
+     */
     @FXML
-    private Button cancelButton;
+    private static transient Slider traderSlider;
+    /**
+     * engineer skills.
+     */
     @FXML
-    private TextField Name;
+    private static transient Slider engineerSlider;
+    /**
+     * investor skills.
+     */
     @FXML
-    private Slider fighterSlider;
+    private static transient Slider investorSlider;
+    /**
+     * pilot skills.
+     */
     @FXML
-    private Slider traderSlider;
+    private static transient Slider pilotSlider;
+    /**
+     * Remaining points for player to have.
+     */
     @FXML
-    private Slider engineerSlider;
+    private static transient Label pointsRemaining;
+    /**
+     * takes in players name.
+     */
     @FXML
-    private Slider investorSlider;
+    private static transient TextField name;
+    /**
+     * Max skill points a player can have.
+     */
+    private static final transient int MAXSKILL = 10;
+    /**
+     *
+     */
+    private static final transient int PADDING = 30;
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
-    private Slider pilotSlider;
-    @FXML
-    private Label pointsRemaining;
-
-    @FXML
-    private void handleCancelAction(ActionEvent event) throws Exception {
-	Parent root = FXMLLoader
-		.load(getClass().getResource("RootWindow.fxml"));
-	Stage stage = new Stage();
-	stage.setScene(new Scene(root));
-	stage.show();
-
-	// hide this current window (if this is whant you want
-	((Node) (event.getSource())).getScene().getWindow().hide();
+    private void handleCancelAction(final ActionEvent event) throws Exception {
+        final Parent root = FXMLLoader
+                .load(getClass().getResource("RootWindow.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
     @FXML
-    private void handleStartGameAction(ActionEvent event) throws Exception {
-	int fighterValue = (int) fighterSlider.getValue();
-	int traderValue = (int) traderSlider.getValue();
-	int engineerValue = (int) engineerSlider.getValue();
-	int investorValue = (int) investorSlider.getValue();
-	int pilotValue = (int) pilotSlider.getValue();
+    private void handleStartGameAction(final ActionEvent event)
+            throws Exception {
+        final int fighterValue = (int) fighterSlider.getValue();
+        final int traderValue = (int) traderSlider.getValue();
+        final int engineerValue = (int) engineerSlider.getValue();
+        final int investorValue = (int) investorSlider.getValue();
+        final int pilotValue = (int) pilotSlider.getValue();
+        final int skillPoints = fighterValue + traderValue + engineerValue
+                + investorValue + pilotValue;
 
-	int skillPoints = fighterValue + traderValue + engineerValue
-		+ investorValue + pilotValue;
+        final String playerName = name.getText();
+        if (skillPoints == MAXSKILL && !playerName.isEmpty()) {
+            final Player player = new Player(playerName);
+            player.setEngineer(engineerValue);
+            player.setFighter(fighterValue);
+            player.setInvestor(investorValue);
+            player.setPilot(pilotValue);
+            player.setTrader(traderValue);
 
-	String name = Name.getText();
-	if (skillPoints == 10 && !name.isEmpty()) {
-	    // Dialogs.create().owner(stage).title("Confirm Dialog").masthead("Look, a Confirm Dialog").message("Do you want to continue?").showConfirm();
-	    Player player = new Player(name);
-	    player.setEngineer(engineerValue);
-	    player.setFighter(fighterValue);
-	    player.setInvestor(investorValue);
-	    player.setPilot(pilotValue);
-	    player.setTrader(traderValue);
+            final Game newGame = GameInstance.getInstance();
+            newGame.createUniverse();
+            newGame.setPlayer(player);
 
-	    Game newGame = GameInstance.getInstance();
-	    newGame.createUniverse();
-	    newGame.setPlayer(player);
+            final Parent root = FXMLLoader.load(getClass().getResource(
+                    "UniverseScreen.fxml"));
+            final Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
 
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "UniverseScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+            // hide this current window (if this is whant you want
+            ((Node) (event.getSource())).getScene().getWindow().hide();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
+        } else if (playerName.isEmpty()) {
+            final Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create()
+                    .children(new Text("Please Enter a Valid Name"))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+            dialogStage.show();
+        } else {
+            final Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage
+                    .setScene(new Scene(
+                            VBoxBuilder
+                                    .create()
+                                    .children(
+                                            new Text(
+            "You can only allocate 10 stat points to your "
+                    + "player.\nPlease do that to continue."))
+                                    .alignment(Pos.CENTER)
+                                    .padding(new Insets(PADDING)).build()));
+            dialogStage.show();
 
-	} else if (name.isEmpty()) {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage.setScene(new Scene(VBoxBuilder.create()
-		    .children(new Text("Please Enter a Valid Name"))
-		    .alignment(Pos.CENTER).padding(new Insets(30)).build()));
-	    dialogStage.show();
-	    System.out.println("invlaid name");
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You can only allocate 10 stat points to your player.\nPlease do that to continue."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-
-	    System.out.println("wrong number of skill points");
-	}
+                }
 
     }
 
     /**
      * Initializes the controller class.
      * @param rb
+     * @param url
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+    public void initialize(final URL url, final ResourceBundle rb) {
+        //not needed
     }
-
+    /**
+     *
+     * @param event
+     */
     @FXML
-    private void slider(MouseEvent event) {
-	// to do add lable to tell current values
-	int fighterValue = (int) fighterSlider.getValue();
-	int traderValue = (int) traderSlider.getValue();
-	int engineerValue = (int) engineerSlider.getValue();
-	int investorValue = (int) investorSlider.getValue();
-	int pilotValue = (int) pilotSlider.getValue();
+    private void slider(final MouseEvent event) {
 
-	int remaining = fighterValue + traderValue + engineerValue
-		+ investorValue + pilotValue;
-	remaining = 10 - remaining;
-	pointsRemaining.setText(Integer.toString(remaining));
+        // to do add lable to tell current values
+        final int fighterValue = (int) fighterSlider.getValue();
+        final int traderValue = (int) traderSlider.getValue();
+        final int engineerValue = (int) engineerSlider.getValue();
+        final int investorValue = (int) investorSlider.getValue();
+        final int pilotValue = (int) pilotSlider.getValue();
+
+        int remaining = fighterValue + traderValue + engineerValue
+                + investorValue + pilotValue;
+        remaining = MAXSKILL - remaining;
+        pointsRemaining.setText(Integer.toString(remaining));
     }
 
 }

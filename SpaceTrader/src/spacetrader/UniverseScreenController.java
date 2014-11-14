@@ -23,453 +23,432 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Menu;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import javafx.stage.Modality;
-import javafx.scene.Scene;
 import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Text;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author sydnipeterson
  */
 public class UniverseScreenController implements Initializable {
+    /**
+    * Tab for fuel.
+    */
+    @FXML
+    private static transient Menu fuelTab;
 
-    @FXML
-    private BorderPane MenuButton;
-    @FXML
-    private ImageView gal1;
-    @FXML
-    private ImageView gal4;
-    @FXML
-    private ImageView gal7;
-    @FXML
-    private ImageView gal5;
-    @FXML
-    private ImageView gal2;
-    @FXML
-    private ImageView gal8;
-    @FXML
-    private ImageView gal3;
-    @FXML
-    private ImageView gal6;
-    @FXML
-    private ImageView gal0;
-    @FXML
-    private Menu fuelTab;
-    private Player player = GameInstance.getInstance().getPlayer();
-    private Ship ship = GameInstance.getInstance().getPlayer().getShip();
-    private Universe universe = GameInstance.getInstance().getUniverse();
-    private Game game = GameInstance.getInstance();
+    /**
+     * Instance of ship.
+     */
+    private static final Ship SHIP =
+            GameInstance.getInstance().getPlayer().getShip();
+    /**
+     * Instance of game.
+     */
+    private static final Game GAME = GameInstance.getInstance();
+
+    /**
+    * String they made me have.
+    */
+    private static final String ENOUGH =
+            "You do not have enough fuel to travel there.";
+    /**
+    * INT they made me have.
+    */
+    private static final int PADDING = 30;
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
+     * @param resource  resource
+     * @param url   a url
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-	game.setCurrentScreen("UniverseScreen.fxml");
-	// TODO
-	// fuelTab.setText("Fuel: ");
-	fuelTab.setText("Fuel: " + Integer.toString(ship.getFuel()));
+    public final void initialize(final URL url, final ResourceBundle resource) {
+    GAME.setCurrentScreen("UniverseScreen.fxml");
+    // TODO
+    // fuelTab.setText("Fuel: ");
+    fuelTab.setText("Fuel: " + Integer.toString(SHIP.getFuel()));
     }
 
     /**
-     * Returns to main menu when clicked
+     * Returns to main menu when clicked.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void ReturnMainMenu(MouseEvent event) throws Exception {
-	Parent root = FXMLLoader
-		.load(getClass().getResource("RootWindow.fxml"));
-	Stage stage = new Stage();
-	stage.setScene(new Scene(root));
-	stage.show();
+    private void returnMainMenu(final MouseEvent event) throws Exception {
+    final Parent root = FXMLLoader
+        .load(getClass().getResource("RootWindow.fxml"));
+    final Stage stage = new Stage();
+    stage.setScene(new Scene(root));
+    stage.show();
 
-	// hide this current window (if this is whant you want
-	((Node) (event.getSource())).getScene().getWindow().hide();
+    // hide this current window (if this is whant you want
+    ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     /**
-     * Takes player to first galaxy
+     * Takes player to first galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal1(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal1(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalOneScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalOneScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Takes player to fourth galaxy
+     * Takes player to fourth galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal4(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal4(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalFourScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalFourScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Takes player to seventh galaxy
+     * Takes player to seventh galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal7(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal7(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalSevenScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalSevenScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Takes player to fifth galaxy
+     * Takes player to fifth galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal5(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal5(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalFiveScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalFiveScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Takes player to second galaxy
+     * Takes player to second galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal2(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal2(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalTwoScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalTwoScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Takes player to eigth galaxy
+     * Takes player to eighth galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal8(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal8(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalEightScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalEightScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Takes player to three galaxy
+     * Takes player to three galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal3(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal3(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalThreeScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalThreeScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Takes player to sixth galaxy
+     * Takes player to sixth galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal6(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal6(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalSixScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalSixScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Takes player to nineth (0) galaxy
+     * Takes player to ninth (0) galaxy.
      *
-     * @event the event that triggers this action
+     * @param event that triggers this action
+     * @throws Exception
      */
     @FXML
-    private void goToGal0(MouseEvent event) throws Exception {
-	if (ship.getFuel() > 0) {
-	    ship.setFuel(ship.getFuel() - 1);
+    private void goToGal0(final MouseEvent event) throws Exception {
+    if (SHIP.getFuel() > 0) {
+        SHIP.setFuel(SHIP.getFuel() - 1);
 
-	    // Game game = GameInstance.getInstance();
-	    // game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-	    // look at this ^^^
-	    Parent root = FXMLLoader.load(getClass().getResource(
-		    "GalNineScreen.fxml"));
-	    Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+        final Parent root = FXMLLoader.load(getClass().getResource(
+            "GalNineScreen.fxml"));
+        final Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-						    "You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(30)).build()));
-	    dialogStage.show();
-	}
+        // hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    } else {
+        final Stage dialogStage = new Stage();
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage
+            .setScene(new Scene(
+                VBoxBuilder
+                    .create()
+                    .children(
+                        new Text(
+                            ENOUGH))
+                    .alignment(Pos.CENTER)
+                    .padding(new Insets(PADDING)).build()));
+        dialogStage.show();
+    }
 
     }
 
     /**
-     * Saves the game
+     * Saves the game.
      *
      * @param event
      *            mouse event of when user clicks on "SAVE" button
      */
     @FXML
-    private void saveGame(MouseEvent event) {
-	GameInstance.saveModelBinary();
+    private void saveGame(final MouseEvent event) {
+    GameInstance.saveModelBinary();
     }
 
     /**
-     * Exits the game and returns to the main screen
+     * Exits the game and returns to the main screen.
      *
      * @param event
      *            mouse event of when user clicks on "EXIT" button
+     * @throws  Exception
      */
     @FXML
-    private void exit(MouseEvent event) throws Exception {
-	Parent root = FXMLLoader
-		.load(getClass().getResource("RootWindow.fxml"));
-	Stage stage = new Stage();
-	stage.setScene(new Scene(root));
-	stage.show();
+    private void exit(final MouseEvent event) throws Exception {
+    final Parent root = FXMLLoader
+        .load(getClass().getResource("RootWindow.fxml"));
+    final Stage stage = new Stage();
+    stage.setScene(new Scene(root));
+    stage.show();
 
-	// hide this current window (if this is whant you want
-	((Node) (event.getSource())).getScene().getWindow().hide();
+    // hide this current window (if this is whant you want
+    ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }
