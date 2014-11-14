@@ -88,11 +88,11 @@ public class GalEightScreenController implements Initializable {
     /**
      * Initializes the controller class.
      *
-     * @param rb
-     * @param url
+     * @param rb rb
+     * @param url url
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         GAME.setCurrentScreen("GalEightScreen.fxml");
         final String str = randEvent();
         // TODO
@@ -103,7 +103,7 @@ public class GalEightScreenController implements Initializable {
      * Goes to the flower planet when planet image is clicked on.
      *
      * @param event occours when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToFlowerPlan(final MouseEvent event) throws Exception {
@@ -141,7 +141,7 @@ public class GalEightScreenController implements Initializable {
      * Goes to the peta planet when planet image is clicked on.
      *
      * @param event occours when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToPetaPlan(final MouseEvent event) throws Exception {
@@ -179,7 +179,7 @@ public class GalEightScreenController implements Initializable {
      * Goes to the Dove planet when planet image is clicked on.
      *
      * @param event occours when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToDovePlan(final MouseEvent event) throws Exception {
@@ -217,7 +217,7 @@ public class GalEightScreenController implements Initializable {
      * Goes to the peace planet when planet image is clicked on.
      *
      * @param event occours when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToPeacePlan(final MouseEvent event) throws Exception {
@@ -255,7 +255,7 @@ public class GalEightScreenController implements Initializable {
      * Returns the user to the Solar System screen when the button is clicked.
      *
      * @param event occours when the user clicks on the "RETURN" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void returnToUniverse(final MouseEvent event) throws Exception {
@@ -295,7 +295,7 @@ public class GalEightScreenController implements Initializable {
      */
     private String randEvent() {
         final Random rand = new Random();
-        final int val= rand.nextInt(20);
+        final int val = rand.nextInt(20);
         String string = "";
 
         if (val > (((2 ^ 2) ^ 2) - 1)) {
@@ -341,7 +341,7 @@ public class GalEightScreenController implements Initializable {
      * Exits the game and returns to the main screen.
      *
      * @param event mouse event of when user clicks on "EXIT" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

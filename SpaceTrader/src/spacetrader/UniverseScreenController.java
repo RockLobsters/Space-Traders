@@ -83,7 +83,7 @@ public class UniverseScreenController implements Initializable {
      * Returns to main menu when clicked.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void returnMainMenu(final MouseEvent event) throws Exception {
@@ -101,7 +101,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to first galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal1(final MouseEvent event) throws Exception {
@@ -137,7 +137,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to fourth galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal4(final MouseEvent event) throws Exception {
@@ -173,7 +173,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to seventh galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal7(final MouseEvent event) throws Exception {
@@ -209,7 +209,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to fifth galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal5(final MouseEvent event) throws Exception {
@@ -245,7 +245,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to second galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal2(final MouseEvent event) throws Exception {
@@ -281,7 +281,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to eighth galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal8(final MouseEvent event) throws Exception {
@@ -317,7 +317,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to three galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal3(final MouseEvent event) throws Exception {
@@ -353,7 +353,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to sixth galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal6(final MouseEvent event) throws Exception {
@@ -389,7 +389,7 @@ public class UniverseScreenController implements Initializable {
      * Takes player to ninth (0) galaxy.
      *
      * @param event that triggers this action
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGal0(final MouseEvent event) throws Exception {
@@ -437,7 +437,7 @@ public class UniverseScreenController implements Initializable {
      *
      * @param event
      *            mouse event of when user clicks on "EXIT" button
-     * @throws  Exception
+     * @throws  Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

@@ -86,11 +86,11 @@ public class GalSevenScreenController implements Initializable {
 
     /**
      *
-     * @param url
-     * @param rb
+     * @param url url
+     * @param rb rb
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         GAME.setCurrentScreen("GalSevenScreen.fxml");
         final String str = randEvent();
         // TODO
@@ -101,9 +101,9 @@ public class GalSevenScreenController implements Initializable {
     /**
      * Goes to the CastleRock planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToCastleRockPlan(final MouseEvent event) throws Exception {
@@ -140,9 +140,9 @@ public class GalSevenScreenController implements Initializable {
     /**
      * Goes to the Lotf planet when planet image is clicked on.
      *
-     * @param event
-     *            occours when the user clicks on the planet
-     * @throws Exception
+     * @param event e
+     *            occurs when the user clicks on the planet
+     * @throws Exception e
      */
     @FXML
     private void goToLotfPlan(final MouseEvent event) throws Exception {
@@ -179,12 +179,12 @@ public class GalSevenScreenController implements Initializable {
     /**
      * Goes to the Island planet when planet image is clicked on.
      *
-     * @param event
-     *            occours when the user clicks on the planet
-     * @throws Exception
+     * @param event e
+     *            occurs when the user clicks on the planet
+     * @throws Exception e
      */
     @FXML
-    private void goToTheIslandPlan(MouseEvent event) throws Exception {
+    private void goToTheIslandPlan(final MouseEvent event) throws Exception {
         if (SHIP.getFuel() > 0) {
             // randEvent();
 
@@ -218,12 +218,12 @@ public class GalSevenScreenController implements Initializable {
     /**
      * Returns the user to the Solar System screen when the button is clicked.
      *
-     * @param event
-     *            occours when the user clicks on the "RETURN" button
-     * @throws Exception
+     * @param event e
+     *            occurs when the user clicks on the "RETURN" button
+     * @throws Exception e
      */
     @FXML
-    private void returnToUniverse(MouseEvent event) throws Exception {
+    private void returnToUniverse(final MouseEvent event) throws Exception {
         if (SHIP.getFuel() > 0) {
             // randEvent();
 
@@ -296,7 +296,7 @@ public class GalSevenScreenController implements Initializable {
     /**
      * Saves the game.
      *
-     * @param event
+     * @param event e
      *            mouse event of when user clicks on "SAVE" button
      */
     @FXML
@@ -307,9 +307,9 @@ public class GalSevenScreenController implements Initializable {
     /**
      * Exits the game and returns to the main screen.
      *
-     * @param event
+     * @param event e
      *            mouse event of when user clicks on "EXIT" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

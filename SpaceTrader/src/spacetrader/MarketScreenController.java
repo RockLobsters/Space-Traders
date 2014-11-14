@@ -1,5 +1,4 @@
-/*
- * Copyright (C) 2014 sydnipeterson.
+/* Copyright (C) 2014 sydnipeterson.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -250,7 +249,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void waterTabOpen(final MouseEvent event) {
@@ -262,7 +261,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void furTabOpen(final MouseEvent event) {
@@ -274,7 +273,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void foodTabOpen(final MouseEvent event) {
@@ -286,7 +285,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @pram    event
+    * @param    event e
     */
     @FXML
     private void oreTabOpen(final MouseEvent event) {
@@ -298,7 +297,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void gamesTabOpen(final MouseEvent event) {
@@ -310,7 +309,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void fireamrsTabOpen(final MouseEvent event) {
@@ -322,7 +321,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void medicineTabOpen(final MouseEvent event) {
@@ -334,7 +333,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void machinesTabOpen(final MouseEvent event) {
@@ -346,7 +345,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void narcoticsTabOpen(final MouseEvent event) {
@@ -358,7 +357,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When tab opens.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void robotsTabOpen(final MouseEvent event) {
@@ -371,6 +370,7 @@ public class MarketScreenController implements Initializable {
     /**
     * Gets price.
     * @param     type of good
+    * @return a
     */
     private double getPrice(final GoodType type) {
     return MARKET.getPrice(new Good(type, 0));
@@ -378,7 +378,8 @@ public class MarketScreenController implements Initializable {
 
     /**
     * Gets quan.
-    * @param    type
+    * @param    type t
+    * @return a
     */
     private int getQuantity(final GoodType type) {
     return MARKET.getQuantity(new Good(type, 0));
@@ -422,7 +423,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling water.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handleWaterSellAction(final ActionEvent event) {
@@ -451,7 +452,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling fur.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handleFurSellAction(final ActionEvent event) {
@@ -480,7 +481,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When buying fur.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handleFurBuyAction(final ActionEvent event) {
@@ -515,7 +516,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling meds.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handleMedicineSellAction(final ActionEvent event) {
@@ -544,7 +545,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When buying meds.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handleMedicineBuyAction(final ActionEvent event) {
@@ -579,7 +580,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling narcotics.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handleNarcoticsSellAction(final ActionEvent event) {
@@ -608,7 +609,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When buing narcotics.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handlNarcoticsBuyAction(final ActionEvent event) {
@@ -644,7 +645,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When buying food.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handleFoodBuyAction(final ActionEvent event) {
@@ -679,7 +680,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling food.
-    * @param    event
+    * @param    event e
     */
     @FXML
     private void handleFoodSellAction(final ActionEvent event) {
@@ -708,7 +709,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling ore.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleOreSellAction(final ActionEvent event) {
@@ -737,7 +738,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When buying ore.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleOreBuyAction(final ActionEvent event) {
@@ -772,7 +773,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling games.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleGamesSellAction(final ActionEvent event) {
@@ -807,7 +808,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When byin games.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleGamesBuyAction(final ActionEvent event) {
@@ -836,7 +837,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling firearms.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleFirearmsSellAction(final ActionEvent event) {
@@ -865,7 +866,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When buying firearms.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleFirearmsBuyAction(final ActionEvent event) {
@@ -900,7 +901,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When buying machines.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleMachinesBuyAction(final MouseEvent event) {
@@ -935,7 +936,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling machines.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleMachinesSellAction(final MouseEvent event) {
@@ -964,7 +965,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When selling robos.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleRobotsSellAction(final ActionEvent event) {
@@ -993,7 +994,7 @@ public class MarketScreenController implements Initializable {
 
     /**
     * When buying robos.
-    * @param event
+    * @param event e
     */
     @FXML
     private void handleRobotsBuyAction(final ActionEvent event) {
@@ -1031,7 +1032,7 @@ public class MarketScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the "RETURN" button
-     * @throws      exception
+     * @throws      Exception e
      */
 
     @FXML
@@ -1045,5 +1046,5 @@ public class MarketScreenController implements Initializable {
     // hide this current window (if this is whant you want
     ((Node) (event.getSource())).getScene().getWindow().hide();
 
-    }
+    } 
 }

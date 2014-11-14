@@ -153,7 +153,7 @@ public class GalFiveScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the "RETURN" button
-     * @throws Exception
+     * @throws  Exception e
      */
     @FXML
     private void returnToSolar(final MouseEvent event) throws Exception {
@@ -190,7 +190,7 @@ public class GalFiveScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToMarxPrime(final MouseEvent event) throws Exception {
@@ -230,7 +230,7 @@ public class GalFiveScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToGoryeo(final MouseEvent event) throws Exception {
@@ -270,7 +270,7 @@ public class GalFiveScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToShina(final MouseEvent event) throws Exception {
@@ -311,7 +311,7 @@ public class GalFiveScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToKuba(final MouseEvent event) throws Exception {
@@ -399,7 +399,7 @@ public class GalFiveScreenController implements Initializable {
      *
      * @param event
      *            mouse event of when user clicks on "EXIT" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

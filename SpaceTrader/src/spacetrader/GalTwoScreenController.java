@@ -152,7 +152,7 @@ public class GalTwoScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToElsinor(final MouseEvent event) throws Exception {
@@ -191,7 +191,7 @@ public class GalTwoScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToScottish(final MouseEvent event) throws Exception {
@@ -230,7 +230,7 @@ public class GalTwoScreenController implements Initializable {
      *
      * @param event
      *            occours when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToVerona(final MouseEvent event) throws Exception {
@@ -269,7 +269,7 @@ public class GalTwoScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToTitus(final MouseEvent event) throws Exception {
@@ -309,7 +309,7 @@ public class GalTwoScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the "RETURN" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void returnToSystem(final MouseEvent event) throws Exception {
@@ -395,7 +395,7 @@ public class GalTwoScreenController implements Initializable {
      *
      * @param event
      *            mouse event of when user clicks on "EXIT" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

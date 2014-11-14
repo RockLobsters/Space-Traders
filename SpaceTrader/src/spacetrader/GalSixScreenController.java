@@ -85,11 +85,11 @@ public class GalSixScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
+     * @param url url
+     * @param rb rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         GAME.setCurrentScreen("GalSixScreen.fxml");
         // TODO
         final String str = randEvent();
@@ -100,9 +100,9 @@ public class GalSixScreenController implements Initializable {
     /**
      * Goes to the FamCoHQ planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToFamCoHQPlan(final MouseEvent event) throws Exception {
@@ -139,8 +139,9 @@ public class GalSixScreenController implements Initializable {
     /**
      * Goes to the FamCoWarehouse planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
+     * @throws Exception e
      */
     @FXML
     private void goToFamCoWarehousePlan(final MouseEvent event)
@@ -178,47 +179,49 @@ public class GalSixScreenController implements Initializable {
     /**
      * Goes to the FamCoSattaliteBranch planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
+     * @throws Exception e
      */
     @FXML
-    private void goToFamCoSatteliteBranchPlan(MouseEvent event)
-	    throws Exception {
-	if (SHIP.getFuel() > 0) {
-	    // randEvent();
+    private void goToFamCoSatteliteBranchPlan(final MouseEvent event)
+            throws Exception {
+        if (SHIP.getFuel() > 0) {
+            // randEvent();
 
-	    SHIP.setFuel(SHIP.getFuel() - 1);
-	    PLAYER.setCurrentLocation(solar.getPlanets().get(2));
+            SHIP.setFuel(SHIP.getFuel() - 1);
+            PLAYER.setCurrentLocation(solar.getPlanets().get(2));
 
-	    final Parent root = FXMLLoader.load(getClass().getResource(
-		    "PlanetScreen.fxml"));
-	    final Stage stage = new Stage();
-	    stage.setScene(new Scene(root));
-	    stage.show();
+            final Parent root = FXMLLoader.load(getClass().getResource(
+                    "PlanetScreen.fxml"));
+            final Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
 
-	    // hide this current window (if this is whant you want
-	    ((Node) (event.getSource())).getScene().getWindow().hide();
-	} else {
-	    final Stage dialogStage = new Stage();
-	    dialogStage.initModality(Modality.WINDOW_MODAL);
-	    dialogStage
-		    .setScene(new Scene(
-			    VBoxBuilder
-				    .create()
-				    .children(
-					    new Text(
-			"You do not have enough fuel to travel there."))
-				    .alignment(Pos.CENTER)
-				    .padding(new Insets(PADDING)).build()));
-	    dialogStage.show();
+            // hide this current window (if this is whant you want
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+            } else {
+            final Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage
+                    .setScene(new Scene(
+                            VBoxBuilder
+                                    .create()
+                                    .children(
+                                            new Text(
+                        "You do not have enough fuel to travel there."))
+                                    .alignment(Pos.CENTER)
+                                    .padding(new Insets(PADDING)).build()));
+            dialogStage.show();
 	}
     }
 
     /**
      * Goes to the FamCoMoonBranch planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
+     * @throws Exception e
      */
     @FXML
     private void goToFamCoMoonBranchPlan(final MouseEvent event)
@@ -256,9 +259,9 @@ public class GalSixScreenController implements Initializable {
     /**
      * Returns the user to the Solar System screen when the button is clicked.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the "RETURN" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void returnToUniverse(final MouseEvent event) throws Exception {
@@ -333,7 +336,7 @@ public class GalSixScreenController implements Initializable {
     /**
      * Saves the game.
      *
-     * @param event
+     * @param event e
      *            mouse event of when user clicks on "SAVE" button
      */
     @FXML
@@ -344,9 +347,9 @@ public class GalSixScreenController implements Initializable {
     /**
      * Exits the game and returns to the main screen.
      *
-     * @param event
+     * @param event e
      *            mouse event of when user clicks on "EXIT" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

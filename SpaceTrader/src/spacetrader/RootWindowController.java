@@ -24,8 +24,8 @@ public class RootWindowController implements Initializable {
 
     /**
      *
-     * @param event
-     * @throws Exception
+     * @param event e
+     * @throws Exception e
      */
     @FXML
     private void handleNewGameAction(final ActionEvent event) throws Exception {
@@ -40,8 +40,8 @@ public class RootWindowController implements Initializable {
     }
     /**
      *
-     * @param event
-     * @throws Exception
+     * @param event e
+     * @throws Exception e
      */
     @FXML
     private void handleLoadGameAction(final ActionEvent event) 
@@ -58,7 +58,7 @@ public class RootWindowController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void handleExitAction(final ActionEvent event) {
@@ -66,8 +66,8 @@ public class RootWindowController implements Initializable {
     }
     /**
      *
-     * @param url
-     * @param rb
+     * @param url url
+     * @param rb rb
      */
     @Override
     public void initialize(final URL url, final ResourceBundle rb) {

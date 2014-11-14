@@ -152,7 +152,7 @@ public class GalOneScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToPeachtreePlan(final MouseEvent event) throws Exception {
@@ -192,7 +192,7 @@ public class GalOneScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws  Exception
+     * @throws  Exception e
      */
     @FXML
     private void goToGastatePlan(final MouseEvent event) throws Exception {
@@ -233,7 +233,7 @@ public class GalOneScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws  Exception
+     * @throws  Exception e
      */
     @FXML
     private void goToGatechPlan(final MouseEvent event) throws Exception {
@@ -272,7 +272,7 @@ public class GalOneScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws  Exception
+     * @throws  Exception e
      */
     @FXML
     private void goToPoncePlan(final MouseEvent event) throws Exception {
@@ -310,7 +310,7 @@ public class GalOneScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the "RETURN" button
-     * @throws  Exception
+     * @throws  Exception e
      */
     @FXML
     private void returnToSolar(final MouseEvent event) throws Exception {
@@ -396,6 +396,7 @@ public class GalOneScreenController implements Initializable {
      *
      * @param event
      *            mouse event of when user clicks on "EXIT" button
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

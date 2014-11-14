@@ -76,8 +76,8 @@ public class NewGameWindowController implements Initializable {
     private static final transient int PADDING = 30;
     /**
      *
-     * @param event
-     * @throws Exception
+     * @param event e
+     * @throws Exception e
      */
     @FXML
     private void handleCancelAction(final ActionEvent event) throws Exception {
@@ -91,8 +91,8 @@ public class NewGameWindowController implements Initializable {
     }
     /**
      *
-     * @param event
-     * @throws Exception
+     * @param event e
+     * @throws Exception e
      */
     @FXML
     private void handleStartGameAction(final ActionEvent event)
@@ -156,8 +156,8 @@ public class NewGameWindowController implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param rb
-     * @param url
+     * @param rb rb
+     * @param url url
      */
     @Override
     public void initialize(final URL url, final ResourceBundle rb) {
@@ -165,7 +165,7 @@ public class NewGameWindowController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void slider(final MouseEvent event) {

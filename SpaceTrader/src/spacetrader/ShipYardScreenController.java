@@ -34,9 +34,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
-import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.Dialog;
-import org.controlsfx.dialog.Dialogs;
+
 
 /**
  * FXML Controller class.
@@ -59,11 +57,11 @@ public class ShipYardScreenController implements Initializable {
      */
     private static final transient int
             TECHLEVEL = PLAYER.getCurrentLocation().getSolarSystem()
-	    .getTechLevel();
+                    .getTechLevel();
     /**
      * Shipyard.
      */
-    private static final transient 
+    private static final transient
             Shipyard YARD = new Shipyard(PLAYER.getCurrentLocation());
     /**
      * laserTypes.
@@ -204,84 +202,84 @@ public class ShipYardScreenController implements Initializable {
 
     /**
      * Initialize controller.
-     * @param url
-     * @param rb
+     * @param url url
+     * @param rb rb
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
-	shipName.setText("Current Ship: " + SHIP.getName());
-	money.setText("Money: " + PLAYER.getMoney());
-	escapePod.setText("Price: 200");
-	setLaser();
-	setGadget();
-	setShield();
-	populateFields();
+    public final void initialize(final URL url, final ResourceBundle rb) {
+        shipName.setText("Current Ship: " + SHIP.getName());
+        money.setText("Money: " + PLAYER.getMoney());
+        escapePod.setText("Price: 200");
+        setLaser();
+        setGadget();
+        setShield();
+        populateFields();
     }
     /**
      * Sets visible weapons.
      */
     private void setLaser() {
-	final Laser[] allWeapons = Laser.values();
-	final ArrayList<Laser> weapons = Shipyard.visibleWeapons();
-	for (Laser allWeapon : allWeapons) {
-	    switch (allWeapon) {
-	    case PULSE:
-		if (weapons.contains(laserType.PULSE)) {
-		    pulseLasers.setText("Price: " + laserType.PULSE.getPrice());
-		} else {
-		    pulseLasers.setText("NOT SOLD IN THIS MARKET");
-		}
-		break;
-	    case BEAM:
-		if (weapons.contains(laserType.BEAM)) {
-		    beamLasers.setText("Price: " + laserType.BEAM.getPrice());
-		} else {
-		    beamLasers.setText("NOT SOLD IN THIS MARKET");
-		}
-		break;
-	    case MILITARY:
-		if (weapons.contains(laserType.MILITARY)) {
-		    militaryLasers.setText("Price: "
-			    + laserType.MILITARY.getPrice());
-		} else {
-		    militaryLasers.setText("NOT SOLD IN THIS MARKET");
-		}
-		break;
+        final Laser[] allWeapons = Laser.values();
+        final ArrayList<Laser> weapons = Shipyard.visibleWeapons();
+        for (Laser allWeapon : allWeapons) {
+            switch (allWeapon) {
+            case PULSE:
+                if (weapons.contains(laserType.PULSE)) {
+                    pulseLasers.setText("Price: " + laserType.PULSE.getPrice());
+                } else {
+                    pulseLasers.setText("NOT SOLD IN THIS MARKET");
+                }
+                break;
+            case BEAM:
+                if (weapons.contains(laserType.BEAM)) {
+                    beamLasers.setText("Price: " + laserType.BEAM.getPrice());
+                } else {
+                    beamLasers.setText("NOT SOLD IN THIS MARKET");
+                }
+                break;
+            case MILITARY:
+                if (weapons.contains(laserType.MILITARY)) {
+                    militaryLasers.setText("Price: "
+                            + laserType.MILITARY.getPrice());
+                } else {
+                    militaryLasers.setText("NOT SOLD IN THIS MARKET");
+                }
+                break;
         default:
         throw new AssertionError(allWeapon.name());
-	    }
-	}
+            }
+        }
     }
     /**
      * Sets visible Shields.
      */
     private void setShield() {
-	final Shield[] allShields = Shield.values();
-	final ArrayList<Shield> shields = Shipyard.visibleShields();
-	for (Shield allWeapon : allShields) {
-	    switch (allWeapon) {
-	    case ENERGY:
-		if (shields.contains(shieldType.ENERGY)) {
-		    energyShield.setText("Price: "
-			    + shieldType.ENERGY.getPrice());
-		} else {
-		    energyShield.setText("NOT SOLD IN THIS MARKET");
-		}
-		break;
-	    case REFLECTIVE:
-		if (shields.contains(shieldType.REFLECTIVE)) {
-		    reflectiveShield.setText("Price: "
-			    + shieldType.REFLECTIVE.getPrice());
-		} else {
-		    reflectiveShield.setText("NOT SOLD IN THIS MARKET");
-		}
-		break;
+        final Shield[] allShields = Shield.values();
+        final ArrayList<Shield> shields = Shipyard.visibleShields();
+        for (Shield allWeapon : allShields) {
+            switch (allWeapon) {
+            case ENERGY:
+                if (shields.contains(shieldType.ENERGY)) {
+                    energyShield.setText("Price: "
+                            + shieldType.ENERGY.getPrice());
+                } else {
+                    energyShield.setText("NOT SOLD IN THIS MARKET");
+                }
+                break;
+            case REFLECTIVE:
+                if (shields.contains(shieldType.REFLECTIVE)) {
+                    reflectiveShield.setText("Price: "
+                            + shieldType.REFLECTIVE.getPrice());
+                } else {
+                    reflectiveShield.setText("NOT SOLD IN THIS MARKET");
+                }
+                break;
 
         default:
         throw new AssertionError(allWeapon.name());
 
-	    }
-	}
+            }
+        }
     }
     /**
      * Sets visible gadgets.
@@ -340,9 +338,9 @@ public class ShipYardScreenController implements Initializable {
     /**
      * Returns player to planet screen.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void returnToPlanet(final MouseEvent event) throws Exception {
@@ -359,7 +357,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * Buys a flea ship.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -400,7 +398,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * Buys a gnat ship.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -439,7 +437,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * Buys a firefly ship.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -478,7 +476,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * Buys a mosquito ship.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -518,7 +516,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * Buys a bumblebee ship.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -557,7 +555,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * sets text to text area when opened.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -570,7 +568,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * sets text to text area when opened.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -583,7 +581,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * sets text to text area when opened.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -596,7 +594,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * sets text to text area when opened.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -609,7 +607,7 @@ public class ShipYardScreenController implements Initializable {
     /**
      * sets text to text area when opened.
      *
-     * @param event
+     * @param event e
      *            when mouse is clicked
      */
     @FXML
@@ -620,7 +618,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyPulseLasers(final MouseEvent event) {
@@ -663,7 +661,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyBeamLasers(final MouseEvent event) {
@@ -705,7 +703,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyMilitaryLasers(final MouseEvent event) {
@@ -747,7 +745,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyEnergyShield(final MouseEvent event) {
@@ -790,7 +788,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyReflectiveShield(final MouseEvent event) {
@@ -833,7 +831,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyNavigatingSystem(final MouseEvent event) {
@@ -875,7 +873,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyAutoRepairSystem(final MouseEvent event) {
@@ -917,7 +915,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyCargoBays(final MouseEvent event) {
@@ -960,7 +958,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyTargetingSystem(final MouseEvent event) {
@@ -1003,7 +1001,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyCloakingDevice(final MouseEvent event) {
@@ -1046,7 +1044,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyEscapePod(final MouseEvent event) {
@@ -1076,7 +1074,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellPulseLasers(final MouseEvent event) {
@@ -1116,7 +1114,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellBeamLasers(final MouseEvent event) {
@@ -1156,7 +1154,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellEnergyShield(final MouseEvent event) {
@@ -1195,7 +1193,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellReflectiveShield(final MouseEvent event) {
@@ -1235,7 +1233,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellCargoBays(final MouseEvent event) {
@@ -1275,7 +1273,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellNavigatingSystem(final MouseEvent event) {
@@ -1315,7 +1313,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellAutoRepairSystem(final MouseEvent event) {
@@ -1355,7 +1353,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellCloakingDevice(final MouseEvent event) {
@@ -1395,7 +1393,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellEscapePod(final MouseEvent event) {
@@ -1421,7 +1419,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellMilitaryLasers(final MouseEvent event) {
@@ -1461,7 +1459,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void sellTargetingSystem(final MouseEvent event) {
@@ -1500,34 +1498,21 @@ public class ShipYardScreenController implements Initializable {
 	populateFields();
     }
     /**
-     * 
+     *
      */
     private void populateFields() {
 	String weapons = "";
 	String shields = "";
-	String gadgets = "";
-	String escapePod = "";
-<<<<<<< HEAD
-	
+	String gadgets = " ";
+	String escapePod = " ";
 	for (Laser x : SHIP.weapons) {
-	    weapons = weapons + x.name + "\n";
-	}
-	for (Shield x : SHIP.shields) {
-	    shields = shields + x.name + "\n";
-	}
-	for (Gadget x : SHIP.gadgets) {
-	    gadgets = gadgets + x.name + "\n";
-=======
-	Ship ship = GameInstance.getInstance().getPlayer().getShip();
-	for (Laser x : ship.weapons) {
 	    weapons = weapons + x.getName() + "\n";
 	}
-	for (Shield x : ship.shields) {
+	for (Shield x : SHIP.shields) {
 	    shields = shields + x.getName() + "\n";
 	}
-	for (Gadget x : ship.gadgets) {
+	for (Gadget x : SHIP.gadgets) {
 	    gadgets = gadgets + x.getName() + "\n";
->>>>>>> FETCH_HEAD
 	}
 	if (SHIP.getEscapePod()) {
 	    escapePod = "Owned";
@@ -1541,7 +1526,7 @@ public class ShipYardScreenController implements Initializable {
     }
     /**
      *
-     * @param event
+     * @param event e
      */
    @FXML
     private void refuelTab(final MouseEvent event) {
@@ -1550,7 +1535,7 @@ public class ShipYardScreenController implements Initializable {
 
     /**
      *
-     * @param event
+     * @param event e
      */
     @FXML
     private void buyFuel(final MouseEvent event) {

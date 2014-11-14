@@ -86,11 +86,11 @@ public class GalNineScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param rb
-     * @param url
+     * @param rb rb
+     * @param url url
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         GAME.setCurrentScreen("GalNineScreen.fxml");
         final String str = randEvent();
         // TODO
@@ -98,11 +98,11 @@ public class GalNineScreenController implements Initializable {
     }
 
     /**
-     * Goes to the iplanet2 planet when planet image is clicked on
+     * Goes to the iplanet2 planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToiPlanet2(final MouseEvent event) throws Exception {
@@ -139,9 +139,9 @@ public class GalNineScreenController implements Initializable {
     /**
      * Goes to the iplanet5 planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToiPlanet5(final MouseEvent event) throws Exception {
@@ -178,9 +178,9 @@ public class GalNineScreenController implements Initializable {
     /**
      * Goes to the iPlanet3 planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToiPlanet3(final MouseEvent event) throws Exception {
@@ -217,9 +217,9 @@ public class GalNineScreenController implements Initializable {
     /**
      * Goes to the iPlanet4 planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToiPlanet4(final MouseEvent event) throws Exception {
@@ -256,9 +256,9 @@ public class GalNineScreenController implements Initializable {
     /**
      * Goes to the iPlanet1 planet when planet image is clicked on.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToiPlanet1(final MouseEvent event) throws Exception {
@@ -295,9 +295,9 @@ public class GalNineScreenController implements Initializable {
     /**
      * Returns the user to the Solar System screen when the button is clicked.
      *
-     * @param event
+     * @param event e
      *            occurs when the user clicks on the "RETURN" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void returnToUniverse(final MouseEvent event) throws Exception {
@@ -372,7 +372,7 @@ public class GalNineScreenController implements Initializable {
     /**
      * Saves the game.
      *
-     * @param event
+     * @param event e
      *            mouse event of when user clicks on "SAVE" button
      */
     @FXML
@@ -383,9 +383,9 @@ public class GalNineScreenController implements Initializable {
     /**
      * Exits the game and returns to the main screen.
      *
-     * @param event
+     * @param event e
      *            mouse event of when user clicks on "EXIT" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

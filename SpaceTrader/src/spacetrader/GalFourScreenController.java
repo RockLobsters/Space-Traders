@@ -132,7 +132,7 @@ public class GalFourScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the "RETURN" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void returnToSolar(final MouseEvent event) throws Exception {
@@ -170,7 +170,7 @@ public class GalFourScreenController implements Initializable {
      *
      * @param event
      *            occours when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToDisneyPlanet(final MouseEvent event) throws Exception {
@@ -209,7 +209,7 @@ public class GalFourScreenController implements Initializable {
      *
      * @param event
      *            occurs when the user clicks on the planet
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void goToDisneyResort(final MouseEvent event) throws Exception {
@@ -296,7 +296,7 @@ public class GalFourScreenController implements Initializable {
      *
      * @param event
      *            mouse event of when user clicks on "EXIT" button
-     * @throws Exception
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {

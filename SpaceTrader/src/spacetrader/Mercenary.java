@@ -59,12 +59,14 @@ public class Mercenary implements Comparable, Serializable {
      * @param totalAtrbtPts
      *            The total attribute points to be allocated
      */
-    public Mercenary(final String theName, int totalAtrbtPts) {
+    public Mercenary(final String theName, final int totalAtrbtPts) {
+        int points = totalAtrbtPts;
         this.name = theName;
         int[] tmp = new int[2 + 2];
         for (int i = 2 + 2 + 1; i > 1; i--) {
-            tmp[2 + 2 + 1 - i] = (int) (Math.random() * (totalAtrbtPts + 1) / i);
-            totalAtrbtPts -= tmp[2 + 2 + 1 - i];
+            tmp[2 + 2 + 1 - i] = (int)
+                    (Math.random() * (points + 1) / i);
+            points -= tmp[2 + 2 + 1 - i];
         }
         pilot = tmp[0];
         fighter = tmp[1];

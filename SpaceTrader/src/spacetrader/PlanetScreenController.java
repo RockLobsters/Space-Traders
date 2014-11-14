@@ -105,8 +105,8 @@ public class PlanetScreenController implements Initializable {
     }
     /**
      * goin to the market place.
-     * @param event
-     * @throws Exception
+     * @param event e
+     * @throws Exception e
      */
     @FXML
     private void goToMarket(final MouseEvent event) throws Exception {
@@ -123,8 +123,8 @@ public class PlanetScreenController implements Initializable {
 
     /**
      * goin to the ss n shit.
-     * @param event
-     * @throws Exception
+     * @param event e
+     * @throws Exception e
      */
     @FXML
     private void returnToSystem(final MouseEvent event) throws Exception {
@@ -270,7 +270,7 @@ public class PlanetScreenController implements Initializable {
 
     /**
      * we savin the game n ish.
-     * @param event
+     * @param event e
      */
     @FXML
     private void saveGame(final MouseEvent event) {
@@ -279,8 +279,8 @@ public class PlanetScreenController implements Initializable {
 
     /**
      * goodbye game.
-     * @param event
-     * @throws Exception
+     * @param event e
+     * @throws Exception e
      */
     @FXML
     private void exit(final MouseEvent event) throws Exception {
@@ -296,8 +296,8 @@ public class PlanetScreenController implements Initializable {
 
     /**
      * travel to the shipyard it's fun.
-     * @param event
-     * @throws Exception
+     * @param event e
+     * @throws Exception e
      */
     @FXML
     private void goToShipYard(final MouseEvent event) throws Exception {
