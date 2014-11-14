@@ -1,221 +1,254 @@
 /*
- * Copyright (C) 2014 sydnipeterson
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+* Copyright (C) 2014 sydnipeterson
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 package spacetrader;
 
 import java.io.Serializable;
 
 /**
- *
- * @author sydnipeterson
- */
+*
+* @author sydnipeterson
+*/
 public class Player implements Serializable {
 
-    // Name of Player
-
+    /**
+     * Name of Player.
+     */
     private final String name;
-    // Money of Player
+    /**
+     * Money of Player.
+     */
     private double money;
-    private final int INITIAL_MONEY = 1000;
-    // Wanted Level of player
+    /**
+     * starting money.
+     */
+    private static final int INITIAL_MONEY = 1000;
+    /**
+     * Wanted Level of player.
+     */
     private int wantedLevel;
 
-    // The attribute stats of the mercenary
+    /**
+     * The attribute stats of the mercenary.
+     */
     private int pilot;
+    /**
+     *
+     */
     private int fighter;
+    /**
+     *
+     */
     private int trader;
+    /**
+     *
+     */
     private int engineer;
+    /**
+     *
+     */
     private int investor;
-
+    /**
+     *
+     */
     private Ship ship;
-
+    /**
+     *
+     */
     private Planet currentLocation;
 
     /**
-     * Initializes Player Class
+     * Initializes Player Class.
      *
-     * @param name
+     * @param theName name
      */
-    public Player(String name) {
-	this.name = name;
-	money = INITIAL_MONEY;
-	wantedLevel = 0;
-	ship = new Gnat();
+    public Player(final String theName) {
+        this.name = theName;
+        money = INITIAL_MONEY;
+        wantedLevel = 0;
+        ship = new Gnat();
     }
 
     /**
-     * returns players name
+     * returns players name.
      *
      * @return name
      */
-    public String getName() {
-	return name;
+    public final String getName() {
+        return name;
     }
 
     /**
-     * adds money to current money amount
+     * adds money to current money amount.
      *
-     * @param mon
+     * @param mon the money
      */
-    public void addMoney(double mon) {
-	money += mon;
+    public final void addMoney(final double mon) {
+        money += mon;
     }
 
     /**
-     * subtracts money from current money amount
+     * subtracts money from current money amount.
      *
-     * @param mon
+     * @param mon the dough
      */
-    public void subtractMoney(double mon) {
-	money -= mon;
+    public final void subtractMoney(final double mon) {
+        money -= mon;
     }
 
     /**
-     * returns total money player has
+     * returns total money player has.
      *
-     * @return money
+     * @return money the mon
      */
-    public double getMoney() {
-	return money;
+    public final double getMoney() {
+        return money;
     }
 
     /**
-     * sets wanted level
+     * sets wanted level.
      *
-     * @param level
+     * @param level the lev
      */
-    public void setWantedLevel(int level) {
-	wantedLevel += level;
+    public final void setWantedLevel(final int level) {
+        wantedLevel += level;
     }
 
     /**
-     * returns wanted level
+     * returns wanted level.
      *
      * @return wantedLevel
      */
-    public int getWantedLevel() {
-	return wantedLevel;
+    public final int getWantedLevel() {
+        return wantedLevel;
     }
 
     /**
      * @return the pilot
      */
-    public int getPilot() {
-	return pilot;
+    public final int getPilot() {
+        return pilot;
     }
 
     /**
-     * @param pilot
+     * @param plt
      *            the pilot to set
      */
-    public void setPilot(int pilot) {
-	this.pilot = pilot;
+    public final void setPilot(final int plt) {
+        this.pilot = plt;
     }
 
     /**
      * @return the fighter
      */
-    public int getFighter() {
-	return fighter;
+    public final int getFighter() {
+        return fighter;
     }
 
     /**
-     * @param fighter
+     * @param theFighter
      *            the fighter to set
      */
-    public void setFighter(int fighter) {
-	this.fighter = fighter;
+    public final void setFighter(final int theFighter) {
+        this.fighter = theFighter;
     }
 
     /**
      * @return the trader
      */
-    public int getTrader() {
-	return trader;
+    public final int getTrader() {
+        return trader;
     }
 
     /**
-     * @param trader
+     * @param theTrader
      *            the trader to set
      */
-    public void setTrader(int trader) {
-	this.trader = trader;
+    public final void setTrader(final int theTrader) {
+        this.trader = theTrader;
     }
 
     /**
      * @return the engineer
      */
-    public int getEngineer() {
-	return engineer;
+    public final int getEngineer() {
+        return engineer;
     }
 
     /**
-     * @param engineer
+     * @param theEngineer
      *            the engineer to set
      */
-    public void setEngineer(int engineer) {
-	this.engineer = engineer;
+    public final void setEngineer(final int theEngineer) {
+        this.engineer = theEngineer;
     }
 
     /**
      * @return the investor
      */
-    public int getInvestor() {
-	return investor;
+    public final int getInvestor() {
+        return investor;
     }
 
     /**
-     * @param investor
+     * @param theInvestor
      *            the investor to set
      */
-    public void setInvestor(int investor) {
-	this.investor = investor;
+    public final void setInvestor(final int theInvestor) {
+        this.investor = theInvestor;
     }
 
     /**
      * @return the ship
      */
-    public Ship getShip() {
-	return ship;
+    public final Ship getShip() {
+        return ship;
     }
 
     /**
-     * @param ship
+     * @param theShip
      *            the ship to set
      */
-    public void setShip(Ship ship) {
-	this.ship = ship;
+    public final void setShip(final Ship theShip) {
+        this.ship = theShip;
     }
 
-    public Planet getCurrentLocation() {
-	return currentLocation;
+    /**
+     * @return currentLocation
+     */
+    public final Planet getCurrentLocation() {
+        return currentLocation;
     }
 
     /**
      *
-     * @param currentLocation
+     * @param theCurLocation current location
      */
-    public void setCurrentLocation(Planet currentLocation) {
-	this.currentLocation = currentLocation;
+    public final void setCurrentLocation(final Planet theCurLocation) {
+        this.currentLocation = theCurLocation;
     }
 
+    /**
+     *
+     * @return String rep of player
+     */
     @Override
-    public String toString() {
-	return name + " (" + pilot + "," + fighter + "," + trader + ","
-		+ engineer + "," + investor + ") (" + money + "," + wantedLevel
-		+ ") (" + ship + ")";
+    public final String toString() {
+        return name + " (" + pilot + "," + fighter + "," + trader + ","
+                + engineer + "," + investor + ") (" + money + "," + wantedLevel
+                + ") (" + ship + ")";
     }
 }

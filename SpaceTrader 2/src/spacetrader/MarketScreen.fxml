@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.MarketScreenController">
+    <children>
+        <ImageView fitHeight="391.0" fitWidth="722.0" layoutX="-91.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@10717597_10202517452727075_197587700_n.jpg" />
+            </image>
+        </ImageView>
+        <Accordion>
+            <panes>
+                <TitledPane fx:id="waterTab" animated="false" onMouseClicked="#waterTabOpen" text="Water">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="waterBuy" layoutX="8.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleWaterBuyAction" text="BUY" />
+                                <Label fx:id="waterQuantity" layoutX="102.0" layoutY="14.0" text="0" />
+                                <Text layoutX="8.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Text layoutX="8.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Label fx:id="waterPrice" layoutX="102.0" layoutY="40.0" text="0" />
+                                <Button fx:id="waterSell" layoutX="83.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleWaterSellAction" text="SELL" />
+                                <TextField fx:id="waterToBuy" layoutX="8.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="furTab" animated="false" onMouseClicked="#furTabOpen" text="Furs">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Text layoutX="11.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Button fx:id="furSell" layoutX="91.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleFurSellAction" text="SELL" />
+                                <Label fx:id="furQuantity" layoutX="105.0" layoutY="14.0" text="0" />
+                                <Label fx:id="furPrice" layoutX="105.0" layoutY="40.0" text="0" />
+                                <Text layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Button fx:id="furBuy" layoutX="11.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleFurBuyAction" text="BUY" />
+                                <TextField fx:id="furToBuy" layoutX="11.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="foodTab" animated="false" onMouseClicked="#foodTabOpen" text="Food">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#openTab" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="foodBuy" layoutX="19.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleFoodBuyAction" text="BUY" />
+                                <Text layoutX="21.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Button fx:id="foodSell" layoutX="99.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleFoodSellAction" text="SELL" />
+                                <Label fx:id="foodPrice" layoutX="115.0" layoutY="40.0" text="0" />
+                                <Label fx:id="foodQuantity" layoutX="115.0" layoutY="14.0" text="0" />
+                                <Text layoutX="21.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <TextField fx:id="foodToBuy" layoutX="19.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="oreTab" animated="false" layoutX="10.0" layoutY="36.0" onMouseClicked="#oreTabOpen" text="Ore">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label fx:id="orePrice" layoutX="110.0" layoutY="48.0" text="0" />
+                                <Text layoutX="16.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Button fx:id="oreSell" layoutX="94.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleOreSellAction" text="SELL" />
+                                <Button fx:id="oreBuy" layoutX="14.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleOreBuyAction" text="BUY" />
+                                <Text layoutX="16.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Label fx:id="oreQuantity" layoutX="110.0" layoutY="22.0" text="0" />
+                                <TextField fx:id="oreToBuy" layoutX="14.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="gamesTab" animated="false" layoutX="10.0" layoutY="88.0" onMouseClicked="#gamesTabOpen" text="Games">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="gamesSell" layoutX="95.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleGamesSellAction" text="SELL" />
+                                <Text layoutX="17.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Text layoutX="17.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Button fx:id="gamesBuy" layoutX="15.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleGamesBuyAction" text="BUY" />
+                                <Label fx:id="gamesQuantity" layoutX="111.0" layoutY="21.0" text="0" />
+                                <Label fx:id="gamesPrice" layoutX="111.0" layoutY="47.0" text="0" />
+                                <TextField fx:id="gamesToBuy" layoutX="14.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="firearmsTab" animated="false" layoutX="10.0" layoutY="114.0" onMouseClicked="#fireamrsTabOpen" text="Firearms">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="firearmsSell" layoutX="96.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleFirearmsSellAction" text="SELL" />
+                                <Text layoutX="18.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Text layoutX="18.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Button fx:id="firearmsBuy" layoutX="16.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleFirearmsBuyAction" text="BUY" />
+                                <Label fx:id="firearmsQuantity" layoutX="112.0" layoutY="18.0" text="0" />
+                                <Label fx:id="firearmsPrice" layoutX="112.0" layoutY="44.0" text="0" />
+                                <TextField fx:id="firearmsToBuy" layoutX="14.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="medicineTab" animated="false" layoutX="10.0" layoutY="140.0" onMouseClicked="#medicineTabOpen" text="Medicine">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="medicineSell" layoutX="98.0" layoutY="103.0" mnemonicParsing="false" text="SELL" />
+                                <Text layoutX="20.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Text layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Button fx:id="medicineBuy" layoutX="18.0" layoutY="103.0" mnemonicParsing="false" text="BUY" />
+                                <Label fx:id="medicineQuantity" layoutX="114.0" layoutY="18.0" text="0" />
+                                <Label fx:id="medicinePrice" layoutX="114.0" layoutY="44.0" text="0" />
+                                <TextField fx:id="medicineToBuy" layoutX="18.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="machinesTab" animated="false" layoutX="10.0" layoutY="166.0" onDragDetected="#handleMachinesBuyAction" onMouseClicked="#machinesTabOpen" text="Machines">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="machinesSell" layoutX="95.0" layoutY="97.0" mnemonicParsing="false" text="SELL" />
+                                <Text layoutX="17.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Text layoutX="17.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Button fx:id="machinesBuy" layoutX="15.0" layoutY="97.0" mnemonicParsing="false" text="BUY" />
+                                <Label fx:id="machinesQuantity" layoutX="111.0" layoutY="14.0" text="0" />
+                                <Label fx:id="machinesPrice" layoutX="111.0" layoutY="40.0" text="0" />
+                                <TextField fx:id="machinesToBuy" layoutX="14.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="NarcoticsTab" animated="false" layoutX="10.0" layoutY="192.0" onDragDetected="#handleMachinesSellAction" onMouseClicked="#narcoticsTabOpen" text="Narcotics">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label fx:id="narcoticsPrice" layoutX="111.0" layoutY="34.0" text="0" />
+                                <Text layoutX="17.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Button fx:id="narcoticsSell" layoutX="95.0" layoutY="98.0" mnemonicParsing="false" text="SELL" />
+                                <Button fx:id="narcoticsBuy" layoutX="15.0" layoutY="98.0" mnemonicParsing="false" text="BUY" />
+                                <Text layoutX="17.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Label fx:id="narcoticsQuantity" layoutX="111.0" layoutY="8.0" text="0" />
+                                <TextField fx:id="narcoticsToBuy" layoutX="14.0" layoutY="58.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="robotsTab" animated="false" layoutX="10.0" layoutY="218.0" onMouseClicked="#robotsTabOpen" text="Robots">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="robotsSell" layoutX="101.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleRobotsSellAction" text="SELL" />
+                                <Text layoutX="23.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+                                <Text layoutX="23.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
+                                <Button fx:id="robotsBuy" layoutX="21.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleRobotsBuyAction" text="BUY" />
+                                <Label fx:id="robotsQuantity" layoutX="117.0" layoutY="16.0" text="0" />
+                                <Label fx:id="robotsPrice" layoutX="117.0" layoutY="42.0" text="0" />
+                                <TextField fx:id="robotsToBuy" layoutX="21.0" layoutY="64.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+            </panes>
+        </Accordion>
+        <Text fill="WHITE" layoutX="286.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MARKET">
+            <font>
+                <Font size="61.0" />
+            </font>
+        </Text>
+        <TextArea fx:id="cargoBox" layoutX="227.0" layoutY="308.0" prefHeight="125.0" prefWidth="361.0">
+            <effect>
+                <ColorAdjust hue="0.21" saturation="-0.55" />
+            </effect>
+        </TextArea>
+        <Text layoutX="332.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARGO" textAlignment="CENTER" underline="true" wrappingWidth="150.677734375">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <Button layoutX="506.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#returnToPlanet" text="Retun To Planet" />
+    </children>
+    <effect>
+        <ColorAdjust saturation="-0.02" />
+    </effect>
+</AnchorPane>

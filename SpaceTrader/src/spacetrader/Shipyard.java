@@ -1,30 +1,29 @@
 /*
- * Copyright (C) 2014 Kristen Lawrence
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+* Copyright (C) 2014 Kristen Lawrence
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 package spacetrader;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.io.Serializable;
 
 /**
- * Creates a Shipyard for buying new Ships and selling old Ships + cargo
- *
- * @author Kristen Lawrence
- */
+* Creates a Shipyard for buying new Ships and selling old Ships + cargo
+*
+* @author Kristen Lawrence
+*/
 public class Shipyard implements Serializable {
 
     /**
@@ -35,7 +34,7 @@ public class Shipyard implements Serializable {
     /**
      *
      */
-    public PoliticalSystem politicalSystem;
+    public AbstractPoliticalSystem politicalSystem;
     public static int techLevel;
 
     /**
@@ -45,7 +44,7 @@ public class Shipyard implements Serializable {
      *            - Planet home of shipyard
      */
     public Shipyard(Planet planet) {
-	this.planet = planet;
+        this.planet = planet;
     }
 
     /**
@@ -55,8 +54,8 @@ public class Shipyard implements Serializable {
      *            - solarSystem of the planet
      */
     public void setSolarSystem(SolarSystem solarSystem) {
-	this.politicalSystem = solarSystem.getPoliticalSystem();
-	this.techLevel = solarSystem.getTechLevel();
+        this.politicalSystem = solarSystem.getPoliticalSystem();
+        this.techLevel = solarSystem.getTechLevel();
     }
 
     /**
@@ -70,30 +69,30 @@ public class Shipyard implements Serializable {
      * @return the total price of newShip minus cargo and price of current ship
      */
     public double shipPrice(Player player, Ship newShip) {
-	ArrayList<Good> cargo = player.getShip().cargo;
-	ArrayList<Laser> weapons = player.getShip().weapons;
-	ArrayList<Shield> shields = player.getShip().shields;
-	ArrayList<Gadget> gadgets = player.getShip().gadgets;
-	double cargoVal = 0;
-	double equipVal = 0;
-	for (Laser l : weapons) {
-	    equipVal = equipVal + l.getPrice();
-	}
-	for (Shield s : shields) {
-	    equipVal = equipVal + s.getPrice();
-	}
-	for (Gadget g : gadgets) {
-	    equipVal = equipVal + g.getPrice();
-	}
-	Market m = planet.getMarket();
-	for (Good g : cargo) {
-	    if (m.getPrice(g) != -1) {
-		cargoVal = cargoVal + m.getPrice(g);
-	    }
-	}
-	double shipPrice = newShip.getPrice() - player.getShip().getPrice()
-		- cargoVal - equipVal;
-	return shipPrice;
+        ArrayList<Good> cargo = player.getShip().cargo;
+        ArrayList<Laser> weapons = player.getShip().weapons;
+        ArrayList<Shield> shields = player.getShip().shields;
+        ArrayList<Gadget> gadgets = player.getShip().gadgets;
+        double cargoVal = 0;
+        double equipVal = 0;
+        for (Laser l : weapons) {
+            equipVal = equipVal + l.getPrice();
+        }
+        for (Shield s : shields) {
+            equipVal = equipVal + s.getPrice();
+        }
+        for (Gadget g : gadgets) {
+            equipVal = equipVal + g.getPrice();
+        }
+        Market m = planet.getMarket();
+        for (Good g : cargo) {
+            if (m.getPrice(g) != -1) {
+                cargoVal = cargoVal + m.getPrice(g);
+            }
+        }
+        double shipPrice = newShip.getPrice() - player.getShip().getPrice()
+                - cargoVal - equipVal;
+        return shipPrice;
     }
 
     /**
@@ -105,32 +104,33 @@ public class Shipyard implements Serializable {
      *            - to whom the new ship will go to
      * @param newShip
      *            - the new ship for player
+     * @param userVerified if it was checked
      *
      * @return negative if not enough money, zero if cargo will be lost,
      *         otherwise positive (transaction went through)
      */
     public int buyShip(Player player, Ship newShip, boolean userVerified) {
-	double cost = shipPrice(player, newShip);
-	if (checkWallet(player, cost) == false) {
-	    return -1;
-	} else {
-	    ArrayList<Good> cargo = player.getShip().cargo;
-	    Market m = planet.getMarket();
-	    for (Good g : cargo) {
-		if (m.getPrice(g) == -1 && userVerified == false) {
-		    return 0;
-		}
-	    }
-	    if (player.getShip().getInsurance()) {
-		newShip.setInsurance(true);
-	    }
-	    if (player.getShip().getEscapePod()) {
-		newShip.setEscapePod(true);
-	    }
-	    player.subtractMoney(cost);
-	    player.setShip(newShip);
-	}
-	return 1;
+        double cost = shipPrice(player, newShip);
+        if (checkWallet(player, cost) == false) {
+            return -1;
+        } else {
+            ArrayList<Good> cargo = player.getShip().cargo;
+            Market m = planet.getMarket();
+            for (Good g : cargo) {
+                if (m.getPrice(g) == -1 && userVerified == false) {
+                    return 0;
+                }
+            }
+            if (player.getShip().getInsurance()) {
+                newShip.setInsurance(true);
+            }
+            if (player.getShip().getEscapePod()) {
+                newShip.setEscapePod(true);
+            }
+            player.subtractMoney(cost);
+            player.setShip(newShip);
+        }
+        return 1;
     }
 
     /**
@@ -144,18 +144,18 @@ public class Shipyard implements Serializable {
      *         requested exceeds fuel tank capacity
      */
     public boolean refuel(Player player, int gallons) {
-	Ship ship = player.getShip();
-	int curFuelLevel = ship.getFuel();
-	if (curFuelLevel + gallons > ship.getFuelCapacity()) {
-	    return false;
-	}
-	double cost = gallons * ship.getFuelCost();
-	if (checkWallet(player, cost)) {
-	    ship.setFuel(gallons + curFuelLevel);
-	    player.subtractMoney(cost);
-	    return true;
-	}
-	return false;
+        Ship ship = player.getShip();
+        int curFuelLevel = ship.getFuel();
+        if (curFuelLevel + gallons > ship.getFuelCapacity()) {
+            return false;
+        }
+        double cost = gallons * ship.getFuelCost();
+        if (checkWallet(player, cost)) {
+            ship.setFuel(gallons + curFuelLevel);
+            player.subtractMoney(cost);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -168,15 +168,15 @@ public class Shipyard implements Serializable {
      * @return
      */
     public boolean repairs(Player player, int amount) {
-	Ship ship = player.getShip();
-	int curHealth = ship.getHealth();
-	double cost = amount * ship.getFuelCost();
-	if (checkWallet(player, cost)) {
-	    ship.setHealth(curHealth + amount);
-	    player.subtractMoney(cost);
-	    return true;
-	}
-	return false;
+        Ship ship = player.getShip();
+        int curHealth = ship.getHealth();
+        double cost = amount * ship.getFuelCost();
+        if (checkWallet(player, cost)) {
+            ship.setHealth(curHealth + amount);
+            player.subtractMoney(cost);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -188,7 +188,7 @@ public class Shipyard implements Serializable {
      *            of the weapon player wants to sell
      */
     public void sellWeapon(Player player, int index) {
-	player.addMoney(player.getShip().removeWeapon(index));
+        player.addMoney(player.getShip().removeWeapon(index));
     }
 
     /**
@@ -198,19 +198,19 @@ public class Shipyard implements Serializable {
      * @return
      */
     public boolean sellWeapon(Player player, String name) {
-	int index = -1;
-	ArrayList<Laser> weapons = player.getShip().weapons;
-	for (int i = 0; i < weapons.size() && index == -1; i++) {
-	    if (weapons.get(i).name.equalsIgnoreCase(name)) {
-		index = i;
-	    }
-	}
-	if (index == -1) {
-	    return false;
-	} else {
-	    sellWeapon(player, index);
-	    return true;
-	}
+        int index = -1;
+        ArrayList<Laser> weapons = player.getShip().weapons;
+        for (int i = 0; i < weapons.size() && index == -1; i++) {
+            if (weapons.get(i).getName().equals(name)) {
+                index = i;
+            }
+        }
+        if (index == -1) {
+            return false;
+        } else {
+            sellWeapon(player, index);
+            return true;
+        }
     }
 
     /**
@@ -222,7 +222,7 @@ public class Shipyard implements Serializable {
      *            of Shield player wants to sell
      */
     public void sellShield(Player player, int index) {
-	player.addMoney(player.getShip().removeShield(index));
+        player.addMoney(player.getShip().removeShield(index));
     }
 
     /**
@@ -232,19 +232,19 @@ public class Shipyard implements Serializable {
      * @return
      */
     public boolean sellShield(Player player, String name) {
-	int index = -1;
-	ArrayList<Shield> shields = player.getShip().shields;
-	for (int i = 0; i < shields.size() && index == -1; i++) {
-	    if (shields.get(i).name.equalsIgnoreCase(name)) {
-		index = i;
-	    }
-	}
-	if (index == -1) {
-	    return false;
-	} else {
-	    sellShield(player, index);
-	    return true;
-	}
+        int index = -1;
+        ArrayList<Shield> shields = player.getShip().shields;
+        for (int i = 0; i < shields.size() && index == -1; i++) {
+            if (shields.get(i).getName().equals(name)) {
+                index = i;
+            }
+        }
+        if (index == -1) {
+            return false;
+        } else {
+            sellShield(player, index);
+            return true;
+        }
     }
 
     /**
@@ -256,7 +256,7 @@ public class Shipyard implements Serializable {
      *            of the gadget player wants to sell
      */
     public void sellGadget(Player player, int index) {
-	player.addMoney(player.getShip().removeGadget(index));
+        player.addMoney(player.getShip().removeGadget(index));
     }
 
     /**
@@ -266,19 +266,19 @@ public class Shipyard implements Serializable {
      * @return
      */
     public boolean sellGadget(Player player, String name) {
-	int index = -1;
-	ArrayList<Shield> gadgets = player.getShip().shields;
-	for (int i = 0; i < gadgets.size() && index == -1; i++) {
-	    if (gadgets.get(i).name.equalsIgnoreCase(name)) {
-		index = i;
-	    }
-	}
-	if (index == -1) {
-	    return false;
-	} else {
-	    sellGadget(player, index);
-	    return true;
-	}
+        int index = -1;
+        ArrayList<Shield> gadgets = player.getShip().shields;
+        for (int i = 0; i < gadgets.size() && index == -1; i++) {
+            if (gadgets.get(i).getName().equals(name)) {
+                index = i;
+            }
+        }
+        if (index == -1) {
+            return false;
+        } else {
+            sellGadget(player, index);
+            return true;
+        }
     }
 
     /**
@@ -288,10 +288,10 @@ public class Shipyard implements Serializable {
      *            making transaction
      */
     public void sellInsurance(Player player) {
-	if (player.getShip().getInsurance()) {
-	    player.getShip().setInsurance(false);
-	    player.addMoney(500);
-	}
+        if (player.getShip().getInsurance()) {
+            player.getShip().setInsurance(false);
+            player.addMoney(500);
+        }
     }
 
     /**
@@ -299,14 +299,15 @@ public class Shipyard implements Serializable {
      *
      * @param player
      *            making transaction
+     * @return true if success
      */
     public boolean sellEscapePod(Player player) {
-	if (player.getShip().getEscapePod()) {
-	    player.getShip().setEscapePod(false);
-	    player.addMoney(100);
-	    return true;
-	}
-	return false;
+        if (player.getShip().getEscapePod()) {
+            player.getShip().setEscapePod(false);
+            player.addMoney(100);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -316,7 +317,7 @@ public class Shipyard implements Serializable {
      *         false
      */
     public boolean makeVisible() {
-	return (techLevel >= 4);
+        return (techLevel >= 4);
     }
 
     /**
@@ -326,19 +327,20 @@ public class Shipyard implements Serializable {
      *            whose money will pay for weapon
      * @param l
      *            the laser to buy
+     * @return 1 success 0 check -1 fail
      */
     public int buyWeapon(Player player, Laser l) {
-	Ship ship = player.getShip();
-	double cost = l.getPrice();
-	if (checkWallet(player, cost)) {
-	    if (ship.addWeapon(l)) {
-		player.subtractMoney(cost);
-		return 1;
-	    } else {
-		return 0;
-	    }
-	}
-	return -1;
+        Ship ship = player.getShip();
+        double cost = l.getPrice();
+        if (checkWallet(player, cost)) {
+            if (ship.addWeapon(l)) {
+                player.subtractMoney(cost);
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -346,23 +348,22 @@ public class Shipyard implements Serializable {
      *
      * @param player
      *            whose money will pay for defense
-     * @param s
-     * @param d
+     * @param sheild
      *            the defense to buy
-     * @return 
+     * @return 1 success 0 check -1 fail
      */
-    public int buyDefense(Player player, Shield s) {
-	Ship ship = player.getShip();
-	double cost = s.getPrice();
-	if (checkWallet(player, cost)) {
-	    if (ship.addShield(s)) {
-		player.subtractMoney(cost);
-		return 1;
-	    } else {
-		return 0;
-	    }
-	}
-	return -1;
+    public int buyDefense(Player player, Shield sheild) {
+        Ship ship = player.getShip();
+        double cost = sheild.getPrice();
+        if (checkWallet(player, cost)) {
+            if (ship.addShield(sheild)) {
+                player.subtractMoney(cost);
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -372,20 +373,20 @@ public class Shipyard implements Serializable {
      *            whose money will pay for gadget
      * @param g
      *            the gadget to buy
-     * @return 
+     * @return 1 if success 0 if needs check -1 if not
      */
     public int buyGadget(Player player, Gadget g) {
-	Ship ship = player.getShip();
-	double cost = g.getPrice();
-	if (checkWallet(player, cost)) {
-	    if (ship.addGadget(g)) {
-		player.subtractMoney(cost);
-		return 1;
-	    } else {
-		return 0;
-	    }
-	}
-	return -1;
+        Ship ship = player.getShip();
+        double cost = g.getPrice();
+        if (checkWallet(player, cost)) {
+            if (ship.addGadget(g)) {
+                player.subtractMoney(cost);
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -397,18 +398,18 @@ public class Shipyard implements Serializable {
      *         escape pod or doesn't have enough money
      */
     public int buyEscapePod(Player player) {
-	Ship ship = player.getShip();
-	double cost = 200;
-	if (checkWallet(player, cost)) {
-	    if (!(ship.getEscapePod())) {
-		ship.setEscapePod(true);
-		player.subtractMoney(cost);
-		return 1;
-	    } else {
-		return 0;
-	    }
-	}
-	return -1;
+        Ship ship = player.getShip();
+        double cost = 200;
+        if (checkWallet(player, cost)) {
+            if (!(ship.getEscapePod())) {
+                ship.setEscapePod(true);
+                player.subtractMoney(cost);
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -420,60 +421,60 @@ public class Shipyard implements Serializable {
      *         enough moolah or already has insurance
      */
     public boolean buyInsurance(Player player) {
-	Ship ship = player.getShip();
-	double cost = 750;
-	if (checkWallet(player, cost)) {
-	    if (!(ship.getInsurance())) {
-		ship.setInsurance(true);
-		player.subtractMoney(cost);
-	    }
-	}
-	return false;
+        Ship ship = player.getShip();
+        double cost = 750;
+        if (checkWallet(player, cost)) {
+            if (!(ship.getInsurance())) {
+                ship.setInsurance(true);
+                player.subtractMoney(cost);
+            }
+        }
+        return false;
     }
 
     /**
      * Lets window know whether or not to display higher level weapons
      *
-     * @return an ArrayList<Laser> of visible lasers
+     * @return an ArrayList of visible lasers
      */
     public static ArrayList<Laser> visibleWeapons() {
-	ArrayList<Laser> weapons = new ArrayList<>();
-	for (Laser l : Laser.values()) {
-	    if (l.getMinTL() <= techLevel) {
-		weapons.add(l);
-	    }
-	}
-	return weapons;
+        ArrayList<Laser> weapons = new ArrayList<>();
+        for (Laser l : Laser.values()) {
+            if (l.getMinTL() <= techLevel) {
+                weapons.add(l);
+            }
+        }
+        return weapons;
     }
 
     /**
      * Lets window know whether or not to display higher level shields
      *
-     * @return an ArrayList<Shield> of visible shields
+     * @return an ArrayList of visible shields
      */
     public static ArrayList<Shield> visibleShields() {
-	ArrayList<Shield> shields = new ArrayList<>();
-	for (Shield s : Shield.values()) {
-	    if (s.getMinTL() <= techLevel) {
-		shields.add(s);
-	    }
-	}
-	return shields;
+        ArrayList<Shield> shields = new ArrayList<>();
+        for (Shield s : Shield.values()) {
+            if (s.getMinTL() <= techLevel) {
+                shields.add(s);
+            }
+        }
+        return shields;
     }
 
     /**
      * Lets window know whether or not to display higher level gadgets
      *
-     * @return an ArrayList<Gadget> of visible gadgets
+     * @return ArrayList of visible gadgets
      */
     public static ArrayList<Gadget> visibleGadgets() {
-	ArrayList<Gadget> gadgets = new ArrayList<>();
-	for (Gadget g : Gadget.values()) {
-	    if (g.getMinTL() <= techLevel) {
-		gadgets.add(g);
-	    }
-	}
-	return gadgets;
+        ArrayList<Gadget> gadgets = new ArrayList<>();
+        for (Gadget g : Gadget.values()) {
+            if (g.getMinTL() <= techLevel) {
+                gadgets.add(g);
+            }
+        }
+        return gadgets;
     }
 
     /**
@@ -486,6 +487,6 @@ public class Shipyard implements Serializable {
      * @return
      */
     private boolean checkWallet(Player player, double price) {
-	return (price <= player.getMoney());
+        return (price <= player.getMoney());
     }
 }

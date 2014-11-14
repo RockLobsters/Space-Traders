@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package spacetrader;
 
 import java.util.ArrayList;
@@ -10,10 +10,10 @@ import java.util.Random;
 import java.io.Serializable;
 
 /**
- *
- * @author Kristen Lawrence
- */
-public class Technocracy extends PoliticalSystem implements Serializable {
+*
+* @author Kristen Lawrence
+*/
+public class Technocracy extends AbstractPoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
@@ -23,7 +23,7 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public String type() {
-	return "Technocracy";
+        return "Technocracy";
     }
 
     /**
@@ -33,7 +33,7 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double policeRate() {
-	return 0.25;
+        return 0.25;
     }
 
     /**
@@ -43,7 +43,7 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double bribeRate() {
-	return 0.25;
+        return 0.25;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-	return 0.25;
+        return 0.25;
     }
 
     /**
@@ -63,7 +63,7 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-	return 0.25;
+        return 0.25;
     }
 
     /**
@@ -73,7 +73,7 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public int[] highSupply() {
-	return new int[] { 7, 9 };
+        return new int[] { 7, 9 };
     }
 
     /**
@@ -83,7 +83,7 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public int[] highDemand() {
-	return new int[] { 0 };
+        return new int[] { 0 };
     }
 
     /**
@@ -94,28 +94,28 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public ArrayList<Good> supply() {
-	ArrayList<Good> availableSupply = new ArrayList<>();
-	availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10)
-		* rand.nextInt(20)));
-	return availableSupply;
+        ArrayList<Good> availableSupply = new ArrayList<>();
+        availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10)
+                * rand.nextInt(20)));
+        return availableSupply;
     }
 
     /**
@@ -125,17 +125,17 @@ public class Technocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public ArrayList<Good> demand() {
-	ArrayList<Good> sellable = new ArrayList<>();
-	sellable.add(new Good(GoodType.WATER, 0));
-	sellable.add(new Good(GoodType.FOOD, 0));
-	sellable.add(new Good(GoodType.FUR, 0));
-	sellable.add(new Good(GoodType.ORE, 0));
-	sellable.add(new Good(GoodType.GAMES, 0));
-	sellable.add(new Good(GoodType.FIREARMS, 0));
-	sellable.add(new Good(GoodType.MEDICINE, 0));
-	sellable.add(new Good(GoodType.MACHINES, 0));
-	sellable.add(new Good(GoodType.NARCOTICS, 0));
-	sellable.add(new Good(GoodType.ROBOTS, 0));
-	return sellable;
+        ArrayList<Good> sellable = new ArrayList<>();
+        sellable.add(new Good(GoodType.WATER, 0));
+        sellable.add(new Good(GoodType.FOOD, 0));
+        sellable.add(new Good(GoodType.FUR, 0));
+        sellable.add(new Good(GoodType.ORE, 0));
+        sellable.add(new Good(GoodType.GAMES, 0));
+        sellable.add(new Good(GoodType.FIREARMS, 0));
+        sellable.add(new Good(GoodType.MEDICINE, 0));
+        sellable.add(new Good(GoodType.MACHINES, 0));
+        sellable.add(new Good(GoodType.NARCOTICS, 0));
+        sellable.add(new Good(GoodType.ROBOTS, 0));
+        return sellable;
     }
 }

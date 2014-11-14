@@ -24,222 +24,317 @@ import java.io.Serializable;
  */
 public class Good implements Serializable {
 
-    GoodType type; // the type of good
-    int quantity;
+    /**
+     * The type of good.
+     */
+    private GoodType type;
+    /**
+     * Quantity of good.
+     */
+    private int quantity;
+    /**
+     * What it sounds like.
+     */
+    private int basePrice;
+    /**
+     * Minimum tech level needed to produce the good.
+     */
+    private int minTechLevProd;
+    /**
+     * Minimum tech level needed to use the good.
+     */
+    private int minTechLevUse;
+    /**
+     * Tech level that produces most of this good.
+     */
+    private int techLevMostProd;
+    /**
+     * Price increase per tech level.
+     */
+    private int priceInc;
+    /**
+     * Max deviation from base price.
+     */
+    private int var;
+    /**
+     * Condition in which good is cheaper.
+     */
+    private int cheapCond;
+    /**
+     * Condition in which good is more expensive.
+     */
+    private int expCond;
+    /**
+     * Min price offered in space trade with random trader.
+     */
+    private int minRandTrade;
+    /**
+     * Max price offered in space trade with random trader.
+     */
+    private int maxRandTrade;
+    /**
+     * Final price.
+     */
+    private double price;
 
-    int basePrice; // what it sounds like
-    int MTLP; // minimum tech level needed to produce the good
-    int MTLU; // minimum tech level needed to use the good
-    int TTP; // tech level that produces most of this good
-    int IPL; // price increase per tech level
-    int var; // max deviation from base price
-    int CR; // condition in which good is cheaper
-    int ER; // condiiton in which good is more expensive
-    int MTL; // min price offered in space trade with random trader
-    int MTH; // max price offered in space trade with random trader
-    double price; // final price
-
-    public Good(GoodType gType, int q) {
-	this.type = gType;
-	this.quantity = q;
-	setValues();
+    /**
+     * Good constructor.
+     * @param gType the type
+     * @param quant the quantity
+     */
+    public Good(final GoodType gType, final int quant) {
+        this.type = gType;
+        this.quantity = quant;
+        setValues();
     }
 
     /**
-     *
+     * sets the values for each good made.
      */
-    protected void setValues() {
-	switch (type) {
-	case WATER:
-	    this.basePrice = 30;
-	    this.MTLP = 0;
-	    this.MTLU = 0;
-	    this.TTP = 2;
-	    this.IPL = 3;
-	    this.var = 4;
-	    this.CR = 4;
-	    this.ER = 3;
-	    break;
+    protected final void setValues() {
+        switch (type) {
+        case WATER:
+            this.basePrice = 2 ^ 2 ^ 2 - 1;
+            this.minTechLevProd = 0;
+            this.minTechLevUse = 0;
+            this.techLevMostProd = 2;
+            this.priceInc = 2 + 1;
+            this.var = 2 + 2;
+            this.cheapCond = 2 + 2;
+            this.expCond =  2 + 1;
+            this.maxRandTrade = 10;
+            break;
 
-	case FUR:
-	    this.basePrice = 250;
-	    this.MTLP = 0;
-	    this.MTLU = 0;
-	    this.TTP = 1;
-	    this.IPL = 10;
-	    this.var = 10;
-	    this.CR = 7;
-	    this.ER = 8;
-	    break;
+        case FUR:
+            this.basePrice = 250;
+            this.minTechLevProd = 0;
+            this.minTechLevUse = 0;
+            this.techLevMostProd = 1;
+            this.priceInc = 10;
+            this.var = 10;
+            this.cheapCond = 7;
+            this.expCond = 8;
+            this.maxRandTrade = 10;
+            break;
 
-	case FOOD:
-	    this.basePrice = 100;
-	    this.MTLP = 1;
-	    this.MTLU = 0;
-	    this.TTP = 0;
-	    this.IPL = 5;
-	    this.var = 5;
-	    this.CR = 5;
-	    this.ER = 6;
-	    break;
+        case FOOD:
+            this.basePrice = 100;
+            this.minTechLevProd = 1;
+            this.minTechLevUse = 0;
+            this.techLevMostProd = 0;
+            this.priceInc = 5;
+            this.var = 5;
+            this.cheapCond = 5;
+            this.expCond = 6;
+            this.maxRandTrade = 10;
+            break;
 
-	case ORE:
-	    this.basePrice = 350;
-	    this.MTLP = 2;
-	    this.MTLU = 2;
-	    this.TTP = 3;
-	    this.IPL = 20;
-	    this.var = 10;
-	    this.CR = 1;
-	    this.ER = 2;
-	    break;
+        case ORE:
+            this.basePrice = 350;
+            this.minTechLevProd = 2;
+            this.minTechLevUse = 2;
+            this.techLevMostProd = 3;
+            this.priceInc = 20;
+            this.var = 10;
+            this.cheapCond = 1;
+            this.expCond = 2;
+            this.maxRandTrade = 10;
+            break;
 
-	case GAMES:
-	    this.basePrice = 250;
-	    this.MTLP = 3;
-	    this.MTLU = 1;
-	    this.TTP = 6;
-	    this.IPL = -10;
-	    this.var = -10;
-	    this.CR = 11;
-	    this.ER = -1;
-	    break;
+        case GAMES:
+            this.basePrice = 250;
+            this.minTechLevProd = 3;
+            this.minTechLevUse = 1;
+            this.techLevMostProd = 6;
+            this.priceInc = -10;
+            this.var = -10;
+            this.cheapCond = 11;
+            this.expCond = -1;
+            this.maxRandTrade = 10;
+            break;
 
-	case FIREARMS:
-	    this.basePrice = 1250;
-	    this.MTLP = 3;
-	    this.MTLU = 1;
-	    this.TTP = 5;
-	    this.IPL = -75;
-	    this.var = 100;
-	    this.CR = 12;
-	    this.ER = -1;
-	    break;
+        case FIREARMS:
+            this.basePrice = 1250;
+            this.minTechLevProd = 3;
+            this.minTechLevUse = 1;
+            this.techLevMostProd = 5;
+            this.priceInc = -75;
+            this.var = 100;
+            this.cheapCond = 12;
+            this.expCond = -1;
+            this.maxRandTrade = 10;
+            break;
 
-	case MEDICINE:
-	    this.basePrice = 650;
-	    this.MTLP = 4;
-	    this.MTLU = 1;
-	    this.TTP = 6;
-	    this.IPL = -20;
-	    this.var = 10;
-	    this.CR = 10;
-	    this.ER = -1;
-	    break;
+        case MEDICINE:
+            this.basePrice = 650;
+            this.minTechLevProd = 4;
+            this.minTechLevUse = 1;
+            this.techLevMostProd = 6;
+            this.priceInc = -20;
+            this.var = 10;
+            this.cheapCond = 10;
+            this.expCond = -1;
+            this.maxRandTrade = 10;
+            break;
 
-	case MACHINES:
-	    this.basePrice = 900;
-	    this.MTLP = 4;
-	    this.MTLU = 3;
-	    this.TTP = 5;
-	    this.IPL = -30;
-	    this.var = 5;
-	    this.CR = -1;
-	    this.ER = -1;
-	    break;
+        case MACHINES:
+            this.basePrice = 900;
+            this.minTechLevProd = 4;
+            this.minTechLevUse = 3;
+            this.techLevMostProd = 5;
+            this.priceInc = -30;
+            this.var = 5;
+            this.cheapCond = -1;
+            this.expCond = -1;
+            this.maxRandTrade = 10;
+            break;
 
-	case NARCOTICS:
-	    this.basePrice = 3500;
-	    this.MTLP = 5;
-	    this.MTLU = 0;
-	    this.TTP = 5;
-	    this.IPL = -125;
-	    this.var = 150;
-	    this.CR = 9;
-	    this.ER = -1;
-	    break;
+        case NARCOTICS:
+            this.basePrice = 3500;
+            this.minTechLevProd = 5;
+            this.minTechLevUse = 0;
+            this.techLevMostProd = 5;
+            this.priceInc = -125;
+            this.var = 150;
+            this.cheapCond = 9;
+            this.expCond = -1;
+            this.maxRandTrade = 10;
+            break;
 
-	case ROBOTS:
-	    this.basePrice = 5000;
-	    this.MTLP = 6;
-	    this.MTLU = 4;
-	    this.TTP = 7;
-	    this.IPL = -150;
-	    this.var = 100;
-	    this.CR = -1;
-	    this.ER = -1;
-	    break;
+        case ROBOTS:
+            this.basePrice = 5000;
+            this.minTechLevProd = 6;
+            this.minTechLevUse = 4;
+            this.techLevMostProd = 7;
+            this.priceInc = -150;
+            this.var = 100;
+            this.cheapCond = -1;
+            this.expCond = -1;
+            this.maxRandTrade = 10;
+            break;
+            default:
+                throw new AssertionError(type.name());
 
-	}
+        }
     }
 
     /**
-     *
-     * @return
+     * Getter for type.
+     * @return type
      */
-    protected GoodType getType() {
-	return type;
-    }
-
-    protected int getQuantity() {
-	return quantity;
-    }
-
-    protected void setQuantity(int newQ) {
-	this.quantity = newQ;
-    }
-
-    protected int getBasePrice() {
-	return basePrice;
+    protected final GoodType getType() {
+        return type;
     }
 
     /**
-     *
-     * @return
+     * Getter for quantity.
+     * @return quantity
      */
-    protected int getMTLP() {
-	return MTLP;
+    protected final int getQuantity() {
+        return quantity;
     }
 
     /**
-     *
-     * @return
+     * Setter for quantity.
+     * @param newQ to set
      */
-    protected int getMTLU() {
-	return MTLU;
-    }
-
-    protected int getTTP() {
-	return TTP;
+    protected final void setQuantity(final int newQ) {
+        this.quantity = newQ;
     }
 
     /**
-     *
-     * @return
+     * Getter for basePrice.
+     * @return basePrice
      */
-    protected int getIPL() {
-	return IPL;
-    }
-
-    protected int getVar() {
-	return var;
-    }
-
-    protected int getCR() {
-	return CR;
-    }
-
-    protected int getER() {
-	return ER;
-    }
-
-    protected int getMTL() {
-	return MTL;
+    protected final int getBasePrice() {
+        return basePrice;
     }
 
     /**
-     *
-     * @return
+     * Getter for minTechLevProd.
+     * @return minTechLevProd
      */
-    protected int MTH() {
-	return MTH;
+    protected final int getMinTechLevProd() {
+        return minTechLevProd;
     }
 
-    protected double getPrice() {
-	return price;
+    /**
+     * Getter for minTechLevUse.
+     * @return minTechLevUse
+     */
+    protected final int getMinTechLevUse() {
+        return minTechLevUse;
     }
 
-    protected void setPrice(double p) {
-	this.price = p;
+    /**
+     * Getter for techLevMostProd.
+     * @return techLevMostProd
+     */
+    protected final int getTechLevMostProd() {
+        return techLevMostProd;
     }
-}
+
+    /**
+     * Getter for priceInc.
+     * @return priceIncPerTechLev
+     */
+    protected final int getPriceInc() {
+        return priceInc;
+    }
+
+    /**
+     * Getter for var.
+     * @return var
+     */
+    protected final int getVar() {
+        return var;
+    }
+
+    /**
+     * Getter for cheapCond.
+     * @return cheapCond
+     */
+    protected final int getCheapCond() {
+        return cheapCond;
+    }
+
+    /**
+     * Getter for expCond.
+     * @return expCond
+     */
+    protected final int getExpCond() {
+        return expCond;
+    }
+
+    /**
+     * Getter for minRandTrade.
+     * @return minRandTrade
+     */
+    protected final int getMinRandTrade() {
+        return minRandTrade;
+    }
+
+    /**
+     * Getter for maxRandTrade.
+     * @return maxRandTrade
+     */
+    protected final int getMaxRandTrade() {
+        return maxRandTrade;
+    }
+
+    /**
+     * Getter for Price.
+     * @return price
+     */
+    protected final double getPrice() {
+        return price;
+    }
+
+    /**
+     * Setter for price.
+     * @param newPrice to set
+     */
+    protected final void setPrice(final double newPrice) {
+        this.price = newPrice;
+    }
+    }

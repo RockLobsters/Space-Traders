@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Kristen Lawrence
  */
-public class PacifistState extends PoliticalSystem implements Serializable {
+public class PacifistState extends AbstractPoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
@@ -23,7 +23,7 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public String type() {
-	return "Pacifist State";
+        return "Pacifist State";
     }
 
     /**
@@ -33,7 +33,7 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double policeRate() {
-	return 0.2;
+        return 0.2;
     }
 
     /**
@@ -43,7 +43,7 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double bribeRate() {
-	return 0.05;
+        return 0.05;
     }
 
     /**
@@ -53,7 +53,7 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-	return 0.5;
+        return 0.5;
     }
 
     /**
@@ -63,7 +63,7 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-	return 0.25;
+        return 0.25;
     }
 
     /**
@@ -73,7 +73,7 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public int[] highSupply() {
-	return new int[] { 0, 1, 2, 3 };
+        return new int[] { 0, 1, 2, 3 };
     }
 
     /**
@@ -83,7 +83,7 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public int[] highDemand() {
-	return new int[] { 0, 1, 2, 3 };
+        return new int[] { 0, 1, 2, 3 };
     }
 
     /**
@@ -94,26 +94,26 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public ArrayList<Good> supply() {
-	ArrayList<Good> availableSupply = new ArrayList<>();
-	availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10) * 1));
-	availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10) * 1));
-	return availableSupply;
+        ArrayList<Good> availableSupply = new ArrayList<>();
+        availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10) * 1));
+        availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10) * 1));
+        return availableSupply;
     }
 
     /**
@@ -123,17 +123,17 @@ public class PacifistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public ArrayList<Good> demand() {
-	ArrayList<Good> sellable = new ArrayList<>();
-	sellable.add(new Good(GoodType.WATER, 0));
-	sellable.add(new Good(GoodType.FOOD, 0));
-	sellable.add(new Good(GoodType.FUR, 0));
-	sellable.add(new Good(GoodType.ORE, 0));
-	sellable.add(new Good(GoodType.GAMES, 0));
-	// sellable.add(new Good(GoodType.FIREARMS, 0));
-	sellable.add(new Good(GoodType.MEDICINE, 0));
-	sellable.add(new Good(GoodType.MACHINES, 0));
-	// sellable.add(new Good(GoodType.NARCOTICS, 0));
-	sellable.add(new Good(GoodType.ROBOTS, 0));
-	return sellable;
+        ArrayList<Good> sellable = new ArrayList<>();
+        sellable.add(new Good(GoodType.WATER, 0));
+        sellable.add(new Good(GoodType.FOOD, 0));
+        sellable.add(new Good(GoodType.FUR, 0));
+        sellable.add(new Good(GoodType.ORE, 0));
+        sellable.add(new Good(GoodType.GAMES, 0));
+        // sellable.add(new Good(GoodType.FIREARMS, 0));
+        sellable.add(new Good(GoodType.MEDICINE, 0));
+        sellable.add(new Good(GoodType.MACHINES, 0));
+        // sellable.add(new Good(GoodType.NARCOTICS, 0));
+        sellable.add(new Good(GoodType.ROBOTS, 0));
+        return sellable;
     }
-}
+    }

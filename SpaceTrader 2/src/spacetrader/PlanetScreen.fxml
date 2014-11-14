@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.PlanetScreenController">
+    <children>
+        <ImageView fitHeight="400.0" fitWidth="623.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@planet.jpg" />
+            </image>
+        </ImageView>
+        <BorderPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="623.0">
+            <bottom>
+                <MenuBar BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button mnemonicParsing="false" onMouseClicked="#saveGame" text="SAVE">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button mnemonicParsing="false" onMouseClicked="#exit" text="EXIT">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu mnemonicParsing="false">
+                            <graphic>
+                                <Button fx:id="returnButton" mnemonicParsing="false" onMouseClicked="#returnToSystem" text="RETURN">
+                                    <effect>
+                                        <ColorAdjust brightness="-0.38" />
+                                    </effect>
+                                </Button>
+                            </graphic>
+                        </Menu>
+                        <Menu fx:id="fuelTab" mnemonicParsing="false">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                    <effect>
+                        <ColorAdjust brightness="-0.05" contrast="0.36" hue="1.0" saturation="0.43" />
+                    </effect>
+                </MenuBar>
+            </bottom>
+            <top>
+                <BorderPane prefHeight="296.0" prefWidth="623.0" BorderPane.alignment="CENTER">
+                    <bottom>
+                        <Button fx:id="marketButton" mnemonicParsing="false" onMouseClicked="#goToMarket" prefHeight="35.0" prefWidth="72.0" text="MARKET" BorderPane.alignment="CENTER" />
+                    </bottom>
+                    <left>
+                        <Button fx:id="personnelButton" mnemonicParsing="false" onMouseClicked="#goToPersonnel" text="PERSONNEL ROSTER" BorderPane.alignment="CENTER" />
+                    </left>
+                    <right>
+                        <Button fx:id="stockButton" mnemonicParsing="false" onMouseClicked="#goToStock" text="STOCK EXCHANGE" BorderPane.alignment="CENTER" />
+                    </right>
+                    <center>
+                        <Button fx:id="shipYardButton" mnemonicParsing="false" onMouseClicked="#goToShipYard" text="SHIP YARD" BorderPane.alignment="CENTER" />
+                    </center>
+                </BorderPane>
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>
