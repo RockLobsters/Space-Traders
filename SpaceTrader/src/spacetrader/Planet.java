@@ -31,31 +31,30 @@ import java.util.ArrayList;
  */
 public class Planet implements Comparable, Serializable {
     /**
-     * 
+     *
      */
     private String name;
     /**
-     * 
+     *
      */
     private int coordinateX;
     /**
-     * 
+     *
      */
     private int coordinateY;
     /**
-     * 
+     *
      */
     private int resources;
     /**
-     * 
+     *
      */
     private Market market;
     /**
-     * 
      */
     private ArrayList<Mercenary> personnelRoster;
     /**
-     * 
+     *
      */
     private SolarSystem solarSystem;
 
@@ -65,8 +64,8 @@ public class Planet implements Comparable, Serializable {
      * @param name the name of the new planet
      */
     public Planet(final String name) {
-	this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math
-		.random() * SolarSystem.SIZE_Y));
+        this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math
+                .random() * SolarSystem.SIZE_Y));
     }
 
     /**
@@ -83,12 +82,12 @@ public class Planet implements Comparable, Serializable {
      * @param maxCoordinateY
      *            the maximum of the y coordinate
      */
-    public Planet(String name, int minCoordinateX, int maxCoordinateX, 
+    public Planet(String name, int minCoordinateX, int maxCoordinateX,
             int minCoordinateY, int maxCoordinateY) {
-	this(name,
+        this(name,
                 (int) (Math.random() * (maxCoordinateX - minCoordinateX + 1)
                        + minCoordinateX),
-		(int) (Math.random() * (maxCoordinateY - minCoordinateY + 1)
+                (int) (Math.random() * (maxCoordinateY - minCoordinateY + 1)
                        + minCoordinateY));
     }
 
@@ -103,22 +102,22 @@ public class Planet implements Comparable, Serializable {
      *            the y coordinate of the new planet
      */
     public Planet(String name, int coordinateX, int coordinateY) {
-	this.name = name;
-	this.coordinateX = coordinateX;
-	this.coordinateY = coordinateY;
-	this.resources = (int) (Math.random() * 0b11001);
-	if (resources < 0) {
-	    resources = 0;
-	}
-	market = new Market(this);
-	personnelRoster = new ArrayList();
+        this.name = name;
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
+        this.resources = (int) (Math.random() * 0b11001);
+        if (resources < 0) {
+            resources = 0;
+        }
+        market = new Market(this);
+        personnelRoster = new ArrayList();
     }
 
     /**
      * @return the name
      */
     public final String getName() {
-	return name;
+        return name;
     }
 
     /**
@@ -126,14 +125,14 @@ public class Planet implements Comparable, Serializable {
      *            the name to set
      */
     public final void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
 
     /**
      * @return the coordinateX
      */
     public int getCoordinateX() {
-	return coordinateX;
+        return coordinateX;
     }
 
     /**
@@ -141,14 +140,14 @@ public class Planet implements Comparable, Serializable {
      *            the coordinateX to set
      */
     public void setCoordinateX(int coordinateX) {
-	this.coordinateX = coordinateX;
+        this.coordinateX = coordinateX;
     }
 
     /**
      * @return the coordinateY
      */
     public int getCoordinateY() {
-	return coordinateY;
+        return coordinateY;
     }
 
     /**
@@ -156,7 +155,7 @@ public class Planet implements Comparable, Serializable {
      *            the coordinateY to set
      */
     public void setCoordinateY(int coordinateY) {
-	this.coordinateY = coordinateY;
+        this.coordinateY = coordinateY;
     }
 
     /**
@@ -166,7 +165,7 @@ public class Planet implements Comparable, Serializable {
      *            The mercenary to add
      */
     public void addMercenary(Mercenary mercenary) {
-	getPersonnelRoster().add(mercenary);
+        getPersonnelRoster().add(mercenary);
     }
 
     /**
@@ -177,20 +176,20 @@ public class Planet implements Comparable, Serializable {
      * @return
      */
     public Mercenary removeMercenary(String name) {
-	Mercenary toFind = new Mercenary(name, 0);
-	for (int i = 0; i < getPersonnelRoster().size(); i++) {
-	    if (getPersonnelRoster().get(i).compareTo(toFind) == 0) {
-		return getPersonnelRoster().remove(i);
-	    }
-	}
-	return null;
+        Mercenary toFind = new Mercenary(name, 0);
+        for (int i = 0; i < getPersonnelRoster().size(); i++) {
+            if (getPersonnelRoster().get(i).compareTo(toFind) == 0) {
+                return getPersonnelRoster().remove(i);
+            }
+        }
+        return null;
     }
 
     /**
      * @return the resources
      */
     public int getResources() {
-	return resources;
+        return resources;
     }
 
     /**
@@ -198,14 +197,14 @@ public class Planet implements Comparable, Serializable {
      *            the resources to set
      */
     public void setResources(int resources) {
-	this.resources = resources;
+        this.resources = resources;
     }
 
     /**
      * @return the personnelRoster
      */
     public ArrayList<Mercenary> getPersonnelRoster() {
-	return personnelRoster;
+        return personnelRoster;
     }
 
     /**
@@ -213,14 +212,14 @@ public class Planet implements Comparable, Serializable {
      *            the personnelRoster to set
      */
     public void setPersonnelRoster(ArrayList<Mercenary> personnelRoster) {
-	this.personnelRoster = personnelRoster;
+        this.personnelRoster = personnelRoster;
     }
 
     /**
      * @return the solarSystem
      */
     public SolarSystem getSolarSystem() {
-	return solarSystem;
+        return solarSystem;
     }
 
     /**
@@ -228,8 +227,8 @@ public class Planet implements Comparable, Serializable {
      *            the solarSystem to set
      */
     public void setSolarSystem(SolarSystem solarSystem) {
-	this.solarSystem = solarSystem;
-	market.setSolarSystem(solarSystem);
+        this.solarSystem = solarSystem;
+        market.setSolarSystem(solarSystem);
     }
 
     /**
@@ -242,7 +241,7 @@ public class Planet implements Comparable, Serializable {
      */
     @Override
     public int compareTo(Object that) {
-	return this.name.compareTo(((Planet) that).getName());
+        return this.name.compareTo(((Planet) that).getName());
     }
 
     /**
@@ -252,23 +251,23 @@ public class Planet implements Comparable, Serializable {
      */
     @Override
     public String toString() {
-	String out = name + " (" + coordinateX + "," + coordinateY + ") "
-		+ resources + " ( " + market + " , [ ";
-	if (!personnelRoster.isEmpty()) {
-	    out = out + "( " + personnelRoster.get(0);
-	    for (int i = 1; i < personnelRoster.size(); i++) {
-		out = out + " ) , ( " + personnelRoster.get(i);
-	    }
-	    out = out + " ) ";
-	}
-	out = out + "] )";
-	return out;
+        String out = name + " (" + coordinateX + "," + coordinateY + ") "
+                + resources + " ( " + market + " , [ ";
+        if (!personnelRoster.isEmpty()) {
+            out = out + "( " + personnelRoster.get(0);
+            for (int i = 1; i < personnelRoster.size(); i++) {
+                out = out + " ) , ( " + personnelRoster.get(i);
+            }
+            out = out + " ) ";
+        }
+        out = out + "] )";
+        return out;
     }
 
     /**
      * @return the market
      */
     public Market getMarket() {
-	return market;
+        return market;
     }
-}
+    }

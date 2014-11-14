@@ -24,129 +24,143 @@ import java.io.Serializable;
  */
 public class Mercenary implements Comparable, Serializable {
 
-    // Name of the mercenary
-
+    /**
+     * Name of the mercenary.
+     */
     private String name;
 
-    // The attribute stats of the mercenary
+    /**
+     * The attribute stats of the mercenary.
+     */
     private int pilot;
+    /**
+     *
+     */
     private int fighter;
+    /**
+     *
+     */
     private int trader;
+    /**
+     *
+     */
     private int engineer;
+    /**
+     *
+     */
     private int investor;
 
     /**
      * The constructor for a mercenary. It takes an int and randomly allocates
      * them to different attributes.
      *
-     * @param name
+     * @param theName
      *            The name of the mercenary
-     * @param totalAttributePoints
+     * @param totalAtrbtPts
      *            The total attribute points to be allocated
      */
-    public Mercenary(String name, int totalAttributePoints) {
-	this.name = name;
-
-	int[] tmp = new int[4];
-	for (int i = 5; i > 1; i--) {
-	    tmp[5 - i] = (int) (Math.random() * (totalAttributePoints + 1) / i);
-	    totalAttributePoints -= tmp[5 - i];
-	}
-	pilot = tmp[0];
-	fighter = tmp[1];
-	trader = tmp[2];
-	engineer = tmp[3];
-	investor = totalAttributePoints;
+    public Mercenary(final String theName, int totalAtrbtPts) {
+        this.name = theName;
+        int[] tmp = new int[2 + 2];
+        for (int i = 2 + 2 + 1; i > 1; i--) {
+            tmp[2 + 2 + 1 - i] = (int) (Math.random() * (totalAtrbtPts + 1) / i);
+            totalAtrbtPts -= tmp[2 + 2 + 1 - i];
+        }
+        pilot = tmp[0];
+        fighter = tmp[1];
+        trader = tmp[2];
+        engineer = tmp[2 + 1];
+        investor = totalAtrbtPts;
     }
 
     /**
      * @return the name
      */
-    public String getName() {
-	return name;
+    public final String getName() {
+        return name;
     }
 
     /**
-     * @param name
+     * @param theName
      *            the name to set
      */
-    public void setName(String name) {
-	this.name = name;
+    public final void setName(final String theName) {
+        this.name = theName;
     }
 
     /**
      * @return the pilot
      */
-    public int getPilot() {
-	return pilot;
+    public final int getPilot() {
+        return pilot;
     }
 
     /**
-     * @param pilot
+     * @param thePilot
      *            the pilot to set
      */
-    public void setPilot(int pilot) {
-	this.pilot = pilot;
+    public final void setPilot(final int thePilot) {
+        this.pilot = thePilot;
     }
 
     /**
      * @return the fighter
      */
-    public int getFighter() {
-	return fighter;
+    public final int getFighter() {
+        return fighter;
     }
 
     /**
-     * @param fighter
+     * @param theFighter
      *            the fighter to set
      */
-    public void setFighter(int fighter) {
-	this.fighter = fighter;
+    public final void setFighter(final int theFighter) {
+        this.fighter = theFighter;
     }
 
     /**
      * @return the trader
      */
-    public int getTrader() {
-	return trader;
+    public final int getTrader() {
+        return trader;
     }
 
     /**
-     * @param trader
+     * @param theTrader
      *            the trader to set
      */
-    public void setTrader(int trader) {
-	this.trader = trader;
+    public final void setTrader(final int theTrader) {
+        this.trader = theTrader;
     }
 
     /**
      * @return the engineer
      */
-    public int getEngineer() {
-	return engineer;
+    public final int getEngineer() {
+        return engineer;
     }
 
     /**
-     * @param engineer
+     * @param theEngineer
      *            the engineer to set
      */
-    public void setEngineer(int engineer) {
-	this.engineer = engineer;
+    public final void setEngineer(final int theEngineer) {
+        this.engineer = theEngineer;
     }
 
     /**
      * @return the investor
      */
-    public int getInvestor() {
-	return investor;
+    public final int getInvestor() {
+        return investor;
     }
 
     /**
-     * @param investor
+     * @param theInvestor
      *            the investor to set
      */
-    public void setInvestor(int investor) {
-	this.investor = investor;
+    public final void setInvestor(final int theInvestor) {
+        this.investor = theInvestor;
     }
 
     /**
@@ -154,21 +168,21 @@ public class Mercenary implements Comparable, Serializable {
      *
      * @param that
      *            the mercenary to compare against
-     * @return
+     * @return number
      */
     @Override
-    public int compareTo(Object that) {
-	return this.name.compareTo(((Mercenary) that).name);
+    public final int compareTo(final Object that) {
+        return this.name.compareTo(((Mercenary) that).name);
     }
 
     /**
-     * Gives a string representation of this player
+     * Gives a string representation of this player.
      *
      * @return "name (pilot,fighter,trader,engineer,investor)"
      */
     @Override
-    public String toString() {
-	return name + " (" + pilot + "," + fighter + "," + trader + ","
-		+ engineer + "," + investor + ")";
+    public final String toString() {
+        return name + " (" + pilot + "," + fighter + "," + trader + ","
+                + engineer + "," + investor + ")";
     }
 }

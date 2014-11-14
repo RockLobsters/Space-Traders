@@ -16,27 +16,27 @@ import java.io.Serializable;
 public class Market implements Serializable {
 
     /**
-     * 
+     *
      */
     private ArrayList<Good> goods;
     /**
-     * 
+     *
      */
     private final Planet planet;
     /**
-     * 
+     *
      */
     private ArrayList<Double> prices;
 
     /**
      *
      */
-    private PoliticalSystem politicalSystem;
+    private AbstractPoliticalSystem politicalSystem;
 
     /**
      * techLevel.
      */
-    public int techLevel;
+    private int techLevel;
 
     /**
      * Constructor.
@@ -78,12 +78,12 @@ public class Market implements Serializable {
      * @return a list of the prices of the goods
      */
     public final ArrayList<Double> priceList(final ArrayList<Good> goodsList) {
-	final int siz = goodsList.size();
-	final ArrayList<Double> listP = new ArrayList();
-	for (int i = 0; i < siz; i++) {
-	    listP.add(calcPrice(goods.get(i)));
-	}
-	return listP;
+        final int siz = goodsList.size();
+        final ArrayList<Double> listP = new ArrayList();
+        for (int i = 0; i < siz; i++) {
+            listP.add(calcPrice(goods.get(i)));
+        }
+        return listP;
     }
 
     /**
@@ -93,55 +93,48 @@ public class Market implements Serializable {
      * @return the price of the good
      */
     public final double calcPrice(final Good good) {
-	final Random rand = new Random(); // for variance calculations
-	double price;
-	double variance = 100 / rand.nextInt(Math.abs(good.getVar()));
+        final Random rand = new Random(); // for variance calculations
+        double price;
+        double variance = 100 / rand.nextInt(Math.abs(good.getVar()));
         final boolean flip =  rand.nextBoolean();
-	if (flip) {
-	    variance = variance * -1; // determine plus or minus for variance
-	}
-	price = good.getBasePrice() + good.getIPL()
-		* (techLevel - good.getMTLP())
-		+ (variance * good.getBasePrice());
+        if (flip) {
+            variance = variance * -1; // determine plus or minus for variance
+        }
+        price = good.getBasePrice() + good.getPriceInc()
+                * (techLevel - good.getMinTechLevProd())
+                + (variance * good.getBasePrice());
 
-	if (planet.getResources() == good.getCR()) { // if resource condition
-						     // present on planet cut
-						     // price
-	    price = price / 2;
-	}
+        if (planet.getResources() == good.getCheapCond()) {
+            price = price / 2;
+        }
 
-	if (planet.getResources() == good.getER()) { // if rescource conditino
-						     // present on planet double
-						     // price
-	    price = price * 2;
-	}
+        if (planet.getResources() == good.getExpCond()) {
+            price = price * 2;
+        }
 
-	final int[] hiSupply = politicalSystem.highSupply();
-	if (hiSupply.length > 0) {
-	    for (int i : hiSupply) {
-		if (i == good.getType().ordinal()) {
-		    price = price / 2; // if political system has high supply of
-				       // good cut price
-		}
-	    }
-	}
+        final int[] hiSupply = politicalSystem.highSupply();
+        if (hiSupply.length > 0) {
+            for (int i : hiSupply) {
+                if (i == good.getType().ordinal()) {
+                    price = price / 2;
+                }
+            }
+        }
 
-	final int[] hiDemand = politicalSystem.highDemand();
-	if (hiDemand.length > 0) {
-	    for (int i : hiDemand) {
-		if (i == good.getType().ordinal()) {
-		    price = price * 2; // if political system has high demand of
-				       // good double price
-		}
-	    }
-	}
+        final int[] hiDemand = politicalSystem.highDemand();
+        if (hiDemand.length > 0) {
+            for (int i : hiDemand) {
+                if (i == good.getType().ordinal()) {
+                    price = price * 2;
+                }
+            }
+        }
 
-	if (techLevel == good.getTTP()) {
-	    price = price / 2; // if planet is techlevel that produces most of
-			       // this good same result as high supply
-	}
-	good.setPrice(price);
-	return price;
+        if (techLevel == good.getTechLevMostProd()) {
+            price = price / 2;
+        }
+        good.setPrice(price);
+        return price;
     }
 
     /**
@@ -153,12 +146,12 @@ public class Market implements Serializable {
     public static final boolean containsGood(final Good[] list,
             final Good good) {
         boolean out = false;
-	for (Good listItem : list) {
-	    if (listItem == good) {
-		out = true;
-	    }
-	}
-	return out;
+        for (Good listItem : list) {
+            if (listItem == good) {
+                out = true;
+            }
+        }
+        return out;
     }
 
     /**
@@ -170,12 +163,12 @@ public class Market implements Serializable {
      * @return The price of the good or -1 if the good is not found
      */
     public final double getPrice(final Good good) {
-	final int index = getIndex(good);
+        final int index = getIndex(good);
         double out = -1;
-	if (index != -1) {
-	    out = prices.get(index);
-	}
-	return out;
+        if (index != -1) {
+            out = prices.get(index);
+        }
+        return out;
     }
 
     /**
@@ -187,12 +180,12 @@ public class Market implements Serializable {
      * @return The index of the good or -1 if the good is not found
      */
     public final int getIndex(final Good good) {
-	for (int i = 0; i < goods.size(); i++) {
-	    if (good.getType() == goods.get(i).getType()) {
-		return i;
-	    }
-	}
-	return -1;
+        for (int i = 0; i < goods.size(); i++) {
+            if (good.getType() == goods.get(i).getType()) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -207,30 +200,31 @@ public class Market implements Serializable {
      */
     public final boolean canBuy(final Good good, final int quantity,
             final Player player) {
-	final int index = getIndex(good);
-	if (index == -1) {
-	    return false;
-	}
-	final Good toBuy = goods.get(index);
-	if (toBuy.getQuantity() <= 0) {
-	    return false;
-	}
-	if (toBuy.getQuantity() < quantity) {
-	    return false;
-	}
-	if (prices.get(index) * quantity > player.getMoney()) {
-	    return false;
-	}
-	if (player.getShip().getCargoBays() < player.getShip().getCargoSize()
-		+ quantity) {
-	    return false;
-	}
+        final int index = getIndex(good);
+        if (index == -1) {
+            return false;
+        }
+        final Good toBuy = goods.get(index);
+        if (toBuy.getQuantity() <= 0) {
+            return false;
+        }
+        if (toBuy.getQuantity() < quantity) {
+            return false;
+        }
+        if (prices.get(index) * quantity > player.getMoney()) {
+            return false;
+        }
+        if (player.getShip().getCargoBays() < player.getShip().getCargoSize()
+                + quantity) {
+            return false;
+        }
 
-	// tech level solar system must be equal or greater to good mtlp to buy
-	if (planet.getSolarSystem().getTechLevel() < toBuy.getMTLP()) {
-	    return false;
-	}
-	return true;
+        // tech level solar system must be equal or greater to good mtlp to buy
+        if (planet.getSolarSystem().getTechLevel()
+                < toBuy.getMinTechLevProd()) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -247,7 +241,7 @@ public class Market implements Serializable {
      */
     public final boolean buy(final Good good, final int quantity,
             final Player player) {
-	if (canBuy(good, quantity, player)) {
+        if (canBuy(good, quantity, player)) {
             final int index = getIndex(good);
             final Good newGood = goods.get(index);
             good.setQuantity(newGood.getQuantity() - quantity);
@@ -266,8 +260,8 @@ public class Market implements Serializable {
             }
             return true;
         } else {
-	    return false;
-	}
+            return false;
+        }
     }
 
     /**
@@ -282,26 +276,25 @@ public class Market implements Serializable {
      */
     public final boolean canSell(final Good good, final int quantity,
             final Player player) {
-	final ArrayList<Good> cargo = player.getShip().cargo;
-	int index = -1;
-	for (int i = 0; index == -1 && i < cargo.size(); i++) {
-	    if (cargo.get(i).getType() == good.getType()) {
-		index = i;
-	    }
-	}
-	if (index == -1) {
-	    return false;
-	}
-	final Good toSell = cargo.get(index);
-	if (toSell.getQuantity() < quantity) {
-	    return false;
-	}
-
-	// tech level solar system must be equal or greater to good mtlu to sell
-	if (planet.getSolarSystem().getTechLevel() < toSell.getMTLU()) {
-	    return false;
-	}
-	return true;
+        final ArrayList<Good> cargo = player.getShip().cargo;
+        int index = -1;
+        for (int i = 0; index == -1 && i < cargo.size(); i++) {
+            if (cargo.get(i).getType() == good.getType()) {
+                index = i;
+            }
+        }
+        if (index == -1) {
+            return false;
+        }
+        final Good toSell = cargo.get(index);
+        if (toSell.getQuantity() < quantity) {
+            return false;
+        }
+        if (planet.getSolarSystem().getTechLevel()
+                < toSell.getMinTechLevUse()) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -318,7 +311,7 @@ public class Market implements Serializable {
      */
     public final boolean sell(final Good good, final int quantity,
             final Player player) {
-	if (canSell(good, quantity, player)) {
+        if (canSell(good, quantity, player)) {
             final ArrayList<Good> cargo = player.getShip().cargo;
             int index = -1;
             for (int i = 0; index == -1 && i < cargo.size(); i++) {
@@ -337,8 +330,8 @@ public class Market implements Serializable {
                         - quantity);
             return true;
         } else {
-	    return false;
-	}
+            return false;
+        }
     }
 
     /**
@@ -354,7 +347,7 @@ public class Market implements Serializable {
      */
     public final boolean buy(final GoodType goodType,
             final int quantity, final Player player) {
-	return buy(new Good(goodType, 0), quantity, player);
+        return buy(new Good(goodType, 0), quantity, player);
     }
 
     /**
@@ -370,7 +363,7 @@ public class Market implements Serializable {
      */
     public final boolean sell(final GoodType goodType, final int quantity,
             final Player player) {
-	return sell(new Good(goodType, 0), quantity, player);
+        return sell(new Good(goodType, 0), quantity, player);
     }
 
     /**
@@ -379,6 +372,6 @@ public class Market implements Serializable {
      * @return the quantity
      */
     public final int getQuantity(final Good good) {
-	return goods.get(getIndex(good)).getQuantity();
+        return goods.get(getIndex(good)).getQuantity();
     }
 }

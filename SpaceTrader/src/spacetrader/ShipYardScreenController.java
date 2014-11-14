@@ -149,6 +149,8 @@ public class ShipYardScreenController implements Initializable {
 		    militaryLasers.setText("NOT SOLD IN THIS MARKET");
 		}
 		break;
+                default:
+                    throw new AssertionError(allWeapon.name());
 	    }
 	}
     }
@@ -174,6 +176,8 @@ public class ShipYardScreenController implements Initializable {
 		    reflectiveShield.setText("NOT SOLD IN THIS MARKET");
 		}
 		break;
+                default:
+                    throw new AssertionError(allWeapon.name());
 	    }
 	}
     }
@@ -223,6 +227,8 @@ public class ShipYardScreenController implements Initializable {
 		    cloakingDevice.setText("NOT SOLD IN THIS MARKET");
 		}
 		break;
+                default:
+                    throw new AssertionError(allGadget.name());
 	    }
 	}
     }
@@ -1374,13 +1380,13 @@ public class ShipYardScreenController implements Initializable {
 	String escapePod = "";
 	Ship ship = GameInstance.getInstance().getPlayer().getShip();
 	for (Laser x : ship.weapons) {
-	    weapons = weapons + x.name + "\n";
+	    weapons = weapons + x.getName() + "\n";
 	}
 	for (Shield x : ship.shields) {
-	    shields = shields + x.name + "\n";
+	    shields = shields + x.getName() + "\n";
 	}
 	for (Gadget x : ship.gadgets) {
-	    gadgets = gadgets + x.name + "\n";
+	    gadgets = gadgets + x.getName() + "\n";
 	}
 	if (ship.getEscapePod()) {
 	    escapePod = "Owned";

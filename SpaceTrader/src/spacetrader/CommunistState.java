@@ -10,17 +10,17 @@ import java.util.Random;
 import java.io.Serializable;
 
 /**
- * Communist State
- *
- * Strong police force, but since the police force mostly exists to suppress the
- * citizens, and people crave for illegal goods, crime is also abundant, and
- * bribes are readily accepted. The few incorruptible policemen may deal harshly
- * with traders in illegal goods, though. Industrial developments are difficult
- * to achieve under this form of government.
- *
- * @author Kristen Lawrence
- */
-public class CommunistState extends PoliticalSystem implements Serializable {
+* Communist State
+*
+* Strong police force, but since the police force mostly exists to suppress the
+* citizens, and people crave for illegal goods, crime is also abundant, and
+* bribes are readily accepted. The few incorruptible policemen may deal harshly
+* with traders in illegal goods, though. Industrial developments are difficult
+* to achieve under this form of government.
+*
+* @author Kristen Lawrence
+*/
+public class CommunistState extends AbstractPoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
@@ -30,7 +30,7 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public String type() {
-	return "Communist State";
+        return "Communist State";
     }
 
     /**
@@ -40,7 +40,7 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double policeRate() {
-	return 0.3;
+        return 0.3;
     }
 
     /**
@@ -50,7 +50,7 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double bribeRate() {
-	return 0.2;
+        return 0.2;
     }
 
     /**
@@ -60,7 +60,7 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-	return 0.25;
+        return 0.25;
     }
 
     /**
@@ -70,7 +70,7 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-	return 0.25;
+        return 0.25;
     }
 
     /**
@@ -80,7 +80,7 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public int[] highSupply() {
-	return new int[0];
+        return new int[0];
     }
 
     /**
@@ -90,7 +90,7 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public int[] highDemand() {
-	return new int[] { 5, 8 };
+        return new int[] { 5, 8 };
     }
 
     /**
@@ -101,28 +101,28 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public ArrayList<Good> supply() {
-	ArrayList<Good> availableSupply = new ArrayList<>();
-	availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10)
-		* rand.nextInt(10)));
-	availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10)
-		* rand.nextInt(10)));
-	return availableSupply;
+        ArrayList<Good> availableSupply = new ArrayList<>();
+        availableSupply.add(new Good(GoodType.WATER, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FOOD, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FUR, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.ORE, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.GAMES, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.FIREARMS, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.MEDICINE, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.MACHINES, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.NARCOTICS, rand.nextInt(10)
+                * rand.nextInt(10)));
+        availableSupply.add(new Good(GoodType.ROBOTS, rand.nextInt(10)
+                * rand.nextInt(10)));
+        return availableSupply;
     }
 
     /**
@@ -132,17 +132,17 @@ public class CommunistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public ArrayList<Good> demand() {
-	ArrayList<Good> sellable = new ArrayList<>();
-	sellable.add(new Good(GoodType.WATER, 0));
-	sellable.add(new Good(GoodType.FOOD, 0));
-	sellable.add(new Good(GoodType.FUR, 0));
-	sellable.add(new Good(GoodType.ORE, 0));
-	sellable.add(new Good(GoodType.GAMES, 0));
-	sellable.add(new Good(GoodType.FIREARMS, 0));
-	sellable.add(new Good(GoodType.MEDICINE, 0));
-	sellable.add(new Good(GoodType.MACHINES, 0));
-	sellable.add(new Good(GoodType.NARCOTICS, 0));
-	sellable.add(new Good(GoodType.ROBOTS, 0));
-	return sellable;
+        ArrayList<Good> sellable = new ArrayList<>();
+        sellable.add(new Good(GoodType.WATER, 0));
+        sellable.add(new Good(GoodType.FOOD, 0));
+        sellable.add(new Good(GoodType.FUR, 0));
+        sellable.add(new Good(GoodType.ORE, 0));
+        sellable.add(new Good(GoodType.GAMES, 0));
+        sellable.add(new Good(GoodType.FIREARMS, 0));
+        sellable.add(new Good(GoodType.MEDICINE, 0));
+        sellable.add(new Good(GoodType.MACHINES, 0));
+        sellable.add(new Good(GoodType.NARCOTICS, 0));
+        sellable.add(new Good(GoodType.ROBOTS, 0));
+        return sellable;
     }
 }

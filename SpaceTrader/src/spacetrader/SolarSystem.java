@@ -25,105 +25,131 @@ import java.io.Serializable;
  */
 class SolarSystem implements Serializable {
 
+    /**
+     *
+     */
     private String name;
+    /**
+     *
+     */
     private ArrayList<Planet> planets;
-    private PoliticalSystem politicalSystem;
+    /**
+     *
+     */
+    private AbstractPoliticalSystem politicalSystem;
+    /**
+     *
+     */
     private int techLevel;
-
+    /**
+     *
+     */
     public static final int SIZE_X = 50;
+    /**
+     *
+     */
     public static final int SIZE_Y = 50;
-
-    public SolarSystem(String name, PoliticalSystem politicalSystem,
-	    int techLevel) {
-	this.name = name;
-	planets = new ArrayList();
-	this.politicalSystem = politicalSystem;
-	this.techLevel = techLevel;
+    /**
+     *
+     * @param theName name
+     * @param thePoliticalSystem ps
+     * @param theTechLevel tech Level
+     */
+    public SolarSystem(final String theName,
+            final AbstractPoliticalSystem thePoliticalSystem,
+            final int theTechLevel) {
+        this.name = theName;
+        planets = new ArrayList();
+        this.politicalSystem = thePoliticalSystem;
+        this.techLevel = theTechLevel;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return name;
+        return name;
     }
 
     /**
-     * @param name
+     * @param theName
      *            the name to set
      */
-    public void setName(String name) {
-	this.name = name;
+    public final void setName(final String theName) {
+        this.name = theName;
     }
 
     /**
-     * Add a planet to the SolarSystem
+     * Add a planet to the SolarSystem.
      *
-     * @param planet
+     * @param thePlanet
      *            the planet to add
      */
-    public void addPlanet(Planet planet) {
-	planets.add(planet);
+    public final void addPlanet(final Planet thePlanet) {
+        planets.add(thePlanet);
     }
 
     /**
      * @return the planets
      */
-    public ArrayList<Planet> getPlanets() {
-	return planets;
+    public final ArrayList<Planet> getPlanets() {
+        return planets;
     }
 
     /**
-     * @param planets
+     * @param thePlanets
      *            the planets to set
      */
-    public void setPlanets(ArrayList<Planet> planets) {
-	this.planets = planets;
+    public final void setPlanets(final ArrayList<Planet> thePlanets) {
+        this.planets = thePlanets;
     }
 
     /**
      * @return the techLevel
      */
     public int getTechLevel() {
-	return techLevel;
+        return techLevel;
     }
 
     /**
-     * @param techLevel
+     * @param theTechLevel
      *            the techLevel to set
      */
-    public void setTechLevel(int techLevel) {
-	this.techLevel = techLevel;
+    public final void setTechLevel(final int theTechLevel) {
+        this.techLevel = theTechLevel;
     }
 
     @Override
-    public String toString() {
-	String out = name + " ( " + getPoliticalSystem() + " " + techLevel
-		+ " ) [ ";
-	if (!planets.isEmpty()) {
-	    out = out + "( " + planets.get(0);
-	    for (int i = 1; i < planets.size(); i++) {
-		out = out + " ) , ( " + planets.get(i);
-	    }
-	    out = out + " ) ";
-	}
-	out = out + "]";
-	return out;
+    /**
+     *
+     */
+    public final  String toString() {
+        String out = name + " ( " + getPoliticalSystem() + " " + techLevel
+                + " ) [ ";
+        if (!planets.isEmpty()) {
+            out = out + "( " + planets.get(0);
+            for (int i = 1; i < planets.size(); i++) {
+                out = out + " ) , ( " + planets.get(i);
+            }
+            out = out + " ) ";
+        }
+        out = out + "]";
+        return out;
 
     }
 
     /**
      * @return the politicalSystem
      */
-    public PoliticalSystem getPoliticalSystem() {
-	return politicalSystem;
+    public AbstractPoliticalSystem getPoliticalSystem() {
+        return politicalSystem;
     }
 
     /**
-     * @param politicalSystem
+     * @param ps
      *            the politicalSystem to set
      */
-    public void setPoliticalSystem(PoliticalSystem politicalSystem) {
-	this.politicalSystem = politicalSystem;
+    public final void setPoliticalSystem(final AbstractPoliticalSystem ps) {
+        this.politicalSystem = ps;
     }
 }
