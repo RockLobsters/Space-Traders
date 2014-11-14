@@ -23,7 +23,7 @@ public class Dictatorship extends PoliticalSystem implements Serializable {
      */
     @Override
     public String type() {
-	return "Dictatorship";
+        return "Dictatorship";
     }
 
     /**

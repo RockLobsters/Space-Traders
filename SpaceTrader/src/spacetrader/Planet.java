@@ -30,28 +30,47 @@ import java.util.ArrayList;
  * @author Addison Amiri
  */
 public class Planet implements Comparable, Serializable {
-
+    /**
+     * 
+     */
     private String name;
+    /**
+     * 
+     */
     private int coordinateX;
+    /**
+     * 
+     */
     private int coordinateY;
+    /**
+     * 
+     */
     private int resources;
+    /**
+     * 
+     */
     private Market market;
+    /**
+     * 
+     */
     private ArrayList<Mercenary> personnelRoster;
+    /**
+     * 
+     */
     private SolarSystem solarSystem;
 
     /**
-     * Creates a planet with random coordinates
+     * Creates a planet with random coordinates.
      *
-     * @param name
-     *            the name of the new planet
+     * @param name the name of the new planet
      */
-    public Planet(String name) {
+    public Planet(final String name) {
 	this(name, (int) (Math.random() * SolarSystem.SIZE_X), (int) (Math
 		.random() * SolarSystem.SIZE_Y));
     }
 
     /**
-     * Creates a planet with random coordinates inbetween the given limits
+     * Creates a planet with random coordinates in between the given limits.
      *
      * @param name
      *            the name of the new planet
@@ -64,12 +83,13 @@ public class Planet implements Comparable, Serializable {
      * @param maxCoordinateY
      *            the maximum of the y coordinate
      */
-    public Planet(String name, int minCoordinateX, int maxCoordinateX,
-	    int minCoordinateY, int maxCoordinateY) {
-	this(
-		name,
-		(int) (Math.random() * (maxCoordinateX - minCoordinateX + 1) + minCoordinateX),
-		(int) (Math.random() * (maxCoordinateY - minCoordinateY + 1) + minCoordinateY));
+    public Planet(String name, int minCoordinateX, int maxCoordinateX, 
+            int minCoordinateY, int maxCoordinateY) {
+	this(name,
+                (int) (Math.random() * (maxCoordinateX - minCoordinateX + 1)
+                       + minCoordinateX),
+		(int) (Math.random() * (maxCoordinateY - minCoordinateY + 1)
+                       + minCoordinateY));
     }
 
     /**
@@ -86,7 +106,7 @@ public class Planet implements Comparable, Serializable {
 	this.name = name;
 	this.coordinateX = coordinateX;
 	this.coordinateY = coordinateY;
-	this.resources = (int) (Math.random() * 25);
+	this.resources = (int) (Math.random() * 0b11001);
 	if (resources < 0) {
 	    resources = 0;
 	}
@@ -97,7 +117,7 @@ public class Planet implements Comparable, Serializable {
     /**
      * @return the name
      */
-    public String getName() {
+    public final String getName() {
 	return name;
     }
 
@@ -105,7 +125,7 @@ public class Planet implements Comparable, Serializable {
      * @param name
      *            the name to set
      */
-    public void setName(String name) {
+    public final void setName(String name) {
 	this.name = name;
     }
 

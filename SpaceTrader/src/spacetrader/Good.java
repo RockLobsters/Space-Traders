@@ -24,41 +24,85 @@ import java.io.Serializable;
  */
 public class Good implements Serializable {
 
-    GoodType type; // the type of good
-    int quantity;
+    /**
+     * The type of good.
+     */
+    private GoodType type; 
+    /**
+     * Quantity of good.
+     */
+    private int quantity;
+    /**
+     * What it sounds like.
+     */
+    private int basePrice;
+    /**
+     * Minimum tech level needed to produce the good.
+     */
+    private int MTLP; 
+    /**
+     * Minimum tech level needed to use the good.
+     */
+    private int MTLU;
+    /**
+     * Tech level that produces most of this good.
+     */
+    private int TTP;
+    /**
+     * Price increase per tech level.
+     */
+    private int IPL;
+    /**
+     * Max deviation from base price.
+     */
+    private int var;
+    /**
+     * Condition in which good is cheaper.
+     */
+    private int CR;
+    /**
+     * Condition in which good is more expensive.
+     */
+    private int ER;
+    /**
+     * Min price offered in space trade with random trader.
+     */
+    private int MTL;
+    /**
+     * Max price offered in space trade with random trader.
+     */
+    private int maxRandTrade;
+    /**
+     * Final price.
+     */
+    private double price;
 
-    int basePrice; // what it sounds like
-    int MTLP; // minimum tech level needed to produce the good
-    int MTLU; // minimum tech level needed to use the good
-    int TTP; // tech level that produces most of this good
-    int IPL; // price increase per tech level
-    int var; // max deviation from base price
-    int CR; // condition in which good is cheaper
-    int ER; // condiiton in which good is more expensive
-    int MTL; // min price offered in space trade with random trader
-    int MTH; // max price offered in space trade with random trader
-    double price; // final price
-
-    public Good(GoodType gType, int q) {
-	this.type = gType;
-	this.quantity = q;
-	setValues();
+    /**
+     * Good constructor.
+     * @param gType the type
+     * @param quant the quantity
+     */
+    public Good(final GoodType gType, final int quant) {
+        this.type = gType;
+        this.quantity = quant;
+        setValues();
     }
 
     /**
-     *
+     * sets the values for each good made.
      */
-    protected void setValues() {
+    protected final void setValues() {
 	switch (type) {
 	case WATER:
-	    this.basePrice = 30;
+	    this.basePrice = 2 ^ 2 ^ 2 - 1;
 	    this.MTLP = 0;
 	    this.MTLU = 0;
 	    this.TTP = 2;
-	    this.IPL = 3;
-	    this.var = 4;
-	    this.CR = 4;
-	    this.ER = 3;
+	    this.IPL = 2 + 1;
+	    this.var = 2 + 2;
+	    this.CR = 2 + 2;
+	    this.ER =  2 + 1;
+            this.maxRandTrade = 10;
 	    break;
 
 	case FUR:
@@ -70,6 +114,7 @@ public class Good implements Serializable {
 	    this.var = 10;
 	    this.CR = 7;
 	    this.ER = 8;
+            this.maxRandTrade = 10;
 	    break;
 
 	case FOOD:
@@ -81,6 +126,7 @@ public class Good implements Serializable {
 	    this.var = 5;
 	    this.CR = 5;
 	    this.ER = 6;
+            this.maxRandTrade = 10;
 	    break;
 
 	case ORE:
@@ -92,6 +138,7 @@ public class Good implements Serializable {
 	    this.var = 10;
 	    this.CR = 1;
 	    this.ER = 2;
+            this.maxRandTrade = 10;
 	    break;
 
 	case GAMES:
@@ -103,6 +150,7 @@ public class Good implements Serializable {
 	    this.var = -10;
 	    this.CR = 11;
 	    this.ER = -1;
+            this.maxRandTrade = 10;
 	    break;
 
 	case FIREARMS:
@@ -114,6 +162,7 @@ public class Good implements Serializable {
 	    this.var = 100;
 	    this.CR = 12;
 	    this.ER = -1;
+            this.maxRandTrade = 10;
 	    break;
 
 	case MEDICINE:
@@ -125,6 +174,7 @@ public class Good implements Serializable {
 	    this.var = 10;
 	    this.CR = 10;
 	    this.ER = -1;
+            this.maxRandTrade = 10;
 	    break;
 
 	case MACHINES:
@@ -136,6 +186,7 @@ public class Good implements Serializable {
 	    this.var = 5;
 	    this.CR = -1;
 	    this.ER = -1;
+            this.maxRandTrade = 10;
 	    break;
 
 	case NARCOTICS:
@@ -147,6 +198,7 @@ public class Good implements Serializable {
 	    this.var = 150;
 	    this.CR = 9;
 	    this.ER = -1;
+            this.maxRandTrade = 10;
 	    break;
 
 	case ROBOTS:
@@ -158,88 +210,131 @@ public class Good implements Serializable {
 	    this.var = 100;
 	    this.CR = -1;
 	    this.ER = -1;
+            this.maxRandTrade = 10;
 	    break;
+            default:
+                throw new AssertionError(type.name());
 
 	}
     }
 
     /**
-     *
-     * @return
+     * Getter for type.
+     * @return type
      */
-    protected GoodType getType() {
+    protected final GoodType getType() {
 	return type;
     }
 
-    protected int getQuantity() {
+    /**
+     * Getter for quantity.
+     * @return quantity
+     */
+    protected final int getQuantity() {
 	return quantity;
     }
 
-    protected void setQuantity(int newQ) {
+    /**
+     * Setter for quantity.
+     * @param newQ to set
+     */
+    protected final void setQuantity(final int newQ) {
 	this.quantity = newQ;
     }
 
-    protected int getBasePrice() {
+    /**
+     * Getter for basePrice.
+     * @return basePrice
+     */
+    protected final int getBasePrice() {
 	return basePrice;
     }
 
     /**
-     *
-     * @return
+     * Getter for MTLP.
+     * @return MTLP
      */
-    protected int getMTLP() {
+    protected final int getMTLP() {
 	return MTLP;
     }
 
     /**
-     *
-     * @return
+     * Getter for MTLU.
+     * @return MTLU
      */
-    protected int getMTLU() {
+    protected final int getMTLU() {
 	return MTLU;
     }
 
-    protected int getTTP() {
+    /**
+     * Getter for TTP.
+     * @return TTP
+     */
+    protected final int getTTP() {
 	return TTP;
     }
 
     /**
-     *
-     * @return
+     * Getter for IPL.
+     * @return IPL
      */
-    protected int getIPL() {
+    protected final int getIPL() {
 	return IPL;
     }
 
-    protected int getVar() {
+    /**
+     * Getter for var.
+     * @return var
+     */
+    protected final int getVar() {
 	return var;
     }
 
-    protected int getCR() {
+    /**
+     * Getter for CR.
+     * @return CR
+     */
+    protected final int getCR() {
 	return CR;
     }
 
-    protected int getER() {
+    /**
+     * Getter for ER.
+     * @return ER
+     */
+    protected final int getER() {
 	return ER;
     }
 
-    protected int getMTL() {
+    /**
+     * Getter for MTL.
+     * @return MTL
+     */
+    protected final int getMTL() {
 	return MTL;
     }
 
     /**
-     *
-     * @return
+     * Getter for maxRandTrade.
+     * @return maxRandTrade
      */
-    protected int MTH() {
-	return MTH;
+    protected final int getMaxRandTrade() {
+	return maxRandTrade;
     }
 
-    protected double getPrice() {
+    /**
+     * Getter for Price.
+     * @return price
+     */
+    protected final double getPrice() {
 	return price;
     }
 
-    protected void setPrice(double p) {
-	this.price = p;
+    /**
+     * Setter for price.
+     * @param newPrice to set
+     */
+    protected final void setPrice(final double newPrice) {
+	this.price = newPrice;
     }
 }

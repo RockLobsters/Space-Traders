@@ -15,20 +15,21 @@ import java.io.Serializable;
 public class Universe extends ArrayList<SolarSystem> implements Serializable {
 
     @Override
-    public String toString() {
-	if (!this.isEmpty()) {
-	    String out = "[ ( " + this.get(0).toString();
-	    for (int i = 1; i < this.size(); i++) {
-		out = out + " ) ,\n  ( " + this.get(i).toString();
-	    }
-	    out = out + " ) ]";
-	    return out;
-	} else {
-	    return "";
+    public final String toString() {
+        String out;
+	if (this.isEmpty()) {
+            out = "";
+        } else {
+            out = "[ ( " + this.get(0).toString();
+            for (int i = 1; i < this.size(); i++) {
+                out = out + " ) ,\n  ( " + this.get(i).toString();
+            }
+            out = out + " ) ]";
 	}
+        return out;
     }
 
-    public void bigBang() {
+    public final void bigBang() {
 	// ...::: Put the instantiation code here :::...
 	SolarSystem aSystem = new SolarSystem("Atlantia",
 		new CapitalistState(), 6);

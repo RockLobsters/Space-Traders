@@ -21,7 +21,9 @@ package spacetrader;
  * @author Addison Amiri
  */
 public class Firefly extends Ship {
-
+    /**
+     *
+     */
     public static final String NAME = "Firefly";
 
     /**
@@ -46,9 +48,18 @@ public class Firefly extends Ship {
      *
      */
     public static final int FUEL_CAPACITY = 17;
+    /**
+     *
+     */
     public static final int FUEL_COST = 3;
+    /**
+     *
+     */
     public static final int BASE_PRICE = 25000;
 
+    /**
+     *
+     */
     public Firefly() {
 	super(NAME, HULL_STRENGTH, CARGO_BAYS, WEAPON_SLOTS, SHIELD_SLOTS,
 		GADGET_SLOTS, CREW_QUARTERS, FUEL_CAPACITY, FUEL_COST,

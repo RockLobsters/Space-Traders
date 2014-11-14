@@ -18,11 +18,11 @@ import javafx.stage.Stage;
 public class SpaceTrader extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-	Parent root = FXMLLoader
+    public final void start(final Stage stage) throws Exception {
+	final Parent root = FXMLLoader
 		.load(getClass().getResource("RootWindow.fxml"));
 
-	Scene scene = new Scene(root);
+	final Scene scene = new Scene(root);
 
 	stage.setScene(scene);
 	stage.show();
@@ -32,7 +32,7 @@ public class SpaceTrader extends Application {
      * @param args
      *            the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	launch(args);
     }
 
