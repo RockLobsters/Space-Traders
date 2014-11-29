@@ -16,20 +16,10 @@
  */
 package spacetrader;
 
-
-
 /**
  *
  * @author Kristen Lawrence
  */
-public interface nonPlayer {
-    public Ship ship();
-    public String type();
-    public boolean attack();
-    public boolean sell();
-    public boolean buy(Good good);
-    public boolean bribe();
-    public boolean flee();
+public class RandomEncounter {
     
 }
-

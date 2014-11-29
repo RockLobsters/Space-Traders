@@ -22,20 +22,21 @@ import java.util.Random;
  *
  * @author Kristen Lawrence
  */
-public class Pirate implements nonPlayer {
+public class Pirate implements EncounterState {
     Player player;
     SolarSystem ss;
     PoliticalSystem ps;
     Ship ship;
     int techLevel;
     Random rand = new Random();
+    ShipFactory sf = new ShipFactory();
     
     public Pirate(Player player, SolarSystem ss) {
         this.player = player;
         this.ss = ss;
         this.ps = ss.getPoliticalSystem();
         this.techLevel = ss.getTechLevel();
-        this.ship = new Flea();
+        this.ship = this.ship = sf.generateShip("PIRATE", ss);
     }
     
     @Override
@@ -45,7 +46,7 @@ public class Pirate implements nonPlayer {
     }
     
     @Override
-    public boolean bribe() {
+    public boolean bribe(boolean check) {
         return false;
     }
 
@@ -69,12 +70,13 @@ public class Pirate implements nonPlayer {
         return ship;
     }
     
+    @Override
     public void takeHit(int hitPoints) {
         ship.setHealth(hitPoints);
     }
 
     @Override
     public String type() {
-        return "Pirate";
+        return "Pirate Ship";
     }
 }

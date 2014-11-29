@@ -24,7 +24,7 @@ public class Flea extends Ship {
 
     public static final String NAME = "Flea";
     public static final int HULL_STRENGTH = 10;
-    public static final int CARGO_BAYS = 5;
+    public static final int CARGO_BAYS = 10;
     public static final int WEAPON_SLOTS = 0;
     public static final int SHIELD_SLOTS = 0;
     public static final int GADGET_SLOTS = 0;

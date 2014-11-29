@@ -22,7 +22,7 @@ import java.util.Random;
  *
  * @author Kristen Lawrence
  */
-public class Police implements nonPlayer {
+public class Police implements EncounterState {
     Player player;
     SolarSystem ss;
     PoliticalSystem ps;
@@ -30,13 +30,14 @@ public class Police implements nonPlayer {
     int techLevel;
     boolean corrupt = false;
     Random rand = new Random();
+    ShipFactory sf = new ShipFactory();
     
     public Police(Player player, SolarSystem ss) {
         this.player = player;
         this.ss = ss;
         this.ps = ss.getPoliticalSystem();
         this.techLevel = ss.getTechLevel();
-        this.ship = new Flea();
+        this.ship = this.ship = sf.generateShip("POLICE", ss);
         if (rand.nextDouble() <= ps.bribeRate()) {
             corrupt = true;
         }
@@ -53,7 +54,7 @@ public class Police implements nonPlayer {
     }
     
     @Override
-    public boolean bribe() {
+    public boolean bribe(boolean check) {
         if (corrupt) {
             if (player.getMoney() >= bribeCost()) 
                 player.subtractMoney(bribeCost());
@@ -82,12 +83,13 @@ public class Police implements nonPlayer {
         return ship;
     }
     
+    @Override
     public void takeHit(int hitPoints) {
         ship.setHealth(hitPoints);
     }
 
     @Override
     public String type() {
-        return "Police";
+        return "Police Ship";
     }
 }

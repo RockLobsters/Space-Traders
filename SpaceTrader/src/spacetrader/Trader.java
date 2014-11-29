@@ -23,7 +23,7 @@ import java.util.Random;
  *
  * @author Kristen Lawrence
  */
-public class Trader implements nonPlayer{
+public class Trader implements EncounterState{
     Player player;
     SolarSystem ss;
     PoliticalSystem ps;
@@ -31,13 +31,14 @@ public class Trader implements nonPlayer{
     int techLevel;
     boolean fence = false;
     Random rand = new Random();
+    ShipFactory sf = new ShipFactory();
     
     public Trader(Player player, SolarSystem ss) {
         this.player = player;
         this.ss = ss;
         this.ps = ss.getPoliticalSystem();
         this.techLevel = ss.getTechLevel();
-        this.ship = new Flea();
+        this.ship = sf.generateShip("TRADER", ss);
         if (rand.nextDouble() <= ps.illegalTradeRate())
             fence = true;
     }   
@@ -48,8 +49,13 @@ public class Trader implements nonPlayer{
     }
 
     @Override
-    public boolean bribe() {
+    public boolean bribe(boolean check) {
         return false;
+    }
+
+    @Override
+    public void takeHit(int hitPoints) {
+        ship.setHealth(hitPoints);
     }
 
     public ArrayList<Good> tradeCargo() {
@@ -66,7 +72,7 @@ public class Trader implements nonPlayer{
 
     @Override
     public boolean flee() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rand.nextBoolean();
     }
 
     @Override
@@ -76,12 +82,15 @@ public class Trader implements nonPlayer{
 
     @Override
     public Ship ship() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ship;
     }
 
     @Override
     public String type() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Trader Joe's Ship";
     }
     
+    public boolean isDead() {
+        return ship.getHealth() > 0;
+    }
 }
