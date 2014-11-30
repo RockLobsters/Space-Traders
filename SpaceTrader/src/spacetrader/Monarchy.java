@@ -17,6 +17,11 @@ public class Monarchy extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return .2;
+    }
+
     /**
      *
      * @return string of government type name
@@ -33,7 +38,7 @@ public class Monarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double policeRate() {
-        return 0.25;
+        return 0.2;
     }
 
     /**
@@ -43,7 +48,7 @@ public class Monarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double bribeRate() {
-        return 0.25;
+        return 0.2;
     }
 
     /**
@@ -53,7 +58,7 @@ public class Monarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-        return 0.25;
+        return 0.2;
     }
 
     /**
@@ -63,7 +68,7 @@ public class Monarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-        return 0.25;
+        return 0.2;
     }
 
     /**

@@ -23,6 +23,11 @@ public class CapitalistState extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return .1;
+    }
+
     /**
      *
      * @return string of government type name
@@ -59,7 +64,7 @@ public class CapitalistState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-        return 0.5;
+        return 0.4;
     }
 
     /**

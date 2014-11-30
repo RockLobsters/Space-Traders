@@ -17,6 +17,11 @@ public class FeudalState extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return .3;
+    }
+
     /**
      *
      * @return string of government type name
@@ -43,7 +48,7 @@ public class FeudalState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double bribeRate() {
-        return 0.25;
+        return 0.15;
     }
 
     /**
@@ -53,7 +58,7 @@ public class FeudalState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-        return 0.35;
+        return 0.25;
     }
 
     /**
@@ -63,7 +68,7 @@ public class FeudalState extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-        return 0.3;
+        return 0.25;
     }
 
     /**

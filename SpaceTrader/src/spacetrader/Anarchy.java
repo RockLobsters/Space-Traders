@@ -22,6 +22,11 @@ public class Anarchy extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return .34;
+    }
+
     /**
      *
      * @return string of government type name
@@ -58,7 +63,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-        return 0.5;
+        return 0.33;
     }
 
     /**
@@ -68,7 +73,7 @@ public class Anarchy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-        return 0.5;
+        return 0.33;
     }
 
     /**

@@ -16,10 +16,61 @@
  */
 package spacetrader;
 
+import java.util.Random;
+
 /**
  *
  * @author Kristen Lawrence
  */
 public class RandomEncounter {
     
+    Player player;
+    Ship playerShip;
+    NonPlayer np;
+    String npKey;
+    Ship otherShip;
+    SolarSystem ss;
+    int tl;
+    PoliticalSystem ps;
+    Random rand = new Random();
+    
+    public RandomEncounter(Player player, SolarSystem ss) {
+        this.player = player;
+        this.playerShip = player.getShip();
+        this.ss = ss;
+        this.tl = ss.getTechLevel();
+        this.ps = ss.getPoliticalSystem();
+        double polRate = ps.bribeRate() + ps.policeRate();
+        double tradeRate = ps.illegalTradeRate() + ps.traderRate();
+        double pirateRate = ps.pirateRate();
+        if (rand.nextDouble() <= polRate) {
+            this.np = new Police(player, ss);
+            otherShip = np.ship;
+        } else if (rand.nextDouble() <= tradeRate) {
+            this.np = new Trader(player,ss);
+            otherShip = np.ship;
+        } else if (rand.nextDouble() <= pirateRate) {
+            this.np = new Pirate(player,ss);
+            otherShip = np.ship;
+        } else {
+            this.np = null;
+            otherShip = null;
+        }
+    }
+    
+    void Battle() {
+        while(np.)
+    }
+    
+    void Trade() {
+        
+    }
+    
+    void Flee() {
+        
+    }
+    
+    void Bribe() {
+        
+    }
 }

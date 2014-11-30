@@ -17,6 +17,11 @@ public class MilitaryState extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return 0;
+    }
+
     /**
      *
      * @return string of government type name

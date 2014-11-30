@@ -17,6 +17,11 @@ public class Dictatorship extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return 0.1;
+    }
+
     /**
      *
      * @return string of government type name
@@ -33,7 +38,7 @@ public class Dictatorship extends PoliticalSystem implements Serializable {
      */
     @Override
     public double policeRate() {
-        return 0.35;
+        return 0.3;
     }
 
     /**
@@ -43,7 +48,7 @@ public class Dictatorship extends PoliticalSystem implements Serializable {
      */
     @Override
     public double bribeRate() {
-        return 0.35;
+        return 0.3;
     }
 
     /**

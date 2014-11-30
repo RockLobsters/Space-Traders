@@ -22,17 +22,44 @@ import java.util.Random;
  *
  * @author Kristen Lawrence
  */
-public class Pirate extends NonPlayer {
+class NonPlayer {
+    
     Player player;
     SolarSystem ss;
     PoliticalSystem ps;
     Ship ship;
     int techLevel;
-    ShipFactory sf = new ShipFactory();
+    Random rand = new Random();
     
-    public Pirate(Player player, SolarSystem ss) {
-        super(player, ss);
-        this.ship = this.ship = sf.generateShip("PIRATE", ss);
+    public NonPlayer(Player player, SolarSystem ss) {
+        this.player = player;
+        this.ss = ss;
+        this.ps = ss.getPoliticalSystem();
+        this.techLevel = ss.getTechLevel();
     }
     
+    public boolean attack() {
+        return false;
+    }
+    public boolean bribe(boolean check) {
+        return false;
+    }
+    public boolean buyFrom(Good good, int quantity) {
+        return false;
+    }
+    public boolean flee() {
+        return rand.nextBoolean();
+    }
+    public boolean sellTo(Good good, int quantity) {
+        return false;
+    }
+    public Ship ship() {
+        return ship;
+    }
+    public void takeHit(int hitPoints) {
+        ship.setHealth(hitPoints);
+    }
+    public boolean isDead() {
+        return ship.getHealth() > 0;
+    }
 }

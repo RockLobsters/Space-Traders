@@ -17,6 +17,11 @@ public class Democracy extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return .1;
+    }
+
     /**
      *
      * @return string of government type name
@@ -63,7 +68,7 @@ public class Democracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-        return 0.35;
+        return 0.25;
     }
 
     /**

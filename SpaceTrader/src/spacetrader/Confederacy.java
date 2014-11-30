@@ -17,6 +17,11 @@ public class Confederacy extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return .1;
+    }
+
     /**
      *
      * @return string of government type name
@@ -33,7 +38,7 @@ public class Confederacy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double policeRate() {
-        return .35;
+        return .3;
     }
 
     /**
@@ -53,7 +58,7 @@ public class Confederacy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-        return 0.65;
+        return 0.6;
     }
 
     /**

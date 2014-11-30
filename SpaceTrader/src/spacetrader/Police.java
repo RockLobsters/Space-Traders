@@ -18,11 +18,12 @@ package spacetrader;
 
 import java.util.Random;
 
-/**ncounter
+/**
+ * Random Encounter
  *
  * @author Kristen Lawrence
  */
-public class Police implements EncounterState {
+public class Police extends NonPlayer {
     Player player;
     SolarSystem ss;
     PoliticalSystem ps;
@@ -33,63 +34,10 @@ public class Police implements EncounterState {
     ShipFactory sf = new ShipFactory();
     
     public Police(Player player, SolarSystem ss) {
-        this.player = player;
-        this.ss = ss;
-        this.ps = ss.getPoliticalSystem();
-        this.techLevel = ss.getTechLevel();
+        super(player, ss);
         this.ship = this.ship = sf.generateShip("POLICE", ss);
         if (rand.nextDouble() <= ps.bribeRate()) {
             corrupt = true;
         }
-    }
-    
-    @Override
-    public boolean attack() {
-        player.getShip().setHealth(-10);
-        return true;
-    }
-
-    public double bribeCost() {
-        return ps.bribeRate() * 100;
-    }
-    
-    @Override
-    public boolean bribe(boolean check) {
-        if (corrupt) {
-            if (player.getMoney() >= bribeCost()) 
-                player.subtractMoney(bribeCost());
-        } else
-            return false;
-        return true;
-    }
-
-    @Override
-    public boolean buy(Good good) {
-        return false;
-    }
-
-    @Override
-    public boolean flee() {
-        return rand.nextBoolean();
-    }
-
-    @Override
-    public boolean sell() {
-        return false;
-    }
-
-    @Override
-    public Ship ship() {
-        return ship;
-    }
-    
-    @Override
-    public void takeHit(int hitPoints) {
-        ship.setHealth(hitPoints);
-    }
-
-    @Override
-    public String type() {
-        return "Police Ship";
     }
 }

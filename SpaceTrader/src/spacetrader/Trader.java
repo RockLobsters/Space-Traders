@@ -23,7 +23,7 @@ import java.util.Random;
  *
  * @author Kristen Lawrence
  */
-public class Trader implements EncounterState{
+public class Trader extends NonPlayer {
     Player player;
     SolarSystem ss;
     PoliticalSystem ps;
@@ -34,63 +34,39 @@ public class Trader implements EncounterState{
     ShipFactory sf = new ShipFactory();
     
     public Trader(Player player, SolarSystem ss) {
-        this.player = player;
-        this.ss = ss;
-        this.ps = ss.getPoliticalSystem();
-        this.techLevel = ss.getTechLevel();
+        super(player, ss);
         this.ship = sf.generateShip("TRADER", ss);
         if (rand.nextDouble() <= ps.illegalTradeRate())
             fence = true;
     }   
-    @Override
-    public boolean attack() {
-        player.getShip().setHealth(-5);
-        return true;
-    }
-
-    @Override
-    public boolean bribe(boolean check) {
-        return false;
-    }
-
-    @Override
-    public void takeHit(int hitPoints) {
-        ship.setHealth(hitPoints);
-    }
-
     public ArrayList<Good> tradeCargo() {
         return ship.cargo;
     }
     
     @Override
-    public boolean buy(Good good) {
+    public boolean buyFrom(Good good, int quantity) {
         if(good.getPrice() <= player.getMoney()) {
-            //player.getShip().  BUY GOOD?
+            good.setQuantity(good.getQuantity() - quantity);
+            player.subtractMoney(good.TTP);
+            boolean found = false;
+            ArrayList<Good> playerCargo = player.getShip().cargo;
+            for (int i = 0; i < playerCargo.size() && !found; i++) {
+                if (playerCargo.get(i).getType() == good.getType()) {
+                    playerCargo.get(i).setQuantity(playerCargo.get(i).getQuantity() + quantity);
+                    found = true;
+                }
+            }
+            if (!found) {
+                playerCargo.add(good);
+            }
+            player.getShip().adjustCargo(playerCargo);
+            return true;
         }
-        return true;
-    }
-
-    @Override
-    public boolean flee() {
-        return rand.nextBoolean();
-    }
-
-    @Override
-    public boolean sell() {
         return false;
     }
 
     @Override
-    public Ship ship() {
-        return ship;
-    }
-
-    @Override
-    public String type() {
-        return "Trader Joe's Ship";
-    }
-    
-    public boolean isDead() {
-        return ship.getHealth() > 0;
+    public boolean sellTo(Good good, int quantity) {
+        return false;
     }
 }

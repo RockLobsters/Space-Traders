@@ -48,6 +48,12 @@ public abstract class PoliticalSystem {
     public abstract double illegalTradeRate();
 
     /**
+     * percent rate of pirate encounters
+     * @return double rate of pirate encounters
+     */
+    public abstract double pirateRate();
+    
+    /**
      * establishes which goods are in high supply in this system
      *
      * @return int array of key(s) of good(s) in high supply

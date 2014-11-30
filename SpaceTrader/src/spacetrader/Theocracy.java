@@ -17,6 +17,11 @@ public class Theocracy extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return .3;
+    }
+
     /**
      *
      * @return string of government type name
@@ -33,7 +38,7 @@ public class Theocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double policeRate() {
-        return 0.5;
+        return 0.3;
     }
 
     /**
@@ -63,7 +68,7 @@ public class Theocracy extends PoliticalSystem implements Serializable {
      */
     @Override
     public double illegalTradeRate() {
-        return 0.5;
+        return 0.3;
     }
 
     /**

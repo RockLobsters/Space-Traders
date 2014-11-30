@@ -17,6 +17,11 @@ public class Cybernetic extends PoliticalSystem implements Serializable {
 
     Random rand = new Random();
 
+    @Override
+    public double pirateRate() {
+        return .05;
+    }
+
     /**
      *
      * @return string of government type name
@@ -43,7 +48,7 @@ public class Cybernetic extends PoliticalSystem implements Serializable {
      */
     @Override
     public double bribeRate() {
-        return 0.5;
+        return 0.42;
     }
 
     /**
@@ -53,7 +58,7 @@ public class Cybernetic extends PoliticalSystem implements Serializable {
      */
     @Override
     public double traderRate() {
-        return 0.5;
+        return 0.43;
     }
 
     /**
