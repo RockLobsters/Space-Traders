@@ -40,4 +40,13 @@ public class Police extends NonPlayer {
             corrupt = true;
         }
     }
+    
+    @Override
+    public boolean bribe(boolean check) {
+        if(corrupt && check) {
+            player.subtractMoney(ps.bribeRate()*100);
+            return true;
+        }
+        return false;
+    }
 }

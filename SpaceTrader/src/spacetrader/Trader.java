@@ -45,15 +45,18 @@ public class Trader extends NonPlayer {
     
     @Override
     public boolean buyFrom(Good good, int quantity) {
-        if(good.getPrice() <= player.getMoney()) {
+        int cost = rand.nextInt(good.getMTH() - good.getMTL()) + good.getMTH()*quantity;
+        if(cost <= player.getMoney()) {
             good.setQuantity(good.getQuantity() - quantity);
-            player.subtractMoney(good.TTP);
+            player.subtractMoney(cost);
             boolean found = false;
             ArrayList<Good> playerCargo = player.getShip().cargo;
             for (int i = 0; i < playerCargo.size() && !found; i++) {
                 if (playerCargo.get(i).getType() == good.getType()) {
                     playerCargo.get(i).setQuantity(playerCargo.get(i).getQuantity() + quantity);
                     found = true;
+                    ship.cargo.remove(good);
+                    ship.adjustCargo(ship.cargo);
                 }
             }
             if (!found) {

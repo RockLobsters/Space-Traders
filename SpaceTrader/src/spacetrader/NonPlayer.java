@@ -16,6 +16,7 @@
  */
 package spacetrader;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -38,8 +39,9 @@ class NonPlayer {
         this.techLevel = ss.getTechLevel();
     }
     
-    public boolean attack() {
-        return false;
+    public void attack(int hitPoints) { 
+        int health = player.getShip().getHealth();
+        player.getShip().setHealth(health - hitPoints);
     }
     public boolean bribe(boolean check) {
         return false;
@@ -61,5 +63,9 @@ class NonPlayer {
     }
     public boolean isDead() {
         return ship.getHealth() > 0;
+    }
+    
+    public ArrayList<Good> getCargo() {
+        return ship.getCargo();
     }
 }

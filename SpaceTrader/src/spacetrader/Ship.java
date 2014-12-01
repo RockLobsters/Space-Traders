@@ -86,6 +86,9 @@ public class Ship implements Serializable {
         return NAME;
     }
 
+    public ArrayList<Good> getCargo() {
+        return cargo;
+    }
     /**
      * @return the fuel
      */
@@ -322,5 +325,33 @@ public class Ship implements Serializable {
     
     public void adjustCargo(ArrayList<Good> newCargo) {
         this.cargo = newCargo;
+    }
+    
+    public int getPower() {
+        int power = 0;
+        for (Laser l : weapons) {
+            power += l.getPower();
+        }
+        for (Gadget g : gadgets) {
+            if(g.equals(g.TARGET_SYSTEM)) 
+                power += 5;
+        }
+        return power;
+    }
+    
+    public int getDefense() {
+        int defense = HULL_STRENGTH;
+        for (Shield s : shields) {
+            defense += s.getPower();
+        }
+        return defense;
+    }
+    
+    public boolean autoRepair() {
+        for (Gadget g : gadgets) {
+            if (g.equals(g.AUTO_REPAIR_SYSTEM))
+                return true;
+        }
+        return false;
     }
 }

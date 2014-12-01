@@ -208,7 +208,7 @@ public class Good implements Serializable {
         return MTL;
     }
 
-    protected int MTH() {
+    protected int getMTH() {
         return MTH;
     }
 

@@ -58,19 +58,38 @@ public class RandomEncounter {
         }
     }
     
-    void Battle() {
-        while(np.)
+    boolean Battle() {
+        int damage = playerShip.getDefense() - otherShip.getPower();
+        int hit = otherShip.getDefense() - playerShip.getPower();
+        int playerHealth = playerShip.getHealth();
+        while(!np.isDead() || playerHealth > 0) {
+            playerHealth = playerShip.getHealth();
+            np.attack(damage);
+            np.takeHit(hit);
+            if (playerShip.autoRepair())
+                playerShip.setHealth(playerHealth+2);
+        }
+        if (np.isDead())
+            return true;
+        return false;
     }
     
-    void Trade() {
-        
+    void Trade(String trans, Good good, int quantity) {
+        if (trans.equals(0))
+            np.buyFrom(good, quantity);
+        else
+            np.sellTo(good, quantity);
     }
     
     void Flee() {
-        
+        if(np.flee())
+            System.out.println("Flee successful");
+        else
+            System.out.println("Unable to Flee");
     }
     
     void Bribe() {
-        
+        np.bribe(true);
     }
 }
+
