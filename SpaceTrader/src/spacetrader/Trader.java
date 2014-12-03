@@ -70,6 +70,8 @@ public class Trader extends NonPlayer {
 
     @Override
     public boolean sellTo(Good good, int quantity) {
+        int cost = rand.nextInt(good.getMTH() - good.getMTL()) + good.getMTH()*quantity;
+        
         return false;
     }
     

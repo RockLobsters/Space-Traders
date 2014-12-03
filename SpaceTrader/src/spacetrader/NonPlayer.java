@@ -50,6 +50,8 @@ class NonPlayer {
         return false;
     }
     public boolean flee() {
+        if (player.getEngineer() >= rand.nextInt(5))
+            return true;
         return rand.nextBoolean();
     }
     public boolean sellTo(Good good, int quantity) {
