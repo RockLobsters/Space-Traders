@@ -39,9 +39,6 @@ public class Trader extends NonPlayer {
         if (rand.nextDouble() <= ps.illegalTradeRate())
             fence = true;
     }   
-    public ArrayList<Good> tradeCargo() {
-        return ship.cargo;
-    }
     
     @Override
     public boolean buyFrom(Good good, int quantity) {

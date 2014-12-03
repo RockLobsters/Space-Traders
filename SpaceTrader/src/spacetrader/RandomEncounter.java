@@ -16,6 +16,7 @@
  */
 package spacetrader;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -74,6 +75,10 @@ public class RandomEncounter {
         return false;
     }
     
+    ArrayList<Good> getCargo() {
+        return np.getCargo();
+    }
+    
     void Trade(String trans, Good good, int quantity) {
         if (trans.equals(0))
             np.buyFrom(good, quantity);
@@ -81,11 +86,14 @@ public class RandomEncounter {
             np.sellTo(good, quantity);
     }
     
-    void Flee() {
+    String Flee() {
         if(np.flee())
-            System.out.println("Flee successful");
-        else
-            System.out.println("Unable to Flee");
+            return"Flee successful";
+        return "Unable to Flee";
+    }
+    
+    boolean bribable() {
+        return np.bribe(false);
     }
     
     void Bribe() {
@@ -93,6 +101,8 @@ public class RandomEncounter {
     }
     
     public String getEncounter() {
+        if (np == null)
+            return "None";
         return np.getEncounter();
     }
 }
