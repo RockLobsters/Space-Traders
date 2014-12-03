@@ -69,9 +69,8 @@ public class GalFourScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game.setCurrentScreen("GalFourScreen.fxml");
-        String s = randEvent();
-        // TODO
-        fuelTab.setText("Fuel: " + ship.getFuel() + ". " + s);
+        
+        fuelTab.setText("Fuel: " + ship.getFuel());
 
         ArrayList<Planet> planets = solar.getPlanets();
 
@@ -130,10 +129,13 @@ public class GalFourScreenController implements Initializable {
             ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(0));
 
-            //Game game = GameInstance.getInstance();
-            //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-            // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            //Gets encounter
+            RandomEncounter encounter = new RandomEncounter(player, solar);
+            String random = encounter.getEncounter();
+            if (random.equals("None")) {
+                random = "PlanetScreen.fxml";
+            }
+            Parent root = FXMLLoader.load(getClass().getResource(random));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -164,10 +166,13 @@ public class GalFourScreenController implements Initializable {
             ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(1));
 
-            //Game game = GameInstance.getInstance();
-            //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-            // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            //Gets encounter
+            RandomEncounter encounter = new RandomEncounter(player, solar);
+            String random = encounter.getEncounter();
+            if (random.equals("None")) {
+                random = "PlanetScreen.fxml";
+            }
+            Parent root = FXMLLoader.load(getClass().getResource(random));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -183,59 +188,6 @@ public class GalFourScreenController implements Initializable {
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
-    }
-
-    /**
-     * Generates a random event that will appear in the bottom of the screen.
-     *
-     * @return string of random event that happened
-     */
-    private String randEvent() {
-        Random rand = new Random();
-        int x = rand.nextInt(20);
-        String string = "";
-
-        if (x > 15) {
-            //String string = "";
-
-            if (x == 16) {
-                string = "You found $10!";
-                player.addMoney(100);
-            }
-            else if (x == 15) {
-                string = "Your fuel tank has a hole in it and some spilled out!";
-                ship.setFuel(ship.getFuel() - 1);
-            }
-            else if (x == 17) {
-                string = "Pirates raided your ship and took $50!";
-                player.subtractMoney(50);
-            }
-            else if (x == 18) {
-                player.setWantedLevel(player.getWantedLevel() + 1);
-                string = "You accidentally did something illegal. Wanted level: " + player.getWantedLevel();
-            }
-            else if (x == 19) {
-                player.addMoney(100);
-                string = "You found a valueable stone and sold it for $100!";
-            }
-            else if (x == 20) {
-                ship.setFuel(ship.getFuel() + 1);
-                string = "You found some fuel!";
-            }
-
-            // Stage dialogStage = new Stage();
-            // dialogStage.initModality(Modality.WINDOW_MODAL);
-            // dialogStage.setScene(new Scene(VBoxBuilder.create().
-            // children(new Text(string)).
-            // alignment(Pos.CENTER).padding(new Insets(30)).build()));
-            // dialogStage.show();
-            // try {
-            //     Thread.sleep(2000);                 //1000 milliseconds is one second.
-            // } catch(InterruptedException ex) {
-            //     Thread.currentThread().interrupt();
-            // }
-        }
-        return string;
     }
 
     /**
