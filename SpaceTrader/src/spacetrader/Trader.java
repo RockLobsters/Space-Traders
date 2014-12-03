@@ -72,4 +72,9 @@ public class Trader extends NonPlayer {
     public boolean sellTo(Good good, int quantity) {
         return false;
     }
+    
+    @Override
+    public String getEncounter() {
+        return "TraderScreen.fxml";
+    }
 }

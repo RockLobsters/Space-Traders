@@ -34,5 +34,8 @@ public class Pirate extends NonPlayer {
         super(player, ss);
         this.ship = this.ship = sf.generateShip("PIRATE", ss);
     }
-    
+    @Override
+    public String getEncounter() {
+        return "PirateScreen.fxml";
+    }
 }

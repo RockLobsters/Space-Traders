@@ -68,4 +68,8 @@ class NonPlayer {
     public ArrayList<Good> getCargo() {
         return ship.getCargo();
     }
+    
+    public String getEncounter() {
+        return null;
+    }
 }

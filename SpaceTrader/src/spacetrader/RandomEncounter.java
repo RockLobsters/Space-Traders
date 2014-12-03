@@ -91,5 +91,9 @@ public class RandomEncounter {
     void Bribe() {
         np.bribe(true);
     }
+    
+    public String getEncounter() {
+        return np.getEncounter();
+    }
 }
 
