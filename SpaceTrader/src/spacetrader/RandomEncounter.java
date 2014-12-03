@@ -58,33 +58,26 @@ public class RandomEncounter {
             this.np = null;
             otherShip = null;
         }
-        if ((player.getEngineer() > 5) && playerShip.cloak()) {
-            this.np = null;
-            otherShip = null;
-        }
         this.nextLocation = nextLocation;
     }
     
     void Battle() {
-        int damage = playerShip.getDefense() - otherShip.getPower() - rand.nextInt(player.getFighter());
-        int hit = otherShip.getDefense() - playerShip.getPower() + rand.nextInt(player.getFighter());
+        int damage = playerShip.getDefense() - otherShip.getPower();
+        int hit = otherShip.getDefense() - playerShip.getPower();
         int playerHealth = playerShip.getHealth();
         np.attack(damage); //Opponent attacks player
-        np.takeHit(hit); //Player attacks opponent
+        np.takeHit(hit + rand.nextInt(player.getFighter())); //Player attacks opponent
         if (playerShip.autoRepair())
             playerShip.setHealth(playerHealth+2);
     }
     
     int battleOver() {
         if (np.isDead())
-            if (!np.getEncounter().equals("PirateScreen.fxml")) {
-                int wl = player.getWantedLevel();
-                player.setWantedLevel(wl + 2);
-                return 1; //player won
-            }
+            return 1; //player won
         if (player.getShip().getEscapePod()) {
             boolean keepStuff = false;
             ArrayList<Good> cargo = player.getShip().getCargo();
+            ArrayList<Laser> weapons = player.getShip().getWeapons();
             if (player.getShip().getInsurance()) {
                 keepStuff = true;
             }

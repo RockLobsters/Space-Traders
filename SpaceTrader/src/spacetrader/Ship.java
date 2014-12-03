@@ -229,7 +229,7 @@ public class Ship implements Serializable {
      * @return the insurance rate to be paid daily
      */
     public double getInsuranceRate() {
-        return BASE_PRICE * .01;
+        return BASE_PRICE * .1;
     }
 
     /**
@@ -350,14 +350,6 @@ public class Ship implements Serializable {
     public boolean autoRepair() {
         for (Gadget g : gadgets) {
             if (g.equals(g.AUTO_REPAIR_SYSTEM))
-                return true;
-        }
-        return false;
-    }
-    
-    public boolean cloak() {
-        for (Gadget g : gadgets) {
-            if (g.equals(g.CLOAK_DEVICE))
                 return true;
         }
         return false;
