@@ -41,10 +41,10 @@ public class ShipFactory {
         double rate;
         if (key.equals("POLICE")) {
             rate = (ps.bribeRate() + ps.policeRate()) * 10;
-        } else if (key.equals("TRADER")) {
-            rate = (ps.traderRate() + ps.illegalTradeRate()) * 10;
-        } else {
+        } else if (key.equals("PIRATE")) {
             rate = 5;
+        } else {
+            rate = (ps.traderRate() + ps.illegalTradeRate()) * 10;
         }
         Ship ship = ships[rand.nextInt((int) rate)];
         cargo = cf.generateCargo(key, ship.getCargoBays());

@@ -33,9 +33,10 @@ public class RandomEncounter {
     SolarSystem ss;
     int tl;
     PoliticalSystem ps;
+    String nextLocation;
     Random rand = new Random();
     
-    public RandomEncounter(Player player, SolarSystem ss) {
+    public RandomEncounter(Player player, SolarSystem ss, String nextLocation) {
         this.player = player;
         this.playerShip = player.getShip();
         this.ss = ss;
@@ -57,23 +58,39 @@ public class RandomEncounter {
             this.np = null;
             otherShip = null;
         }
+        this.nextLocation = nextLocation;
     }
     
-    boolean Battle() {
+    void Battle() {
         int damage = playerShip.getDefense() - otherShip.getPower();
         int hit = otherShip.getDefense() - playerShip.getPower();
         int playerHealth = playerShip.getHealth();
-        while(!np.isDead() || playerHealth > 0) {
-            playerHealth = playerShip.getHealth();
-            np.attack(damage);
-            np.takeHit(hit);
-            if (playerShip.autoRepair())
-                playerShip.setHealth(playerHealth+2);
-        }
-        if (np.isDead())
-            return true;
-        return false;
+        np.attack(damage); //Opponent attacks player
+        np.takeHit(hit + rand.nextInt(player.getFighter())); //Player attacks opponent
+        if (playerShip.autoRepair())
+            playerShip.setHealth(playerHealth+2);
     }
+    
+    int battleOver() {
+        if (np.isDead())
+            return 1; //player won
+        if (player.getShip().getEscapePod()) {
+            boolean keepStuff = false;
+            ArrayList<Good> cargo = player.getShip().getCargo();
+            ArrayList<Laser> weapons = player.getShip().getWeapons();
+            if (player.getShip().getInsurance()) {
+                keepStuff = true;
+            }
+            player.setShip(new Flea());
+            if (keepStuff) {
+                player.getShip().adjustCargo(cargo);
+            }
+            return 0;//player lost but survives
+        }
+        return -1; //player lost game over
+    }
+    
+    
     
     ArrayList<Good> getCargo() {
         return np.getCargo();
@@ -104,6 +121,10 @@ public class RandomEncounter {
         if (np == null)
             return "None";
         return np.getEncounter();
+    }
+    
+    public String getNextLocation() {
+        return nextLocation;
     }
 }
 

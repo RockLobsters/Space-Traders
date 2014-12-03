@@ -354,4 +354,16 @@ public class Ship implements Serializable {
         }
         return false;
     }
+    
+    public ArrayList<Laser> getWeapons() {
+        return weapons;
+    }
+    
+    public ArrayList<Shield> getShields() {
+        return shields;
+    }
+    
+    public ArrayList<Gadget> getGadget() {
+        return gadgets;
+    }
 }
