@@ -1,4 +1,4 @@
-/*
+ /*
  * Copyright (C) 2014 jackie
  *
  * This program is free software: you can redistribute it and/or modify
@@ -76,9 +76,8 @@ public class GalOneScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game.setCurrentScreen("GalOneScreen.fxml");
-        String s = randEvent();
         // TODO
-        fuelTab.setText("Fuel: " + ship.getFuel() + ". " + s);
+        fuelTab.setText("Fuel: " + ship.getFuel());
 
         ArrayList<Planet> planets = solar.getPlanets();
 
@@ -108,14 +107,16 @@ public class GalOneScreenController implements Initializable {
     private void goToPeachtreePlan(MouseEvent event) throws Exception {
         if (ship.getFuel() > 0) {
             //randEvent();
-
+            //Sets location
             ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(1));
-
-            //Game game = GameInstance.getInstance();
-            //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-            // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            //Gets encounter
+            RandomEncounter encounter = new RandomEncounter(player, solar);
+            String random = encounter.getEncounter();
+            if (random.equals("None")) {
+                random = "PlanetScreen.fxml";
+            }
+            Parent root = FXMLLoader.load(getClass().getResource(random));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -147,10 +148,12 @@ public class GalOneScreenController implements Initializable {
             ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(2));
 
-            //Game game = GameInstance.getInstance();
-            //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-            // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            RandomEncounter encounter = new RandomEncounter(player, solar);
+            String random = encounter.getEncounter();
+            if (random.equals("None")) {
+                random = "PlanetScreen.fxml";
+            }
+            Parent root = FXMLLoader.load(getClass().getResource(random));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -182,10 +185,12 @@ public class GalOneScreenController implements Initializable {
             ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(0));
 
-            //Game game = GameInstance.getInstance();
-            //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-            // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            RandomEncounter encounter = new RandomEncounter(player, solar);
+            String random = encounter.getEncounter();
+            if (random.equals("None")) {
+                random = "PlanetScreen.fxml";
+            }
+            Parent root = FXMLLoader.load(getClass().getResource(random));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
@@ -216,11 +221,12 @@ public class GalOneScreenController implements Initializable {
 
             ship.setFuel(ship.getFuel() - 1);
             player.setCurrentLocation(solar.getPlanets().get(3));
-
-            //Game game = GameInstance.getInstance();
-            //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
-            // look at this ^^^
-            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            RandomEncounter encounter = new RandomEncounter(player, solar);
+            String random = encounter.getEncounter();
+            if (random.equals("None")) {
+                random = "PlanetScreen.fxml";
+            }
+            Parent root = FXMLLoader.load(getClass().getResource(random));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();

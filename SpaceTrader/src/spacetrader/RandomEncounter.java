@@ -33,10 +33,9 @@ public class RandomEncounter {
     SolarSystem ss;
     int tl;
     PoliticalSystem ps;
-    String nextLocation;
     Random rand = new Random();
     
-    public RandomEncounter(Player player, SolarSystem ss, String nextLocation) {
+    public RandomEncounter(Player player, SolarSystem ss) {
         this.player = player;
         this.playerShip = player.getShip();
         this.ss = ss;
@@ -58,7 +57,6 @@ public class RandomEncounter {
             this.np = null;
             otherShip = null;
         }
-        this.nextLocation = nextLocation;
     }
     
     void Battle() {
@@ -121,10 +119,6 @@ public class RandomEncounter {
         if (np == null)
             return "None";
         return np.getEncounter();
-    }
-    
-    public String getNextLocation() {
-        return nextLocation;
     }
 }
 
