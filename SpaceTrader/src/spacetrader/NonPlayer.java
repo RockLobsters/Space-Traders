@@ -36,6 +36,7 @@ class NonPlayer {
         this.player = player;
         this.ss = ss;
         this.ps = ss.getPoliticalSystem();
+        this.ship = new Gnat();
         this.techLevel = ss.getTechLevel();
     }
     

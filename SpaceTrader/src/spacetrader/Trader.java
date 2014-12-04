@@ -35,6 +35,7 @@ public class Trader extends NonPlayer {
     
     public Trader(Player player, SolarSystem ss) {
         super(player, ss);
+        ps = ss.getPoliticalSystem();
         if (rand.nextDouble() <= ps.illegalTradeRate()) {
             fence = true;
             this.ship = sf.generateShip("ILLEGAL_TRADER", ss);
