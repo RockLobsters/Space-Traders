@@ -17,6 +17,7 @@
 package spacetrader;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -161,5 +162,32 @@ public class Mercenary implements Comparable, Serializable {
     @Override
     public String toString() {
         return name + " (" + pilot + "," + fighter + "," + trader + "," + engineer + "," + investor + ")";
+    }
+    
+    @Override
+    public boolean equals(Object toCompare) {
+        if(!(toCompare instanceof Mercenary)) {
+            return false;
+        }else {
+            Mercenary that = (Mercenary) toCompare;
+            return this.name.equals(that.name) &&
+                    this.engineer == that.engineer &&
+                    this.fighter == that.fighter &&
+                    this.investor == that.investor &&
+                    this.pilot == that.pilot &&
+                    this.trader == that.trader;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + this.pilot;
+        hash = 97 * hash + this.fighter;
+        hash = 97 * hash + this.trader;
+        hash = 97 * hash + this.engineer;
+        hash = 97 * hash + this.investor;
+        return hash;
     }
 }

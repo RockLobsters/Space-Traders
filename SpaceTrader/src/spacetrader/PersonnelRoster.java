@@ -26,6 +26,25 @@ import java.util.List;
  * @author Addison Amiri
  */
 public class PersonnelRoster {
+    private static final String[] names = {
+        "Jonny Boy",
+        "Crazy Eyes",
+        "Brass, the Monkey",
+        "Mark Wahlberg",
+        "Jason Bourne",
+        "Andre the Giant",
+        "John Cena",
+        "Alladin",
+        "Mary Lu",
+        "Mulan",
+        "Joan Jett",
+        "Mary Jane",
+        "Black Dynamite",
+        "The girl from Brave",
+        "Barbra Streisand",
+        "Lain",
+        "Inigo Montoya"};
+    
     private final List<Mercenary> list;
     
     public PersonnelRoster() {
@@ -42,13 +61,15 @@ public class PersonnelRoster {
     }
     
     /**
-     * Populates the PersonnelRoster with a random set of mercenaries that
-     * depends on the current PoliticalSystem
+     * Populates the PersonnelRoster with 0-3 mercenaries with random names and
+     * total skill levels of the current tech level +/- 1
      * 
      * @param planet the planet the PersonnelRoster is on
      */
     public void populateList(Planet planet) {
-        list.add(new Mercenary("Test", 10));
+        for(int i = (int)(Math.random()*4); i > 0; i--) {
+            list.add(new Mercenary(names[(int)(Math.random()*names.length)], planet.getSolarSystem().getTechLevel() + (int)(Math.random()*3-1)));
+        }
     }
     
     /**
@@ -58,7 +79,13 @@ public class PersonnelRoster {
      * @return true if the hire was successful
      */
     public boolean hireMercenary(int index) {
-        return true;
+        Ship ship = GameInstance.getInstance().getPlayer().getShip();
+        if(ship.getCrew().size() < ship.getCrewQuarters()) {
+            Mercenary toHire = list.remove(index);
+            return ship.addCrew(toHire);
+        } else {
+            return false;
+        }
     }
     
     /**
@@ -68,6 +95,7 @@ public class PersonnelRoster {
      * @return true if the firing succeeded
      */
     public boolean fireMercenary(Mercenary toFire) {
-        return true;
+        Ship ship = GameInstance.getInstance().getPlayer().getShip();
+        return list.add(ship.getCrew().remove(ship.getCrewIndex(toFire)));
     }
 }

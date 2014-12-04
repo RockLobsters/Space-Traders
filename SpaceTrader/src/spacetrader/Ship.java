@@ -39,6 +39,7 @@ public class Ship implements Serializable {
     ArrayList<Laser> weapons;
     ArrayList<Shield> shields;
     ArrayList<Gadget> gadgets;
+    ArrayList<Mercenary> crew;
 
     public int fuel;
     public int health;
@@ -365,5 +366,30 @@ public class Ship implements Serializable {
     
     public ArrayList<Gadget> getGadget() {
         return gadgets;
+    }
+    
+    public ArrayList<Mercenary> getCrew() {
+        return crew;
+    }
+    
+    public boolean addCrew(Mercenary toAdd) {
+        return crew.add(toAdd);
+    }
+    
+    public Mercenary removeCrew(int index) {
+        return crew.remove(index);
+    }
+    
+    public int getCrewIndex(Mercenary toFind) {
+        for(int i = 0; i < crew.size(); i++) {
+            if(toFind.equals(crew.get(i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public int getCrewQuarters() {
+        return CREW_QUARTERS;
     }
 }
