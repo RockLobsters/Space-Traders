@@ -29,7 +29,7 @@ public class Player implements Serializable {
     private final String name;
     //Money of Player
     private double money;
-    private final int INITIAL_MONEY = 1000;
+    private final int INITIAL_MONEY = 10000000;
     //Wanted Level of player
     private int wantedLevel;
 

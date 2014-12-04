@@ -46,7 +46,7 @@ public class PersonnelRoster {
         "Inigo Montoya"};
     
     private final List<Mercenary> list;
-    
+    private Player player = GameInstance.getInstance().getPlayer();
     public PersonnelRoster() {
         list = new ArrayList();
     }
@@ -80,8 +80,13 @@ public class PersonnelRoster {
      */
     public boolean hireMercenary(int index) {
         Ship ship = GameInstance.getInstance().getPlayer().getShip();
-        if(ship.getCrew().size() < ship.getCrewQuarters()) {
+        if(ship.getCrew() == null || ship.getCrew().size() < ship.getCrewQuarters()) {
             Mercenary toHire = list.remove(index);
+            player.setEngineer(player.getEngineer() + toHire.getEngineer());
+            player.setFighter(player.getFighter() + toHire.getFighter());
+            player.setInvestor(player.getInvestor()+ toHire.getInvestor());
+            player.setPilot(player.getPilot() + toHire.getPilot());
+            player.setTrader(player.getTrader() + toHire.getTrader());
             return ship.addCrew(toHire);
         } else {
             return false;

@@ -76,6 +76,7 @@ public class Ship implements Serializable {
         weapons = new ArrayList<>();
         shields = new ArrayList<>();
         gadgets = new ArrayList<>();
+        crew = new ArrayList<>();
         this.fuel = FUEL_CAPACITY;
         this.health = HULL_STRENGTH;
     }

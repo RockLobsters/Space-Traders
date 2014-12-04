@@ -8,49 +8,67 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="spacetrader.MercenaryScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.MercenaryScreenController">
    <children>
-      <SplitPane dividerPositions="0.6304347826086957" layoutY="102.0" prefHeight="298.0" prefWidth="600.0">
+      <SplitPane layoutY="102.0" prefHeight="298.0" prefWidth="600.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Text layoutX="113.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-                  <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number" wrappingWidth="50.481712341308594" />
-                  <Text layoutX="205.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pay" />
-                  <Text layoutX="284.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skill Level" />
-                  <Text fx:id="rosterText" layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="332.6829261779785" />
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <SplitPane dividerPositions="0.4222972972972973" orientation="VERTICAL" prefHeight="298.0" prefWidth="217.0">
+                  <SplitPane dividerPositions="0.4222972972972973" layoutY="-1.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="598.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="115.0" prefWidth="215.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="121.0" prefWidth="234.0">
                            <children>
-                              <Text layoutX="68.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HIRING" underline="true">
-                                 <font>
-                                    <Font size="23.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="10.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Mercenary Roster Number:" />
-                              <TextField fx:id="hiringNumber" layoutX="13.0" layoutY="80.0" prefHeight="26.0" prefWidth="91.0" />
-                              <Button layoutX="127.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#hireMercenary" prefHeight="26.0" prefWidth="59.0" text="Hire" />
+                              <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number          Name          Skill Points:  Pilot          Fighter          Trader          Engineer          Investor" wrappingWidth="596.0" />
+                              <Text fx:id="numberText" layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="8.0" />
+                              <Text fx:id="nameText" layoutX="57.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="165.0" />
+                              <Text fx:id="pilotText" layoutX="243.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="8.0" />
+                              <Text fx:id="fighterText" layoutX="310.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="8.0" />
+                              <Text fx:id="traderText" layoutX="393.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="8.0" />
+                              <Text fx:id="engineerText" layoutX="470.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="8.0" />
+                              <Text fx:id="investorText" layoutX="552.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="8.0" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="215.0">
                            <children>
-                              <Text fx:id="skillText" layoutX="11.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fighting Skill Level:" wrappingWidth="194.775390625">
+                              <Text fx:id="fighterSkillText" layoutX="10.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fighter:" wrappingWidth="194.775390625">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="moneyText" layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Skill Levels" wrappingWidth="194.775390625">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="moneyText" layoutX="11.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money:" wrappingWidth="194.775390625">
+                              <Button layoutX="404.0" layoutY="130.0" mnemonicParsing="false" onMouseClicked="#returnToPlanet" text="Return to Planet" />
+                              <Text layoutX="432.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HIRING" underline="true">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="23.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="51.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#returnToPlanet" text="Return to Planet" />
+                              <Button layoutX="489.0" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#hireMercenary" prefHeight="26.0" prefWidth="59.0" text="Hire" />
+                              <TextField fx:id="hiringNumber" layoutX="381.0" layoutY="67.0" prefHeight="26.0" prefWidth="91.0" />
+                              <Text layoutX="374.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Mercenary Roster Number:" />
+                              <Text fx:id="pilotSkillText" layoutX="10.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilot:" wrappingWidth="194.775390625">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="traderSkillText" layoutX="10.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trader:" wrappingWidth="194.775390625">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="EngineerSkillText" layoutX="10.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engineer:" wrappingWidth="194.775390625">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="InvestorSkillText" layoutX="10.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Investor:" wrappingWidth="194.775390625">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                     </items>

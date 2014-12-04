@@ -107,7 +107,15 @@ public class PlanetScreenController implements Initializable {
     }
 
     @FXML
-    private void goToPersonnel(MouseEvent event) {
+    private void goToPersonnel(MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass()
+                .getResource("MercenaryScreen.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+        //hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
         //
     }
 
