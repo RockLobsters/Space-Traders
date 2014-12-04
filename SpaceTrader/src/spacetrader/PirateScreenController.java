@@ -21,12 +21,17 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -76,11 +81,20 @@ public class PirateScreenController implements Initializable {
         for (Laser x : ship.weapons) {
             weapons = weapons + x.name + "\n";
         }
+        if(weapons.isEmpty()) {
+            weapons = "None";
+        }
         for (Shield x : ship.shields) {
             shields = shields + x.name + "\n";
         }
+        if(shields.isEmpty()) {
+            shields = "None";
+        }
         for (Gadget x : ship.gadgets) {
             gadgets = gadgets + x.name + "\n";
+        }
+        if(gadgets.isEmpty()) {
+            gadgets = "None";
         }
         if (ship.getEscapePod()) {
             escapePod = "Owned";
@@ -98,24 +112,39 @@ public class PirateScreenController implements Initializable {
 
     @FXML
     private void attackPirate(MouseEvent event) throws Exception {
-        if((np.ship().getHealth() != 0) && (ship.getHealth() != 0)){
-            pirateEncounter.Battle();
-            priateHealthNum.setText(""+ np.ship().getHealth());
-            playerHealthNum.setText("" + ship.getHealth());
-            pirateHealthBar.setProgress((np.ship().getHealth())/np.ship.getHullStrength());
-            playerHealthBar.setProgress(ship.getHealth()/ship.getHullStrength());
-        } else {
+        pirateEncounter.Battle();
+        priateHealthNum.setText(""+ np.ship().getHealth());
+        playerHealthNum.setText("" + ship.getHealth());
+        pirateHealthBar.setProgress(((double)(np.ship().getHealth()))/((double)(np.ship.getHullStrength())));
+        playerHealthBar.setProgress(((double)(ship.getHealth()))/((double)(ship.getHullStrength())));
+        if((np.ship().getHealth() <= 0) || (ship.getHealth() <= 0)){
             int result = pirateEncounter.battleOver();
+            changeScreen(result);
             if(result == 1){
-                battleText.setText("You Won!");
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("You Won!")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
             }
             if(result == 0){
-                battleText.setText("You Escaped in your Escape Pod!");
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("You Escaped in your Escape Pod!")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
             }
             if(result == -1){
-                battleText.setText("You Died. Game Over.");
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("You Died. Game Over.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
             }
-            changeScreen(result);
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         }
     }
 
@@ -128,22 +157,17 @@ public class PirateScreenController implements Initializable {
     }
     
     private void changeScreen(int result)throws Exception {
-        int counter = 0;
-        while(counter <= 50){
-            if(counter == 50){
-                if(result == 1 || result == 0){
-                    Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                }
-                if(result == -1){
-                    Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                }
-            }
+        if(result == 1 || result == 0){
+            Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        if(result == -1){
+            Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         }
     }
 }

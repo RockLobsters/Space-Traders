@@ -329,7 +329,7 @@ public class Ship implements Serializable {
     }
     
     public int getPower() {
-        int power = 0;
+        int power = 1;
         for (Laser l : weapons) {
             power += l.getPower();
         }

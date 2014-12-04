@@ -237,16 +237,11 @@ public class GalSixScreenController implements Initializable {
             //Game game = GameInstance.getInstance();
             //game.getPlayer().setCurrentLocation(game.getUniverse().get(0).getPlanets().get(0));
             // look at this ^^^
-            RandomEncounter encounter = new RandomEncounter(player, solar);
-            String random = encounter.getEncounter();
-            if (random.equals("None")) {
-                random = "PlanetScreen.fxml";
-            }
-            
-            Parent root = FXMLLoader.load(getClass().getResource(random));
+            Parent root = FXMLLoader.load(getClass().getResource("UniverseScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+
             //hide this current window (if this is whant you want
             ((Node) (event.getSource())).getScene().getWindow().hide();
         }

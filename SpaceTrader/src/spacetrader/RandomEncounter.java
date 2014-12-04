@@ -44,14 +44,14 @@ public class RandomEncounter {
         double polRate = ps.bribeRate() + ps.policeRate();
         double tradeRate = ps.illegalTradeRate() + ps.traderRate();
         double pirateRate = ps.pirateRate();
-        if (rand.nextDouble() <= polRate) {
-            this.np = new Police(player, ss);
+        if (rand.nextDouble() <= pirateRate) {
+            this.np = new Pirate(player,ss);
             otherShip = np.ship;
         } else if (rand.nextDouble() <= tradeRate) {
             this.np = new Trader(player,ss);
             otherShip = np.ship;
-        } else if (rand.nextDouble() <= pirateRate) {
-            this.np = new Pirate(player,ss);
+        } else if (rand.nextDouble() <= polRate) {
+            this.np = new Police(player, ss);
             otherShip = np.ship;
         } else {
             this.np = null;
@@ -78,8 +78,8 @@ public class RandomEncounter {
     }
     
     void Battle() {
-        int damage = playerShip.getDefense() - otherShip.getPower();
-        int hit = otherShip.getDefense() - playerShip.getPower();
+        int damage = otherShip.getPower();
+        int hit = playerShip.getPower();
         int playerHealth = playerShip.getHealth();
         np.attack(damage); //Opponent attacks player
         np.takeHit(hit + rand.nextInt(player.getFighter())); //Player attacks opponent

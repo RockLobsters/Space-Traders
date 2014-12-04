@@ -52,6 +52,8 @@ public class Police extends NonPlayer {
     }
     @Override
     public String getEncounter() {
-        return "PoliceEncounterScreen.fxml";
+        System.out.println("PoliceEncounterScreen.fxml needs to be created");
+        //return "PoliceEncounterScreen.fxml";
+        return "None";
     }
 }
