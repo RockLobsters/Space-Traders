@@ -119,7 +119,7 @@ public class PirateScreenController implements Initializable {
         playerHealthBar.setProgress(((double)(ship.getHealth()))/((double)(ship.getHullStrength())));
         if((np.ship().getHealth() <= 0) || (ship.getHealth() <= 0)){
             int result = pirateEncounter.battleOver();
-            changeScreen(result);
+            changeScreen(result, event);
             if(result == 1){
                 Stage dialogStage = new Stage();
                 dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -154,20 +154,23 @@ public class PirateScreenController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
     
-    private void changeScreen(int result)throws Exception {
+    private void changeScreen(int result, MouseEvent event)throws Exception {
         if(result == 1 || result == 0){
             Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         }
         if(result == -1){
             Parent root = FXMLLoader.load(getClass().getResource("RootWindow.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         }
     }
 }

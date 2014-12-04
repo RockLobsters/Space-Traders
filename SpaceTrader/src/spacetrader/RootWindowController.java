@@ -5,6 +5,7 @@
  */
 package spacetrader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,6 +23,8 @@ import javafx.stage.Stage;
  *
  * @author addison
  */
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class RootWindowController implements Initializable {
 
     @FXML
@@ -62,8 +65,16 @@ public class RootWindowController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("MusicWindow.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        catch (IOException ex) {
+            Logger.getLogger(RootWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
