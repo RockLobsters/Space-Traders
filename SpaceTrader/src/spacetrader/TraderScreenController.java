@@ -207,29 +207,49 @@ public class TraderScreenController implements Initializable {
     @FXML
     private void fireamrsTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.FIREARMS, 1));
-        firearmsPrice.setText(Double.toString(fire.getPrice()));
-        firearmsQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            firearmsPrice.setText(Double.toString(fire.getPrice()));
+            firearmsQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
     private void foodTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.FOOD,1));
-        foodPrice.setText(Double.toString(fire.getPrice()));
-        foodQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            foodPrice.setText(Double.toString(fire.getPrice()));
+            foodQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
     private void furTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.FUR,1));
-        furPrice.setText(Double.toString(fire.getPrice()));
-        furQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            furPrice.setText(Double.toString(fire.getPrice()));
+            furQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
     private void gamesTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.GAMES,1));
-        gamesPrice.setText(Double.toString(fire.getPrice()));
-        gamesQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            gamesPrice.setText(Double.toString(fire.getPrice()));
+            gamesQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
@@ -635,22 +655,37 @@ public class TraderScreenController implements Initializable {
     @FXML
     private void machinesTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.MACHINES,1));
-        machinesPrice.setText(Double.toString(fire.getPrice()));
-        machinesQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            machinesPrice.setText(Double.toString(fire.getPrice()));
+            machinesQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
     private void medicineTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.MEDICINE,1));
-        medicinePrice.setText(Double.toString(fire.getPrice()));
-        medicineQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            medicinePrice.setText(Double.toString(fire.getPrice()));
+            medicineQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
     private void narcoticsTabOpen(MouseEvent event) {
         Good fire = fire = getGood(new Good(GoodType.NARCOTICS,1));
-        narcoticsPrice.setText(Double.toString(fire.getPrice()));
-        narcoticsQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            narcoticsPrice.setText(Double.toString(fire.getPrice()));
+            narcoticsQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
@@ -660,8 +695,13 @@ public class TraderScreenController implements Initializable {
     @FXML
     private void oreTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.ORE,1));
-        orePrice.setText(Double.toString(fire.getPrice()));
-        oreQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            orePrice.setText(Double.toString(fire.getPrice()));
+            oreQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
@@ -679,15 +719,25 @@ public class TraderScreenController implements Initializable {
     @FXML
     private void robotsTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.ROBOTS,1));
-        robotsPrice.setText(Double.toString(fire.getPrice()));
-        robotsQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            robotsPrice.setText(Double.toString(fire.getPrice()));
+            robotsQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
 
     @FXML
     private void waterTabOpen(MouseEvent event) {
         Good fire = getGood(new Good(GoodType.WATER,1));
-        waterPrice.setText(Double.toString(fire.getPrice()));
-        waterQuantity.setText(Integer.toString(fire.getQuantity()));
+        if(fire != null) {
+            waterPrice.setText(Double.toString(fire.getPrice()));
+            waterQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }
     
 }

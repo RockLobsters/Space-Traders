@@ -38,6 +38,7 @@ class NonPlayer {
         this.ps = ss.getPoliticalSystem();
         this.ship = new Gnat();
         this.techLevel = ss.getTechLevel();
+        setCargo();
     }
     
     public void attack(int hitPoints) { 
@@ -71,6 +72,10 @@ class NonPlayer {
     }
     
     public String getEncounter() {
-        return null;
+        return "None";
+    }
+
+    private void setCargo() {
+        ship.adjustCargo(ps.supply());
     }
 }
