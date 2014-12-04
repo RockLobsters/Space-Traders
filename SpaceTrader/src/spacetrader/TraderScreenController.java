@@ -202,6 +202,78 @@ public class TraderScreenController implements Initializable {
         String print = "Money: " + Double.toString(player.getMoney()) + "\n";
         print = print + ship.cargoToString();
         cargoBox.setText(print);
+        Good fire = getGood(new Good(GoodType.WATER,1));
+        if(fire != null) {
+            waterPrice.setText(Double.toString(fire.getPrice()));
+            waterQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
+        fire = getGood(new Good(GoodType.ROBOTS,1));
+        if(fire != null) {
+            robotsPrice.setText(Double.toString(fire.getPrice()));
+            robotsQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
+        fire = getGood(new Good(GoodType.ORE,1));
+        if(fire != null) {
+            orePrice.setText(Double.toString(fire.getPrice()));
+            oreQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
+        fire = fire = getGood(new Good(GoodType.NARCOTICS,1));
+        if(fire != null) {
+            narcoticsPrice.setText(Double.toString(fire.getPrice()));
+            narcoticsQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
+        fire = getGood(new Good(GoodType.MEDICINE,1));
+        if(fire != null) {
+            medicinePrice.setText(Double.toString(fire.getPrice()));
+            medicineQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
+        fire = getGood(new Good(GoodType.FIREARMS, 1));
+        if(fire != null) {
+            firearmsPrice.setText(Double.toString(fire.getPrice()));
+            firearmsQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
+        fire = getGood(new Good(GoodType.FOOD,1));
+        if(fire != null) {
+            foodPrice.setText(Double.toString(fire.getPrice()));
+            foodQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
+        fire = getGood(new Good(GoodType.FUR,1));
+        if(fire != null) {
+            furPrice.setText(Double.toString(fire.getPrice()));
+            furQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
+        fire = getGood(new Good(GoodType.GAMES,1));
+        if(fire != null) {
+            gamesPrice.setText(Double.toString(fire.getPrice()));
+            gamesQuantity.setText(Integer.toString(fire.getQuantity()));
+        } else {
+            machinesPrice.setText("0");
+            machinesQuantity.setText("0");
+        }
     }    
 
     @FXML
@@ -254,14 +326,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleFirearmsBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(firearmsToBuy.getText());
         Good fire = getGood(new Good(GoodType.FIREARMS,1));
         boolean success = np.buyFrom(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.FIREARMS,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            firearmsPrice.setText(Double.toString(fire.getPrice()));
+            firearmsQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -279,14 +351,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleFirearmsSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(firearmsToBuy.getText());
         Good fire = getGood(new Good(GoodType.FIREARMS,1));
         boolean success = np.sellTo(fire, quan);
 
         if (success) {
-            fire = getGood(new Good(GoodType.FUR,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            fire = getGood(new Good(GoodType.FIREARMS,1));
+            firearmsPrice.setText(Double.toString(fire.getPrice()));
+            firearmsQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -304,14 +376,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleFoodBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(foodToBuy.getText());
         Good fire = getGood(new Good(GoodType.FOOD,1));
         boolean success = np.buyFrom(fire, quan);
 
         if (success) {
-            fire = getGood(new Good(GoodType.FUR,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            fire = getGood(new Good(GoodType.FOOD,1));
+            foodPrice.setText(Double.toString(fire.getPrice()));
+            foodQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -329,14 +401,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleFoodSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(foodToBuy.getText());
             Good fire = getGood(new Good(GoodType.FOOD,1));
         boolean success = np.sellTo(fire, quan);
 
         if (success) {
-            fire = getGood(new Good(GoodType.FUR,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            fire = getGood(new Good(GoodType.FOOD,1));
+            foodPrice.setText(Double.toString(fire.getPrice()));
+            foodQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -354,7 +426,7 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleFurBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(furToBuy.getText());
             Good fire = getGood(new Good(GoodType.FUR,1));
         boolean success = np.buyFrom(fire, quan);
 
@@ -379,7 +451,7 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleFurSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(furToBuy.getText());
         Good fire = getGood(new Good(GoodType.FUR,1));
         boolean success = np.sellTo(fire, quan);
 
@@ -404,14 +476,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleGamesBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(gamesToBuy.getText());
             Good fire = getGood(new Good(GoodType.GAMES,1));
         boolean success = np.buyFrom(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.GAMES,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            gamesPrice.setText(Double.toString(fire.getPrice()));
+            gamesQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -429,14 +501,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleGamesSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(gamesToBuy.getText());
         Good fire = getGood(new Good(GoodType.GAMES,1));
         boolean success = np.sellTo(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.GAMES,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            gamesPrice.setText(Double.toString(fire.getPrice()));
+            gamesQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -454,14 +526,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleMachinesBuyAction(MouseEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(machinesToBuy.getText());
         Good fire = getGood(new Good(GoodType.MACHINES,1));
         boolean success = np.buyFrom(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.MACHINES,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            machinesPrice.setText(Double.toString(fire.getPrice()));
+            machinesQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -479,14 +551,114 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleMachinesSellAction(MouseEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(machinesToBuy.getText());
         Good fire = getGood(new Good(GoodType.MACHINES,1));
         boolean success = np.sellTo(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.MACHINES,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            machinesPrice.setText(Double.toString(fire.getPrice()));
+            machinesQuantity.setText(Integer.toString(fire.getQuantity()));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
+        }
+        else {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void handleMedicineBuyAction(MouseEvent event) {
+        int quan = Integer.parseInt(medicineToBuy.getText());
+        Good fire = getGood(new Good(GoodType.MEDICINE,1));
+        boolean success = np.buyFrom(fire, quan);
+
+        if (success) {
+            fire = getGood(new Good(GoodType.MEDICINE,1));
+            medicinePrice.setText(Double.toString(fire.getPrice()));
+            medicineQuantity.setText(Integer.toString(fire.getQuantity()));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
+        }
+        else {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void handleMedicineSellAction(MouseEvent event) {
+        int quan = Integer.parseInt(medicineToBuy.getText());
+        Good fire = getGood(new Good(GoodType.MEDICINE,1));
+        boolean success = np.sellTo(fire, quan);
+
+        if (success) {
+            fire = getGood(new Good(GoodType.MEDICINE,1));
+            medicinePrice.setText(Double.toString(fire.getPrice()));
+            medicineQuantity.setText(Integer.toString(fire.getQuantity()));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
+        }
+        else {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot sell this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void handleNarcoticsBuyAction(MouseEvent event) {
+        int quan = Integer.parseInt(narcoticsToBuy.getText());
+        Good fire = getGood(new Good(GoodType.NARCOTICS,1));
+        boolean success = np.buyFrom(fire, quan);
+
+        if (success) {
+            fire = getGood(new Good(GoodType.NARCOTICS,1));
+            narcoticsPrice.setText(Double.toString(fire.getPrice()));
+            narcoticsQuantity.setText(Integer.toString(fire.getQuantity()));
+            String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
+        }
+        else {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot buy more than you can hold or afford.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void handleNarcoticsSellAction(MouseEvent event) {
+        int quan = Integer.parseInt(narcoticsToBuy.getText());
+        Good fire = getGood(new Good(GoodType.NARCOTICS,1));
+        boolean success = np.sellTo(fire, quan);
+
+        if (success) {
+            fire = getGood(new Good(GoodType.NARCOTICS,1));
+            narcoticsPrice.setText(Double.toString(fire.getPrice()));
+            narcoticsQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -504,14 +676,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleOreBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(oreToBuy.getText());
         Good fire = getGood(new Good(GoodType.ORE,1));
         boolean success = np.buyFrom(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.ORE,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            orePrice.setText(Double.toString(fire.getPrice()));
+            oreQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -529,14 +701,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleOreSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(oreToBuy.getText());
         Good fire = getGood(new Good(GoodType.ORE,1));
         boolean success = np.sellTo(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.ORE,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            orePrice.setText(Double.toString(fire.getPrice()));
+            oreQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -554,14 +726,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleRobotsBuyAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(robotsToBuy.getText());
         Good fire = getGood(new Good(GoodType.ROBOTS,1));
         boolean success = np.buyFrom(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.ROBOTS,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            robotsPrice.setText(Double.toString(fire.getPrice()));
+            robotsQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -579,14 +751,14 @@ public class TraderScreenController implements Initializable {
 
     @FXML
     private void handleRobotsSellAction(ActionEvent event) {
-        int quan = Integer.parseInt(waterToBuy.getText());
+        int quan = Integer.parseInt(robotsToBuy.getText());
         Good fire = getGood(new Good(GoodType.ROBOTS,1));
         boolean success = np.sellTo(fire, quan);
 
         if (success) {
             fire = getGood(new Good(GoodType.ROBOTS,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            robotsPrice.setText(Double.toString(fire.getPrice()));
+            robotsQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -610,8 +782,8 @@ public class TraderScreenController implements Initializable {
 
         if (success) {
             fire = getGood(new Good(GoodType.WATER,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            waterPrice.setText(Double.toString(fire.getPrice()));
+            waterQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);
@@ -635,8 +807,8 @@ public class TraderScreenController implements Initializable {
 
         if (success) {
             fire = getGood(new Good(GoodType.WATER,1));
-            furPrice.setText(Double.toString(fire.getPrice()));
-            furQuantity.setText(Integer.toString(fire.getQuantity()));
+            waterPrice.setText(Double.toString(fire.getPrice()));
+            waterQuantity.setText(Integer.toString(fire.getQuantity()));
             String print = "Money: " + Double.toString(player.getMoney()) + "\n";
             print = print + ship.cargoToString();
             cargoBox.setText(print);

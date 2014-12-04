@@ -112,10 +112,10 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Button fx:id="medicineSell" layoutX="98.0" layoutY="103.0" mnemonicParsing="false" text="SELL" />
+                                <Button fx:id="medicineSell" layoutX="98.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#handleMedicineSellAction" text="SELL" />
                                 <Text layoutX="20.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
                                 <Text layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
-                                <Button fx:id="medicineBuy" layoutX="18.0" layoutY="103.0" mnemonicParsing="false" text="BUY" />
+                                <Button fx:id="medicineBuy" layoutX="18.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#handleMedicineBuyAction" text="BUY" />
                                 <Label fx:id="medicineQuantity" layoutX="114.0" layoutY="18.0" text="0" />
                                 <Label fx:id="medicinePrice" layoutX="114.0" layoutY="44.0" text="0" />
                                 <TextField fx:id="medicineToBuy" layoutX="18.0" layoutY="64.0" />
@@ -127,10 +127,10 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Button fx:id="machinesSell" layoutX="95.0" layoutY="97.0" mnemonicParsing="false" text="SELL" />
+                                <Button fx:id="machinesSell" layoutX="95.0" layoutY="97.0" mnemonicParsing="false" onMouseClicked="#handleMachinesSellAction" text="SELL" />
                                 <Text layoutX="17.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
                                 <Text layoutX="17.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
-                                <Button fx:id="machinesBuy" layoutX="15.0" layoutY="97.0" mnemonicParsing="false" text="BUY" />
+                                <Button fx:id="machinesBuy" layoutX="15.0" layoutY="97.0" mnemonicParsing="false" onMouseClicked="#handleMachinesBuyAction" text="BUY" />
                                 <Label fx:id="machinesQuantity" layoutX="111.0" layoutY="14.0" text="0" />
                                 <Label fx:id="machinesPrice" layoutX="111.0" layoutY="40.0" text="0" />
                                 <TextField fx:id="machinesToBuy" layoutX="14.0" layoutY="64.0" />
@@ -144,8 +144,8 @@
                             <children>
                                 <Label fx:id="narcoticsPrice" layoutX="111.0" layoutY="34.0" text="0" />
                                 <Text layoutX="17.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitiy:" />
-                                <Button fx:id="narcoticsSell" layoutX="95.0" layoutY="98.0" mnemonicParsing="false" text="SELL" />
-                                <Button fx:id="narcoticsBuy" layoutX="15.0" layoutY="98.0" mnemonicParsing="false" text="BUY" />
+                                <Button fx:id="narcoticsSell" layoutX="95.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#handleNarcoticsSellAction" text="SELL" />
+                                <Button fx:id="narcoticsBuy" layoutX="15.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#handleNarcoticsBuyAction" text="BUY" />
                                 <Text layoutX="17.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
                                 <Label fx:id="narcoticsQuantity" layoutX="111.0" layoutY="8.0" text="0" />
                                 <TextField fx:id="narcoticsToBuy" layoutX="14.0" layoutY="58.0" />
@@ -170,9 +170,9 @@
                 </TitledPane>
             </panes>
         </Accordion>
-        <Text fill="WHITE" layoutX="291.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THIS IS A TRADER">
+        <Text fill="WHITE" layoutX="214.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SOMEONE WANTS TO TRADE WITH YOU" textAlignment="CENTER" wrappingWidth="328.8760986328125">
             <font>
-                <Font size="35.0" />
+                <Font size="28.0" />
             </font>
         </Text>
         <TextArea fx:id="cargoBox" layoutX="227.0" layoutY="308.0" prefHeight="125.0" prefWidth="361.0">
@@ -185,7 +185,7 @@
                 <Font size="24.0" />
             </font>
         </Text>
-        <Button layoutX="506.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#returnToPlanet" text="Go To Planet" />
+        <Button layoutX="559.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#returnToPlanet" text="LEAVE" />
     </children>
     <effect>
         <ColorAdjust saturation="-0.02" />

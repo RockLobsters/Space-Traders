@@ -32,6 +32,7 @@ public class Trader extends NonPlayer {
     boolean fence = false;
     Random rand = new Random();
     ShipFactory sf = new ShipFactory();
+    private Player player1 = GameInstance.getInstance().getPlayer();
     
     public Trader(Player player, SolarSystem ss) {
         super(player, ss);
@@ -46,24 +47,24 @@ public class Trader extends NonPlayer {
     
     @Override
     public boolean buyFrom(Good good, int quantity) {
-        int cost = rand.nextInt(good.getMTH() - good.getMTL()) + good.getMTH()*quantity;
-        if(cost <= player.getMoney()) {
+        double cost = quantity * good.getPrice();
+        if(cost <= player1.getMoney() && (good.getQuantity() != 0) && (good.getQuantity() - quantity) >= 0) {
             good.setQuantity(good.getQuantity() - quantity);
-            player.subtractMoney(cost);
+            player1.subtractMoney(cost);
             boolean found = false;
-            ArrayList<Good> playerCargo = player.getShip().cargo;
+            ArrayList<Good> playerCargo = player1.getShip().getCargo();
             for (int i = 0; i < playerCargo.size() && !found; i++) {
                 if (playerCargo.get(i).getType() == good.getType()) {
                     playerCargo.get(i).setQuantity(playerCargo.get(i).getQuantity() + quantity);
-                    found = true;
                     ship.cargo.remove(good);
                     ship.adjustCargo(ship.cargo);
+                    found = true;
                 }
             }
             if (!found) {
-                playerCargo.add(good);
+                playerCargo.add(new Good(good.type,quantity));
             }
-            player.getShip().adjustCargo(playerCargo);
+            player1.getShip().adjustCargo(playerCargo);
             return true;
         }
         return false;

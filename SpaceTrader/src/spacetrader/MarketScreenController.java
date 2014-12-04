@@ -623,6 +623,9 @@ public class MarketScreenController implements Initializable {
             dialogStage.show();
 
         }
+        String print = "Money: " + Double.toString(player.getMoney()) + "\n";
+            print = print + ship.cargoToString();
+            cargoBox.setText(print);
     }
 
     @FXML

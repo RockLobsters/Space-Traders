@@ -17,6 +17,7 @@
 package spacetrader;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -76,12 +77,40 @@ public class PoliceEncounterController implements Initializable {
     @FXML
     private void checkClicked(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("PlanetScreen.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-            //hide this current window (if this is whant you want
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        //hide this current window (if this is whant you want
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+        
+        boolean found = false;
+        ArrayList<Good> playerCargo = ship.getCargo();
+        Good narcotic = null;
+        for (int i = 0; i < playerCargo.size() && !found; i++) {
+                if (playerCargo.get(i).getType() == GoodType.NARCOTICS) {
+                    narcotic = playerCargo.get(i);
+                    found = true;
+                }
+            }
+        if(found = true && narcotic != null){
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You had Narcotics on your ship. Police took them and fined you $600.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+            player.subtractMoney(600);
+            playerCargo.remove(narcotic);
+            ship.adjustCargo(playerCargo);
+        }
+        else {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You had nothing on you. Police let you go.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+        }
     }
 
     @FXML
