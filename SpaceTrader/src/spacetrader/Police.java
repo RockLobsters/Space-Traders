@@ -51,6 +51,6 @@ public class Police extends NonPlayer {
     }
     @Override
     public String getEncounter() {
-        return "PoliceScreen.fxml";
+        return "PoliceEncounterScreen.fxml";
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.PoliceEncounterController">
+   <children>
+      <ImageView fitHeight="254.0" fitWidth="606.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@police.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="bribeButton" layoutX="283.0" layoutY="324.0" mnemonicParsing="false" onMouseClicked="#bribeClicked" text="BRIBE" />
+      <Button layoutX="521.0" layoutY="324.0" mnemonicParsing="false" onMouseClicked="#fleeClicked" text="FLEE" />
+      <Button layoutX="21.0" layoutY="324.0" mnemonicParsing="false" onMouseClicked="#checkClicked" text="CHECK" />
+      <Text fill="#eb1111" layoutX="272.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You've been caught by the police!">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
