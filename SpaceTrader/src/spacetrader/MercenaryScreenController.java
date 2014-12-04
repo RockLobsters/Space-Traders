@@ -34,7 +34,7 @@ import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import java.lang.NumberFormatException;
 /**
  * FXML Controller class
  *
@@ -83,18 +83,36 @@ public class MercenaryScreenController implements Initializable {
 
     @FXML
     private void hireMercenary(MouseEvent event) {
-        int wantedMercenary = Integer.parseInt(hiringNumber.getText());
-        boolean result = roster.hireMercenary(wantedMercenary);
-        if(!result){
+        try{
+            int wantedMercenary = Integer.parseInt(hiringNumber.getText());
+            if(wantedMercenary >= roster.getList().size()){
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("That number is not on the list. Please try again.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+            } else {
+                boolean result = roster.hireMercenary(wantedMercenary);
+                if(!result){
+                    Stage dialogStage = new Stage();
+                    dialogStage.initModality(Modality.WINDOW_MODAL);
+                    dialogStage.setScene(new Scene(VBoxBuilder.create().
+                            children(new Text("You do not have enough room.")).
+                            alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                    dialogStage.show();
+                }
+                populateSkills();
+                populateRoster();
+            }
+        } catch(NumberFormatException e){
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.setScene(new Scene(VBoxBuilder.create().
-                    children(new Text("You dont have enough room.")).
+                    children(new Text("Please enter Roster Number.")).
                     alignment(Pos.CENTER).padding(new Insets(30)).build()));
             dialogStage.show();
         }
-        populateSkills();
-        populateRoster();
         
     }
 
