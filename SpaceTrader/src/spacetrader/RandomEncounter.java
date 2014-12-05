@@ -44,14 +44,14 @@ public class RandomEncounter {
         double polRate = ps.bribeRate() + ps.policeRate();
         double tradeRate = ps.illegalTradeRate() + ps.traderRate();
         double pirateRate = ps.pirateRate();
-        if (rand.nextDouble() <= polRate) {
-            this.np = new Police(player, ss);
+        if (rand.nextDouble() <= pirateRate) {
+            this.np = new Pirate(player,ss);
             otherShip = np.ship;
         } else if (rand.nextDouble() <= tradeRate) {
             this.np = new Trader(player,ss);
             otherShip = np.ship;
-        } else if (rand.nextDouble() <= pirateRate) {
-            this.np = new Pirate(player,ss);
+        } else if (rand.nextDouble() <= polRate) {
+            this.np = new Police(player, ss);
             otherShip = np.ship;
         } else {
             this.np = null;
@@ -59,9 +59,27 @@ public class RandomEncounter {
         }
     }
     
+    public RandomEncounter(Player player, SolarSystem ss, String encounterType){
+        this.player = player;
+        this.playerShip = player.getShip();
+        this.ss = ss;
+        this.tl = ss.getTechLevel();
+        this.ps = ss.getPoliticalSystem();
+        if (encounterType.equals("Pirate")) {
+            this.np = new Pirate(player,ss);
+            otherShip = np.ship;
+        } else if (encounterType.equals("Police")) {
+            this.np = new Police(player, ss);
+            otherShip = np.ship;
+        } else {
+            this.np = new Trader(player,ss);
+            otherShip = np.ship;
+        }
+    }
+    
     void Battle() {
-        int damage = playerShip.getDefense() - otherShip.getPower();
-        int hit = otherShip.getDefense() - playerShip.getPower();
+        int damage = otherShip.getPower();
+        int hit = playerShip.getPower();
         int playerHealth = playerShip.getHealth();
         np.attack(damage); //Opponent attacks player
         np.takeHit(hit + rand.nextInt(player.getFighter())); //Player attacks opponent
@@ -119,6 +137,10 @@ public class RandomEncounter {
         if (np == null)
             return "None";
         return np.getEncounter();
+    }
+    
+    NonPlayer getNonPlayer(){
+        return np;
     }
 }
 

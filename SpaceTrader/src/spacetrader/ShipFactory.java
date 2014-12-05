@@ -38,6 +38,7 @@ public class ShipFactory {
     
     Ship generateShip(String key, SolarSystem ss) {
         tl = ss.getTechLevel();
+        ps = ss.getPoliticalSystem();
         double rate;
         if (key.equals("POLICE")) {
             rate = (ps.bribeRate() + ps.policeRate()) * 10;

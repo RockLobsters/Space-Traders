@@ -35,6 +35,7 @@ public class Police extends NonPlayer {
     
     public Police(Player player, SolarSystem ss) {
         super(player, ss);
+        ps = ss.getPoliticalSystem();
         this.ship = this.ship = sf.generateShip("POLICE", ss);
         if (rand.nextDouble() <= ps.bribeRate()) {
             corrupt = true;
@@ -51,6 +52,6 @@ public class Police extends NonPlayer {
     }
     @Override
     public String getEncounter() {
-        return "PoliceScreen.fxml";
+        return "PoliceEncounter.fxml";
     }
 }

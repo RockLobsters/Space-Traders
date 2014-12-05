@@ -43,9 +43,10 @@ public class Good implements Serializable {
         this.type = gType;
         this.quantity = q;
         setValues();
+        price = basePrice;
     }
 
-    protected void setValues() {
+    private void setValues() {
         switch (type) {
             case WATER:
                 this.basePrice = 30;

@@ -36,7 +36,6 @@ public class Planet implements Comparable, Serializable {
     private int coordinateY;
     private int resources;
     private Market market;
-    private ArrayList<Mercenary> personnelRoster;
     private SolarSystem solarSystem;
 
     /**
@@ -88,7 +87,6 @@ public class Planet implements Comparable, Serializable {
             resources = 0;
         }
         market = new Market(this);
-        personnelRoster = new ArrayList();
     }
 
     /**
@@ -134,32 +132,6 @@ public class Planet implements Comparable, Serializable {
     }
 
     /**
-     * Adds a mercenary to the Personnel roster
-     *
-     * @param mercenary The mercenary to add
-     */
-    public void addMercenary(Mercenary mercenary) {
-        getPersonnelRoster().add(mercenary);
-    }
-
-    /**
-     * Remove a mercenary from the personnel roster
-     *
-     * @param name The name of the mercenary to remove
-     *
-     * @return
-     */
-    public Mercenary removeMercenary(String name) {
-        Mercenary toFind = new Mercenary(name, 0);
-        for (int i = 0; i < getPersonnelRoster().size(); i++) {
-            if (getPersonnelRoster().get(i).compareTo(toFind) == 0) {
-                return getPersonnelRoster().remove(i);
-            }
-        }
-        return null;
-    }
-
-    /**
      * @return the resources
      */
     public int getResources() {
@@ -171,21 +143,6 @@ public class Planet implements Comparable, Serializable {
      */
     public void setResources(int resources) {
         this.resources = resources;
-    }
-
-    /**
-     * @return the personnelRoster
-     */
-    public ArrayList<Mercenary> getPersonnelRoster() {
-        return personnelRoster;
-    }
-
-    /**
-     * @param personnelRoster the personnelRoster to set
-     */
-    public void setPersonnelRoster(
-            ArrayList<Mercenary> personnelRoster) {
-        this.personnelRoster = personnelRoster;
     }
 
     /**
@@ -223,16 +180,7 @@ public class Planet implements Comparable, Serializable {
      */
     @Override
     public String toString() {
-        String out = name + " (" + coordinateX + "," + coordinateY + ") " + resources + " ( " + market + " , [ ";
-        if (!personnelRoster.isEmpty()) {
-            out = out + "( " + personnelRoster.get(0);
-            for (int i = 1; i < personnelRoster.size(); i++) {
-                out = out + " ) , ( " + personnelRoster.get(i);
-            }
-            out = out + " ) ";
-        }
-        out = out + "] )";
-        return out;
+        return name + " (" + coordinateX + "," + coordinateY + ") " + resources + " ( " + market + " )";
     }
 
     /**

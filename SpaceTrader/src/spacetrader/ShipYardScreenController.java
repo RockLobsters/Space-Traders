@@ -49,10 +49,20 @@ import org.controlsfx.dialog.Dialogs;
  * @author jackie
  */
 public class ShipYardScreenController implements Initializable {
+    @FXML
+    private TextArea beetleText;
+    @FXML
+    private TextArea grasshopperText;
+    @FXML
+    private TextArea hornetText;
 
     private Player player = GameInstance.getInstance().getPlayer();
     private Ship ship = GameInstance.getInstance().getPlayer().getShip();
     private int techLevel = player.getCurrentLocation().getSolarSystem().getTechLevel();
+    @FXML
+    private TextArea termiteText;
+    @FXML
+    private TextArea waspText;
     private Shipyard yard = new Shipyard(player.getCurrentLocation());
     private Laser laserType;
     private Gadget gadgetType;
@@ -115,6 +125,274 @@ public class ShipYardScreenController implements Initializable {
         setGadget();
         setSheild();
         populateFields();
+    }
+
+    @FXML
+    private void beetleOpen(MouseEvent event) {
+        String text = "Price:" + yard.shipPrice(player, new Beetle()) + "\n";
+        beetleText.setText(text);
+    }
+
+    @FXML
+    private void buyBeetle(MouseEvent event) {
+        if (techLevel >= 5) {
+            int success = yard.buyShip(player, new Beetle(), false);
+
+            if (success == 0) {
+                Action response;
+                response = Dialogs.create()
+                        //.owner( isOwnerSelected() ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
+
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Beetle(), true);
+                    shipName.setText("Current Ship: Beetle");
+                    money.setText("Money: " + player.getMoney());
+                }
+                else {
+                    // ... user cancelled, reset form to default
+                    return;
+                }
+            }
+            if (success == -1) {
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+            }
+            if (success == 1) {
+
+                shipName.setText("Current Ship: Beetle");
+                money.setText("Money: " + player.getMoney());
+            }
+        }
+        else {
+
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void buyGrasshopper(MouseEvent event) {
+        if (techLevel >= 5) {
+            int success = yard.buyShip(player, new Grasshopper(), false);
+
+            if (success == 0) {
+                Action response;
+                response = Dialogs.create()
+                        //.owner( isOwnerSelected() ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
+
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Grasshopper(), true);
+                    shipName.setText("Current Ship: Grasshopper");
+                    money.setText("Money: " + player.getMoney());
+                }
+                else {
+                    // ... user cancelled, reset form to default
+                    return;
+                }
+            }
+            if (success == -1) {
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+            }
+            if (success == 1) {
+
+                shipName.setText("Current Ship: Grasshopper");
+                money.setText("Money: " + player.getMoney());
+            }
+        }
+        else {
+
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void buyHornet(MouseEvent event) {
+         if (techLevel >= 5) {
+            int success = yard.buyShip(player, new Hornet(), false);
+
+            if (success == 0) {
+                Action response;
+                response = Dialogs.create()
+                        //.owner( isOwnerSelected() ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
+
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Hornet(), true);
+                    shipName.setText("Current Ship: Hornet");
+                    money.setText("Money: " + player.getMoney());
+                }
+                else {
+                    // ... user cancelled, reset form to default
+                    return;
+                }
+            }
+            if (success == -1) {
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+            }
+            if (success == 1) {
+
+                shipName.setText("Current Ship: Hornet");
+                money.setText("Money: " + player.getMoney());
+            }
+        }
+        else {
+
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void buyTermite(MouseEvent event) {
+        if (techLevel >= 5) {
+            int success = yard.buyShip(player, new Termite(), false);
+
+            if (success == 0) {
+                Action response;
+                response = Dialogs.create()
+                        //.owner( isOwnerSelected() ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
+
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Termite(), true);
+                    shipName.setText("Current Ship: Termite");
+                    money.setText("Money: " + player.getMoney());
+                }
+                else {
+                    // ... user cancelled, reset form to default
+                    return;
+                }
+            }
+            if (success == -1) {
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+            }
+            if (success == 1) {
+
+                shipName.setText("Current Ship: Termite");
+                money.setText("Money: " + player.getMoney());
+            }
+        }
+        else {
+
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void buyWasp(MouseEvent event) {
+        if (techLevel >= 5) {
+            int success = yard.buyShip(player, new Wasp(), false);
+
+            if (success == 0) {
+                Action response;
+                response = Dialogs.create()
+                        //.owner( isOwnerSelected() ? stage : null)
+                        .title("CARGO NOT ALLOWED")
+                        //.masthead(isMastheadVisible() ? "Just Checkin'" : null)
+                        .message("Some of your cargo cannot be sold here. Sell anyway?")
+                        .showConfirm();
+
+                if (response == Dialog.ACTION_YES) {
+                    success = yard.buyShip(player, new Wasp(), true);
+                    shipName.setText("Current Ship: Wasp");
+                    money.setText("Money: " + player.getMoney());
+                }
+                else {
+                    // ... user cancelled, reset form to default
+                    return;
+                }
+            }
+            if (success == -1) {
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                dialogStage.setScene(new Scene(VBoxBuilder.create().
+                        children(new Text("You cannot afford this.")).
+                        alignment(Pos.CENTER).padding(new Insets(30)).build()));
+                dialogStage.show();
+            }
+            if (success == 1) {
+
+                shipName.setText("Current Ship: Wasp");
+                money.setText("Money: " + player.getMoney());
+            }
+        }
+        else {
+
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.setScene(new Scene(VBoxBuilder.create().
+                    children(new Text("You cannot buy this here.")).
+                    alignment(Pos.CENTER).padding(new Insets(30)).build()));
+            dialogStage.show();
+
+        }
+    }
+
+    @FXML
+    private void grasshopperOpen(MouseEvent event) {
+        String text = "Price:" + yard.shipPrice(player, new Grasshopper()) + "\n";
+        grasshopperText.setText(text);
+    }
+
+    @FXML
+    private void hornetOpen(MouseEvent event) {
+        String text = "Price:" + yard.shipPrice(player, new Hornet()) + "\n";
+        hornetText.setText(text);
     }
 
     private void setLaser() {
@@ -1296,6 +1574,18 @@ public class ShipYardScreenController implements Initializable {
         listShield.setText(shields);
         gadgetList.setText(gadgets);
         escapePodBool.setText(escapePod);
+    }
+
+    @FXML
+    private void termiteOpen(MouseEvent event) {
+        String text = "Price:" + yard.shipPrice(player, new Termite()) + "\n";
+        termiteText.setText(text);
+    }
+
+    @FXML
+    private void waspOpen(MouseEvent event) {
+        String text = "Price:" + yard.shipPrice(player, new Wasp()) + "\n";
+        waspText.setText(text);
     }
 
 }

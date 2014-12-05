@@ -39,6 +39,7 @@ public class Ship implements Serializable {
     ArrayList<Laser> weapons;
     ArrayList<Shield> shields;
     ArrayList<Gadget> gadgets;
+    ArrayList<Mercenary> crew;
 
     public int fuel;
     public int health;
@@ -75,6 +76,7 @@ public class Ship implements Serializable {
         weapons = new ArrayList<>();
         shields = new ArrayList<>();
         gadgets = new ArrayList<>();
+        crew = new ArrayList<>();
         this.fuel = FUEL_CAPACITY;
         this.health = HULL_STRENGTH;
     }
@@ -328,7 +330,7 @@ public class Ship implements Serializable {
     }
     
     public int getPower() {
-        int power = 0;
+        int power = 1;
         for (Laser l : weapons) {
             power += l.getPower();
         }
@@ -373,5 +375,30 @@ public class Ship implements Serializable {
     
     public ArrayList<Gadget> getGadget() {
         return gadgets;
+    }
+    
+    public ArrayList<Mercenary> getCrew() {
+        return crew;
+    }
+    
+    public boolean addCrew(Mercenary toAdd) {
+        return crew.add(toAdd);
+    }
+    
+    public Mercenary removeCrew(int index) {
+        return crew.remove(index);
+    }
+    
+    public int getCrewIndex(Mercenary toFind) {
+        for(int i = 0; i < crew.size(); i++) {
+            if(toFind.equals(crew.get(i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public int getCrewQuarters() {
+        return CREW_QUARTERS;
     }
 }

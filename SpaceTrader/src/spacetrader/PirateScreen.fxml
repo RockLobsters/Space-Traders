@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.PirateScreenController">
+   <children>
+      <ImageView fitHeight="473.0" fitWidth="602.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pirate.jpg" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="pirateHealthBar" layoutX="363.0" layoutY="23.0" prefHeight="21.0" prefWidth="182.0" progress="1.0">
+         <effect>
+            <ColorAdjust hue="0.88" />
+         </effect>
+      </ProgressBar>
+      <Text fill="WHITE" layoutX="230.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pirates' Health: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="attackButton" layoutX="454.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#attackPirate" prefHeight="33.0" prefWidth="112.0" text="ATTACK!" />
+      <Button fx:id="fleeButton" layoutX="454.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#fleePirate" prefHeight="33.0" prefWidth="112.0" text="FLEE" />
+      <ProgressBar fx:id="playerHealthBar" layoutX="130.0" layoutY="303.0" prefWidth="200.0" progress="1.0">
+         <effect>
+            <ColorAdjust hue="-0.43" />
+         </effect>
+      </ProgressBar>
+      <Text fill="WHITE" layoutX="22.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Health:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <SplitPane layoutX="16.0" layoutY="343.0" orientation="VERTICAL" prefHeight="110.0" prefWidth="428.0">
+         <items>
+            <AnchorPane prefHeight="107.0" prefWidth="423.0">
+               <children>
+                  <Text fx:id="listWeapons" layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="73.0" />
+                  <Text layoutX="142.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CURRENT EQUIPMENT" />
+                  <Text layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEAPONS" underline="true" />
+                  <Text layoutX="128.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SHIELD" underline="true" />
+                  <Text layoutX="228.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GADGETS" underline="true" />
+                  <Text layoutX="332.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESCAPE POD" underline="true" />
+                  <Text fx:id="listShield" layoutX="128.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="73.0" />
+                  <Text fx:id="gadgetList" layoutX="223.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="73.0" />
+                  <Text fx:id="escapePodBool" layoutX="332.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="73.0" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <Text fx:id="priateHealthNum" fill="WHITE" layoutX="554.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="39.0" />
+      <Text fx:id="playerHealthNum" fill="WHITE" layoutX="340.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="39.0" />
+      <Text fx:id="battleText" fill="#ba1c1c" layoutX="304.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are under attack!" textAlignment="CENTER" wrappingWidth="280.0">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

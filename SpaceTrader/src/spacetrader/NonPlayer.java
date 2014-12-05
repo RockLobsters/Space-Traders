@@ -36,12 +36,14 @@ class NonPlayer {
         this.player = player;
         this.ss = ss;
         this.ps = ss.getPoliticalSystem();
+        this.ship = new Gnat();
         this.techLevel = ss.getTechLevel();
+        setCargo();
     }
     
     public void attack(int hitPoints) { 
         int health = player.getShip().getHealth();
-        player.getShip().setHealth(health - hitPoints);
+        player.getShip().setHealth(Math.max(0, health - hitPoints));
     }
     public boolean bribe(boolean check) {
         return false;
@@ -61,10 +63,10 @@ class NonPlayer {
         return ship;
     }
     public void takeHit(int hitPoints) {
-        ship.setHealth(hitPoints);
+        ship.setHealth(Math.max(0,ship.getHealth() - hitPoints));
     }
     public boolean isDead() {
-        return ship.getHealth() > 0;
+        return ship.getHealth() <= 0;
     }
     
     public ArrayList<Good> getCargo() {
@@ -72,6 +74,10 @@ class NonPlayer {
     }
     
     public String getEncounter() {
-        return null;
+        return "None";
+    }
+
+    private void setCargo() {
+        ship.adjustCargo(ps.supply());
     }
 }
