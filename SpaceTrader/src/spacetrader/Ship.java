@@ -355,6 +355,14 @@ public class Ship implements Serializable {
         return false;
     }
     
+    public boolean cloak() {
+        for (Gadget g : gadgets) {
+            if (g.equals(g.CLOAK_DEVICE))
+                return true;
+        }
+        return false;
+    }
+    
     public ArrayList<Laser> getWeapons() {
         return weapons;
     }
